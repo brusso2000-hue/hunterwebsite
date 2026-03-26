@@ -1,0 +1,1563 @@
+import { useState, useEffect, useRef } from "react";
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const PRODUCTS = [
+  // Plating Pens
+  { id: "PL1000PS", name: "Power Supply", category: "Plating Pens", price: 215, sku: "PL1000PS", description: "Universal power supply — 110V/60Hz or 220V/50Hz. The backbone of every Micro-Metallizer setup.", specs: ["Input: 110V/60Hz or 220V/50Hz", "Output: 12V DC, 0.1A", "Dual voltage switchable"], image: "⚡" },
+  { id: "PL1000K", name: "Deluxe Kit", category: "Plating Pens", price: 548, sku: "PL1000K", description: "Complete starter kit with power supply, cables, and six plating pens: Absorbent, Nickel, Gold (24K), Silver, Chrome Color, and Copper.", specs: ["Includes 6 plating pens", "Power supply + cables included", "Ready to plate out of box"], image: "🔧" },
+  { id: "PL1000HD", name: "Deluxe Kit — Heavy Duty", category: "Plating Pens", price: 910, sku: "PL1000HD", description: "Heavy-duty version with Silver-Heavy, Copper-Heavy, 24K Gold-Heavy, Nickel-Heavy, Rhodium, and Absorbent pens.", specs: ["6 heavy-duty pens", "Extended-life cartridges", "Power supply + cables included"], image: "💪" },
+  { id: "PL1003", name: "Gold 24K Plating Pen", category: "Plating Pens", price: 140, sku: "PL1003", description: "Plate 24K gold on gold, nickel, or silver surfaces. Ideal for jewelry repair and electronics.", specs: ["24K pure gold solution", "Works on gold, nickel, silver", "Disposable cartridge"], image: "🥇" },
+  { id: "PL1004", name: "Gold 18K Plating Pen", category: "Plating Pens", price: 140, sku: "PL1004", description: "Plate 18K gold on gold, nickel, or silver. Perfect for jewelry restoration.", specs: ["18K gold solution", "Works on gold, nickel, silver", "Disposable cartridge"], image: "🥇" },
+  { id: "PL1006", name: "Nickel Plating Pen", category: "Plating Pens", price: 68, sku: "PL1006", description: "Plate nickel over copper. Apply copper flash to non-copper surfaces first.", specs: ["Nickel plating solution", "Plate over copper surfaces", "Corrosion-resistant finish"], image: "🔩" },
+  { id: "PL1008", name: "Silver Plating Pen", category: "Plating Pens", price: 83, sku: "PL1008", description: "Plate silver over any metallic surface except aluminum or chromium. Food-safe applications.", specs: ["Silver plating solution", "Works on most metal surfaces", "High-conductivity finish"], image: "🥈" },
+  { id: "PL1009", name: "Chrome Color Plating Pen", category: "Plating Pens", price: 64, sku: "PL1009", description: "Plate chrome color over copper. Apply copper flash to non-copper surfaces first.", specs: ["Chrome color solution", "Plate over copper", "Decorative + protective"], image: "✨" },
+  { id: "PL1010", name: "Copper Plating Pen", category: "Plating Pens", price: 58, sku: "PL1010", description: "Plate copper over any metallic surface (except aluminum and chromium). Essential base layer pen.", specs: ["Copper plating solution", "Works on most metals", "Essential base layer"], image: "🟤" },
+  { id: "PL1011", name: "Rhodium Plating Pen", category: "Plating Pens", price: 305, sku: "PL1011", description: "Plate rhodium over nickel for extreme hardness and a brilliant white finish.", specs: ["Rhodium plating solution", "Plate over nickel", "Extremely hard finish"], image: "💎" },
+  { id: "PL1001", name: "Connector Cables", category: "Accessories", price: 22, sku: "PL1001", description: "Replacement connector cables for the Micro-Metallizer power supply.", specs: ["Compatible with all pens", "Replacement/spare set", "Durable connectors"], image: "🔌" },
+  { id: "PL1002", name: "Absorbent/Degreaser Pen", category: "Accessories", price: 60, sku: "PL1002", description: "Clean all metals (except stainless steel) before plating. Critical first step for adhesion.", specs: ["Pre-plate cleaning", "Works on most metals", "Improves plating adhesion"], image: "🧹" },
+  { id: "PL1014", name: "Degreaser — Stainless Steel", category: "Accessories", price: 68, sku: "PL1014", description: "Specifically formulated degreaser for stainless steel surfaces before electroplating.", specs: ["Stainless steel specific", "Pre-plate preparation", "Ensures adhesion"], image: "🧽" },
+  { id: "CB300", name: "Carbitron 300 System", category: "Systems", price: 0, sku: "CB300", description: "The Carbitron 300 applies tungsten carbide coatings — Hunter's proprietary 'diamond dusting' technique — for extreme hardness and wear resistance on cutting tools, medical instruments, and precision parts.", specs: ["Tungsten carbide deposition", "Proprietary diamond-dusting process", "Used in medical + aerospace", "Portable, bench-top form factor"], image: "🏭" },
+  { id: "MJ200", name: "Micro-Jet 200 System", category: "Systems", price: 0, sku: "MJ200", description: "Precision micro-abrasive blaster for surface preparation, cleaning, etching, and deburring. More than a cleaning tool — a complete surface engineering platform.", specs: ["Micro-abrasive blasting", "Surface prep + etching", "Deburring + cleaning", "Precision nozzle control"], image: "💨" },
+];
+
+const APPLICATIONS = [
+  { title: "Aerospace & Defense", icon: "✈️", desc: "Precision plating on turbine components, fasteners, and structural parts. Corrosion protection and conductivity restoration for critical systems.", tags: ["Corrosion Protection", "Conductivity Repair", "Touch-Up Plating"] },
+  { title: "Medical Instruments", icon: "🏥", desc: "Tungsten carbide coating on surgical tools for enhanced edge retention. Hunter pioneered 'diamond dusting' for medical-grade instrument hardening.", tags: ["Diamond Dusting", "Surgical Tools", "Edge Hardening"] },
+  { title: "Electronics & PCB", icon: "💡", desc: "Gold and silver plating for connector repair, trace repair, and electrical contact restoration on printed circuit boards.", tags: ["Connector Repair", "Trace Restoration", "Gold Plating"] },
+  { title: "Jewelry & Restoration", icon: "💍", desc: "24K, 18K, and 14K gold plating. Silver, rhodium, and chrome for jewelry repair, restoration, and custom finishing.", tags: ["Gold Plating", "Rhodium Finish", "Jewelry Repair"] },
+  { title: "Manufacturing & Tooling", icon: "⚙️", desc: "Selective plating for worn tooling, molds, and dies. Extend tool life and restore dimensional tolerances without full re-machining.", tags: ["Wear Resistance", "Tool Restoration", "Dimensional Repair"] },
+  { title: "Automotive & Restoration", icon: "🚗", desc: "Chrome plating, nickel base layers, and copper flashing for automotive restoration, custom parts, and surface finishing.", tags: ["Chrome Finish", "Nickel Base", "Surface Finishing"] },
+];
+
+const STATS = [
+  { value: "50+", label: "Years in Business" },
+  { value: "6", label: "Plating Systems" },
+  { value: "20+", label: "Plating Solutions" },
+  { value: "6", label: "Industries Served" },
+];
+
+// ─── CART CONTEXT / HOOK ─────────────────────────────────────────────────────
+
+function useCart() {
+  const [items, setItems] = useState([]);
+  const add = (product) => {
+    setItems(prev => {
+      const existing = prev.find(i => i.id === product.id);
+      if (existing) return prev.map(i => i.id === product.id ? { ...i, qty: i.qty + 1 } : i);
+      return [...prev, { ...product, qty: 1 }];
+    });
+  };
+  const remove = (id) => setItems(prev => prev.filter(i => i.id !== id));
+  const update = (id, qty) => {
+    if (qty < 1) return remove(id);
+    setItems(prev => prev.map(i => i.id === id ? { ...i, qty } : i));
+  };
+  const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = items.reduce((s, i) => s + i.qty, 0);
+  const clear = () => setItems([]);
+  return { items, add, remove, update, total, count, clear };
+}
+
+// ─── ICONS ───────────────────────────────────────────────────────────────────
+
+const IconMenu = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+);
+const IconX = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+);
+const IconCart = ({ count }) => (
+  <div style={{ position: "relative", display: "inline-flex" }}>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+    </svg>
+    {count > 0 && (
+      <span style={{ position: "absolute", top: "-8px", right: "-8px", background: "#D97706", color: "#fff", borderRadius: "50%", width: "18px", height: "18px", fontSize: "11px", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700 }}>
+        {count}
+      </span>
+    )}
+  </div>
+);
+const IconArrow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+  </svg>
+);
+const IconCheck = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+);
+
+// ─── STYLES ──────────────────────────────────────────────────────────────────
+
+const CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1628;
+    --navy2: #0F1F3D;
+    --navy3: #162547;
+    --amber: #D97706;
+    --amber2: #F59E0B;
+    --amber-glow: rgba(217,119,6,0.15);
+    --steel: #8B98AE;
+    --steel2: #C5CDD8;
+    --white: #F5F7FA;
+    --card: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    transition: background var(--transition), border-color var(--transition);
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(16px);
+    border-color: var(--card-border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 18px;
+    color: var(--white); letter-spacing: -0.5px;
+    cursor: pointer; text-decoration: none;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 500;
+    color: var(--steel2); text-decoration: none;
+    transition: color var(--transition);
+    cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-actions { display: flex; align-items: center; gap: 20px; }
+  .nav-mobile-toggle { display: none; cursor: pointer; color: var(--white); background: none; border: none; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: block; }
+  }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 99;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    padding: 100px 8% 40px;
+    gap: 28px;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--white); text-decoration: none;
+    cursor: pointer;
+    transition: color var(--transition);
+  }
+  .mobile-menu a:hover { color: var(--amber); }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; border: none;
+    transition: all var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--amber2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(217,119,6,0.35); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--card-border);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); }
+  .btn-sm { padding: 9px 18px; font-size: 13px; }
+
+  /* SECTIONS */
+  .section { padding: 100px 5%; }
+  .section-sm { padding: 60px 5%; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800; line-height: 1.15;
+    letter-spacing: -1px; color: var(--white);
+    margin-bottom: 18px;
+  }
+  .section-sub {
+    font-size: 17px; line-height: 1.7;
+    color: var(--steel); max-width: 560px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
+  }
+  .hero-glow {
+    position: absolute; top: 10%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(217,119,6,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; bottom: -5%; left: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(22,37,71,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(217,119,6,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--amber2);
+    margin-bottom: 28px;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--amber); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+  .hero-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 800; line-height: 1.08;
+    letter-spacing: -2px; color: var(--white);
+    margin-bottom: 24px;
+  }
+  .hero-headline .accent { color: var(--amber); }
+  .hero-sub {
+    font-size: 19px; line-height: 1.65;
+    color: var(--steel); max-width: 520px;
+    margin-bottom: 44px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 70px; }
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+    padding-top: 40px;
+    border-top: 1px solid var(--card-border);
+  }
+  .hero-stat-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px; font-weight: 800;
+    color: var(--white); letter-spacing: -1px;
+  }
+  .hero-stat-val span { color: var(--amber); }
+  .hero-stat-label { font-size: 13px; color: var(--steel); margin-top: 2px; }
+
+  /* PRODUCT CATEGORIES STRIP */
+  .cat-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--card-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: -2px;
+  }
+  @media (max-width: 768px) { .cat-strip { grid-template-columns: 1fr; } }
+  .cat-card {
+    background: var(--navy2);
+    padding: 48px 40px;
+    cursor: pointer;
+    transition: background var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .cat-card:hover { background: var(--navy3); }
+  .cat-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+    transform-origin: left;
+  }
+  .cat-card:hover::after { transform: scaleX(1); }
+  .cat-icon { font-size: 32px; margin-bottom: 16px; }
+  .cat-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .cat-desc { font-size: 14px; color: var(--steel); line-height: 1.6; }
+  .cat-arrow { color: var(--amber); margin-top: 20px; }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .feature-card:hover { border-color: rgba(217,119,6,0.3); transform: translateY(-4px); }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(217,119,6,0.2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 20px;
+  }
+  .feature-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .feature-desc { font-size: 14px; color: var(--steel); line-height: 1.65; }
+
+  /* PRODUCT GRID */
+  .products-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .filter-tabs {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .filter-tab {
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--card-border);
+    background: transparent; color: var(--steel2);
+    transition: all var(--transition);
+  }
+  .filter-tab:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
+  .filter-tab.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: #fff;
+  }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .product-card:hover {
+    border-color: rgba(217,119,6,0.35);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .product-thumb {
+    height: 160px;
+    background: var(--navy2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+    position: relative; overflow: hidden;
+  }
+  .product-thumb::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 60% 40%, rgba(217,119,6,0.1), transparent 70%);
+  }
+  .product-body { padding: 24px; }
+  .product-cat-tag {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 8px;
+  }
+  .product-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--white); margin-bottom: 8px; line-height: 1.3;
+  }
+  .product-desc { font-size: 13px; color: var(--steel); line-height: 1.6; margin-bottom: 20px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--white);
+  }
+  .product-price.quote { font-size: 15px; color: var(--steel); }
+
+  /* PRODUCT MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(5,12,24,0.85);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal {
+    background: var(--navy2);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    max-width: 720px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+  }
+  .modal-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px; padding: 32px 32px 0;
+  }
+  .modal-body { padding: 24px 32px 32px; }
+  .modal-close {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; color: var(--steel2);
+    padding: 8px; cursor: pointer;
+    transition: all var(--transition); flex-shrink: 0;
+    display: flex;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+  .modal-emoji { font-size: 56px; margin-bottom: 16px; }
+  .modal-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px; font-weight: 800;
+    color: var(--white); margin-bottom: 6px;
+  }
+  .modal-sku { font-size: 12px; color: var(--steel); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  .modal-price { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--amber); margin-bottom: 20px; }
+  .modal-desc { font-size: 15px; color: var(--steel); line-height: 1.7; margin-bottom: 24px; }
+  .modal-specs { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .modal-spec {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--steel2);
+  }
+  .modal-spec svg { color: var(--amber); flex-shrink: 0; }
+  .modal-qty {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .qty-btn {
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 8px; font-size: 18px; cursor: pointer;
+    color: var(--white); transition: all var(--transition);
+  }
+  .qty-btn:hover { background: rgba(255,255,255,0.1); }
+  .qty-display { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; width: 32px; text-align: center; }
+
+  /* CART PANEL */
+  .cart-panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 150;
+    width: 420px; max-width: 100%;
+    background: var(--navy2);
+    border-left: 1px solid var(--card-border);
+    display: flex; flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .cart-panel.open { transform: translateX(0); }
+  .cart-overlay {
+    position: fixed; inset: 0; z-index: 149;
+    background: rgba(5,12,24,0.6);
+    backdrop-filter: blur(4px);
+  }
+  .cart-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .cart-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800; color: var(--white);
+  }
+  .cart-items { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .cart-item {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: var(--radius); padding: 14px;
+  }
+  .cart-item-emoji { font-size: 28px; width: 44px; text-align: center; }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cart-item-price { font-size: 13px; color: var(--amber); font-weight: 600; }
+  .cart-item-controls { display: flex; align-items: center; gap: 8px; }
+  .cart-qty { font-size: 14px; font-weight: 600; width: 24px; text-align: center; }
+  .cart-footer {
+    padding: 20px 24px 24px;
+    border-top: 1px solid var(--card-border);
+  }
+  .cart-total-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px;
+  }
+  .cart-total-label { font-size: 15px; color: var(--steel); }
+  .cart-total-val { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--white); }
+  .cart-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--steel); gap: 12px; }
+  .cart-empty-icon { font-size: 48px; }
+
+  /* CHECKOUT */
+  .checkout-grid { display: grid; grid-template-columns: 1fr 380px; gap: 40px; }
+  @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-size: 13px; font-weight: 500; color: var(--steel2); margin-bottom: 8px; }
+  .form-input {
+    width: 100%; padding: 13px 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--white); font-size: 14px; font-family: 'DM Sans', sans-serif;
+    transition: border-color var(--transition);
+    outline: none;
+  }
+  .form-input:focus { border-color: var(--amber); }
+  .form-input::placeholder { color: var(--steel); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 20px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--card-border);
+  }
+
+  /* APPLICATIONS */
+  .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+  .app-card {
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg); padding: 36px;
+    transition: all var(--transition);
+  }
+  .app-card:hover { border-color: rgba(217,119,6,0.3); transform: translateY(-4px); }
+  .app-icon { font-size: 36px; margin-bottom: 20px; }
+  .app-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  .app-desc { font-size: 14px; color: var(--steel); line-height: 1.65; margin-bottom: 20px; }
+  .tag-list { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    padding: 4px 12px; border-radius: 100px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+    background: var(--amber-glow); color: var(--amber2);
+    border: 1px solid rgba(217,119,6,0.2);
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
+  .about-visual {
+    background: var(--navy2); border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg); padding: 48px;
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .about-timeline-item { display: flex; gap: 20px; align-items: flex-start; }
+  .timeline-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--amber); flex-shrink: 0; margin-top: 5px;
+  }
+  .timeline-year { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
+  .timeline-text { font-size: 14px; color: var(--steel); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-icon-wrap {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--amber-glow); border: 1px solid rgba(217,119,6,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .contact-item-label { font-size: 12px; color: var(--steel); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .contact-item-val { font-size: 15px; color: var(--white); font-weight: 500; }
+  .form-select {
+    width: 100%; padding: 13px 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--white); font-size: 14px; font-family: 'DM Sans', sans-serif;
+    outline: none; cursor: pointer;
+  }
+  textarea.form-input { min-height: 120px; resize: vertical; }
+
+  /* FOOTER */
+  .footer { background: var(--navy2); border-top: 1px solid var(--card-border); padding: 60px 5% 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand { max-width: 300px; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
+  .footer-logo span { color: var(--amber); }
+  .footer-tagline { font-size: 14px; color: var(--steel); line-height: 1.65; }
+  .footer-col-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 18px; letter-spacing: 0.5px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 14px; color: var(--steel); text-decoration: none; cursor: pointer; transition: color var(--transition); }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid var(--card-border); flex-wrap: wrap; gap: 12px; }
+  .footer-bottom-text { font-size: 13px; color: var(--steel); }
+
+  /* SUCCESS BANNER */
+  .success-banner {
+    position: fixed; top: 90px; right: 24px; z-index: 300;
+    background: #065F46; border: 1px solid #059669;
+    border-radius: var(--radius); padding: 14px 20px;
+    font-size: 14px; font-weight: 500; color: #D1FAE5;
+    display: flex; align-items: center; gap: 10px;
+    animation: slideIn 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+  /* ORDER CONFIRM */
+  .order-confirm {
+    text-align: center; padding: 80px 40px;
+  }
+  .order-icon { font-size: 72px; margin-bottom: 24px; }
+  .order-title { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+  .order-sub { font-size: 16px; color: var(--steel); line-height: 1.65; max-width: 400px; margin: 0 auto 32px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero-ctas { flex-direction: column; }
+    .hero-stats { gap: 28px; }
+    .section { padding: 60px 5%; }
+  }
+
+  /* FADE IN ANIMATION */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--navy3); border-radius: 3px; }
+`;
+
+// ─── FADE-IN HOOK ────────────────────────────────────────────────────────────
+
+function useFadeIn() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add("visible"); obs.disconnect(); }
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return ref;
+}
+
+// ─── PAGE COMPONENTS ─────────────────────────────────────────────────────────
+
+function HomePage({ onNav, cart }) {
+  const s1 = useFadeIn(), s2 = useFadeIn(), s3 = useFadeIn(), s4 = useFadeIn();
+
+  const features = [
+    { icon: "🎯", title: "Precision On-Site", desc: "Plate exactly where you need it. Portable pen-based delivery means zero masking, zero setup delay, and micron-level control." },
+    { icon: "⚡", title: "Industrial-Grade Output", desc: "Developed for medical, aerospace, and manufacturing — not hobby use. Every solution is engineered for adhesion, conductivity, and durability." },
+    { icon: "💰", title: "Cost-Effective vs. Full Plating", desc: "Selective plating costs a fraction of tank plating. Restore, repair, and plate without sending parts off-site." },
+    { icon: "🔬", title: "50+ Years of R&D", desc: "Inventors of 'diamond dusting' — tungsten carbide deposition on precision instruments. Decades of formulation expertise behind every product." },
+  ];
+
+  return (
+    <>
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-grid" />
+        <div className="hero-glow" />
+        <div className="hero-glow2" />
+        <div className="hero-content">
+          <div className="hero-badge">Precision Electroplating Since 1970</div>
+          <h1 className="hero-headline">
+            Industrial Plating Tools.<br />
+            <span className="accent">Built for Precision.</span>
+          </h1>
+          <p className="hero-sub">
+            Hunter Products manufactures portable electroplating systems — plating pens, tungsten carbide applicators, and micro-abrasive blasters — engineered for aerospace, medical, and manufacturing environments.
+          </p>
+          <div className="hero-ctas">
+            <button className="btn btn-primary" onClick={() => onNav("products")}>
+              Shop Products <IconArrow />
+            </button>
+            <button className="btn btn-ghost" onClick={() => onNav("contact")}>
+              Request a Quote
+            </button>
+          </div>
+          <div className="hero-stats">
+            {STATS.map(s => (
+              <div key={s.label}>
+                <div className="hero-stat-val">{s.value.replace("+", "")}<span>+</span></div>
+                <div className="hero-stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCT CATEGORIES */}
+      <section className="section-sm" style={{ padding: "0 5% 80px" }}>
+        <div className="container">
+          <div ref={s1} className="fade-in">
+            <div className="cat-strip">
+              {[
+                { name: "Micro-Metallizer Plating Pens", icon: "🖊️", desc: "Portable, pen-based electroplating for gold, silver, nickel, chrome, copper, rhodium, and more. 20+ solutions available.", cat: "Plating Pens" },
+                { name: "Carbitron 300 System", icon: "🏭", desc: "Tungsten carbide deposition system. Hunter's proprietary 'diamond dusting' technique for extreme hardness on cutting tools and instruments.", cat: "Systems" },
+                { name: "Micro-Jet 200 System", icon: "💨", desc: "Precision micro-abrasive blaster for surface prep, etching, cleaning, and deburring. The complete surface engineering companion.", cat: "Systems" },
+              ].map(c => (
+                <div className="cat-card" key={c.name} onClick={() => onNav("products", c.cat)}>
+                  <div className="cat-icon">{c.icon}</div>
+                  <div className="cat-name">{c.name}</div>
+                  <p className="cat-desc">{c.desc}</p>
+                  <div className="cat-arrow"><IconArrow /></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="section" style={{ paddingTop: "80px" }}>
+        <div className="container">
+          <div ref={s2} className="fade-in">
+            <div className="section-label">Why Hunter Products</div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 24, marginBottom: 48 }}>
+              <h2 className="section-title" style={{ marginBottom: 0 }}>
+                Engineered for the<br />shop floor, not the lab.
+              </h2>
+              <button className="btn btn-ghost" onClick={() => onNav("about")}>
+                Our Story <IconArrow />
+              </button>
+            </div>
+            <div className="features-grid">
+              {features.map(f => (
+                <div className="feature-card" key={f.title}>
+                  <div className="feature-icon">{f.icon}</div>
+                  <div className="feature-title">{f.title}</div>
+                  <p className="feature-desc">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* APPLICATIONS TEASER */}
+      <section className="section" style={{ paddingTop: "0" }}>
+        <div className="container">
+          <div ref={s3} className="fade-in">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+              <div>
+                <div className="section-label">Applications</div>
+                <h2 className="section-title">Where precision plating matters most.</h2>
+                <p className="section-sub" style={{ marginBottom: 32 }}>
+                  From surgical instruments to PCB repair, Hunter systems are deployed across the industries where tolerances are tight and failure isn't an option.
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 36 }}>
+                  {["Aerospace & Defense", "Medical Instruments", "Electronics & PCB Repair", "Jewelry & Restoration", "Manufacturing & Tooling"].map(a => (
+                    <div key={a} style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 15, color: "var(--steel2)" }}>
+                      <span style={{ color: "var(--amber)" }}><IconCheck /></span> {a}
+                    </div>
+                  ))}
+                </div>
+                <button className="btn btn-primary" onClick={() => onNav("applications")}>
+                  View All Applications <IconArrow />
+                </button>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                {[
+                  { emoji: "✈️", label: "Aerospace", detail: "Component restoration" },
+                  { emoji: "🏥", label: "Medical", detail: "Diamond dusting" },
+                  { emoji: "💡", label: "Electronics", detail: "Trace & contact repair" },
+                  { emoji: "⚙️", label: "Manufacturing", detail: "Tool life extension" },
+                ].map(a => (
+                  <div key={a.label} style={{
+                    background: "var(--card)", border: "1px solid var(--card-border)",
+                    borderRadius: "var(--radius)", padding: "28px 24px", textAlign: "center"
+                  }}>
+                    <div style={{ fontSize: 32, marginBottom: 10 }}>{a.emoji}</div>
+                    <div style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: 15, color: "var(--white)", marginBottom: 4 }}>{a.label}</div>
+                    <div style={{ fontSize: 12, color: "var(--steel)" }}>{a.detail}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div ref={s4} className="fade-in">
+            <div style={{
+              background: "linear-gradient(135deg, rgba(217,119,6,0.15) 0%, rgba(217,119,6,0.05) 100%)",
+              border: "1px solid rgba(217,119,6,0.25)",
+              borderRadius: "var(--radius-lg)",
+              padding: "64px 60px",
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              flexWrap: "wrap", gap: 32,
+            }}>
+              <div>
+                <h3 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 800, color: "var(--white)", marginBottom: 10 }}>
+                  Need a custom solution?
+                </h3>
+                <p style={{ fontSize: 16, color: "var(--steel)", maxWidth: 480 }}>
+                  Bulk orders, custom plating formulations, and application consulting available. Talk to our team.
+                </p>
+              </div>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <button className="btn btn-primary" onClick={() => onNav("contact")}>Request a Quote <IconArrow /></button>
+                <button className="btn btn-ghost" onClick={() => onNav("products")}>Browse Products</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ProductsPage({ cart, onNav }) {
+  const [filter, setFilter] = useState("All");
+  const [selected, setSelected] = useState(null);
+  const [qty, setQty] = useState(1);
+  const [success, setSuccess] = useState(false);
+  const categories = ["All", "Plating Pens", "Accessories", "Systems"];
+
+  const filtered = filter === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+
+  const handleAdd = (product) => {
+    for (let i = 0; i < qty; i++) cart.add(product);
+    setSelected(null);
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 2500);
+  };
+
+  return (
+    <section className="section" style={{ paddingTop: 120 }}>
+      {success && (
+        <div className="success-banner">
+          <span>✓</span> Item added to cart
+        </div>
+      )}
+      <div className="container">
+        <div className="products-header">
+          <div>
+            <div className="section-label">Products</div>
+            <h1 className="section-title" style={{ marginBottom: 0 }}>Plating Systems & Solutions</h1>
+          </div>
+          <p className="section-sub" style={{ fontSize: 15 }}>
+            20+ plating solutions, complete kits, and industrial systems. Every product ready to ship.
+          </p>
+        </div>
+        <div className="filter-tabs">
+          {categories.map(c => (
+            <button key={c} className={`filter-tab${filter === c ? " active" : ""}`} onClick={() => setFilter(c)}>{c}</button>
+          ))}
+        </div>
+        <div className="products-grid">
+          {filtered.map(p => (
+            <div className="product-card" key={p.id} onClick={() => { setSelected(p); setQty(1); }}>
+              <div className="product-thumb">{p.image}</div>
+              <div className="product-body">
+                <div className="product-cat-tag">{p.category}</div>
+                <div className="product-name">{p.name}</div>
+                <p className="product-desc">{p.desc || p.description.slice(0, 90)}...</p>
+                <div className="product-footer">
+                  {p.price > 0
+                    ? <span className="product-price">${p.price.toFixed(2)}</span>
+                    : <span className="product-price quote">Request Quote</span>
+                  }
+                  <button className="btn btn-sm btn-ghost" onClick={e => { e.stopPropagation(); setSelected(p); setQty(1); }}>
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {selected && (
+        <div className="modal-overlay" onClick={() => setSelected(null)}>
+          <div className="modal" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <div />
+              <button className="modal-close" onClick={() => setSelected(null)}><IconX /></button>
+            </div>
+            <div className="modal-body">
+              <div className="modal-emoji">{selected.image}</div>
+              <div className="modal-title">{selected.name}</div>
+              {selected.sku && <div className="modal-sku">SKU: {selected.sku}</div>}
+              {selected.price > 0
+                ? <div className="modal-price">${selected.price.toFixed(2)}</div>
+                : <div className="modal-price" style={{ fontSize: 18, color: "var(--steel)" }}>Pricing on request</div>
+              }
+              <p className="modal-desc">{selected.description}</p>
+              <ul className="modal-specs">
+                {selected.specs.map(s => (
+                  <li className="modal-spec" key={s}><IconCheck /> {s}</li>
+                ))}
+              </ul>
+              {selected.price > 0 ? (
+                <>
+                  <div className="modal-qty">
+                    <span style={{ fontSize: 13, color: "var(--steel)", marginRight: 6 }}>Qty:</span>
+                    <button className="qty-btn" onClick={() => setQty(q => Math.max(1, q - 1))}>−</button>
+                    <span className="qty-display">{qty}</span>
+                    <button className="qty-btn" onClick={() => setQty(q => q + 1)}>+</button>
+                  </div>
+                  <button className="btn btn-primary" style={{ width: "100%" }} onClick={() => handleAdd(selected)}>
+                    Add to Cart — ${(selected.price * qty).toFixed(2)}
+                  </button>
+                </>
+              ) : (
+                <button className="btn btn-primary" style={{ width: "100%" }} onClick={() => { setSelected(null); onNav("contact"); }}>
+                  Request a Quote <IconArrow />
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function AboutPage() {
+  const s1 = useFadeIn(), s2 = useFadeIn();
+  return (
+    <section className="section" style={{ paddingTop: 120 }}>
+      <div className="container">
+        <div ref={s1} className="fade-in" style={{ marginBottom: 80 }}>
+          <div className="section-label">About Us</div>
+          <h1 className="section-title">50 years of electroplating<br />expertise, bottled in a pen.</h1>
+        </div>
+        <div ref={s2} className="fade-in about-grid">
+          <div>
+            <p style={{ fontSize: 17, color: "var(--steel)", lineHeight: 1.75, marginBottom: 24 }}>
+              Hunter Products Inc. was founded on one conviction: precision electroplating shouldn't require a full tank-plating shop. With the right formulation and delivery system, a technician in the field should be able to restore, repair, or plate any metallic surface — right where the work is happening.
+            </p>
+            <p style={{ fontSize: 17, color: "var(--steel)", lineHeight: 1.75, marginBottom: 24 }}>
+              Over five decades, we developed the Micro-Metallizer Plating Pen system — a self-contained, portable electroplating solution used in dental labs, aerospace MRO facilities, PCB repair shops, and jewelry studios worldwide.
+            </p>
+            <p style={{ fontSize: 17, color: "var(--steel)", lineHeight: 1.75, marginBottom: 36 }}>
+              We also pioneered "diamond dusting" — a tungsten carbide deposition technique (now the Carbitron 300 system) that hardens surgical instruments, cutting tools, and precision components to extend service life dramatically.
+            </p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <div style={{ textAlign: "center", padding: "24px 32px", background: "var(--card)", border: "1px solid var(--card-border)", borderRadius: "var(--radius)" }}>
+                <div style={{ fontFamily: "Syne, sans-serif", fontSize: 36, fontWeight: 800, color: "var(--amber)" }}>50+</div>
+                <div style={{ fontSize: 13, color: "var(--steel)" }}>Years in Business</div>
+              </div>
+              <div style={{ textAlign: "center", padding: "24px 32px", background: "var(--card)", border: "1px solid var(--card-border)", borderRadius: "var(--radius)" }}>
+                <div style={{ fontFamily: "Syne, sans-serif", fontSize: 36, fontWeight: 800, color: "var(--amber)" }}>20+</div>
+                <div style={{ fontSize: 13, color: "var(--steel)" }}>Plating Solutions</div>
+              </div>
+              <div style={{ textAlign: "center", padding: "24px 32px", background: "var(--card)", border: "1px solid var(--card-border)", borderRadius: "var(--radius)" }}>
+                <div style={{ fontFamily: "Syne, sans-serif", fontSize: 36, fontWeight: 800, color: "var(--amber)" }}>3</div>
+                <div style={{ fontSize: 13, color: "var(--steel)" }}>Plating Systems</div>
+              </div>
+            </div>
+          </div>
+          <div className="about-visual">
+            <div style={{ fontFamily: "Syne, sans-serif", fontSize: 14, fontWeight: 700, color: "var(--amber)", marginBottom: 8, letterSpacing: 1.5, textTransform: "uppercase" }}>Company Timeline</div>
+            {[
+              { year: "1970s", text: "Founded in New Jersey. First Micro-Metallizer plating pen kits developed for dental and jewelry applications." },
+              { year: "1980s", text: "Expansion into aerospace and electronics. Gold, rhodium, and platinum formulations added to product line." },
+              { year: "1990s", text: "Development of the 'diamond dusting' tungsten carbide technique. Carbitron 300 system launched for medical instrumentation." },
+              { year: "2000s", text: "Micro-Jet 200 micro-abrasive blasting system introduced. Full suite of industrial surface preparation tools established." },
+              { year: "Today", text: "20+ metal plating solutions. Products in use across aerospace, medical, electronics, jewelry, and manufacturing globally." },
+            ].map(t => (
+              <div className="about-timeline-item" key={t.year}>
+                <div className="timeline-dot" />
+                <div>
+                  <div className="timeline-year">{t.year}</div>
+                  <p className="timeline-text">{t.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ApplicationsPage() {
+  const s1 = useFadeIn(), s2 = useFadeIn();
+  return (
+    <section className="section" style={{ paddingTop: 120 }}>
+      <div className="container">
+        <div ref={s1} className="fade-in" style={{ marginBottom: 60 }}>
+          <div className="section-label">Applications</div>
+          <h1 className="section-title">Where Hunter Products<br />gets to work.</h1>
+          <p className="section-sub">
+            Precision plating is required wherever metal surfaces need to be restored, protected, or enhanced — without the downtime of full tank-plating operations.
+          </p>
+        </div>
+        <div ref={s2} className="fade-in apps-grid">
+          {APPLICATIONS.map(a => (
+            <div className="app-card" key={a.title}>
+              <div className="app-icon">{a.icon}</div>
+              <div className="app-title">{a.title}</div>
+              <p className="app-desc">{a.desc}</p>
+              <div className="tag-list">
+                {a.tags.map(t => <span className="tag" key={t}>{t}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{
+          marginTop: 80, background: "var(--card)", border: "1px solid var(--card-border)",
+          borderRadius: "var(--radius-lg)", padding: "48px",
+        }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
+            <div>
+              <div className="section-label">Tungsten Carbide</div>
+              <h3 style={{ fontFamily: "Syne, sans-serif", fontSize: 24, fontWeight: 800, color: "var(--white)", marginBottom: 16 }}>
+                Diamond Dusting — Proprietary Carbitron Process
+              </h3>
+              <p style={{ fontSize: 14, color: "var(--steel)", lineHeight: 1.7 }}>
+                Hunter Products pioneered the application of tungsten carbide to precision instruments via a selective deposition method we call "diamond dusting." The resulting surface is one of the hardest available outside of diamond itself — ideal for surgical instruments, dental tools, and industrial cutting edges that need extended life without dimensional change.
+              </p>
+            </div>
+            <div>
+              <div className="section-label">Micro-Abrasive Blasting</div>
+              <h3 style={{ fontFamily: "Syne, sans-serif", fontSize: 24, fontWeight: 800, color: "var(--white)", marginBottom: 16 }}>
+                Micro-Jet 200 — Surface Preparation Platform
+              </h3>
+              <p style={{ fontSize: 14, color: "var(--steel)", lineHeight: 1.7 }}>
+                The Micro-Jet isn't just a cleaner. It's a precision surface engineering tool. Use it to strip coatings without dimensional impact, create anchor profiles for plating adhesion, deburr micro-features, and etch decorative finishes. Ideal for any shop that does repair, restoration, or custom surface finishing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactPage() {
+  const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", inquiry: "general", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const s1 = useFadeIn();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <section className="section" style={{ paddingTop: 120 }}>
+        <div className="container">
+          <div className="order-confirm">
+            <div className="order-icon">✅</div>
+            <div className="order-title">Message received.</div>
+            <p className="order-sub">Our team will follow up within 1–2 business days. For urgent inquiries, call us directly.</p>
+            <button className="btn btn-ghost" onClick={() => setSubmitted(false)}>Send Another Message</button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="section" style={{ paddingTop: 120 }}>
+      <div className="container">
+        <div ref={s1} className="fade-in" style={{ marginBottom: 60 }}>
+          <div className="section-label">Contact</div>
+          <h1 className="section-title">Talk to the team.</h1>
+          <p className="section-sub">Bulk orders, custom formulations, technical questions, or application consulting — reach out and we'll respond within 1–2 business days.</p>
+        </div>
+        <div className="contact-grid">
+          <div>
+            <div className="form-section-title">Send a Message</div>
+            <form onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Full Name *</label>
+                  <input className="form-input" required placeholder="Jane Smith" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Email Address *</label>
+                  <input className="form-input" type="email" required placeholder="jane@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Company</label>
+                  <input className="form-input" placeholder="Acme Manufacturing" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Phone</label>
+                  <input className="form-input" placeholder="(555) 000-0000" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
+                </div>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Inquiry Type</label>
+                <select className="form-select" value={form.inquiry} onChange={e => setForm({ ...form, inquiry: e.target.value })}>
+                  <option value="general">General Inquiry</option>
+                  <option value="quote">Request a Quote</option>
+                  <option value="bulk">Bulk / Volume Order</option>
+                  <option value="custom">Custom Formulation</option>
+                  <option value="technical">Technical Support</option>
+                  <option value="application">Application Consulting</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Message *</label>
+                <textarea className="form-input" required placeholder="Tell us about your application, quantity needs, or technical question..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
+              </div>
+              <button type="submit" className="btn btn-primary" style={{ width: "100%" }}>
+                Send Message <IconArrow />
+              </button>
+            </form>
+          </div>
+          <div className="contact-info">
+            <div className="form-section-title">Contact Information</div>
+            {[
+              { icon: "📍", label: "Location", val: "New Jersey, USA" },
+              { icon: "📞", label: "Phone", val: "Call for current number" },
+              { icon: "✉️", label: "Email", val: "Via contact form" },
+              { icon: "🕐", label: "Business Hours", val: "Mon–Fri, 9am–5pm EST" },
+            ].map(c => (
+              <div className="contact-item" key={c.label}>
+                <div className="contact-icon-wrap">{c.icon}</div>
+                <div>
+                  <div className="contact-item-label">{c.label}</div>
+                  <div className="contact-item-val">{c.val}</div>
+                </div>
+              </div>
+            ))}
+            <div style={{
+              background: "var(--amber-glow)", border: "1px solid rgba(217,119,6,0.2)",
+              borderRadius: "var(--radius)", padding: "24px",
+            }}>
+              <div style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: 15, color: "var(--white)", marginBottom: 10 }}>
+                Bulk & OEM Orders
+              </div>
+              <p style={{ fontSize: 14, color: "var(--steel)", lineHeight: 1.65 }}>
+                Volume discounts available for distributors, OEM integrators, and institutional buyers. Specify quantities in your message and we'll provide a custom quote.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CartPanel({ cart, open, onClose, onCheckout }) {
+  return (
+    <>
+      {open && <div className="cart-overlay" onClick={onClose} />}
+      <div className={`cart-panel${open ? " open" : ""}`}>
+        <div className="cart-header">
+          <span className="cart-title">Cart ({cart.count})</span>
+          <button className="modal-close" onClick={onClose}><IconX /></button>
+        </div>
+        {cart.items.length === 0 ? (
+          <div className="cart-empty">
+            <div className="cart-empty-icon">🛒</div>
+            <span style={{ fontSize: 14 }}>Your cart is empty</span>
+          </div>
+        ) : (
+          <>
+            <div className="cart-items">
+              {cart.items.map(item => (
+                <div className="cart-item" key={item.id}>
+                  <div className="cart-item-emoji">{item.image}</div>
+                  <div className="cart-item-info">
+                    <div className="cart-item-name">{item.name}</div>
+                    <div className="cart-item-price">${(item.price * item.qty).toFixed(2)}</div>
+                  </div>
+                  <div className="cart-item-controls">
+                    <button className="qty-btn" style={{ width: 28, height: 28 }} onClick={() => cart.update(item.id, item.qty - 1)}>−</button>
+                    <span className="cart-qty">{item.qty}</span>
+                    <button className="qty-btn" style={{ width: 28, height: 28 }} onClick={() => cart.update(item.id, item.qty + 1)}>+</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="cart-footer">
+              <div className="cart-total-row">
+                <span className="cart-total-label">Total</span>
+                <span className="cart-total-val">${cart.total.toFixed(2)}</span>
+              </div>
+              <button className="btn btn-primary" style={{ width: "100%", marginBottom: 10 }} onClick={onCheckout}>
+                Checkout <IconArrow />
+              </button>
+              <button className="btn btn-ghost" style={{ width: "100%", fontSize: 13 }} onClick={onClose}>
+                Continue Shopping
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  );
+}
+
+function CheckoutPage({ cart, onSuccess }) {
+  const [step, setStep] = useState(1);
+  const [form, setForm] = useState({
+    firstName: "", lastName: "", email: "", address: "", city: "", state: "", zip: "",
+    cardName: "", cardNum: "", expiry: "", cvv: ""
+  });
+  const up = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  if (cart.items.length === 0) {
+    return (
+      <section className="section" style={{ paddingTop: 120 }}>
+        <div className="container">
+          <div className="order-confirm">
+            <div className="order-icon">🛒</div>
+            <div className="order-title">Your cart is empty.</div>
+            <p className="order-sub">Add some products before checking out.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const handleOrder = (e) => {
+    e.preventDefault();
+    cart.clear();
+    onSuccess();
+  };
+
+  return (
+    <section className="section" style={{ paddingTop: 120 }}>
+      <div className="container">
+        <div style={{ marginBottom: 40 }}>
+          <div className="section-label">Checkout</div>
+          <h1 className="section-title" style={{ marginBottom: 0 }}>Complete Your Order</h1>
+        </div>
+        <div className="checkout-grid">
+          <div>
+            {/* Step 1: Shipping */}
+            <div style={{ marginBottom: 36 }}>
+              <div className="form-section-title">Shipping Information</div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">First Name</label>
+                  <input className="form-input" value={form.firstName} onChange={e => up("firstName", e.target.value)} placeholder="Jane" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Last Name</label>
+                  <input className="form-input" value={form.lastName} onChange={e => up("lastName", e.target.value)} placeholder="Smith" />
+                </div>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Email</label>
+                <input className="form-input" type="email" value={form.email} onChange={e => up("email", e.target.value)} placeholder="jane@company.com" />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Address</label>
+                <input className="form-input" value={form.address} onChange={e => up("address", e.target.value)} placeholder="123 Industrial Blvd" />
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">City</label>
+                  <input className="form-input" value={form.city} onChange={e => up("city", e.target.value)} placeholder="Newark" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">State / ZIP</label>
+                  <input className="form-input" value={form.zip} onChange={e => up("zip", e.target.value)} placeholder="NJ 07102" />
+                </div>
+              </div>
+            </div>
+            {/* Step 2: Payment */}
+            <form onSubmit={handleOrder}>
+              <div className="form-section-title">Payment Information</div>
+              <div className="form-group">
+                <label className="form-label">Name on Card</label>
+                <input className="form-input" required value={form.cardName} onChange={e => up("cardName", e.target.value)} placeholder="Jane Smith" />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Card Number</label>
+                <input className="form-input" required value={form.cardNum} onChange={e => up("cardNum", e.target.value)} placeholder="4242 4242 4242 4242" maxLength={19} />
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Expiry</label>
+                  <input className="form-input" required value={form.expiry} onChange={e => up("expiry", e.target.value)} placeholder="MM/YY" maxLength={5} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">CVV</label>
+                  <input className="form-input" required value={form.cvv} onChange={e => up("cvv", e.target.value)} placeholder="123" maxLength={4} />
+                </div>
+              </div>
+              <div style={{ background: "rgba(217,119,6,0.08)", border: "1px solid rgba(217,119,6,0.2)", borderRadius: 8, padding: "12px 16px", marginBottom: 20, fontSize: 13, color: "var(--steel)" }}>
+                🔒 This is a demo checkout. No real payment is processed.
+              </div>
+              <button type="submit" className="btn btn-primary" style={{ width: "100%", padding: "16px" }}>
+                Place Order — ${cart.total.toFixed(2)} <IconArrow />
+              </button>
+            </form>
+          </div>
+          {/* Order Summary */}
+          <div>
+            <div style={{ background: "var(--card)", border: "1px solid var(--card-border)", borderRadius: "var(--radius-lg)", padding: "28px", position: "sticky", top: 90 }}>
+              <div className="form-section-title">Order Summary</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
+                {cart.items.map(item => (
+                  <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <span style={{ fontSize: 20 }}>{item.image}</span>
+                      <div>
+                        <div style={{ fontSize: 13, color: "var(--white)", fontWeight: 500 }}>{item.name}</div>
+                        <div style={{ fontSize: 12, color: "var(--steel)" }}>Qty: {item.qty}</div>
+                      </div>
+                    </div>
+                    <span style={{ fontSize: 14, fontWeight: 600, color: "var(--white)", whiteSpace: "nowrap" }}>${(item.price * item.qty).toFixed(2)}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ borderTop: "1px solid var(--card-border)", paddingTop: 16 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+                  <span style={{ fontSize: 13, color: "var(--steel)" }}>Subtotal</span>
+                  <span style={{ fontSize: 13, color: "var(--white)" }}>${cart.total.toFixed(2)}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+                  <span style={{ fontSize: 13, color: "var(--steel)" }}>Shipping</span>
+                  <span style={{ fontSize: 13, color: "var(--white)" }}>Calculated at next step</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16, paddingTop: 16, borderTop: "1px solid var(--card-border)" }}>
+                  <span style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, color: "var(--white)" }}>Total</span>
+                  <span style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: 22, color: "var(--amber)" }}>${cart.total.toFixed(2)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OrderConfirmPage({ onNav }) {
+  return (
+    <section className="section" style={{ paddingTop: 120 }}>
+      <div className="container">
+        <div className="order-confirm">
+          <div className="order-icon">📦</div>
+          <div className="order-title">Order confirmed.</div>
+          <p className="order-sub">
+            Thank you for your order. You'll receive a confirmation email shortly with tracking details.
+          </p>
+          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <button className="btn btn-primary" onClick={() => onNav("products")}>Continue Shopping <IconArrow /></button>
+            <button className="btn btn-ghost" onClick={() => onNav("contact")}>Contact Support</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── NAV ─────────────────────────────────────────────────────────────────────
+
+function Nav({ page, onNav, cart, onCartOpen }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  const links = [
+    { label: "Products", page: "products" },
+    { label: "Applications", page: "applications" },
+    { label: "About", page: "about" },
+    { label: "Contact", page: "contact" },
+  ];
+
+  const go = (p) => { onNav(p); setMenuOpen(false); };
+
+  return (
+    <>
+      <nav className={`nav${scrolled ? " scrolled" : ""}`}>
+        <span className="nav-logo" onClick={() => go("home")}>
+          HUNTER<span>.</span>
+        </span>
+        <ul className="nav-links">
+          {links.map(l => (
+            <li key={l.page}><a onClick={() => go(l.page)} style={{ color: page === l.page ? "var(--white)" : undefined }}>{l.label}</a></li>
+          ))}
+        </ul>
+        <div className="nav-actions">
+          <button style={{ background: "none", border: "none", cursor: "pointer", color: "var(--white)", display: "flex" }} onClick={onCartOpen}>
+            <IconCart count={cart.count} />
+          </button>
+          <button className="btn btn-primary btn-sm" onClick={() => go("contact")} style={{ marginLeft: 8 }}>
+            Get a Quote
+          </button>
+          <button className="nav-mobile-toggle" onClick={() => setMenuOpen(o => !o)}>
+            {menuOpen ? <IconX /> : <IconMenu />}
+          </button>
+        </div>
+      </nav>
+      <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
+        {links.map(l => <a key={l.page} onClick={() => go(l.page)}>{l.label}</a>)}
+        <button className="btn btn-primary" onClick={() => go("contact")} style={{ alignSelf: "flex-start", marginTop: 8 }}>Get a Quote</button>
+      </div>
+    </>
+  );
+}
+
+function Footer({ onNav }) {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <div className="footer-logo">HUNTER<span>.</span></div>
+            <p className="footer-tagline">Portable electroplating systems for industrial, medical, aerospace, and precision manufacturing applications. Built in the USA since the 1970s.</p>
+          </div>
+          <div>
+            <div className="footer-col-title">Products</div>
+            <ul className="footer-links">
+              <li><a onClick={() => onNav("products", "Plating Pens")}>Plating Pens</a></li>
+              <li><a onClick={() => onNav("products", "Systems")}>Carbitron 300</a></li>
+              <li><a onClick={() => onNav("products", "Systems")}>Micro-Jet 200</a></li>
+              <li><a onClick={() => onNav("products", "Accessories")}>Accessories</a></li>
+            </ul>
+          </div>
+          <div>
+            <div className="footer-col-title">Company</div>
+            <ul className="footer-links">
+              <li><a onClick={() => onNav("about")}>About Us</a></li>
+              <li><a onClick={() => onNav("applications")}>Applications</a></li>
+              <li><a onClick={() => onNav("contact")}>Contact</a></li>
+              <li><a onClick={() => onNav("contact")}>Request a Quote</a></li>
+            </ul>
+          </div>
+          <div>
+            <div className="footer-col-title">Resources</div>
+            <ul className="footer-links">
+              <li><a>Catalogs</a></li>
+              <li><a>Price Sheets</a></li>
+              <li><a>Safety Data Sheets</a></li>
+              <li><a>Technical Support</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span className="footer-bottom-text">© 2025 Hunter Products Inc. All rights reserved. New Jersey, USA.</span>
+          <span className="footer-bottom-text">Precision Electroplating Since 1970</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+export default function App() {
+  const [page, setPage] = useState("home");
+  const [productFilter, setProductFilter] = useState("All");
+  const [cartOpen, setCartOpen] = useState(false);
+  const [orderDone, setOrderDone] = useState(false);
+  const cart = useCart();
+
+  const handleNav = (p, filter) => {
+    setPage(p);
+    if (filter) setProductFilter(filter);
+    else if (p === "products") setProductFilter("All");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setCartOpen(false);
+  };
+
+  const handleCheckout = () => {
+    setCartOpen(false);
+    setPage("checkout");
+    window.scrollTo({ top: 0 });
+  };
+
+  const handleOrderSuccess = () => {
+    setPage("order-confirm");
+    window.scrollTo({ top: 0 });
+  };
+
+  return (
+    <>
+      <style>{CSS}</style>
+      <Nav page={page} onNav={handleNav} cart={cart} onCartOpen={() => setCartOpen(true)} />
+      <CartPanel cart={cart} open={cartOpen} onClose={() => setCartOpen(false)} onCheckout={handleCheckout} />
+
+      <main>
+        {page === "home" && <HomePage onNav={handleNav} cart={cart} />}
+        {page === "products" && <ProductsPage cart={cart} filterInit={productFilter} onNav={handleNav} />}
+        {page === "about" && <AboutPage />}
+        {page === "applications" && <ApplicationsPage />}
+        {page === "contact" && <ContactPage />}
+        {page === "checkout" && <CheckoutPage cart={cart} onSuccess={handleOrderSuccess} />}
+        {page === "order-confirm" && <OrderConfirmPage onNav={handleNav} />}
+      </main>
+
+      {page !== "checkout" && page !== "order-confirm" && <Footer onNav={handleNav} />}
+    </>
+  );
+}
