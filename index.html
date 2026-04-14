@@ -1299,7 +1299,7 @@ function renderProducts(filter) {
               : '<small>Contact for Price</small>'}
           </div>
           ${p.price > 0
-            ? `<button class="add-cart-btn snipcart-add-item" aria-label="Add ${p.name} to cart" data-item-id="${p.id}" data-item-name="${p.name}" data-item-price="${p.price}" data-item-url="/" data-item-description="${p.desc.substring(0,90)}" onclick="event.stopPropagation()">+ Add</button>`
+            ? `<button class="add-cart-btn snipcart-add-item" aria-label="Add ${p.name} to cart" data-item-id="${p.id}" data-item-name="${p.name}" data-item-price="${p.price}" data-item-url="/products.json" data-item-description="${p.desc.substring(0,90)}" onclick="event.stopPropagation()">+ Add</button>`
             : `<a href="#contact" class="add-cart-btn" aria-label="Request quote for ${p.name}" onclick="event.stopPropagation();navTo('contact')">Quote</a>`}
         </div>
       </div>
