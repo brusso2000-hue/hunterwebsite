@@ -1344,7 +1344,7 @@ document.getElementById('modalImgContainer').innerHTML = imgSrc
     btn.setAttribute('data-item-id', p.id);
     btn.setAttribute('data-item-name', p.name);
     btn.setAttribute('data-item-price', p.price);
-    btn.setAttribute('data-item-url', '/');
+    btn.setAttribute('data-item-url', '/products.json');
     btn.setAttribute('data-item-description', p.desc.substring(0,90));
     btn.setAttribute('data-item-quantity', modalQtyVal);
     btn.onclick = () => { closeModalDirect(); };
