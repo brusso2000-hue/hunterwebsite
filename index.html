@@ -1445,26 +1445,12 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
 /* ─── INIT ──────────────────────────────────────────── */
 renderProducts('all');
-  document.addEventListener('snipcart.ready', () => {
+document.addEventListener('snipcart.ready', () => {
   Snipcart.events.on('cart.opened', () => {
     document.getElementById('closeCartBtn').style.display = 'block';
   });
   Snipcart.events.on('cart.closed', () => {
     document.getElementById('closeCartBtn').style.display = 'none';
-  });
-});
-document.addEventListener('snipcart.ready', () => {
-  Snipcart.events.on('cart.opened', () => {
-    const btn = document.createElement('button');
-    btn.textContent = '← Continue Shopping';
-    btn.style.cssText = 'position:fixed;top:80px;left:20px;z-index:99999;background:var(--ink);color:var(--cream);border:none;padding:10px 20px;font-family:Oswald,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;';
-    btn.id = 'continue-shopping-btn';
-    btn.onclick = () => { Snipcart.api.theme.cart.close(); btn.remove(); };
-    document.body.appendChild(btn);
-  });
-  Snipcart.events.on('cart.closed', () => {
-    const btn = document.getElementById('continue-shopping-btn');
-    if (btn) btn.remove();
   });
 });
 </script>
