@@ -1445,14 +1445,23 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
 /* ─── INIT ──────────────────────────────────────────── */
 renderProducts('all');
-document.addEventListener('snipcart.ready', () => {
+if (window.Snipcart) {
   Snipcart.events.on('cart.opened', () => {
     document.getElementById('closeCartBtn').style.display = 'block';
   });
   Snipcart.events.on('cart.closed', () => {
     document.getElementById('closeCartBtn').style.display = 'none';
   });
-});
+} else {
+  document.addEventListener('snipcart.ready', () => {
+    Snipcart.events.on('cart.opened', () => {
+      document.getElementById('closeCartBtn').style.display = 'block';
+    });
+    Snipcart.events.on('cart.closed', () => {
+      document.getElementById('closeCartBtn').style.display = 'none';
+    });
+  });
+}
 </script>
 <script>
 window.SnipcartSettings = {
