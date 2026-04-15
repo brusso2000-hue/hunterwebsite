@@ -1441,6 +1441,12 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 /* ─── INIT ──────────────────────────────────────────── */
 renderProducts('all');
 </script>
+<script>
+  window.SnipcartSettings = {
+    publicApiKey: 'ZjIxNzU3ZjctNTRiMS00YWFiLWJhNDktMDc3NzNjYzQzY2RhNjM3OTQ2MTE5MTQ0MjI3OTM2',
+    loadStrategy: 'on-user-interaction',
+  };
+</script>
 <div hidden id="snipcart" data-api-key="ZjIxNzU3ZjctNTRiMS00YWFiLWJhNDktMDc3NzNjYzQzY2RhNjM3OTQ2MTE5MTQ0MjI3OTM2"></div>
 <script async src="https://cdn.snipcart.com/themes/v3.7.2/default/snipcart.js"></script>
 <!-- Snipcart crawler targets -->
