@@ -748,8 +748,10 @@
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
   }
-  .snipcart-modal__close { display: block !important; }
+.snipcart-modal__close { display: block !important; }
   .snipcart__icon--close { display: block !important; }
+  .snipcart-layout { padding-top: 0 !important; }
+  .snipcart-modal { z-index: 999 !important; }
 </style>
 </head>
 <body>
@@ -1448,6 +1450,7 @@ window.SnipcartSettings = {
     publicApiKey: 'ZjIxNzU3ZjctNTRiMS00YWFiLWJhNDktMDc3NzNjYzQzY2RhNjM3OTQ2MTE5MTQ0MjI3OTM2',
     loadStrategy: 'on-user-interaction',
     modalStyle: 'side',
+    cartClosingBehaviourUrl: '/',
   };
 </script>
 <div hidden id="snipcart" data-api-key="ZjIxNzU3ZjctNTRiMS00YWFiLWJhNDktMDc3NzNjYzQzY2RhNjM3OTQ2MTE5MTQ0MjI3OTM2"></div>
