@@ -1454,6 +1454,10 @@ setInterval(() => {
   const btn = document.getElementById('closeCartBtn');
   if (cartOpen) {
     btn.style.display = 'block';
+    btn.onclick = () => {
+      const closeBtn = document.querySelector('.snipcart-modal__close');
+      if (closeBtn) closeBtn.click();
+    };
   } else {
     btn.style.display = 'none';
   }
