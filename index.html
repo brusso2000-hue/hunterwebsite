@@ -1117,11 +1117,33 @@
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center" data-fs-submit-btn>Submit Request</button>
         </form>
 
-        <script>
-          window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-          formspree('initForm', { formElement: '#quote-form', formId: 'xbdppgll' });
+<script>
+          document.getElementById('quote-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('[data-fs-submit-btn]');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            try {
+              const res = await fetch('https://formspree.io/f/xbdppgll', {
+                method: 'POST',
+                body: new FormData(this),
+                headers: { 'Accept': 'application/json' }
+              });
+              if (res.ok) {
+                this.style.display = 'none';
+                document.querySelector('[data-fs-success]').style.display = 'block';
+              } else {
+                btn.disabled = false;
+                btn.textContent = 'Submit Request';
+                document.querySelector('[data-fs-error]').style.display = 'block';
+                document.querySelector('[data-fs-error]').textContent = 'Something went wrong. Please try again.';
+              }
+            } catch(err) {
+              btn.disabled = false;
+              btn.textContent = 'Submit Request';
+            }
+          });
         </script>
-        <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
       </div>
     </div>
   </div>
