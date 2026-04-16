@@ -1337,7 +1337,8 @@ function renderProducts(filter) {
               : '<small>Contact for Price</small>'}
           </div>
           ${p.price > 0
-            ? `<button class="add-cart-btn snipcart-add-item" aria-label="Add ${p.name} to cart" data-item-id="${p.id}" data-item-name="${p.name}" data-item-price="${p.price}" data-item-url="/products.json" data-item-description="${p.desc.substring(0,90)}" data-item-weight="${p.weight}" data-item-width="${p.width}" data-item-height="${p.height}" data-item-length="${p.length}" onclick="event.stopPropagation();Snipcart.api.cart.items.add({id:'${p.id}',name:'${p.name}',price:${p.price},url:'/products.json',quantity:1})">+ Add</button>`
+            ? `<button class="add-cart-btn snipcart-add-item" aria-label="Add ${p.name} to cart" data-item-id="${p.id}" data-item-name="${p.name}" data-item-price="${p.price}" data-item-url="/products.json" data-item-description="${p.desc.substring(0,90)}" data-item-weight="${p.weight}" data-item-width="${p.width}" data-item-height="${p.height}" data-item-length="${p.length}" data-item-shippable="true" onclick="event.stopPropagation();Snipcart.api.cart.items.add({id:'${p.id}',name:'${p.name}',price:${p.price},url:'/products.json',quantity:1,shippable: true,
+  weight: ${p.weight}})">+ Add</button>`
             : `<a href="#contact" class="add-cart-btn" aria-label="Request quote for ${p.name}" onclick="event.stopPropagation();navTo('contact')">Quote</a>`}
         </div>
       </div>
