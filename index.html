@@ -1479,7 +1479,7 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
 /* ─── INIT ──────────────────────────────────────────── */
-renderProducts('all');  document.addEventListener('snipcart.ready', () => {   renderProducts('all'); });
+renderProducts('all'); window.addEventListener('load', () => renderProducts('all'));  document.addEventListener('snipcart.ready', () => {   renderProducts('all'); });
 setInterval(() => {
   const cartOpen = document.querySelector('.snipcart-cart--opened') || 
                    document.querySelector('.snipcart--opened');
