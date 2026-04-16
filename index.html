@@ -731,6 +731,7 @@
     .hero-corner { display: none; }
   }
   @media (max-width: 768px) {
+    .cart-btn { padding: 8px 10px; }
     .hero-ctas { flex-direction: column; align-items: center; }
 .hero-ctas .btn { width: 100%; max-width: 300px; justify-content: center; }
     .container { padding: 0 20px; }
@@ -1480,7 +1481,7 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
 /* ─── INIT ──────────────────────────────────────────── */
-renderProducts('all');
+renderProducts('all');  document.addEventListener('snipcart.ready', () => {   renderProducts('all'); });
 setInterval(() => {
   const cartOpen = document.querySelector('.snipcart-cart--opened') || 
                    document.querySelector('.snipcart--opened');
