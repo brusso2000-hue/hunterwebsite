@@ -731,11 +731,23 @@
     .hero-corner { display: none; }
   }
   @media (max-width: 768px) {
+    .hero-ctas { flex-direction: column; align-items: center; }
+.hero-ctas .btn { width: 100%; max-width: 300px; justify-content: center; }
+    .container { padding: 0 20px; }
+    .nav-actions .btn { display: none; }
+    .product-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .contact-form { padding: 28px 20px; }
     .hamburger { display: flex; }
     .hero-stats { flex-wrap: wrap; }
-    .hero-stat { padding: 12px 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .benefits-wrap { grid-template-columns: 1fr; }
+    .modal-overlay { padding: 0; align-items: flex-end; }
+.modal { max-height: 92vh; border-radius: 4px 4px 0 0; }
+.modal-header { padding: 20px; }
+.modal-body { padding: 20px; }
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
+.hero-stat { padding: 16px 12px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.hero-stat:nth-child(2n) { border-right: none; }
+.hero-stat:nth-child(3), .hero-stat:nth-child(4) { border-bottom: none; }    .benefits-wrap { grid-template-columns: 1fr; }
     .app-grid { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr 1fr; }
     .form-row { grid-template-columns: 1fr; }
