@@ -5,10 +5,10 @@
     "price": 540,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "The most complete pen plating kit available. Covers the full range: Absorbent, Nickel, Gold 24K, Silver, Chrome Color, and Copper.",
-    "weight": 10.6,
-    "width": 12,
-    "height": 8,
-    "length": 10
+    "weight": 4808,
+    "width": 30,
+    "height": 20,
+    "length": 25
   },
   {
     "id": "dkhd",
@@ -16,10 +16,10 @@
     "price": 900,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Premium heavy-duty complete kit. Silver-Heavy, Copper-Heavy, Gold 24K-Heavy, Nickel-Heavy, Rhodium, and Absorbent pens included.",
-    "weight": 10.6,
-    "width": 12,
-    "height": 8,
-    "length": 10
+    "weight": 4808,
+    "width": 30,
+    "height": 20,
+    "length": 25
   },
   {
     "id": "ck",
@@ -27,10 +27,10 @@
     "price": 400,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Complete repair kit for electronic component restoration. Includes power supply, connector cables, Absorbent, Nickel, and 24K Gold pen.",
-    "weight": 10.3,
-    "width": 12,
-    "height": 8,
-    "length": 10
+    "weight": 4672,
+    "width": 30,
+    "height": 20,
+    "length": 25
   },
   {
     "id": "ckhd",
@@ -38,10 +38,10 @@
     "price": 525,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Heavy-duty version for thicker substrates. Includes HD power supply, cables, and heavy-duty Absorbent, Nickel, and Gold pens.",
-    "weight": 10.3,
-    "width": 12,
-    "height": 8,
-    "length": 10
+    "weight": 4672,
+    "width": 30,
+    "height": 20,
+    "length": 25
   },
   {
     "id": "abs",
@@ -49,10 +49,10 @@
     "price": 65,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Essential first step in any plating process. Cleans and degreases all metal surfaces (except stainless steel) before plating.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "g24",
@@ -60,10 +60,10 @@
     "price": 145,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces. Ideal for electrical contacts, jewelry repair, and decorative work.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "g18",
@@ -71,10 +71,10 @@
     "price": 145,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate 18K gold for jewelry and decorative applications where a warmer tone is preferred over 24K.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "g14",
@@ -82,10 +82,10 @@
     "price": 145,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate 14K gold over gold, silver, or nickel surfaces — the most popular karat for jewelry applications.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "ni",
@@ -93,10 +93,10 @@
     "price": 70,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate nickel over copper surfaces. Apply copper flash first on non-copper substrates. Essential underlayer for many plating sequences.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "bni",
@@ -104,10 +104,10 @@
     "price": 70,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Deposit black nickel for decorative and functional applications. Apply copper flash first on non-copper surfaces.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "ag",
@@ -115,10 +115,10 @@
     "price": 85,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate silver onto any metallic surface except aluminum or chromium. Common for electrical contacts, silverware restoration, and jewelry.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "chr",
@@ -126,10 +126,10 @@
     "price": 65,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Apply a chrome-colored finish over copper. Apply copper flash first on non-copper surfaces.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "cu",
@@ -137,10 +137,10 @@
     "price": 65,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate copper over any metallic surface (not aluminum or chromium). Used as an intermediate flash layer for other platings.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "rh",
@@ -148,10 +148,10 @@
     "price": 310,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Premium rhodium plating for the hardest, most reflective finish available. Plate over nickel — apply copper flash and nickel first on non-copper surfaces.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "sn",
@@ -159,10 +159,10 @@
     "price": 70,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate tin over any metallic surface (not aluminum or chromium). Widely used in electronics for solderability enhancement.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "zn",
@@ -170,10 +170,10 @@
     "price": 65,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate zinc over metallic surfaces for corrosion protection and galvanic applications (not aluminum or chromium).",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "pd",
@@ -181,10 +181,10 @@
     "price": 140,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Plate palladium for corrosion-resistant, tarnish-proof finishes. Widely used in electronics and fine jewelry as a white-metal alternative to rhodium.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "g24hd",
@@ -192,10 +192,10 @@
     "price": 235,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Heavy-duty 24K gold pen for thicker gold deposits on high-wear surfaces. Greater plating volume per cartridge than the standard pen.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "g18hd",
@@ -203,10 +203,10 @@
     "price": 235,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Heavy-duty 18K gold pen for thicker deposits. Ideal for high-contact jewelry and industrial components requiring a durable gold finish.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "aghd",
@@ -214,10 +214,10 @@
     "price": 120,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Heavy-duty silver pen for thicker silver deposits on electrical contacts, silverware restoration, and large surface jewelry work.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "cuhd",
@@ -225,10 +225,10 @@
     "price": 100,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Heavy-duty copper pen for thick copper plating and buildup applications. Ideal as a heavy flash layer on large industrial parts.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "nihd",
@@ -236,10 +236,10 @@
     "price": 120,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Heavy-duty nickel pen for thick nickel deposits. Used as a heavy underlayer for gold, rhodium, and other precious metal platings.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "ss",
@@ -247,10 +247,10 @@
     "price": 70,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Specialized degreaser for stainless steel surfaces prior to plating. Standard degreaser cannot prep stainless — this is the correct solution.",
-    "weight": 0.1,
-    "width": 1,
-    "height": 1,
-    "length": 7
+    "weight": 45,
+    "width": 3,
+    "height": 3,
+    "length": 18
   },
   {
     "id": "cc",
@@ -258,10 +258,10 @@
     "price": 30,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Replacement connector cables for attaching Micro-Metallizer pens to the power supply.",
-    "weight": 0.5,
-    "width": 6,
-    "height": 2,
-    "length": 4
+    "weight": 227,
+    "width": 15,
+    "height": 5,
+    "length": 10
   },
   {
     "id": "ps",
@@ -269,10 +269,10 @@
     "price": 220,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Variable DC power supply, 110V/60Hz or 220V/50Hz. Drives all Micro-Metallizer plating pens.",
-    "weight": 10,
-    "width": 8,
-    "height": 6,
-    "length": 6
+    "weight": 4536,
+    "width": 20,
+    "height": 15,
+    "length": 15
   },
   {
     "id": "cb",
@@ -280,10 +280,10 @@
     "price": 495,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Professional tungsten carbide coating system. The original diamond dusting platform for medical instruments, tooling, and industrial applications.",
-    "weight": 10,
-    "width": 12,
-    "height": 10,
-    "length": 8
+    "weight": 4536,
+    "width": 30,
+    "height": 25,
+    "length": 20
   },
   {
     "id": "mj",
@@ -291,9 +291,9 @@
     "price": 495,
     "url": "https://www.hunterproducts.com/products.json",
     "description": "Precision micro-abrasive blasting for cleaning, etching, and surface preparation on small or delicate components.",
-    "weight": 10,
-    "width": 12,
-    "height": 10,
-    "length": 8
+    "weight": 4536,
+    "width": 30,
+    "height": 25,
+    "length": 20
   }
 ]
