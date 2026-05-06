@@ -588,13 +588,13 @@
                     data-item-id="${p.id}"
                     data-item-name="${p.name}"
                     data-item-price="${p.price}"
-                    data-item-url="/products.json"
+                    data-item-url="https://hunterproducts.com/products.json"
                     data-item-description="${p.description.substring(0,90)}"
-                    data-item-weight="${p.weight}"
-                    data-item-width="${p.width}"
-                    data-item-height="${p.height}"
-                    data-item-length="${p.length}"
-                    onclick="event.stopPropagation();Snipcart.api.cart.items.add({id:'${p.id}',name:'${p.name}',price:${p.price},url:'/products.json',quantity:1})">+ Add</button>
+                    data-item-weight="${p.dimensions.weight}"
+                    data-item-width="${p.dimensions.width}"
+                    data-item-height="${p.dimensions.height}"
+                    data-item-length="${p.dimensions.length}"
+                    onclick="event.stopPropagation();Snipcart.api.cart.items.add({id:'${p.id}',name:'${p.name}',price:${p.price},url:'https://hunterproducts.com/products.json',quantity:1})">+ Add</button>
           </div>
         </div>
       </article>
@@ -654,25 +654,25 @@
 
 <!-- Hidden crawler buttons for Snipcart -->
 <div style="display:none" aria-hidden="true">
-  <button class="snipcart-add-item" data-item-id="abs"   data-item-name="Absorbent / Degreaser Pen"       data-item-price="65"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="g24"   data-item-name="Gold 24K Plating Pen"            data-item-price="145"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="g18"   data-item-name="Gold 18K Plating Pen"            data-item-price="145"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="g14"   data-item-name="Gold 14K Plating Pen"            data-item-price="145"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="ni"    data-item-name="Nickel Plating Pen"              data-item-price="70"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="bni"   data-item-name="Black Nickel Plating Pen"        data-item-price="70"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="ag"    data-item-name="Silver Plating Pen"              data-item-price="85"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="chr"   data-item-name="Chrome Color Plating Pen"        data-item-price="65"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="cu"    data-item-name="Copper Plating Pen"              data-item-price="65"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="rh"    data-item-name="Rhodium Plating Pen"             data-item-price="310"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="sn"    data-item-name="Tin Plating Pen"                 data-item-price="70"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="zn"    data-item-name="Zinc Plating Pen"                data-item-price="65"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="pd"    data-item-name="Palladium Plating Pen"           data-item-price="140"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="g24hd" data-item-name="Gold 24K Heavy Duty Pen"         data-item-price="235"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="g18hd" data-item-name="Gold 18K Heavy Duty Pen"         data-item-price="235"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="aghd"  data-item-name="Silver Heavy Duty Pen"           data-item-price="120"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="cuhd"  data-item-name="Copper Heavy Duty Pen"           data-item-price="100"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="nihd"  data-item-name="Nickel Heavy Duty Pen"           data-item-price="120"  data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="ss"    data-item-name="Stainless Steel Degreaser Pen"   data-item-price="70"   data-item-url="/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="abs"   data-item-name="Absorbent / Degreaser Pen"       data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="g24"   data-item-name="Gold 24K Plating Pen"            data-item-price="145"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="g18"   data-item-name="Gold 18K Plating Pen"            data-item-price="145"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="g14"   data-item-name="Gold 14K Plating Pen"            data-item-price="145"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="ni"    data-item-name="Nickel Plating Pen"              data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="bni"   data-item-name="Black Nickel Plating Pen"        data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="ag"    data-item-name="Silver Plating Pen"              data-item-price="85"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="chr"   data-item-name="Chrome Color Plating Pen"        data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="cu"    data-item-name="Copper Plating Pen"              data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="rh"    data-item-name="Rhodium Plating Pen"             data-item-price="310"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="sn"    data-item-name="Tin Plating Pen"                 data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="zn"    data-item-name="Zinc Plating Pen"                data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="pd"    data-item-name="Palladium Plating Pen"           data-item-price="140"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="g24hd" data-item-name="Gold 24K Heavy Duty Pen"         data-item-price="235"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="g18hd" data-item-name="Gold 18K Heavy Duty Pen"         data-item-price="235"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="aghd"  data-item-name="Silver Heavy Duty Pen"           data-item-price="120"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="cuhd"  data-item-name="Copper Heavy Duty Pen"           data-item-price="100"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="nihd"  data-item-name="Nickel Heavy Duty Pen"           data-item-price="120"  data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="ss"    data-item-name="Stainless Steel Degreaser Pen"   data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
 </div>
 </body>
 </html>
