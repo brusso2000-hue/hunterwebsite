@@ -594,7 +594,7 @@
                     data-item-width="${p.dimensions.width}"
                     data-item-height="${p.dimensions.height}"
                     data-item-length="${p.dimensions.length}"
-                    onclick="event.stopPropagation();Snipcart.api.cart.items.add({id:'${p.id}',name:'${p.name}',price:${p.price},url:'https://hunterproducts.com/products.json',quantity:1})">+ Add</button>
+                    onclick="event.stopPropagation();Snipcart.api.cart.items.add({id:'${p.id}',name:'${p.name}',price:${p.price},url:'https://hunterproducts.com/products.json',quantity:1,dimensions:{weight:${p.dimensions.weight},width:${p.dimensions.width},height:${p.dimensions.height},length:${p.dimensions.length}}})">+ Add</button>
           </div>
         </div>
       </article>
