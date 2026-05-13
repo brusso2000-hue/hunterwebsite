@@ -324,7 +324,7 @@
   {
     "id": "PL-1001",
     "name": "Connector Cables",
-    "price": 30,
+    "price": 20,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
     "description": "Replacement connector cables for attaching Micro-Metallizer pens to the power supply.",
@@ -333,6 +333,48 @@
       "width": 15,
       "height": 5,
       "length": 10
+    }
+  },
+  {
+    "id": "TS3038",
+    "name": "Tungsten-Carbide Electrode 1/8\"",
+    "price": 12.50,
+    "url": "https://hunterproducts.com/products.json",
+    "taxable": false,
+    "description": "Standard 1/8\" × 2½\" tungsten-carbide electrode for the Carbitron 300 system. Supplied with the system; used for general-purpose deposition.",
+    "dimensions": {
+      "weight": 10,
+      "width": 2,
+      "height": 2,
+      "length": 8
+    }
+  },
+  {
+    "id": "TS3039",
+    "name": "Tungsten-Carbide Electrode 1/16\"",
+    "price": 12.50,
+    "url": "https://hunterproducts.com/products.json",
+    "taxable": false,
+    "description": "Fine 1/16\" × 2½\" tungsten-carbide electrode for the Carbitron 300 system. Supplied with the system; used for finer work on smaller surfaces.",
+    "dimensions": {
+      "weight": 10,
+      "width": 2,
+      "height": 2,
+      "length": 8
+    }
+  },
+  {
+    "id": "TS3040",
+    "name": "Tungsten-Carbide Electrode 1/32\"",
+    "price": 12.50,
+    "url": "https://hunterproducts.com/products.json",
+    "taxable": false,
+    "description": "Precision 1/32\" × 2½\" tungsten-carbide electrode for the Carbitron 300 system. For precision applications on small or delicate surfaces.",
+    "dimensions": {
+      "weight": 10,
+      "width": 2,
+      "height": 2,
+      "length": 8
     }
   },
   {
