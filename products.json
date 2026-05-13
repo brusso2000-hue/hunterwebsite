@@ -1,6 +1,6 @@
 [
   {
-    "id": "dk",
+    "id": "PL-1000K",
     "name": "Deluxe Kit",
     "price": 540,
     "url": "https://hunterproducts.com/products.json",
@@ -14,7 +14,7 @@
     }
   },
   {
-    "id": "dkhd",
+    "id": "PL-1000HD",
     "name": "Deluxe Kit (Heavy Duty)",
     "price": 900,
     "url": "https://hunterproducts.com/products.json",
@@ -28,7 +28,7 @@
     }
   },
   {
-    "id": "ck",
+    "id": "PL-1000C",
     "name": "Contact Repair Kit",
     "price": 400,
     "url": "https://hunterproducts.com/products.json",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "id": "ckhd",
+    "id": "PL-1000CHD",
     "name": "Contact Repair Kit (Heavy Duty)",
     "price": 525,
     "url": "https://hunterproducts.com/products.json",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "id": "abs",
+    "id": "PL-1002",
     "name": "Absorbent / Degreaser Pen",
     "price": 65,
     "url": "https://hunterproducts.com/products.json",
@@ -70,7 +70,7 @@
     }
   },
   {
-    "id": "g24",
+    "id": "PL-1003",
     "name": "Gold 24K Plating Pen",
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
@@ -84,7 +84,7 @@
     }
   },
   {
-    "id": "g18",
+    "id": "PL-1004",
     "name": "Gold 18K Plating Pen",
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
@@ -98,7 +98,7 @@
     }
   },
   {
-    "id": "g14",
+    "id": "PL-1005",
     "name": "Gold 14K Plating Pen",
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "id": "ni",
+    "id": "PL-1006",
     "name": "Nickel Plating Pen",
     "price": 70,
     "url": "https://hunterproducts.com/products.json",
@@ -126,7 +126,7 @@
     }
   },
   {
-    "id": "bni",
+    "id": "PL-1007",
     "name": "Black Nickel Plating Pen",
     "price": 70,
     "url": "https://hunterproducts.com/products.json",
@@ -140,7 +140,7 @@
     }
   },
   {
-    "id": "ag",
+    "id": "PL-1008",
     "name": "Silver Plating Pen",
     "price": 85,
     "url": "https://hunterproducts.com/products.json",
@@ -154,7 +154,7 @@
     }
   },
   {
-    "id": "chr",
+    "id": "PL-1009",
     "name": "Chrome Color Plating Pen",
     "price": 65,
     "url": "https://hunterproducts.com/products.json",
@@ -168,7 +168,7 @@
     }
   },
   {
-    "id": "cu",
+    "id": "PL-1010",
     "name": "Copper Plating Pen",
     "price": 65,
     "url": "https://hunterproducts.com/products.json",
@@ -182,7 +182,7 @@
     }
   },
   {
-    "id": "rh",
+    "id": "PL-1011",
     "name": "Rhodium Plating Pen",
     "price": 310,
     "url": "https://hunterproducts.com/products.json",
@@ -196,7 +196,7 @@
     }
   },
   {
-    "id": "sn",
+    "id": "PL-1012",
     "name": "Tin Plating Pen",
     "price": 70,
     "url": "https://hunterproducts.com/products.json",
@@ -210,7 +210,7 @@
     }
   },
   {
-    "id": "zn",
+    "id": "PL-1013",
     "name": "Zinc Plating Pen",
     "price": 65,
     "url": "https://hunterproducts.com/products.json",
@@ -224,7 +224,7 @@
     }
   },
   {
-    "id": "pd",
+    "id": "PL-1015",
     "name": "Palladium Plating Pen",
     "price": 140,
     "url": "https://hunterproducts.com/products.json",
@@ -238,7 +238,7 @@
     }
   },
   {
-    "id": "g24hd",
+    "id": "PL-1016",
     "name": "Gold 24K Heavy Duty Pen",
     "price": 235,
     "url": "https://hunterproducts.com/products.json",
@@ -252,7 +252,7 @@
     }
   },
   {
-    "id": "g18hd",
+    "id": "PL-1017",
     "name": "Gold 18K Heavy Duty Pen",
     "price": 235,
     "url": "https://hunterproducts.com/products.json",
@@ -266,7 +266,7 @@
     }
   },
   {
-    "id": "aghd",
+    "id": "PL-1018",
     "name": "Silver Heavy Duty Pen",
     "price": 120,
     "url": "https://hunterproducts.com/products.json",
@@ -280,7 +280,7 @@
     }
   },
   {
-    "id": "cuhd",
+    "id": "PL-1019",
     "name": "Copper Heavy Duty Pen",
     "price": 100,
     "url": "https://hunterproducts.com/products.json",
@@ -294,7 +294,7 @@
     }
   },
   {
-    "id": "nihd",
+    "id": "PL-1020",
     "name": "Nickel Heavy Duty Pen",
     "price": 120,
     "url": "https://hunterproducts.com/products.json",
@@ -308,7 +308,7 @@
     }
   },
   {
-    "id": "ss",
+    "id": "PL-1014",
     "name": "Stainless Steel Degreaser Pen",
     "price": 70,
     "url": "https://hunterproducts.com/products.json",
@@ -322,7 +322,7 @@
     }
   },
   {
-    "id": "cc",
+    "id": "PL-1001",
     "name": "Connector Cables",
     "price": 30,
     "url": "https://hunterproducts.com/products.json",
@@ -336,7 +336,7 @@
     }
   },
   {
-    "id": "ps",
+    "id": "PL-1000",
     "name": "Power Supply",
     "price": 220,
     "url": "https://hunterproducts.com/products.json",
@@ -350,7 +350,7 @@
     }
   },
   {
-    "id": "cb",
+    "id": "TS3037",
     "name": "Carbitron 300 System",
     "price": 495,
     "url": "https://hunterproducts.com/products.json",
