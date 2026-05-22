@@ -6,7 +6,7 @@
 
 <!-- ── PRIMARY SEO ── -->
 <title>Electroplating Pens, Carbitron & Micro-Jet Systems | Hunter Products Inc.</title>
-<meta name="description" content="Hunter Products Inc. manufactures industrial electroplating pens, Carbitron 300 tungsten carbide systems, and Micro-Jet 200 micro-abrasive blasters. Trusted by aerospace, medical, dental, and electronics industries since 1970. NJ-based. Order online.">
+<meta name="description" content="Plate gold, nickel, silver and more without a plating shop. Hunter's Micro-Metallizer pens let pros plate parts and touch up worn spots right at the bench. Portable 12V electroplating, made in NJ since 1970.">
 <meta name="keywords" content="electroplating pen, plating pen, micro metallizer, gold plating pen, nickel plating pen, rhodium plating pen, silver plating pen, copper plating pen, tungsten carbide coating, carbitron 300, micro jet blaster, micro abrasive blasting, diamond dusting, spot plating, portable electroplating, electroplating kit, industrial plating tools, PCB gold plating, dental instrument hardening, aerospace MRO plating">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Hunter Products Inc.">
@@ -532,6 +532,72 @@
   }
   .add-cart-btn:hover { background: var(--gold); }
 
+  /* ─── REVEAL ─────────────────────────────────────────── */
+  #reveal {
+    background: var(--bg-dark); color: var(--cream);
+    padding: 96px 0; position: relative; overflow: hidden;
+    scroll-margin-top: 90px;
+  }
+  #reveal::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(154,123,46,0.20) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #reveal::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .reveal-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; text-align: center; }
+  .reveal-eyebrow {
+    font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 300;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-lt);
+    margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 14px;
+  }
+  .reveal-eyebrow::before, .reveal-eyebrow::after {
+    content: ''; width: 48px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,168,75,0.6), transparent);
+  }
+  .reveal-h2 {
+    font-family: 'EB Garamond', Georgia, serif; font-weight: 500;
+    font-size: clamp(32px, 4.8vw, 54px); line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--white); margin-bottom: 36px;
+  }
+  .reveal-h2 em { font-style: italic; color: var(--gold-lt); }
+  .reveal-body p { font-size: 19px; line-height: 1.7; color: rgba(245,240,232,0.75); margin-bottom: 22px; text-align: left; }
+  .reveal-body p:last-child { margin-bottom: 0; color: var(--cream); font-style: italic; }
+  @media (max-width: 640px) { #reveal { padding: 64px 0; } .reveal-body p { font-size: 17px; } }
+
+  /* ─── TWO PATHS ──────────────────────────────────────── */
+  .paths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 820px) { .paths-grid { grid-template-columns: 1fr; gap: 20px; } }
+  .path-card {
+    background: var(--bg-dark2); border: 1px solid rgba(154,123,46,0.20);
+    padding: 48px 40px; position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .path-card:hover { background: #2a261d; border-color: rgba(200,168,75,0.4); }
+  .path-card::after {
+    content: ''; position: absolute; top: 0; left: 0; height: 3px; width: 0;
+    background: var(--gold-lt); transition: width 0.35s ease;
+  }
+  .path-card:hover::after { width: 100%; }
+  .path-card-num {
+    font-family: 'EB Garamond', serif; font-size: 56px; font-weight: 400;
+    color: rgba(200,168,75,0.18); line-height: 1; margin-bottom: 16px;
+  }
+  .path-card-title {
+    font-family: 'EB Garamond', serif; font-size: clamp(26px, 2.8vw, 32px);
+    font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 18px;
+  }
+  .path-card-body {
+    font-size: 17px; line-height: 1.7; color: rgba(245,240,232,0.65);
+    margin-bottom: 28px; flex-grow: 1;
+  }
+  .path-card .btn { align-self: flex-start; background: var(--gold); border-color: var(--gold); color: var(--white); }
+  .path-card .btn:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+
   /* ─── BENEFITS ───────────────────────────────────────── */
   .benefits-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(154,123,46,0.15); border: 1px solid rgba(154,123,46,0.15); }
   .benefit-card { background: var(--bg-dark); padding: 48px 40px; position: relative; overflow: hidden; transition: background var(--transition); }
@@ -848,12 +914,11 @@
       <div class="hero-rule-text">Hunter Products Inc. &nbsp;·&nbsp; Since 1970</div>
       <div class="hero-rule-line"></div>
     </div>
-    <h1 class="hero-h1">Precision<br><em>Electroplating</em><br>Instruments</h1>
-    <p class="hero-subtitle">Portable · Industrial-Grade · Trusted by Engineers</p>
-    <p class="hero-desc">From single plating pens to complete Carbitron and Micro-Jet systems — the tools serious professionals have relied on for over half a century.</p>
+    <h1 class="hero-h1">Plate a part<br><em>without</em> a<br>plating shop.</h1>
+    <p class="hero-desc">For over 50 years, Hunter's Micro-Metallizer pens have let professionals plate gold, nickel, silver, rhodium and more right at the bench. No tanks. No masking. No sending parts out. Just touch the pen to the spot and plate it.</p>
     <div class="hero-ctas">
-      <a href="#products" onclick="return navTo('products')" class="btn btn-primary">Shop Products</a>
-      <a href="#contact" onclick="return navTo('contact')" class="btn btn-outline-light">Request a Quote</a>
+      <a href="#reveal" onclick="return navTo('reveal')" class="btn btn-primary">See how it works</a>
+      <a href="/store-pen/" class="btn btn-outline-light">Shop plating pens</a>
     </div>
   </div>
 
@@ -872,22 +937,32 @@
 <!-- ── TRUST BAR ──────────────────────────────────────── -->
 <div id="trust" aria-label="Trust indicators">
   <div class="trust-ticker" aria-hidden="true">
-    <span class="trust-item">Industrial-Grade Quality</span>
-    <span class="trust-item">Flemington, NJ — Since 1970</span>
-    <span class="trust-item">Inventors of Diamond Dusting</span>
-    <span class="trust-item">Expert Technical Support</span>
-    <span class="trust-item">Direct Online Ordering</span>
-    <span class="trust-item">Aerospace &amp; Medical Trusted</span>
-    <span class="trust-item">Industrial-Grade Quality</span>
-    <span class="trust-item">Industrial-Grade Quality</span>
-    <span class="trust-item">Flemington, NJ — Since 1970</span>
-    <span class="trust-item">Inventors of Diamond Dusting</span>
-    <span class="trust-item">Expert Technical Support</span>
-    <span class="trust-item">Direct Online Ordering</span>
-    <span class="trust-item">Aerospace &amp; Medical Trusted</span>
-    <span class="trust-item">Industrial-Grade Quality</span>
+    <span class="trust-item">Industrial-grade, not a hobby kit</span>
+    <span class="trust-item">12V DC, fully portable</span>
+    <span class="trust-item">Gold, silver, nickel, rhodium, copper + more</span>
+    <span class="trust-item">Manufactured in NJ since 1970</span>
+    <span class="trust-item">Trusted by aerospace, medical &amp; electronics pros</span>
+    <span class="trust-item">Industrial-grade, not a hobby kit</span>
+    <span class="trust-item">12V DC, fully portable</span>
+    <span class="trust-item">Gold, silver, nickel, rhodium, copper + more</span>
+    <span class="trust-item">Manufactured in NJ since 1970</span>
+    <span class="trust-item">Trusted by aerospace, medical &amp; electronics pros</span>
   </div>
 </div>
+
+<!-- ── REVEAL: problem-first ──────────────────────────── -->
+<section id="reveal" aria-label="What the Micro-Metallizer does">
+  <div class="container">
+    <div class="reveal-inner fade-in">
+      <div class="reveal-eyebrow" aria-hidden="true">The Hunter Products Approach</div>
+      <h2 class="reveal-h2">Most people don't know <em>this is possible</em>.</h2>
+      <div class="reveal-body">
+        <p>Plating has always meant a shop full of tanks, chemistry, masking, and waste disposal, or shipping your parts out and waiting days to get them back. For a single worn contact or a small production run, that's absurd. The Micro-Metallizer does the same electroplating, with a handheld pen running on 12V DC. You plate exactly the spot you want, exactly when you want, without any of the shop.</p>
+        <p>If you've ever sent a part out to be plated, or written off a worn piece because plating it wasn't worth the hassle, this is the tool you didn't know you were looking for.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ── CATEGORIES ────────────────────────────────────── -->
 <section id="categories" class="section" aria-label="Product Lines">
@@ -947,35 +1022,22 @@
   </div>
 </section>
 
-<!-- ── BENEFITS ───────────────────────────────────────── -->
-<section class="section section-dark" aria-label="Why Hunter Products">
+<!-- ── TWO PATHS ──────────────────────────────────────── -->
+<section class="section section-dark" aria-label="Two ways to use the Micro-Metallizer">
   <div class="container">
-    <div class="section-header fade-in">
-      <div class="ornament" style="color:rgba(154,123,46,0.5)" aria-hidden="true">— ◆ —</div>
-      <div class="section-eyebrow" style="justify-content:center;color:var(--gold-lt)">Why Hunter Products</div>
-      <h2 class="section-title section-title-light">Built for the Work,<br>Not the Showroom.</h2>
-    </div>
-    <div class="benefits-wrap fade-in">
-      <div class="benefit-card">
-        <div class="benefit-num" aria-hidden="true">I.</div>
-        <h3 class="benefit-title">Portable &amp; Self-Contained</h3>
-        <p class="benefit-desc">No tanks, no setup, no waste disposal. The Micro-Metallizer pen system runs on 12V DC with disposable cartridges — bring it wherever the work is. No plating shop required.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num" aria-hidden="true">II.</div>
-        <h3 class="benefit-title">Precision at Micro Scale</h3>
-        <p class="benefit-desc">Plate exactly where you need it. Spot-plating capability means no masking on complex parts — dramatically cutting labor time per repair or restoration job.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num" aria-hidden="true">III.</div>
-        <h3 class="benefit-title">Cost-Effective Operations</h3>
-        <p class="benefit-desc">Bring the capability in-house and plate on demand. For any shop doing regular repair or restoration, a complete kit pays for itself within weeks of use.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num" aria-hidden="true">IV.</div>
-        <h3 class="benefit-title">50+ Years of Expertise</h3>
-        <p class="benefit-desc">Hunter Products invented the diamond dusting technique and has been refining electroplating instruments since 1970. Every product carries that depth of engineering experience.</p>
-      </div>
+    <div class="paths-grid fade-in">
+      <article class="path-card">
+        <div class="path-card-num" aria-hidden="true">I.</div>
+        <h3 class="path-card-title">Replace the plating shop</h3>
+        <p class="path-card-body">Bring plating in-house. For shops doing regular plating work, the Micro-Metallizer means no tank line to maintain, no outsourcing, no turnaround time. Plate on demand, switch between metals in seconds, and keep the work (and the margin) under your own roof. Aerospace MRO, electronics manufacturing, and medical instrument shops use it exactly this way.</p>
+        <a class="btn" href="/applications-electroplating/#aerospace-defense">See production use cases</a>
+      </article>
+      <article class="path-card">
+        <div class="path-card-num" aria-hidden="true">II.</div>
+        <h3 class="path-card-title">Fix the spot, not the whole part</h3>
+        <p class="path-card-body">Got one worn connector, a thin patch on a gold contact, a clasp that's lost its plating, an antique piece that needs a touch-up? You don't need a shop for that. Spot-plate just the area that needs it, in minutes, at your own bench. Jewelers, restorers, and repair techs use the pen to save parts that would otherwise be scrapped or sent away.</p>
+        <a class="btn" href="/applications-electroplating/#jewelry-restoration">See repair use cases</a>
+      </article>
     </div>
   </div>
 </section>
