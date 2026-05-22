@@ -12,6 +12,30 @@
   gtag('config', 'AW-18182868076');
 </script>
 
+<!-- Snipcart → Google Ads purchase conversion bridge.
+     IMPORTANT: this fires the conversion event on every completed order,
+     but Google Ads only COUNTS it once you:
+       1. Create a "Purchase" conversion action in Google Ads
+          (Tools → Conversions → New conversion action → Website).
+       2. Replace CONVERSION_LABEL_PLACEHOLDER below with the conversion
+          label string shown on the action's "Tag setup" tab (looks like
+          'AbC-D_efG-h12_34-567'). -->
+<script>
+  document.addEventListener('snipcart.ready', function() {
+    if (typeof Snipcart === 'undefined' || typeof gtag !== 'function') return;
+    Snipcart.events.on('order.completed', function(order) {
+      try {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18182868076/CONVERSION_LABEL_PLACEHOLDER',
+          'value': order.total,
+          'currency': order.currency || 'USD',
+          'transaction_id': order.invoiceNumber || order.token
+        });
+      } catch (e) { /* never break checkout */ }
+    });
+  });
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tungsten-Carbide Electrode 1/16&quot; | Carbitron 300 | Hunter Products</title>
