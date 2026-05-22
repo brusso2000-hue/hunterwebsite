@@ -226,7 +226,9 @@
   }
   .product-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
   .product-cat { font-family: 'Oswald', sans-serif; font-size: 9px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-  .product-name { font-family: 'EB Garamond', serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+  .product-name { font-family: 'EB Garamond', serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.3; display: block; }
+  a.product-name { text-decoration: none; }
+  a.product-name:hover { color: var(--gold); }
   .product-desc { font-size: 14px; color: var(--ink3); margin-bottom: 16px; line-height: 1.6; flex: 1; }
   .product-footer { display: flex; align-items: center; justify-content: space-between; }
   .product-price { font-family: 'EB Garamond', serif; font-size: 24px; font-weight: 700; color: var(--gold); }
@@ -347,218 +349,31 @@
 </section>
 
 <script>
-  // Product data embedded
-  const allProducts = [
-    {
-      "id": "PL-1002",
-      "name": "Absorbent / Degreaser Pen",
-      "price": 65,
-      "description": "Essential first step in any plating process. Cleans and degreases all metal surfaces (except stainless steel) before plating.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "preparation"
-    },
-    {
-      "id": "PL-1003",
-      "name": "Gold 24K Plating Pen",
-      "price": 145,
-      "description": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces. Ideal for electrical contacts, jewelry repair, and decorative work.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1004",
-      "name": "Gold 18K Plating Pen",
-      "price": 145,
-      "description": "Plate 18K gold for jewelry and decorative applications where a warmer tone is preferred over 24K.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1005",
-      "name": "Gold 14K Plating Pen",
-      "price": 145,
-      "description": "Plate 14K gold over gold, silver, or nickel surfaces — the most popular karat for jewelry applications.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1006",
-      "name": "Nickel Plating Pen",
-      "price": 70,
-      "description": "Plate nickel over copper surfaces. Apply copper flash first on non-copper substrates. Essential underlayer for many plating sequences.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1007",
-      "name": "Black Nickel Plating Pen",
-      "price": 70,
-      "description": "Deposit black nickel for decorative and functional applications. Apply copper flash first on non-copper surfaces.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1008",
-      "name": "Silver Plating Pen",
-      "price": 85,
-      "description": "Plate silver onto any metallic surface except aluminum or chromium. Common for electrical contacts, silverware restoration, and jewelry.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1009",
-      "name": "Chrome Color Plating Pen",
-      "price": 65,
-      "description": "Apply a chrome-colored finish over copper. Apply copper flash first on non-copper surfaces.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1010",
-      "name": "Copper Plating Pen",
-      "price": 65,
-      "description": "Plate copper over any metallic surface (not aluminum or chromium). Used as an intermediate flash layer for other platings.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1011",
-      "name": "Rhodium Plating Pen",
-      "price": 310,
-      "description": "Premium rhodium plating for the hardest, most reflective finish available. Plate over nickel — apply copper flash and nickel first on non-copper surfaces.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1012",
-      "name": "Tin Plating Pen",
-      "price": 70,
-      "description": "Plate tin over any metallic surface (not aluminum or chromium). Widely used in electronics for solderability enhancement.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1013",
-      "name": "Zinc Plating Pen",
-      "price": 65,
-      "description": "Plate zinc over metallic surfaces for corrosion protection and galvanic applications (not aluminum or chromium).",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1015",
-      "name": "Palladium Plating Pen",
-      "price": 140,
-      "description": "Plate palladium for corrosion-resistant, tarnish-proof finishes. Widely used in electronics and fine jewelry as a white-metal alternative to rhodium.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "standard"
-    },
-    {
-      "id": "PL-1016",
-      "name": "Gold 24K Heavy Duty Pen",
-      "price": 235,
-      "description": "Heavy-duty 24K gold pen for thicker gold deposits on high-wear surfaces. Greater plating volume per cartridge than the standard pen.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "heavy-duty"
-    },
-    {
-      "id": "PL-1017",
-      "name": "Gold 18K Heavy Duty Pen",
-      "price": 235,
-      "description": "Heavy-duty 18K gold pen for thicker deposits. Ideal for high-contact jewelry and industrial components requiring a durable gold finish.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "heavy-duty"
-    },
-    {
-      "id": "PL-1018",
-      "name": "Silver Heavy Duty Pen",
-      "price": 120,
-      "description": "Heavy-duty silver pen for thicker silver deposits on electrical contacts, silverware restoration, and large surface jewelry work.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "heavy-duty"
-    },
-    {
-      "id": "PL-1019",
-      "name": "Copper Heavy Duty Pen",
-      "price": 100,
-      "description": "Heavy-duty copper pen for thick copper plating and buildup applications. Ideal as a heavy flash layer on large industrial parts.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "heavy-duty"
-    },
-    {
-      "id": "PL-1020",
-      "name": "Nickel Heavy Duty Pen",
-      "price": 120,
-      "description": "Heavy-duty nickel pen for thick nickel deposits. Used as a heavy underlayer for gold, rhodium, and other precious metal platings.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "heavy-duty"
-    },
-    {
-      "id": "PL-1014",
-      "name": "Stainless Steel Degreaser Pen",
-      "price": 70,
-      "description": "Specialized degreaser for stainless steel surfaces prior to plating. Standard degreaser cannot prep stainless — this is the correct solution.",
-      "weight": 45,
-      "width": 3,
-      "height": 3,
-      "length": 18,
-      "category": "preparation"
-    }
-  ];
+  /* The block between BUILD:DATA-STORE-PEN markers is generated from products.json
+     by build.py. To edit a product, edit products.json and re-run `python3 build.py`. */
+<!-- BUILD:DATA-STORE-PEN -->
+const allProducts = [
+  {"id": "PL-1002", "name": "Absorbent / Degreaser Pen", "price": 65, "description": "Essential first step in any plating process. Cleans and degreases all metal surfaces (except stainless steel) before plating.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "preparation", "slug": "absorbent-degreaser-plating-pen"},
+  {"id": "PL-1003", "name": "Gold 24K Plating Pen", "price": 145, "description": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces. Ideal for electrical contacts, jewelry repair, and decorative work.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "gold-24k-plating-pen"},
+  {"id": "PL-1004", "name": "Gold 18K Plating Pen", "price": 145, "description": "Plate 18K gold for jewelry and decorative applications where a warmer tone is preferred over 24K.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "gold-18k-plating-pen"},
+  {"id": "PL-1005", "name": "Gold 14K Plating Pen", "price": 145, "description": "Plate 14K gold over gold, silver, or nickel surfaces — the most popular karat for jewelry applications.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "gold-14k-plating-pen"},
+  {"id": "PL-1006", "name": "Nickel Plating Pen", "price": 70, "description": "Plate nickel over copper surfaces. Apply copper flash first on non-copper substrates. Essential underlayer for many plating sequences.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "nickel-plating-pen"},
+  {"id": "PL-1007", "name": "Black Nickel Plating Pen", "price": 70, "description": "Deposit black nickel for decorative and functional applications. Apply copper flash first on non-copper surfaces.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "black-nickel-plating-pen"},
+  {"id": "PL-1008", "name": "Silver Plating Pen", "price": 85, "description": "Plate silver onto any metallic surface except aluminum or chromium. Common for electrical contacts, silverware restoration, and jewelry.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "silver-plating-pen"},
+  {"id": "PL-1009", "name": "Chrome Color Plating Pen", "price": 65, "description": "Apply a chrome-colored finish over copper. Apply copper flash first on non-copper surfaces.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "chrome-color-plating-pen"},
+  {"id": "PL-1010", "name": "Copper Plating Pen", "price": 65, "description": "Plate copper over any metallic surface (not aluminum or chromium). Used as an intermediate flash layer for other platings.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "copper-plating-pen"},
+  {"id": "PL-1011", "name": "Rhodium Plating Pen", "price": 310, "description": "Premium rhodium plating for the hardest, most reflective finish available. Plate over nickel — apply copper flash and nickel first on non-copper surfaces.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "rhodium-plating-pen"},
+  {"id": "PL-1012", "name": "Tin Plating Pen", "price": 70, "description": "Plate tin over any metallic surface (not aluminum or chromium). Widely used in electronics for solderability enhancement.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "tin-plating-pen"},
+  {"id": "PL-1013", "name": "Zinc Plating Pen", "price": 65, "description": "Plate zinc over metallic surfaces for corrosion protection and galvanic applications (not aluminum or chromium).", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "zinc-plating-pen"},
+  {"id": "PL-1015", "name": "Palladium Plating Pen", "price": 140, "description": "Plate palladium for corrosion-resistant, tarnish-proof finishes. Widely used in electronics and fine jewelry as a white-metal alternative to rhodium.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "standard", "slug": "palladium-plating-pen"},
+  {"id": "PL-1016", "name": "Gold 24K Heavy Duty Pen", "price": 235, "description": "Heavy-duty 24K gold pen for thicker gold deposits on high-wear surfaces. Greater plating volume per cartridge than the standard pen.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "heavy-duty", "slug": "gold-24k-heavy-duty-plating-pen"},
+  {"id": "PL-1017", "name": "Gold 18K Heavy Duty Pen", "price": 235, "description": "Heavy-duty 18K gold pen for thicker deposits. Ideal for high-contact jewelry and industrial components requiring a durable gold finish.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "heavy-duty", "slug": "gold-18k-heavy-duty-plating-pen"},
+  {"id": "PL-1018", "name": "Silver Heavy Duty Pen", "price": 120, "description": "Heavy-duty silver pen for thicker silver deposits on electrical contacts, silverware restoration, and large surface jewelry work.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "heavy-duty", "slug": "silver-heavy-duty-plating-pen"},
+  {"id": "PL-1019", "name": "Copper Heavy Duty Pen", "price": 100, "description": "Heavy-duty copper pen for thick copper plating and buildup applications. Ideal as a heavy flash layer on large industrial parts.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "heavy-duty", "slug": "copper-heavy-duty-plating-pen"},
+  {"id": "PL-1020", "name": "Nickel Heavy Duty Pen", "price": 120, "description": "Heavy-duty nickel pen for thick nickel deposits. Used as a heavy underlayer for gold, rhodium, and other precious metal platings.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "heavy-duty", "slug": "nickel-heavy-duty-plating-pen"},
+  {"id": "PL-1014", "name": "Stainless Steel Degreaser Pen", "price": 70, "description": "Specialized degreaser for stainless steel surfaces prior to plating. Standard degreaser cannot prep stainless — this is the correct solution.", "dimensions": {"weight": 45, "width": 3, "height": 3, "length": 18}, "category": "preparation", "slug": "stainless-steel-degreaser-pen"}
+];
+<!-- /BUILD:DATA-STORE-PEN -->
 
   function loadProducts() {
     renderProducts(allProducts);
@@ -581,7 +396,7 @@
         </div>
         <div class="product-body">
           <div class="product-cat">Micro-Metallizer</div>
-          <div class="product-name" itemprop="name">${p.name}</div>
+          <a class="product-name" href="/products/${p.slug}/" itemprop="name">${p.name}</a>
           <div class="product-desc" itemprop="description">${p.description.substring(0,90)}…</div>
           <div class="product-footer">
             <div class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
@@ -655,27 +470,40 @@
   (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
 </script>
 
-<!-- Hidden crawler buttons for Snipcart -->
+<!-- Hidden crawler buttons for Snipcart — generated from products.json by build.py -->
+<!-- BUILD:SNIPCART -->
 <div style="display:none" aria-hidden="true">
-  <button class="snipcart-add-item" data-item-id="PL-1002"   data-item-name="Absorbent / Degreaser Pen"       data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1003"   data-item-name="Gold 24K Plating Pen"            data-item-price="145"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1004"   data-item-name="Gold 18K Plating Pen"            data-item-price="145"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1005"   data-item-name="Gold 14K Plating Pen"            data-item-price="145"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1006"    data-item-name="Nickel Plating Pen"              data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1007"   data-item-name="Black Nickel Plating Pen"        data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1008"    data-item-name="Silver Plating Pen"              data-item-price="85"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1009"   data-item-name="Chrome Color Plating Pen"        data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1010"    data-item-name="Copper Plating Pen"              data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1011"    data-item-name="Rhodium Plating Pen"             data-item-price="310"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1012"    data-item-name="Tin Plating Pen"                 data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1013"    data-item-name="Zinc Plating Pen"                data-item-price="65"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1015"    data-item-name="Palladium Plating Pen"           data-item-price="140"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1016" data-item-name="Gold 24K Heavy Duty Pen"         data-item-price="235"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1017" data-item-name="Gold 18K Heavy Duty Pen"         data-item-price="235"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1018"  data-item-name="Silver Heavy Duty Pen"           data-item-price="120"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1019"  data-item-name="Copper Heavy Duty Pen"           data-item-price="100"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1020"  data-item-name="Nickel Heavy Duty Pen"           data-item-price="120"  data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
-  <button class="snipcart-add-item" data-item-id="PL-1014"    data-item-name="Stainless Steel Degreaser Pen"   data-item-price="70"   data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45"   data-item-width="3"  data-item-height="3"  data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1000K" data-item-name="Deluxe Kit" data-item-price="540.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4808" data-item-width="30" data-item-height="20" data-item-length="25"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1000HD" data-item-name="Deluxe Kit (Heavy Duty)" data-item-price="900.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4808" data-item-width="30" data-item-height="20" data-item-length="25"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1000C" data-item-name="Contact Repair Kit" data-item-price="400.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4672" data-item-width="30" data-item-height="20" data-item-length="25"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1000CHD" data-item-name="Contact Repair Kit (Heavy Duty)" data-item-price="525.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4672" data-item-width="30" data-item-height="20" data-item-length="25"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1002" data-item-name="Absorbent / Degreaser Pen" data-item-price="65.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1003" data-item-name="Gold 24K Plating Pen" data-item-price="145.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1004" data-item-name="Gold 18K Plating Pen" data-item-price="145.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1005" data-item-name="Gold 14K Plating Pen" data-item-price="145.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1006" data-item-name="Nickel Plating Pen" data-item-price="70.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1007" data-item-name="Black Nickel Plating Pen" data-item-price="70.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1008" data-item-name="Silver Plating Pen" data-item-price="85.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1009" data-item-name="Chrome Color Plating Pen" data-item-price="65.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1010" data-item-name="Copper Plating Pen" data-item-price="65.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1011" data-item-name="Rhodium Plating Pen" data-item-price="310.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1012" data-item-name="Tin Plating Pen" data-item-price="70.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1013" data-item-name="Zinc Plating Pen" data-item-price="65.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1015" data-item-name="Palladium Plating Pen" data-item-price="140.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1016" data-item-name="Gold 24K Heavy Duty Pen" data-item-price="235.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1017" data-item-name="Gold 18K Heavy Duty Pen" data-item-price="235.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1018" data-item-name="Silver Heavy Duty Pen" data-item-price="120.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1019" data-item-name="Copper Heavy Duty Pen" data-item-price="100.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1020" data-item-name="Nickel Heavy Duty Pen" data-item-price="120.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1014" data-item-name="Stainless Steel Degreaser Pen" data-item-price="70.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="45" data-item-width="3" data-item-height="3" data-item-length="18"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1001" data-item-name="Connector Cables" data-item-price="20.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="227" data-item-width="15" data-item-height="5" data-item-length="10"></button>
+  <button class="snipcart-add-item" data-item-id="TS3038" data-item-name="Tungsten-Carbide Electrode 1/8&quot;" data-item-price="12.50" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="10" data-item-width="2" data-item-height="2" data-item-length="8"></button>
+  <button class="snipcart-add-item" data-item-id="TS3039" data-item-name="Tungsten-Carbide Electrode 1/16&quot;" data-item-price="12.50" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="10" data-item-width="2" data-item-height="2" data-item-length="8"></button>
+  <button class="snipcart-add-item" data-item-id="TS3040" data-item-name="Tungsten-Carbide Electrode 1/32&quot;" data-item-price="12.50" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="10" data-item-width="2" data-item-height="2" data-item-length="8"></button>
+  <button class="snipcart-add-item" data-item-id="PL-1000" data-item-name="Power Supply" data-item-price="220.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4536" data-item-width="20" data-item-height="15" data-item-length="15"></button>
+  <button class="snipcart-add-item" data-item-id="TS3037" data-item-name="Carbitron 300 System" data-item-price="495.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4536" data-item-width="30" data-item-height="25" data-item-length="20"></button>
+  <button class="snipcart-add-item" data-item-id="mj" data-item-name="Micro-Jet 200 System" data-item-price="495.00" data-item-url="https://hunterproducts.com/products.json" data-item-taxable="false" data-item-weight="4536" data-item-width="30" data-item-height="25" data-item-length="20"></button>
 </div>
+<!-- /BUILD:SNIPCART -->
 </body>
 </html>
