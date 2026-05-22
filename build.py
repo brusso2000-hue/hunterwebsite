@@ -205,6 +205,16 @@ def render_product_page(p, all_products):
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18182868076"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'AW-18182868076');
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>{html.escape(p["metaTitle"])}</title>
