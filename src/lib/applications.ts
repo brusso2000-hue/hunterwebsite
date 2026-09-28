@@ -11,13 +11,44 @@ export interface Application {
   workflows: string[];
   systems: SystemId[];
   recommended: string[]; // product slugs
+  /** 'core' = largest customer base (lead with it); 'growth' = market we're expanding into. */
+  focus?: 'core' | 'growth';
 }
 
 export const APPLICATIONS: Application[] = [
   {
+    id: 'electronics-pcb',
+    label: 'Electronics & PCB',
+    code: 'EP',
+    focus: 'core',
+    title: 'PCB rework, contact plating, and electronics restoration',
+    lede: 'Restore solderability and contact performance pad-by-pad, without bridging neighbors.',
+    body: [
+      'Electronics manufacturers and rework technicians use Micro-Metallizer pens for selective plating on PCB contacts, edge connectors, switch contacts, and connector pins. Tin plating restores solderability to oxidized pads and leads. Gold plating is the standard for premium contact restoration. The pen-tip precision avoids bridging adjacent pads or contaminating sensitive board areas.',
+      'The Micro-Jet 200 micro-abrasive blaster handles PCB-level cleaning and surface preparation where conventional blasting would damage fine traces or component bodies.',
+    ],
+    workflows: [
+      'Tin plating on PCB pads and component leads to restore solderability',
+      'Gold plating on connector pins, switch contacts, and edge connectors',
+      'Nickel underlayer for production gold contact plating sequences',
+      'Selective surface prep on delicate boards using the Micro-Jet 200',
+      'Palladium-nickel plating for premium connector manufacturing',
+    ],
+    systems: ['micro-metallizer', 'micro-jet'],
+    recommended: [
+      'contact-repair-kit',
+      'tin-plating-pen',
+      'gold-24k-plating-pen',
+      'nickel-plating-pen',
+      'palladium-plating-pen',
+      'micro-jet-200-system',
+    ],
+  },
+  {
     id: 'aerospace-defense',
     label: 'Aerospace & Defense',
     code: 'AD',
+    focus: 'growth',
     title: 'Aerospace & defense maintenance and component repair',
     lede: 'Restore connectors, contact rings and fasteners in place — without pulling the assembly for tank plating.',
     body: [
@@ -92,33 +123,6 @@ export const APPLICATIONS: Application[] = [
       'rhodium-plating-pen',
       'silver-heavy-duty-plating-pen',
       'palladium-plating-pen',
-    ],
-  },
-  {
-    id: 'electronics-pcb',
-    label: 'Electronics & PCB',
-    code: 'EP',
-    title: 'PCB rework, contact plating, and electronics restoration',
-    lede: 'Restore solderability and contact performance pad-by-pad, without bridging neighbors.',
-    body: [
-      'Electronics manufacturers and rework technicians use Micro-Metallizer pens for selective plating on PCB contacts, edge connectors, switch contacts, and connector pins. Tin plating restores solderability to oxidized pads and leads. Gold plating is the standard for premium contact restoration. The pen-tip precision avoids bridging adjacent pads or contaminating sensitive board areas.',
-      'The Micro-Jet 200 micro-abrasive blaster handles PCB-level cleaning and surface preparation where conventional blasting would damage fine traces or component bodies.',
-    ],
-    workflows: [
-      'Tin plating on PCB pads and component leads to restore solderability',
-      'Gold plating on connector pins, switch contacts, and edge connectors',
-      'Nickel underlayer for production gold contact plating sequences',
-      'Selective surface prep on delicate boards using the Micro-Jet 200',
-      'Palladium-nickel plating for premium connector manufacturing',
-    ],
-    systems: ['micro-metallizer', 'micro-jet'],
-    recommended: [
-      'contact-repair-kit',
-      'tin-plating-pen',
-      'gold-24k-plating-pen',
-      'nickel-plating-pen',
-      'palladium-plating-pen',
-      'micro-jet-200-system',
     ],
   },
   {

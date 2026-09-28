@@ -4,7 +4,7 @@ import Photo from '../components/Photo.astro';
 import SystemGlyph from '../components/SystemGlyph.astro';
 import FinishChart from '../components/FinishChart.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { SYSTEMS, byId } from '../lib/catalog';
+import { SYSTEMS, byId, bySlug, fmtPrice, productUrl } from '../lib/catalog';
 import { APPLICATIONS } from '../lib/applications';
 import { photo } from '../lib/photos';
 import { SITE } from '../lib/site';
@@ -56,6 +56,12 @@ const systemPoints: Record<string, string[]> = {
 
 const featured = ['PL-1000C', 'PL-1003', 'PL-1006', 'PL-1012'].map(byId);
 
+const electronics = APPLICATIONS.find((a) => a.focus === 'core')!;
+const electronicsKit = bySlug('contact-repair-kit');
+const electronicsPens = ['tin-plating-pen', 'gold-24k-plating-pen', 'nickel-plating-pen', 'palladium-plating-pen'].map(bySlug);
+const growth = APPLICATIONS.find((a) => a.focus === 'growth')!;
+const others = APPLICATIONS.filter((a) => !a.focus);
+
 const steps = [
   { n: '01', title: 'Clean & degrease', text: 'Absorbent/degreaser pen removes oils and oxides from the work area. Stainless steel takes its own degreaser.', slot: photo('process-clean') },
   { n: '02', title: 'Strike & underlayer', text: 'A copper flash and nickel underlayer build a compatible base on substrates that need one.', slot: photo('process-plate') },
@@ -63,7 +69,11 @@ const steps = [
 ];
 ---
 
-<Base title="Brush Plating & Selective Plating Systems | Hunter Products Inc." schema={schema}>
+<Base
+  title="Brush Plating for PCB, Connector & Contact Repair | Hunter Products Inc."
+  description="Selective brush plating systems for electronics: gold, nickel, tin and palladium on PCB pads, edge connectors and contacts — no tanks. Micro-Metallizer, Carbitron 300, Micro-Jet 200. Since 1970."
+  schema={schema}
+>
   <script is:inline>
     // Old single-page anchors → new pages
     ({ '#contact': '/contact/#quote', '#products': '/store/', '#b2b': '/contact/#quote' })[location.hash] &&
@@ -76,9 +86,9 @@ const steps = [
         <p class="eyebrow">Brush plating · Selective plating · Since {SITE.founded}</p>
         <h1 class="h-display">Plate the part. <span class="hero-dim">Not the production line.</span></h1>
         <p class="lede">
-          Hunter Products designs portable systems for selective brush plating, tungsten-carbide coating and
-          micro-abrasive preparation. Restore contacts, plate production parts and harden edges at the bench or in
-          the field — without tanks or disassembly.
+          Selective brush plating for electronics and beyond. Restore gold on connector pins, re-tin oxidized PCB
+          pads and plate contacts exactly where they need it — at the bench or on the line, without tanks, masking
+          or disassembly.
         </p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href="#systems">Explore systems <span class="arrow">→</span></a>
@@ -96,6 +106,44 @@ const steps = [
         <div><dt>Pen operation</dt><dd>DC · portable</dd></div>
         <div><dt>Tanks required</dt><dd>0</dd></div>
       </dl>
+    </div>
+  </section>
+
+  <!-- ─── Electronics & PCB (core market) ───────────────── -->
+  <section class="section elx" id="electronics">
+    <div class="wrap elx-in">
+      <div class="elx-copy">
+        <p class="eyebrow">Electronics &amp; PCB</p>
+        <h2 class="h-1">The standard for contact and PCB rework.</h2>
+        <p class="lede">
+          Electronics manufacturers and rework technicians are our largest customer base. The pen tip plates a single
+          pad, pin or finger without bridging its neighbors or contaminating the board.
+        </p>
+        <ul class="ticks elx-ticks">
+          {electronics.workflows.map((w) => <li>{w}</li>)}
+        </ul>
+        <div class="hero-ctas">
+          <a class="btn btn--primary" href={`/applications-electroplating/#${electronics.id}`}>Electronics applications <span class="arrow">→</span></a>
+          <a class="btn" href="/contact/?topic=technical#quote">Discuss your board or connector</a>
+        </div>
+      </div>
+      <div class="elx-side">
+        <Photo photo={photo('app-electronics-pcb')} aspect="3 / 2" />
+        <a class="elx-kit" href={productUrl(electronicsKit)}>
+          <span class="mono elx-kit-tag">Recommended starting kit</span>
+          <span class="elx-kit-name">{electronicsKit.name}</span>
+          <span class="elx-kit-desc">{electronicsKit.description}</span>
+          <span class="elx-kit-price">{fmtPrice(electronicsKit.price)} <span class="sku">{electronicsKit.sku}</span></span>
+        </a>
+        <div class="elx-pens">
+          {electronicsPens.map((p) => (
+            <a href={productUrl(p)}>
+              <span>{p.name.replace(' Plating Pen', '')}</span>
+              <span class="mono">{fmtPrice(p.price)}</span>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -209,12 +257,31 @@ const steps = [
       <div class="section-head section-head--split">
         <div>
           <p class="eyebrow">Applications</p>
-          <h2 class="h-1">Start with your industry.</h2>
+          <h2 class="h-1">Proven in electronics. <span class="hero-dim">Built for aerospace, medical and beyond.</span></h2>
         </div>
         <a class="link" href="/applications-electroplating/">All applications <span class="arrow">→</span></a>
       </div>
       <div class="apps">
-        {APPLICATIONS.map((a) => (
+        <a class="app app--core" href={`/applications-electroplating/#${electronics.id}`}>
+          <span class="app-code mono">{electronics.code}</span>
+          <span class="tag tag--brand app-flag">Largest customer base</span>
+          <h3 class="h-2">{electronics.label}</h3>
+          <p>{electronics.lede}</p>
+          <ul class="ticks">
+            {electronics.workflows.slice(0, 3).map((w) => <li>{w}</li>)}
+          </ul>
+          <span class="link">Electronics applications <span class="arrow">→</span></span>
+        </a>
+        <a class="app app--growth" href={`/applications-electroplating/#${growth.id}`}>
+          <span class="app-code mono">{growth.code}</span>
+          <h3 class="h-2">{growth.label}</h3>
+          <p>{growth.lede} The same pen workflow our electronics customers rely on — applied to aircraft connectors, avionics contacts, fasteners and fittings.</p>
+          <ul class="ticks">
+            {growth.workflows.slice(0, 3).map((w) => <li>{w}</li>)}
+          </ul>
+          <span class="link">Discuss an aerospace application <span class="arrow">→</span></span>
+        </a>
+        {others.map((a) => (
           <a class="app" href={`/applications-electroplating/#${a.id}`}>
             <span class="app-code mono">{a.code}</span>
             <h3 class="h-3">{a.label}</h3>
@@ -325,14 +392,46 @@ const steps = [
   .step-n { color: var(--gold-hi); margin-top: 8px; }
   .step p:last-child { color: var(--on-navy-2); font-size: 15px; }
 
-  .apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-  @media (max-width: 900px) { .apps { grid-template-columns: 1fr 1fr; } }
+  .apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 1000px) { .apps { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .apps { grid-template-columns: 1fr; } }
   .app { display: grid; gap: 10px; align-content: start; padding: 26px; background: #fff; text-decoration: none; transition: background 0.18s; }
   .app:hover { background: var(--brand-wash); }
   .app-code { width: 36px; height: 36px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; margin-bottom: 6px; }
   .app p { color: var(--text-2); font-size: 15px; }
   .app-sys { font-size: 10.5px; color: var(--brand); margin-top: 6px; }
+  .app--growth, .app--core { grid-column: span 2; padding: clamp(26px, 3vw, 36px); }
+  .apps .app--growth { background: var(--navy); color: var(--on-navy-2); }
+  .apps .app--growth:hover { background: var(--navy-2); }
+  .app--growth h3 { color: #fff; }
+  .app--growth p, .app--growth .ticks li { color: var(--on-navy-2); }
+  .app--growth .ticks li::before { background: var(--gold-hi); }
+  .app--growth .app-code { background: var(--gold); color: var(--navy); }
+  .app--growth .link { color: #fff; margin-top: 8px; }
+  .app--core { position: relative; }
+  .app--core .link, .app--growth .link { margin-top: 8px; }
+  .app .ticks li { font-size: 14.5px; }
+  .app-flag { position: absolute; top: clamp(26px, 3vw, 36px); right: clamp(26px, 3vw, 36px); }
+  @media (max-width: 700px) { .app--growth, .app--core { grid-column: auto; } .app-flag { position: static; justify-self: start; } }
+
+  .elx { border-bottom: 1px solid var(--line); }
+  .elx-in { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  @media (max-width: 920px) { .elx-in { grid-template-columns: 1fr; } }
+  .elx-copy { display: grid; gap: 20px; }
+  .elx-ticks { font-size: 16px; gap: 8px; }
+  .elx-side { display: grid; gap: 0; border: 1px solid var(--line); }
+  .elx-side :global(.ph-box) { border: 0; border-bottom: 1px solid var(--line); }
+  .elx-kit { display: grid; gap: 6px; padding: 20px; text-decoration: none; background: var(--brand-wash); border-bottom: 1px solid var(--line); }
+  .elx-kit:hover { background: #e4ebee; }
+  .elx-kit-tag { font-size: 10.5px; color: var(--brand-dk); }
+  .elx-kit-name { font-stretch: 106%; font-weight: 650; font-size: 20px; color: var(--ink); }
+  .elx-kit-desc { font-size: 14.5px; color: var(--text-2); }
+  .elx-kit-price { font-family: var(--mono); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 4px; }
+  .elx-kit-price .sku { font-size: 12px; margin-left: 8px; }
+  .elx-pens { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); }
+  .elx-pens a { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; background: #fff; text-decoration: none; font-size: 14.5px; font-weight: 550; color: var(--ink); }
+  .elx-pens a:hover { background: var(--bg-2); }
+  .elx-pens .mono { font-size: 12.5px; color: var(--text-2); }
 
   .feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   @media (max-width: 1000px) { .feat { grid-template-columns: 1fr 1fr; } }

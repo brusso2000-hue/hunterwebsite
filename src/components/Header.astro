@@ -66,7 +66,7 @@ const is = (prefix: string) => path.startsWith(prefix);
                     <a class="mega-app" href={`/applications-electroplating/#${a.id}`}>
                       <span class="mega-app-code mono">{a.code}</span>
                       <span>
-                        <span class="mega-app-name">{a.label}</span>
+                        <span class="mega-app-name">{a.label}{a.focus === 'core' && <span class="mega-app-flag mono">Most requested</span>}</span>
                         <span class="mega-app-lede">{a.lede}</span>
                       </span>
                     </a>
@@ -173,6 +173,7 @@ const is = (prefix: string) => path.startsWith(prefix);
   .mega-app:hover { background: var(--brand-wash); }
   .mega-app-code { flex-shrink: 0; width: 34px; height: 34px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; }
   .mega-app-name { display: block; font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 2px; }
+  .mega-app-flag { display: inline-block; margin-left: 8px; padding: 1px 6px; vertical-align: 2px; background: var(--brand-wash); border: 1px solid var(--brand); color: var(--brand-dk); font-size: 9.5px; font-weight: 500; }
   .mega-app-lede { display: block; font-size: 14px; color: var(--text-2); line-height: 1.45; }
 
   .hdr-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
