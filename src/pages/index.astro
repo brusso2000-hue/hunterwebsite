@@ -1,0 +1,349 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import SystemGlyph from '../components/SystemGlyph.astro';
+import FinishChart from '../components/FinishChart.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { SYSTEMS, byId } from '../lib/catalog';
+import { APPLICATIONS } from '../lib/applications';
+import { photo } from '../lib/photos';
+import { SITE } from '../lib/site';
+
+const address = {
+  '@type': 'PostalAddress',
+  streetAddress: SITE.street,
+  addressLocality: SITE.city,
+  addressRegion: SITE.region,
+  postalCode: SITE.postal,
+  addressCountry: 'US',
+};
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.shortName, alternateName: SITE.name, url: SITE.origin },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.origin,
+    logo: `${SITE.origin}/img/brand/hunter-logo.png`,
+    description: 'Manufacturer of brush plating (selective electroplating) pens, Carbitron tungsten-carbide coating systems, and Micro-Jet micro-abrasive blasters since 1970.',
+    foundingDate: String(SITE.founded),
+    address,
+    contactPoint: { '@type': 'ContactPoint', telephone: '+1-908-526-8440', email: SITE.email, contactType: 'sales', availableLanguage: 'English' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: SITE.name,
+    url: SITE.origin,
+    telephone: '+1-908-526-8440',
+    email: SITE.email,
+    address,
+    openingHours: 'Mo-Fr 09:00-17:00',
+  },
+];
+
+const systemPhotos = {
+  'micro-metallizer': photo('system-micro-metallizer'),
+  carbitron: photo('system-carbitron'),
+  'micro-jet': photo('system-micro-jet'),
+} as const;
+
+const systemPoints: Record<string, string[]> = {
+  'micro-metallizer': ['Variable DC power supply, 110V or 220V', '12 finishes incl. gold, rhodium, silver, tin', 'Standard and heavy-duty cartridges', 'No tank, bath or plating-waste handling'],
+  carbitron: ['Tungsten-carbide (WC) deposition', 'Electrodes: 1/8", 1/16", 1/32"', 'Edge hardening and diamond dusting', '110V / 220V operation'],
+  'micro-jet': ['Controlled micro-abrasive delivery', 'Cleaning, etching, surface preparation', 'Fine wires, thin substrates, intricate detail', 'Pre-plate prep and matte finishing'],
+};
+
+const featured = ['PL-1000C', 'PL-1003', 'PL-1006', 'PL-1012'].map(byId);
+
+const steps = [
+  { n: '01', title: 'Clean & degrease', text: 'Absorbent/degreaser pen removes oils and oxides from the work area. Stainless steel takes its own degreaser.', slot: photo('process-clean') },
+  { n: '02', title: 'Strike & underlayer', text: 'A copper flash and nickel underlayer build a compatible base on substrates that need one.', slot: photo('process-plate') },
+  { n: '03', title: 'Plate the finish', text: 'Brush the final deposit — gold, rhodium, silver, tin — only where the part needs it.', slot: photo('process-finish') },
+];
+---
+
+<Base title="Brush Plating & Selective Plating Systems | Hunter Products Inc." schema={schema}>
+  <script is:inline>
+    // Old single-page anchors → new pages
+    ({ '#contact': '/contact/#quote', '#products': '/store/', '#b2b': '/contact/#quote' })[location.hash] &&
+      location.replace(({ '#contact': '/contact/#quote', '#products': '/store/', '#b2b': '/contact/#quote' })[location.hash]);
+  </script>
+  <!-- ─── Hero ─────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <p class="eyebrow">Brush plating · Selective plating · Since {SITE.founded}</p>
+        <h1 class="h-display">Plate the part. <span class="hero-dim">Not the production line.</span></h1>
+        <p class="lede">
+          Hunter Products designs portable systems for selective brush plating, tungsten-carbide coating and
+          micro-abrasive preparation. Restore contacts, plate production parts and harden edges at the bench or in
+          the field — without tanks or disassembly.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn--primary" href="#systems">Explore systems <span class="arrow">→</span></a>
+          <a class="btn" href="/contact/?topic=technical#quote">Ask an application engineer</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <Photo photo={photo('home-hero')} aspect="5 / 4" eager caption="Fig. 1 — Micro-Metallizer brush plating: pen (+) · workpiece (−) · deposit" />
+      </div>
+    </div>
+    <div class="wrap">
+      <dl class="stats">
+        <div><dt>Established</dt><dd>{SITE.founded}</dd></div>
+        <div><dt>Plating finishes</dt><dd>12</dd></div>
+        <div><dt>Pen operation</dt><dd>DC · portable</dd></div>
+        <div><dt>Tanks required</dt><dd>0</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ─── What brush plating is ────────────────────────── -->
+  <section class="section section--alt">
+    <div class="wrap bp">
+      <div>
+        <p class="eyebrow">The process</p>
+        <h2 class="h-1 bp-title">What is brush plating?</h2>
+        <div class="prose">
+          <p>
+            Brush plating — also called selective or spot plating — is electroplating without the tank. The plating
+            solution is held in an absorbent tip connected to the positive lead of a DC power supply; the part is
+            connected to the negative. Wherever the tip touches, metal is deposited.
+          </p>
+          <p>
+            Because only the work area is plated, there is no immersion, no masking of the whole part and no need to
+            strip an assembly down. The Micro-Metallizer puts this in a self-contained, disposable pen cartridge.
+          </p>
+        </div>
+      </div>
+      <div class="bp-compare">
+        <table class="spec cmp">
+          <thead>
+            <tr><th></th><th scope="col">Tank plating</th><th scope="col">Brush plating</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Area plated</th><td>Entire immersed part</td><td>Only the work area</td></tr>
+            <tr><th scope="row">Disassembly</th><td>Part removed and masked</td><td>Plate in place</td></tr>
+            <tr><th scope="row">Where</th><td>Plating line</td><td>Bench or field</td></tr>
+            <tr><th scope="row">Solution</th><td>Open bath to maintain</td><td>Sealed pen cartridge</td></tr>
+            <tr><th scope="row">Waste</th><td>Bath disposal</td><td>No bath to dispose</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Systems ──────────────────────────────────────── -->
+  <section class="section" id="systems">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Product systems</p>
+          <h2 class="h-1">Three systems. One discipline: <br />precise surface treatment.</h2>
+        </div>
+        <a class="link" href="/store/">Full catalog <span class="arrow">→</span></a>
+      </div>
+
+      <div class="sys-list">
+        {SYSTEMS.map((s, i) => (
+          <article class="sys">
+            <Photo photo={systemPhotos[s.id]} aspect="16 / 11" />
+            <div class="sys-body">
+              <p class="mono sys-idx">0{i + 1} · {s.process}</p>
+              <h3 class="h-2 marked">{s.name}</h3>
+              <p class="sys-sum">{s.summary}</p>
+              <ul class="ticks">
+                {systemPoints[s.id].map((pt) => <li>{pt}</li>)}
+              </ul>
+              <div class="sys-ctas">
+                <a class="btn btn--primary btn--sm" href={s.href}>System details <span class="arrow">→</span></a>
+                <a class="btn btn--sm" href={`/contact/?topic=quote#quote`}>Request information</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Process sequence ─────────────────────────────── -->
+  <section class="section section--navy">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Plating sequence</p>
+        <h2 class="h-1">A typical Micro-Metallizer sequence.</h2>
+        <p class="lede">Each step is a separate pen on the same power supply. Swap the cartridge, keep working.</p>
+      </div>
+      <ol class="steps">
+        {steps.map((s) => (
+          <li class="step">
+            <Photo photo={s.slot} aspect="4 / 3" />
+            <p class="mono step-n">Step {s.n}</p>
+            <h3 class="h-3">{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ─── Finish chart ─────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Plating compatibility</p>
+          <h2 class="h-1">Finishes, substrates &amp; underlayers.</h2>
+          <p class="lede">Pick the deposit, check the substrate, see what prep it needs — then order the pen.</p>
+        </div>
+        <a class="link" href="/systems/micro-metallizer/">Micro-Metallizer system <span class="arrow">→</span></a>
+      </div>
+      <FinishChart compact />
+    </div>
+  </section>
+
+  <!-- ─── Applications ─────────────────────────────────── -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Applications</p>
+          <h2 class="h-1">Start with your industry.</h2>
+        </div>
+        <a class="link" href="/applications-electroplating/">All applications <span class="arrow">→</span></a>
+      </div>
+      <div class="apps">
+        {APPLICATIONS.map((a) => (
+          <a class="app" href={`/applications-electroplating/#${a.id}`}>
+            <span class="app-code mono">{a.code}</span>
+            <h3 class="h-3">{a.label}</h3>
+            <p>{a.lede}</p>
+            <span class="app-sys mono">{a.systems.map((id) => SYSTEMS.find((s) => s.id === id)!.name).join(' · ')}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Featured products ────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Most ordered</p>
+          <h2 class="h-1">Order direct from the manufacturer.</h2>
+        </div>
+        <a class="link" href="/store/">Shop all products <span class="arrow">→</span></a>
+      </div>
+      <div class="feat">
+        {featured.map((p) => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Company / resources ──────────────────────────── -->
+  <section class="section section--alt" id="about">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow">Hunter Products Inc.</p>
+        <h2 class="h-1">Five decades of selective plating.</h2>
+        <div class="prose">
+          <p>
+            Hunter Products has designed and supported localized plating and surface-treatment equipment from
+            {SITE.city}, New Jersey since {SITE.founded}. We invented the Carbitron diamond-dusting platform and
+            continue to build the Micro-Metallizer line used in aerospace MRO, electronics rework, medical instrument
+            repair and jewelry restoration.
+          </p>
+          <p>Every order ships direct from our facility, and every question is answered by people who build the equipment.</p>
+        </div>
+      </div>
+      <div class="res">
+        <a class="res-item" href="/resources/">
+          <span class="mono">PDF</span>
+          <span><strong>Micro-Metallizer catalog</strong><br />Every pen, kit and process sequence.</span>
+        </a>
+        <a class="res-item" href="/resources/">
+          <span class="mono">PDF</span>
+          <span><strong>Carbitron 300 brochure</strong><br />Specifications and operating guidance.</span>
+        </a>
+        <a class="res-item" href="/contact/?topic=sds#quote">
+          <span class="mono">SDS</span>
+          <span><strong>Safety data sheets</strong><br />Request current SDS for any solution.</span>
+        </a>
+        <a class="res-item" href="/contact/?topic=technical#quote">
+          <span class="mono">Q&amp;A</span>
+          <span><strong>Application support</strong><br />Sequencing, compatibility, thickness.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: clamp(40px, 6vw, 80px) 0 0; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--bg-2), #fff 70%); }
+  .hero-in { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  @media (max-width: 920px) { .hero-in { grid-template-columns: 1fr; } }
+  .hero-copy { display: grid; gap: 22px; }
+  .hero-dim { color: var(--brand); }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
+  .stats > div { padding: 22px 20px 26px 0; border-right: 1px solid var(--line); }
+  .stats > div + div { padding-left: 20px; }
+  .stats > div:last-child { border-right: 0; }
+  .stats dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
+  .stats dd { margin: 6px 0 0; font-stretch: 108%; font-weight: 650; font-size: clamp(22px, 2.4vw, 30px); color: var(--ink); letter-spacing: -0.02em; }
+  @media (max-width: 700px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stats > div:nth-child(2) { border-right: 0; }
+    .stats > div:nth-child(3) { padding-left: 0; }
+    .stats > div:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  }
+
+  .bp { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  @media (max-width: 920px) { .bp { grid-template-columns: 1fr; } }
+  .bp-title { margin: 16px 0 22px; }
+  .cmp thead th { background: var(--brand-deep); color: #fff; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 12px 16px; text-align: left; }
+  .cmp thead th:first-child { background: var(--brand-deep); }
+  .cmp td:last-child { color: var(--ink); font-weight: 550; background: var(--brand-wash); }
+  .cmp { background: #fff; }
+
+  .sys-list { display: grid; gap: clamp(40px, 5vw, 64px); }
+  .sys { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  .sys:nth-child(even) > :first-child { order: 2; }
+  @media (max-width: 860px) { .sys { grid-template-columns: 1fr; } .sys:nth-child(even) > :first-child { order: 0; } }
+  .sys-body { display: grid; gap: 16px; }
+  .sys-idx { color: var(--brand); }
+  .sys-sum { color: var(--text-2); max-width: 58ch; }
+  .sys-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+  .steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+  .step { display: grid; gap: 10px; align-content: start; }
+  .step :global(.ph-box) { border-color: var(--navy-line); }
+  .step-n { color: var(--gold-hi); margin-top: 8px; }
+  .step p:last-child { color: var(--on-navy-2); font-size: 15px; }
+
+  .apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 900px) { .apps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .apps { grid-template-columns: 1fr; } }
+  .app { display: grid; gap: 10px; align-content: start; padding: 26px; background: #fff; text-decoration: none; transition: background 0.18s; }
+  .app:hover { background: var(--brand-wash); }
+  .app-code { width: 36px; height: 36px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; margin-bottom: 6px; }
+  .app p { color: var(--text-2); font-size: 15px; }
+  .app-sys { font-size: 10.5px; color: var(--brand); margin-top: 6px; }
+
+  .feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 1000px) { .feat { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .feat { grid-template-columns: 1fr; } }
+
+  .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  @media (max-width: 900px) { .about { grid-template-columns: 1fr; } }
+  .about h2 { margin: 16px 0 22px; }
+  .res { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .res-item { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; padding: 18px 20px; background: #fff; text-decoration: none; color: var(--text-2); font-size: 15px; line-height: 1.45; transition: background 0.18s; }
+  .res-item:hover { background: var(--brand-wash); }
+  .res-item strong { color: var(--ink); font-weight: 600; }
+  .res-item .mono { height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); font-size: 11px; color: var(--brand-dk); }
+</style>

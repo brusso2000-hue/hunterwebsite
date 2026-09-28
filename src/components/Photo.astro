@@ -1,0 +1,67 @@
+---
+// Renders a photo slot: the supplied image if one exists, otherwise a
+// technical drawing on engineering-grid paper. In `npm run dev` an empty
+// slot also shows where to drop the file.
+import type { ResolvedPhoto } from '../lib/photos';
+import SystemGlyph from './SystemGlyph.astro';
+
+interface Props {
+  photo: ResolvedPhoto;
+  aspect?: string;
+  caption?: string;
+  eager?: boolean;
+  class?: string;
+}
+const { photo, aspect = '16 / 10', caption, eager = false, class: cls } = Astro.props;
+const showHint = import.meta.env.DEV && (!photo.src || photo.lowRes);
+---
+
+<figure class:list={['ph', cls, { 'ph--draw': !photo.src, 'ph--lowres': photo.lowRes }]} style={`--ar:${aspect}`}>
+  <div class="ph-box">
+    {photo.src ? (
+      <img src={encodeURI(photo.src)} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    ) : (
+      <div class="ph-draw grid-bg" role="img" aria-label={photo.alt}>
+        <SystemGlyph system={photo.fallback} detailed />
+      </div>
+    )}
+    {showHint && (
+      <span class="ph-hint" title={`Drop a ${photo.size}+ image at ${photo.dropPath}`}>
+        {photo.lowRes ? 'Low-res · ' : 'Add photo · '}<code>{photo.dropPath.replace('public', '')}</code>
+      </span>
+    )}
+  </div>
+  {caption && <figcaption class="mono">{caption}</figcaption>}
+</figure>
+
+<style>
+  .ph { margin: 0; }
+  .ph-box {
+    position: relative;
+    aspect-ratio: var(--ar);
+    overflow: hidden;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .ph-box > img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Old catalog photos are ~275px wide: show them at native scale on white,
+     never stretched to fill. */
+  .ph--lowres .ph-box { background: #fff; display: grid; place-items: center; }
+  .ph--lowres .ph-box > img { width: auto; height: auto; max-width: min(100%, 320px); max-height: 100%; object-fit: contain; }
+
+  .ph-draw { position: absolute; inset: 0; display: grid; place-items: center; background-color: var(--bg-2); color: var(--brand-dk); padding: 8%; }
+  .ph-draw :global(svg) { width: 100%; height: 100%; max-width: 520px; }
+
+  .ph-hint {
+    position: absolute; left: 6px; right: 6px; bottom: 6px;
+    padding: 3px 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px dashed var(--gold);
+    font-family: var(--mono); font-size: 9.5px; line-height: 1.4; color: var(--text-2);
+  }
+  .ph-hint code { color: var(--ink); }
+
+  figcaption { margin-top: 10px; font-size: 11px; color: var(--text-3); }
+</style>

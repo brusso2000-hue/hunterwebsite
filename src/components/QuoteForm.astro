@@ -1,0 +1,105 @@
+---
+import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
+import { SYSTEMS } from '../lib/catalog';
+---
+
+<form class="qf" action={FORMSPREE_ENDPOINT} method="POST" data-quote-form>
+  <div class="qf-status qf-ok" hidden data-ok role="status">
+    <p class="mono">Request received</p>
+    <p>Thank you — an application engineer will reply within one business day.</p>
+  </div>
+  <div class="qf-status qf-err" hidden data-err role="alert">
+    <p class="mono">Something went wrong</p>
+    <p>Please email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call {SITE.phone}.</p>
+  </div>
+
+  <div class="field qf-full">
+    <label for="qf-topic">Request type</label>
+    <select class="select" id="qf-topic" name="request_type" data-topic>
+      <option value="quote">Quotation / volume pricing</option>
+      <option value="technical">Technical / application question</option>
+      <option value="sds">Safety data sheet (SDS)</option>
+      <option value="po">Purchase order</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="qf-first">First name *</label>
+    <input class="input" id="qf-first" name="first_name" required autocomplete="given-name" />
+  </div>
+  <div class="field">
+    <label for="qf-last">Last name *</label>
+    <input class="input" id="qf-last" name="last_name" required autocomplete="family-name" />
+  </div>
+  <div class="field">
+    <label for="qf-company">Company</label>
+    <input class="input" id="qf-company" name="company" autocomplete="organization" />
+  </div>
+  <div class="field">
+    <label for="qf-email">Email *</label>
+    <input class="input" id="qf-email" name="email" type="email" required autocomplete="email" />
+  </div>
+  <div class="field">
+    <label for="qf-system">System</label>
+    <select class="select" id="qf-system" name="product_interest">
+      <option value="">Not sure yet</option>
+      {SYSTEMS.map((s) => <option>{s.name}</option>)}
+      <option>Custom kit / multiple systems</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="qf-qty">Estimated quantity</label>
+    <input class="input" id="qf-qty" name="quantity" inputmode="numeric" placeholder="e.g. 10 pens / month" />
+  </div>
+  <div class="field qf-full">
+    <label for="qf-msg">Part, substrate &amp; required finish *</label>
+    <textarea class="textarea" id="qf-msg" name="message" required placeholder="e.g. Restore gold on nickel-plated brass connector pins, ~40 parts per week."></textarea>
+  </div>
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+  <div class="qf-full qf-submit">
+    <button class="btn btn--primary" type="submit" data-submit>Submit request <span class="arrow">→</span></button>
+    <span class="mono qf-note">Reply within one business day</span>
+  </div>
+</form>
+
+<style>
+  .qf { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .qf-full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .qf { grid-template-columns: 1fr; } }
+  .qf-submit { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+  .qf-note { font-size: 11px; color: var(--text-3); }
+  .qf-status { grid-column: 1 / -1; padding: 14px 16px; border-left: 3px solid; background: var(--bg-2); }
+  .qf-status .mono { font-size: 11px; margin-bottom: 4px; }
+  .qf-ok { border-color: var(--ok); }
+  .qf-ok .mono { color: var(--ok); }
+  .qf-err { border-color: var(--err); }
+  .qf-err .mono { color: var(--err); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-quote-form]').forEach((form) => {
+    const topic = new URLSearchParams(location.search).get('topic');
+    const sel = form.querySelector<HTMLSelectElement>('[data-topic]')!;
+    if (topic && [...sel.options].some((o) => o.value === topic)) sel.value = topic;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = form.querySelector<HTMLElement>('[data-ok]')!;
+      const err = form.querySelector<HTMLElement>('[data-err]')!;
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+      ok.hidden = err.hidden = true;
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        ok.hidden = false;
+        if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'generate_lead');
+      } catch {
+        err.hidden = false;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>

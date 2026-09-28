@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { SITE } from '../lib/site';
+---
+
+<Base
+  title="Contact & Request a Quote | Hunter Products Inc."
+  description="Request a quotation, volume pricing, a purchase order or technical help selecting a brush plating system. Hunter Products, Flemington NJ — (908) 526-8440."
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Contact']]} />
+      <h1 class="h-1">Talk to Hunter Products</h1>
+      <p class="lede">Quotations, purchase orders, safety data sheets and application questions — answered by the people who build the equipment.</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap grid">
+      <aside class="info">
+        <div class="info-blk">
+          <p class="label">Telephone</p>
+          <a class="info-big" href={SITE.phoneHref}>{SITE.phone}</a>
+          <p class="mono info-sub">{SITE.hours}</p>
+        </div>
+        <div class="info-blk">
+          <p class="label">Email</p>
+          <a class="info-big" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </div>
+        <div class="info-blk">
+          <p class="label">Address</p>
+          <address>{SITE.name}<br />{SITE.street}<br />{SITE.city}, {SITE.region} {SITE.postal}</address>
+        </div>
+        <div class="info-blk">
+          <p class="label">We can help with</p>
+          <ul class="ticks">
+            <li>Volume pricing &amp; formal quotations</li>
+            <li>Purchase orders</li>
+            <li>System &amp; kit selection</li>
+            <li>Plating sequence and substrate questions</li>
+            <li>Safety data sheets</li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="form-panel" id="quote">
+        <p class="eyebrow">Request a quotation</p>
+        <h2 class="h-2">Tell us about the job.</h2>
+        <p class="form-lede">The more you tell us about the part, substrate and finish, the faster we can specify the right configuration.</p>
+        <QuoteForm />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner h1 { margin-top: 14px; }
+  .grid { display: grid; grid-template-columns: 320px 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .info { display: grid; gap: 0; border: 1px solid var(--line); }
+  .info-blk { padding: 20px; display: grid; gap: 6px; }
+  .info-blk + .info-blk { border-top: 1px solid var(--line); }
+  .info-big { font-size: 19px; font-weight: 600; color: var(--ink); text-decoration: none; word-break: break-word; }
+  .info-big:hover { color: var(--brand-dk); text-decoration: underline; }
+  .info-sub { font-size: 11px; color: var(--text-3); }
+  address { font-style: normal; color: var(--text-2); }
+  .info .ticks { font-size: 15px; margin-top: 4px; }
+  .form-panel { border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); scroll-margin-top: calc(var(--header-h) + 24px); }
+  .form-panel h2 { margin: 14px 0 10px; }
+  .form-lede { color: var(--text-2); margin-bottom: 28px; max-width: 60ch; }
+</style>

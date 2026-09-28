@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { SYSTEMS } from '../lib/catalog';
+---
+
+<Base title="Page not found | Hunter Products" noindex>
+  <section class="section">
+    <div class="wrap nf">
+      <p class="mono nf-code">Error 404</p>
+      <h1 class="h-1">That page isn't here.</h1>
+      <p class="lede">It may have moved when we rebuilt the site. Try one of these:</p>
+      <div class="nf-links">
+        {SYSTEMS.map((s) => <a class="btn" href={s.href}>{s.name}</a>)}
+        <a class="btn btn--primary" href="/store/">Shop all products</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { display: grid; gap: 18px; justify-items: start; }
+  .nf-code { color: var(--brand); }
+  .nf-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+</style>

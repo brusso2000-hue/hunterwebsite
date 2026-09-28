@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CatalogTree from '../../components/CatalogTree.astro';
+import Photo from '../../components/Photo.astro';
+import AddToCart from '../../components/AddToCart.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import {
+  products,
+  systemOf,
+  systemInfo,
+  typeOf,
+  TYPE_LABEL,
+  fmtPrice,
+  productUrl,
+  slugify,
+  type Product,
+} from '../../lib/catalog';
+import { FINISHES } from '../../lib/finishes';
+import { productPhoto } from '../../lib/photos';
+import { SITE } from '../../lib/site';
+
+export function getStaticPaths() {
+  return products.map((p) => ({ params: { slug: p.slug }, props: { product: p } }));
+}
+
+const { product: p } = Astro.props as { product: Product };
+const sys = systemInfo(systemOf(p));
+const type = typeOf(p);
+const canonical = `${SITE.origin}${productUrl(p)}`;
+const pic = productPhoto(p);
+
+const finish = FINISHES.find((f) => f.standard === p.id || f.heavy === p.id);
+
+const related = products
+  .filter((x) => x.id !== p.id && systemOf(x) === systemOf(p) && typeOf(x) === type)
+  .concat(products.filter((x) => x.id !== p.id && systemOf(x) === systemOf(p) && typeOf(x) !== type))
+  .slice(0, 4);
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: p.name,
+    sku: p.sku,
+    mpn: p.sku,
+    description: p.description,
+    brand: { '@type': 'Brand', name: SITE.name },
+    manufacturer: { '@type': 'Organization', name: SITE.name },
+    category: TYPE_LABEL[type],
+    image: pic.src ? [`${SITE.origin}${encodeURI(pic.src)}`] : [],
+    url: canonical,
+    offers: {
+      '@type': 'Offer',
+      url: canonical,
+      priceCurrency: 'USD',
+      price: p.price.toFixed(2),
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: SITE.name },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.origin}/` },
+      { '@type': 'ListItem', position: 2, name: sys.name, item: `${SITE.origin}${sys.href}` },
+      { '@type': 'ListItem', position: 3, name: p.name, item: canonical },
+    ],
+  },
+];
+---
+
+<Base title={p.metaTitle} description={p.metaDescription} image={pic.src ?? undefined} ogType="product" schema={schema}>
+  <div class="bar">
+    <div class="wrap">
+      <Breadcrumbs items={[['Home', '/'], [sys.name, sys.href], [TYPE_LABEL[type]], [p.name]]} />
+    </div>
+  </div>
+
+  <div class="wrap doc page">
+    <aside><CatalogTree currentSystem={sys.id} currentSlug={p.slug} /></aside>
+
+    <div class="main">
+      <article class="hero">
+        <Photo photo={pic} aspect="1 / 1" eager />
+        <div class="buy">
+          <p class="eyebrow">{sys.name} · {TYPE_LABEL[type]}</p>
+          <h1 class="h-2">{p.h1}</h1>
+          <p class="sku">Part no. <strong>{p.sku}</strong></p>
+          <p class="desc">{p.description}</p>
+
+          {finish && (
+            <dl class="quick">
+              <div><dt>Deposit</dt><dd>{finish.metal}</dd></div>
+              <div><dt>Plates onto</dt><dd>{finish.substrate ?? 'See catalog'}</dd></div>
+              {finish.underlayer && <div><dt>Prep / underlayer</dt><dd>{finish.underlayer}</dd></div>}
+            </dl>
+          )}
+
+          <div class="price-row">
+            <span class="price">{fmtPrice(p.price)}</span>
+            <span class="mono stock">In stock · ships from NJ</span>
+          </div>
+          <div class="ctas">
+            <AddToCart product={p} />
+            <a class="btn" href={`/contact/?topic=quote#quote`}>Volume quote</a>
+          </div>
+          <p class="note">
+            Purchasing for a company? We accept POs and quote volume pricing —
+            <a href="/contact/?topic=po#quote">send a PO request</a> or call <a href={SITE.phoneHref}>{SITE.phone}</a>.
+          </p>
+        </div>
+      </article>
+
+      <section class="block">
+        <h2 class="h-3 marked">Overview</h2>
+        <div class="prose">
+          {p.longDescription.split('\n\n').map((para) => <p>{para}</p>)}
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="h-3 marked">Specifications</h2>
+        <table class="spec">
+          <tbody>
+            {p.specs.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+            <tr><th scope="row">System</th><td><a href={sys.href}>{sys.name}</a></td></tr>
+            <tr><th scope="row">Shipping weight</th><td>{p.dimensions.weight} g</td></tr>
+            <tr><th scope="row">Package (L × W × H)</th><td>{p.dimensions.length} × {p.dimensions.width} × {p.dimensions.height} cm</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="block">
+        <h2 class="h-3 marked">Applications</h2>
+        <div class="apps">
+          {p.applications.map((a) => <a class="tag" href={`/applications-electroplating/#${slugify(a)}`}>{a}</a>)}
+        </div>
+      </section>
+
+      {related.length > 0 && (
+        <section class="block">
+          <div class="rel-head">
+            <h2 class="h-3 marked">Related {sys.name} products</h2>
+            <a class="link" href={sys.href}>System overview <span class="arrow">→</span></a>
+          </div>
+          <div class="rel">
+            {related.map((r) => <ProductCard product={r} />)}
+          </div>
+        </section>
+      )}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .bar { border-bottom: 1px solid var(--line); background: var(--bg-2); padding: 14px 0; }
+  .page { padding-top: 36px; padding-bottom: clamp(64px, 8vw, 104px); }
+  @media (max-width: 960px) { .page aside { order: 2; } }
+  .main { display: grid; gap: clamp(40px, 5vw, 56px); min-width: 0; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 48px); align-items: start; }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+  .buy { display: grid; gap: 14px; }
+  .buy h1 { margin-top: 4px; }
+  .sku strong { color: var(--ink); font-weight: 500; }
+  .desc { color: var(--text-2); font-size: 17px; }
+
+  .quick { display: grid; border: 1px solid var(--line); margin: 4px 0; }
+  .quick > div { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding: 10px 14px; }
+  .quick > div + div { border-top: 1px solid var(--line); }
+  .quick dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); padding-top: 3px; }
+  .quick dd { margin: 0; font-size: 15px; color: var(--ink); }
+
+  .price-row { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--line); }
+  .price { font-family: var(--mono); font-size: 30px; font-weight: 500; color: var(--ink); letter-spacing: -0.02em; }
+  .stock { font-size: 11px; color: var(--ok); }
+  .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .note { font-size: 14px; color: var(--text-3); }
+  .note a { color: var(--brand-dk); }
+
+  .block { display: grid; gap: 20px; }
+  .spec a { color: var(--brand-dk); }
+  .apps { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rel-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+  .rel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 1180px) { .rel { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .rel { grid-template-columns: 1fr; } }
+</style>

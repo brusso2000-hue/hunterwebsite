@@ -1,0 +1,20 @@
+---
+import { snipcartAttrs, type Product } from '../lib/catalog';
+
+interface Props {
+  product: Product;
+  size?: 'sm' | 'md';
+  block?: boolean;
+  label?: string;
+}
+const { product, size = 'md', block = false, label = 'Add to cart' } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={['btn btn--primary snipcart-add-item', { 'btn--sm': size === 'sm', 'btn--block': block }]}
+  aria-label={`Add ${product.name} to cart`}
+  {...snipcartAttrs(product)}
+>
+  {label}
+</button>

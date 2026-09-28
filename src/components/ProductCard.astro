@@ -1,0 +1,46 @@
+---
+import { fmtPrice, productUrl, typeOf, TYPE_LABEL, type Product } from '../lib/catalog';
+import { productPhoto } from '../lib/photos';
+import Photo from './Photo.astro';
+import AddToCart from './AddToCart.astro';
+
+interface Props {
+  product: Product;
+}
+const { product: p } = Astro.props;
+const href = productUrl(p);
+---
+
+<article class="pc">
+  <a href={href} class="pc-media" tabindex="-1" aria-hidden="true">
+    <Photo photo={productPhoto(p)} aspect="4 / 3" />
+  </a>
+  <div class="pc-body">
+    <div class="pc-meta">
+      <span class="mono pc-type">{TYPE_LABEL[typeOf(p)]}</span>
+      <span class="sku">{p.sku}</span>
+    </div>
+    <h3 class="pc-name"><a href={href}>{p.name}</a></h3>
+    <p class="pc-desc">{p.description}</p>
+    <div class="pc-foot">
+      <span class="pc-price">{fmtPrice(p.price)}</span>
+      <AddToCart product={p} size="sm" label="Add" />
+    </div>
+  </div>
+</article>
+
+<style>
+  .pc { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); transition: border-color 0.18s, box-shadow 0.18s; height: 100%; }
+  .pc:hover { border-color: var(--line-3); box-shadow: 0 10px 28px rgba(18, 28, 34, 0.07); }
+  .pc-media { display: block; }
+  .pc-media :global(.ph-box) { border: 0; border-bottom: 1px solid var(--line); }
+  .pc-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; flex: 1; }
+  .pc-meta { display: flex; justify-content: space-between; gap: 8px; }
+  .pc-type { font-size: 10.5px; color: var(--brand); }
+  .pc-name { font-size: 17px; font-stretch: 104%; letter-spacing: -0.01em; line-height: 1.25; }
+  .pc-name a { text-decoration: none; }
+  .pc-name a:hover { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
+  .pc-desc { font-size: 14px; color: var(--text-2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .pc-foot { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); }
+  .pc-price { font-family: var(--mono); font-size: 17px; font-weight: 500; color: var(--ink); }
+</style>

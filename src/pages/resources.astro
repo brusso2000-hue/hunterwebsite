@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const docs = [
+  {
+    kind: 'Catalog',
+    title: 'Micro-Metallizer Catalog',
+    text: 'Complete reference for the Micro-Metallizer plating pen line — every standard and heavy-duty pen, kits, accessories, and the application process for each metal.',
+    href: '/pdfs/Hunter_Micro-Metallizer_Catalog.pdf',
+    size: '116 KB',
+  },
+  {
+    kind: 'Brochure',
+    title: 'Carbitron 300 Brochure',
+    text: 'In-depth brochure for the Carbitron 300 tungsten-carbide diamond-dusting system. Specifications, application examples and operating guidance.',
+    href: '/pdfs/Carbitron_300_Brochure.pdf',
+    size: '1.7 MB',
+  },
+];
+
+// Answers are drawn from the Micro-Metallizer product data — keep in sync with src/lib/finishes.ts.
+const faq = [
+  {
+    q: 'What is brush plating?',
+    a: 'Brush plating (selective or spot plating) deposits metal only where it is needed. The solution is held in an absorbent tip on the positive lead of a DC supply; the part is connected to the negative. No tank or immersion is required.',
+  },
+  {
+    q: 'What is a copper flash, and when do I need one?',
+    a: 'A thin copper layer applied first so the next metal has a compatible base. Nickel, black nickel, chrome-color and rhodium pens plate over copper — on non-copper substrates, apply a copper flash first.',
+  },
+  {
+    q: 'Why plate nickel under gold or rhodium?',
+    a: 'Nickel is the standard underlayer for gold, rhodium and other precious-metal finishes. Rhodium plates over nickel; on non-copper parts the sequence is copper flash → nickel → rhodium.',
+  },
+  {
+    q: 'Can I plate stainless steel?',
+    a: 'Yes, with the correct prep. The standard Absorbent / Degreaser pen does not work on stainless — use the Stainless Steel Degreaser Pen (PL-1014) before any plating step.',
+  },
+  {
+    q: 'Can I plate aluminum or chromium?',
+    a: 'Copper, silver, tin and zinc pens are not for aluminum or chromium surfaces. Contact us to discuss your substrate before ordering.',
+  },
+  {
+    q: 'Standard or heavy-duty pen?',
+    a: 'Heavy-duty pens hold more plating volume per cartridge and are intended for thicker deposits, larger areas and high-wear surfaces. Standard pens suit spot work and lighter deposits.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<Base
+  title="Technical Resources — Catalogs, SDS & Brush Plating FAQ | Hunter Products"
+  description="Download the Micro-Metallizer catalog and Carbitron 300 brochure, request safety data sheets, and read answers to common brush plating questions."
+  schema={schema}
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Technical resources']]} />
+      <h1 class="h-1">Technical resources</h1>
+      <p class="lede">Catalogs, brochures, safety data and answers to the questions we hear most from plating technicians.</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <h2 class="h-3 marked">Documentation</h2>
+      <div class="docs">
+        {docs.map((d) => (
+          <article class="doc-card">
+            <div class="doc-icon mono" aria-hidden="true">PDF</div>
+            <div class="doc-body">
+              <p class="mono doc-kind">{d.kind} · {d.size}</p>
+              <h3 class="h-3">{d.title}</h3>
+              <p>{d.text}</p>
+              <div class="doc-ctas">
+                <a class="btn btn--primary btn--sm" href={d.href} download>Download</a>
+                <a class="btn btn--sm" href={d.href} target="_blank" rel="noopener">View</a>
+              </div>
+            </div>
+          </article>
+        ))}
+        <article class="doc-card">
+          <div class="doc-icon mono" aria-hidden="true">SDS</div>
+          <div class="doc-body">
+            <p class="mono doc-kind">On request</p>
+            <h3 class="h-3">Safety Data Sheets</h3>
+            <p>Current SDS for any Hunter plating solution or Carbitron consumable, sent by email.</p>
+            <div class="doc-ctas">
+              <a class="btn btn--primary btn--sm" href="/contact/?topic=sds#quote">Request SDS</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="faq">
+    <div class="wrap faq-wrap">
+      <div>
+        <p class="eyebrow">Brush plating FAQ</p>
+        <h2 class="h-1 faq-title">Common process questions.</h2>
+        <p class="lede">Don't see yours? Our team answers sequencing and compatibility questions every day.</p>
+        <a class="btn faq-btn" href="/contact/?topic=technical#quote">Ask a question <span class="arrow">→</span></a>
+      </div>
+      <div class="faq">
+        {faq.map((f, i) => (
+          <details open={i === 0}>
+            <summary><span class="mono">Q{String(i + 1).padStart(2, '0')}</span>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner h1 { margin-top: 14px; }
+
+  .docs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+  @media (max-width: 1000px) { .docs { grid-template-columns: 1fr; } }
+  .doc-card { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 22px; border: 1px solid var(--line); background: #fff; }
+  .doc-icon { width: 64px; height: 80px; display: grid; place-items: center; border: 1px solid var(--line-2); background: var(--bg-2); color: var(--brand-dk); font-size: 12px; font-weight: 500; position: relative; }
+  .doc-icon::after { content: ''; position: absolute; top: -1px; right: -1px; width: 14px; height: 14px; background: linear-gradient(225deg, #fff 50%, var(--line-2) 50%); }
+  .doc-body { display: grid; gap: 8px; align-content: start; }
+  .doc-body > p:not(.doc-kind) { font-size: 14.5px; color: var(--text-2); }
+  .doc-kind { font-size: 11px; color: var(--brand); }
+  .doc-ctas { display: flex; gap: 8px; margin-top: 8px; }
+
+  .faq-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  @media (max-width: 900px) { .faq-wrap { grid-template-columns: 1fr; } }
+  .faq-title { margin: 16px 0 18px; }
+  .faq-btn { margin-top: 24px; }
+  .faq { border-top: 1px solid var(--line-2); }
+  .faq details { border-bottom: 1px solid var(--line-2); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; gap: 16px; align-items: baseline; padding: 18px 32px 18px 0; font-weight: 600; font-size: 17px; color: var(--ink); position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; position: absolute; right: 4px; font-family: var(--mono); font-weight: 400; color: var(--text-3); }
+  .faq details[open] summary::after { content: '–'; }
+  .faq summary .mono { font-size: 11px; color: var(--brand); flex-shrink: 0; }
+  .faq details p { padding: 0 0 20px 44px; color: var(--text-2); max-width: 64ch; }
+</style>

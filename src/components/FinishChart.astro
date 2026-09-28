@@ -1,0 +1,88 @@
+---
+import { FINISHES, PREP } from '../lib/finishes';
+import { byId, fmtPrice, productUrl } from '../lib/catalog';
+
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+const rows = FINISHES.map((f) => ({ ...f, std: byId(f.standard), hd: f.heavy ? byId(f.heavy) : null }));
+---
+
+<div class="fc-scroll">
+  <table class="fc">
+    <caption class="sr-only">Micro-Metallizer plating compatibility by finish</caption>
+    <thead>
+      <tr>
+        <th scope="col">Finish</th>
+        <th scope="col">Deposits onto</th>
+        {!compact && <th scope="col">Required prep / underlayer</th>}
+        <th scope="col">Typical use</th>
+        <th scope="col" class="num">Standard pen</th>
+        <th scope="col" class="num">Heavy-duty pen</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row">
+            <span class="fc-sym">{r.symbol}</span>
+            <span>{r.metal}</span>
+          </th>
+          <td>{r.substrate ?? <span class="fc-na">See catalog</span>}</td>
+          {!compact && <td>{r.underlayer ?? <span class="fc-na">—</span>}</td>}
+          <td class="fc-use">{r.use}</td>
+          <td class="num">
+            <a href={productUrl(r.std)}><span class="sku">{r.std.sku}</span><span>{fmtPrice(r.std.price)}</span></a>
+          </td>
+          <td class="num">
+            {r.hd ? (
+              <a href={productUrl(r.hd)}><span class="sku">{r.hd.sku}</span><span>{fmtPrice(r.hd.price)}</span></a>
+            ) : (
+              <span class="fc-na">—</span>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<p class="fc-foot">
+  <span class="mono">Surface prep:</span>
+  {PREP.map((p, i) => (
+    <>
+      {i > 0 && ' · '}
+      <a href={productUrl(byId(p.id))}>{p.name}</a> — {p.substrate.toLowerCase()}
+    </>
+  ))}
+</p>
+
+<style>
+  .fc-scroll { overflow-x: auto; border: 1px solid var(--line); background: #fff; }
+  .fc { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 700px; }
+  .fc thead th {
+    position: sticky; top: 0;
+    background: var(--brand-deep); color: #fff;
+    font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    text-align: left; padding: 12px 14px; white-space: nowrap;
+  }
+  .fc td, .fc tbody th { padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: middle; text-align: left; color: var(--text-2); }
+  .fc tbody tr:nth-child(even) { background: var(--bg-2); }
+  .fc tbody tr:hover { background: var(--brand-wash); }
+  .fc tbody th { font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .fc tbody th > span:last-child { vertical-align: middle; }
+  .fc-sym {
+    display: inline-grid; place-items: center; width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;
+    border: 1px solid var(--line-2); background: #fff;
+    font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--brand-dk);
+  }
+  .fc .num { white-space: nowrap; }
+  .fc .num a { display: inline-grid; text-decoration: none; line-height: 1.3; }
+  .fc .num a span:last-child { font-family: var(--mono); font-weight: 500; color: var(--ink); }
+  .fc .num a:hover span:last-child { color: var(--brand-dk); text-decoration: underline; }
+  .fc-na { color: var(--text-3); }
+  .fc-use { min-width: 200px; }
+  .fc-foot { margin-top: 14px; font-size: 14px; color: var(--text-2); }
+  .fc-foot .mono { color: var(--ink); margin-right: 6px; font-size: 11px; }
+  .fc-foot a { color: var(--brand-dk); }
+</style>

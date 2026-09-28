@@ -1,0 +1,82 @@
+---
+import { SYSTEMS } from '../lib/catalog';
+import { APPLICATIONS } from '../lib/applications';
+import { SITE } from '../lib/site';
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="ftr">
+  <div class="ftr-cta">
+    <div class="wrap ftr-cta-in">
+      <div>
+        <p class="eyebrow">Application engineering</p>
+        <h2 class="h-2">Tell us the part, the substrate and the finish.<br />We'll specify the process.</h2>
+      </div>
+      <div class="ftr-cta-btns">
+        <a class="btn btn--primary" href="/contact/#quote">Request a quote <span class="arrow">→</span></a>
+        <a class="btn" href={SITE.phoneHref}>{SITE.phone}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr-main">
+    <div class="wrap ftr-grid">
+      <div class="ftr-brand">
+        <Logo height={52} variant="white" />
+        <p>Portable systems for brush plating, tungsten-carbide coating and micro-abrasive surface preparation. Designed and supported in {SITE.city}, New Jersey since {SITE.founded}.</p>
+        <address>
+          {SITE.street}<br />{SITE.city}, {SITE.region} {SITE.postal}<br />
+          <a href={SITE.phoneHref}>{SITE.phone}</a><br />
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </address>
+      </div>
+      <nav class="ftr-col" aria-label="Systems">
+        <h3 class="label">Systems</h3>
+        {SYSTEMS.map((s) => <a href={s.href}>{s.name}</a>)}
+        <a href="/store/">Shop all products</a>
+      </nav>
+      <nav class="ftr-col" aria-label="Applications">
+        <h3 class="label">Applications</h3>
+        {APPLICATIONS.map((a) => <a href={`/applications-electroplating/#${a.id}`}>{a.label}</a>)}
+      </nav>
+      <nav class="ftr-col" aria-label="Support">
+        <h3 class="label">Support</h3>
+        <a href="/resources/">Catalogs &amp; brochures</a>
+        <a href="/contact/?topic=sds#quote">Safety data sheets</a>
+        <a href="/contact/?topic=technical#quote">Technical questions</a>
+        <a href="/contact/#quote">Volume &amp; PO orders</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="ftr-base">
+    <div class="wrap ftr-base-in">
+      <span>© {year} {SITE.name}</span>
+      <span>{SITE.city}, {SITE.region} · Est. {SITE.founded}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ftr-cta { background: var(--bg-2); border-top: 1px solid var(--line); }
+  .ftr-cta-in { display: flex; justify-content: space-between; align-items: end; gap: 32px 48px; padding-top: clamp(48px, 6vw, 80px); padding-bottom: clamp(48px, 6vw, 80px); flex-wrap: wrap; }
+  .ftr-cta h2 { margin-top: 14px; max-width: 22ch; }
+  .ftr-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .ftr-main { background: var(--navy); color: var(--on-navy-2); padding: 64px 0 48px; }
+  .ftr-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+  @media (max-width: 900px) { .ftr-grid { grid-template-columns: 1fr 1fr; } .ftr-brand { grid-column: 1 / -1; } }
+  @media (max-width: 480px) { .ftr-grid { grid-template-columns: 1fr; } }
+  .ftr-brand { display: grid; gap: 20px; align-content: start; font-size: 15px; max-width: 380px; }
+  .ftr-brand address { font-style: normal; font-family: var(--mono); font-size: 13px; line-height: 1.8; }
+  .ftr-brand a { color: var(--on-navy); text-decoration: none; }
+  .ftr-brand a:hover { color: #fff; }
+  .ftr-col { display: grid; gap: 10px; align-content: start; }
+  .ftr-col .label { color: #fff; margin-bottom: 6px; font-weight: 500; }
+  .ftr-col a { color: var(--on-navy-2); text-decoration: none; font-size: 15px; }
+  .ftr-col a:hover { color: #fff; }
+
+  .ftr-base { background: var(--navy); border-top: 1px solid var(--navy-line); color: var(--on-navy-2); }
+  .ftr-base-in { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; }
+</style>

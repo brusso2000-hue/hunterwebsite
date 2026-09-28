@@ -1,0 +1,13 @@
+---
+// Hunter Products wordmark. Replace public/img/brand/hunter-logo*.png (or add
+// an .svg and point these paths at it) to update the logo site-wide.
+interface Props {
+  height?: number;
+  variant?: 'color' | 'white';
+}
+const { height = 44, variant = 'color' } = Astro.props;
+const src = variant === 'white' ? '/img/brand/hunter-logo-white.png' : '/img/brand/hunter-logo.png';
+const width = Math.round((height * 215) / 133);
+---
+
+<img src={src} alt="Hunter Products" width={width} height={height} style={`height:${height}px;width:auto`} />

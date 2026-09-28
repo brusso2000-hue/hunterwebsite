@@ -1,0 +1,244 @@
+---
+import { SYSTEMS } from '../lib/catalog';
+import { APPLICATIONS } from '../lib/applications';
+import { SITE } from '../lib/site';
+import SystemGlyph from './SystemGlyph.astro';
+import Logo from './Logo.astro';
+
+const path = Astro.url.pathname;
+const is = (prefix: string) => path.startsWith(prefix);
+---
+
+<header class="hdr" data-hdr>
+  <div class="hdr-strip">
+    <div class="wrap hdr-strip-in">
+      <span class="mono">Brush &amp; selective plating systems · Est. {SITE.founded} · {SITE.city}, {SITE.region}</span>
+      <span class="hdr-strip-r">
+        <a class="mono" href={SITE.phoneHref}>{SITE.phone}</a>
+        <a class="mono" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="hdr-bar">
+    <div class="wrap hdr-in">
+      <a href="/" class="brand" aria-label="Hunter Products — home">
+        <Logo height={46} />
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item" data-menu>
+            <button class:list={['nav-link', { on: is('/systems') || is('/products') }]} aria-expanded="false" aria-controls="menu-systems">
+              Systems <span class="chev" aria-hidden="true"></span>
+            </button>
+            <div class="mega" id="menu-systems">
+              <div class="wrap mega-in mega-in--systems">
+                {SYSTEMS.map((s) => (
+                  <a class="mega-sys" href={s.href}>
+                    <span class="mega-sys-glyph"><SystemGlyph system={s.id} /></span>
+                    <span class="mono mega-sys-proc">{s.process}</span>
+                    <span class="mega-sys-name">{s.name}</span>
+                    <span class="mega-sys-sum">{s.summary.split('.')[0]}.</span>
+                  </a>
+                ))}
+                <div class="mega-side">
+                  <span class="label">Shop by type</span>
+                  <a href="/store/?type=kit">Plating kits</a>
+                  <a href="/store/?type=pen">Plating pens</a>
+                  <a href="/store/?type=heavy-duty">Heavy-duty pens</a>
+                  <a href="/store/?type=prep">Surface prep</a>
+                  <a href="/store/?type=consumable">Carbide electrodes</a>
+                  <a href="/store/?type=equipment">Power &amp; cables</a>
+                  <a class="link" href="/store/">All products <span class="arrow">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item" data-menu>
+            <button class:list={['nav-link', { on: is('/applications') }]} aria-expanded="false" aria-controls="menu-apps">
+              Applications <span class="chev" aria-hidden="true"></span>
+            </button>
+            <div class="mega" id="menu-apps">
+              <div class="wrap">
+                <div class="mega-apps">
+                  {APPLICATIONS.map((a) => (
+                    <a class="mega-app" href={`/applications-electroplating/#${a.id}`}>
+                      <span class="mega-app-code mono">{a.code}</span>
+                      <span>
+                        <span class="mega-app-name">{a.label}</span>
+                        <span class="mega-app-lede">{a.lede}</span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a class:list={['nav-link', { on: is('/store') }]} href="/store/">Shop</a></li>
+          <li><a class:list={['nav-link', { on: is('/resources') }]} href="/resources/">Technical resources</a></li>
+          <li><a class:list={['nav-link', { on: is('/contact') }]} href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hdr-actions">
+        <button class="cart snipcart-checkout" aria-label="Open cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L20 8H6.2"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>
+          <span class="cart-n snipcart-items-count" aria-live="polite">0</span>
+        </button>
+        <a class="btn btn--primary btn--sm hdr-quote" href="/contact/#quote">Request a quote</a>
+        <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer" data-burger>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer" id="drawer" hidden data-drawer>
+    <div class="wrap drawer-in">
+      <p class="label">Systems</p>
+      {SYSTEMS.map((s) => (
+        <a class="drawer-big" href={s.href}><span>{s.name}</span><span class="mono">{s.process}</span></a>
+      ))}
+      <p class="label">Applications</p>
+      <div class="drawer-grid">
+        {APPLICATIONS.map((a) => <a href={`/applications-electroplating/#${a.id}`}>{a.label}</a>)}
+      </div>
+      <p class="label">More</p>
+      <div class="drawer-grid">
+        <a href="/store/">Shop all products</a>
+        <a href="/resources/">Technical resources</a>
+        <a href="/contact/">Contact</a>
+        <a href={SITE.phoneHref}>{SITE.phone}</a>
+      </div>
+      <a class="btn btn--primary btn--block" href="/contact/#quote">Request a quote</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hdr { position: sticky; top: -35px; z-index: 100; }
+  @media (max-width: 860px) { .hdr { top: 0; } }
+
+  .hdr-strip { background: var(--navy); color: var(--on-navy-2); }
+  .hdr-strip-in { display: flex; justify-content: space-between; align-items: center; height: 35px; gap: 16px; }
+  .hdr-strip .mono { font-size: 11px; text-decoration: none; }
+  .hdr-strip-r { display: flex; gap: 24px; }
+  .hdr-strip a:hover { color: #fff; }
+  @media (max-width: 860px) { .hdr-strip { display: none; } }
+
+  .hdr-bar { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); position: relative; }
+  .hdr-in { height: var(--header-h); display: flex; align-items: center; gap: 36px; }
+  .brand { flex-shrink: 0; display: block; }
+
+  .nav { flex: 1; }
+  .nav-list { display: flex; list-style: none; padding: 0; gap: 2px; }
+  .nav-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    height: var(--header-h); padding: 0 12px;
+    background: none; border: 0; cursor: pointer;
+    font-size: 15px; font-weight: 550; color: var(--text-2);
+    text-decoration: none; position: relative;
+  }
+  .nav-link:hover, .nav-link[aria-expanded='true'], .nav-link.on { color: var(--ink); }
+  .nav-link.on::after, .nav-link[aria-expanded='true']::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: -1px; height: 2px; background: var(--gold); }
+  .chev { width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+  [aria-expanded='true'] > .chev { transform: translateY(1px) rotate(225deg); }
+
+  .mega {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: #fff; border-bottom: 1px solid var(--line-2);
+    box-shadow: 0 24px 48px rgba(18, 28, 34, 0.12);
+    opacity: 0; visibility: hidden; transform: translateY(-4px);
+    transition: opacity 0.16s var(--ease), transform 0.16s var(--ease), visibility 0.16s;
+  }
+  [aria-expanded='true'] + .mega { opacity: 1; visibility: visible; transform: none; }
+
+  .mega-in { padding-top: 28px; padding-bottom: 32px; display: grid; gap: 16px; }
+  .mega-in--systems { grid-template-columns: repeat(3, 1fr) 220px; }
+  .mega-sys { display: grid; gap: 6px; align-content: start; padding: 18px; text-decoration: none; border: 1px solid var(--line); transition: border-color 0.18s, background 0.18s; }
+  .mega-sys:hover { border-color: var(--brand); background: var(--brand-wash); }
+  .mega-sys-glyph { height: 92px; color: var(--brand-dk); margin-bottom: 8px; background: var(--bg-2); display: grid; place-items: center; padding: 8px; }
+  .mega-sys-glyph :global(svg) { height: 100%; width: auto; }
+  .mega-sys-proc { font-size: 11px; color: var(--brand); }
+  .mega-sys-name { font-stretch: 108%; font-weight: 650; font-size: 19px; color: var(--ink); }
+  .mega-sys-sum { font-size: 14px; color: var(--text-2); line-height: 1.5; }
+  .mega-side { display: grid; gap: 9px; align-content: start; padding: 4px 0 0 20px; border-left: 1px solid var(--line); }
+  .mega-side a:not(.link) { text-decoration: none; color: var(--text-2); font-size: 15px; }
+  .mega-side a:not(.link):hover { color: var(--ink); }
+  .mega-side .link { margin-top: 6px; }
+
+  .mega-apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 28px 0 32px; }
+  .mega-app { display: flex; gap: 14px; padding: 18px; background: #fff; text-decoration: none; transition: background 0.18s; }
+  .mega-app:hover { background: var(--brand-wash); }
+  .mega-app-code { flex-shrink: 0; width: 34px; height: 34px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; }
+  .mega-app-name { display: block; font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 2px; }
+  .mega-app-lede { display: block; font-size: 14px; color: var(--text-2); line-height: 1.45; }
+
+  .hdr-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+  .cart { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 12px; background: #fff; border: 1px solid var(--line-2); border-radius: var(--radius); cursor: pointer; color: var(--ink); }
+  .cart:hover { border-color: var(--ink); }
+  .cart-n { font-family: var(--mono); font-size: 12px; min-width: 1ch; }
+
+  .burger { display: none; width: 42px; height: 38px; background: #fff; border: 1px solid var(--line-2); border-radius: var(--radius); cursor: pointer; position: relative; }
+  .burger span { position: absolute; left: 11px; right: 11px; height: 1.5px; background: var(--ink); transition: transform 0.2s; }
+  .burger span:first-child { top: 14px; }
+  .burger span:last-child { top: 21px; }
+  .burger[aria-expanded='true'] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .burger[aria-expanded='true'] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+  .drawer { background: #fff; border-bottom: 1px solid var(--line-2); max-height: calc(100dvh - var(--header-h)); overflow-y: auto; }
+  .drawer-in { display: grid; gap: 10px; padding-top: 20px; padding-bottom: 28px; }
+  .drawer .label { margin-top: 12px; }
+  .drawer-big { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-stretch: 108%; font-weight: 650; font-size: 19px; color: var(--ink); }
+  .drawer-big .mono { font-size: 10px; text-align: right; color: var(--brand); }
+  .drawer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .drawer-grid a { background: #fff; padding: 14px; text-decoration: none; font-size: 15px; color: var(--text-2); }
+  .drawer .btn { margin-top: 14px; }
+
+  @media (max-width: 1140px) {
+    .mega-in--systems { grid-template-columns: repeat(3, 1fr); }
+    .mega-side { display: none; }
+    .nav-link { padding: 0 9px; font-size: 14px; }
+  }
+  @media (max-width: 1000px) {
+    .nav, .hdr-quote { display: none; }
+    .burger { display: block; }
+  }
+</style>
+
+<script>
+  const hdr = document.querySelector<HTMLElement>('[data-hdr]')!;
+  const menus = [...hdr.querySelectorAll<HTMLElement>('[data-menu]')];
+  const closeAll = (except?: Element) =>
+    menus.forEach((m) => {
+      const b = m.querySelector('button')!;
+      if (b !== except) b.setAttribute('aria-expanded', 'false');
+    });
+
+  const canHover = matchMedia('(hover: hover)').matches;
+  menus.forEach((m) => {
+    const btn = m.querySelector('button')!;
+    let t: number | undefined;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      closeAll(btn);
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    if (canHover) {
+      m.addEventListener('mouseenter', () => { clearTimeout(t); closeAll(btn); btn.setAttribute('aria-expanded', 'true'); });
+      m.addEventListener('mouseleave', () => { t = window.setTimeout(() => btn.setAttribute('aria-expanded', 'false'), 140); });
+    }
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+  document.addEventListener('click', (e) => { if (!hdr.contains(e.target as Node)) closeAll(); });
+
+  const burger = hdr.querySelector<HTMLButtonElement>('[data-burger]')!;
+  const drawer = hdr.querySelector<HTMLElement>('[data-drawer]')!;
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    drawer.hidden = open;
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+</script>

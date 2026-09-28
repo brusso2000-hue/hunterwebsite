@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Photo from '../../components/Photo.astro';
+import { APPLICATIONS } from '../../lib/applications';
+import { bySlug, fmtPrice, productUrl, systemInfo } from '../../lib/catalog';
+import { photo, type PhotoSlotName } from '../../lib/photos';
+---
+
+<Base
+  title="Brush Plating Applications by Industry | Hunter Products"
+  description="How aerospace, medical, jewelry, electronics and industrial teams use Hunter Products brush plating pens, the Carbitron 300 and the Micro-Jet 200 — with recommended instruments for each workflow."
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Applications']]} />
+      <h1 class="h-1">Applications by industry</h1>
+      <p class="lede">
+        For more than 50 years, Hunter Products has equipped specialists in aerospace, medical, jewelry, electronics
+        and manufacturing with portable instruments that handle precision work conventional tank plating cannot.
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap doc page">
+    <aside>
+      <nav class="jump" aria-label="Industries">
+        <p class="jump-head mono">Industries</p>
+        {APPLICATIONS.map((a) => (
+          <a href={`#${a.id}`}><span class="mono">{a.code}</span>{a.label}</a>
+        ))}
+      </nav>
+    </aside>
+
+    <div class="main">
+      {APPLICATIONS.map((a) => (
+        <section class="ind" id={a.id}>
+          <header class="ind-head">
+            <span class="ind-code mono">{a.code}</span>
+            <div>
+              <p class="eyebrow">{a.label}</p>
+              <h2 class="h-2">{a.title}</h2>
+            </div>
+          </header>
+          <div class="ind-grid">
+            <div class="prose">
+              {a.body.map((t) => <p>{t}</p>)}
+              <p class="ind-sys">
+                <span class="mono">Systems:</span>
+                {a.systems.map((id) => <a class="tag tag--brand" href={systemInfo(id).href}>{systemInfo(id).name}</a>)}
+              </p>
+            </div>
+            <Photo photo={photo(`app-${a.id}` as PhotoSlotName)} aspect="3 / 2" />
+          </div>
+          <div class="ind-cols">
+            <div>
+              <h3 class="h-4 marked">Typical workflows</h3>
+              <ul class="ticks">{a.workflows.map((w) => <li>{w}</li>)}</ul>
+            </div>
+            <div>
+              <h3 class="h-4 marked">Recommended instruments</h3>
+              <table class="rec">
+                <tbody>
+                  {a.recommended.map((slug) => {
+                    const p = bySlug(slug);
+                    return (
+                      <tr>
+                        <td class="sku">{p.sku}</td>
+                        <td><a href={productUrl(p)}>{p.name}</a></td>
+                        <td class="rec-price">{fmtPrice(p.price)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <section class="help">
+        <div>
+          <h2 class="h-3">Need help selecting the right system?</h2>
+          <p>If your use case isn't an obvious fit for one of the standard kits, we can recommend a custom configuration.</p>
+        </div>
+        <div class="help-ctas">
+          <a class="btn btn--ghost-light" href="/store/">Browse catalog</a>
+          <a class="btn btn--primary" href="/contact/?topic=technical#quote">Ask an engineer <span class="arrow">→</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner h1 { margin-top: 14px; }
+  .page { padding-top: 40px; padding-bottom: clamp(64px, 8vw, 104px); }
+  .main { display: grid; gap: clamp(56px, 6vw, 88px); min-width: 0; }
+
+  .jump { display: grid; border: 1px solid var(--line); position: sticky; top: calc(var(--header-h) + 20px); background: #fff; }
+  @media (max-width: 960px) { .jump { position: static; grid-template-columns: 1fr 1fr; } .jump-head { grid-column: 1 / -1; } }
+  .jump-head { background: var(--brand-deep); color: #fff; padding: 11px 14px; font-size: 11px; font-weight: 500; }
+  .jump a { display: flex; gap: 12px; align-items: center; padding: 11px 14px; border-top: 1px solid var(--line); text-decoration: none; font-size: 14.5px; color: var(--text-2); }
+  .jump a:hover { background: var(--brand-wash); color: var(--ink); }
+  .jump a .mono { font-size: 10.5px; color: var(--brand); width: 22px; }
+
+  .ind { display: grid; gap: 28px; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .ind + .ind { padding-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
+  .ind-head { display: flex; gap: 18px; align-items: start; }
+  .ind-code { flex-shrink: 0; width: 48px; height: 48px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 13px; }
+  .ind-head h2 { margin-top: 10px; }
+  .ind-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 3vw, 40px); align-items: start; }
+  @media (max-width: 1080px) { .ind-grid { grid-template-columns: 1fr; } }
+  .ind-sys { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 18px !important; }
+  .ind-sys .mono { font-size: 11px; color: var(--text-3); }
+  .ind-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 40px); }
+  @media (max-width: 800px) { .ind-cols { grid-template-columns: 1fr; } }
+  .ind-cols h3 { margin-bottom: 16px; }
+
+  .rec { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); }
+  .rec td { padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  .rec tr:nth-child(even) { background: var(--bg-2); }
+  .rec .sku { white-space: nowrap; font-size: 12.5px; }
+  .rec a { color: var(--ink); text-decoration: none; font-weight: 550; }
+  .rec a:hover { color: var(--brand-dk); text-decoration: underline; }
+  .rec-price { text-align: right; font-family: var(--mono); color: var(--ink); white-space: nowrap; }
+
+  .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .help h2 { color: #fff; margin-bottom: 6px; }
+  .help-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+</style>

@@ -1,0 +1,187 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CatalogTree from '../../components/CatalogTree.astro';
+import Photo from '../../components/Photo.astro';
+import PartsTable from '../../components/PartsTable.astro';
+import FinishChart from '../../components/FinishChart.astro';
+import { productsForSystem, systemInfo, typeOf, fmtPrice, productUrl } from '../../lib/catalog';
+import { APPLICATIONS } from '../../lib/applications';
+import { photo } from '../../lib/photos';
+import { SYSTEM_PAGES, type SystemPage } from '../../lib/systemPages';
+import { SITE } from '../../lib/site';
+
+export function getStaticPaths() {
+  return SYSTEM_PAGES.map((page) => ({ params: { system: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props as { page: SystemPage };
+const sys = systemInfo(page.id);
+const items = productsForSystem(page.id);
+const fromPrice = Math.min(...items.filter((p) => ['system', 'kit'].includes(typeOf(p))).map((p) => p.price));
+const kits = items.filter((p) => typeOf(p) === 'kit');
+const apps = APPLICATIONS.filter((a) => a.systems.includes(page.id));
+const spec = (p: (typeof items)[number], key: string) => p.specs.find(([k]) => k === key)?.[1] ?? '—';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.origin}/` },
+      { '@type': 'ListItem', position: 2, name: sys.name, item: `${SITE.origin}${sys.href}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: page.title,
+    itemListElement: items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.origin}${productUrl(p)}`, name: p.name })),
+  },
+];
+---
+
+<Base title={page.metaTitle} description={page.metaDescription} schema={schema}>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Systems', '/#systems'], [sys.name]]} />
+      <p class="mono banner-proc">{sys.process}{sys.model && ` · Part no. ${sys.model}`}</p>
+      <h1 class="h-1">{page.title}</h1>
+    </div>
+  </div>
+
+  <div class="wrap doc page">
+    <aside><CatalogTree currentSystem={page.id} /></aside>
+
+    <div class="main">
+      <section class="intro">
+        <div>
+          <h2 class="h-2 marked">{page.headline}</h2>
+          <div class="prose">{page.intro.map((t) => <p>{t}</p>)}</div>
+          <div class="ctas">
+            <a class="btn btn--primary" href="/contact/?topic=quote#quote">Request more information <span class="arrow">→</span></a>
+            <a class="btn" href="#parts">Parts &amp; pricing</a>
+          </div>
+          <p class="from mono">From <strong>{fmtPrice(fromPrice)}</strong> · ships direct from {SITE.city}, NJ</p>
+        </div>
+        <Photo photo={photo(page.photo)} aspect="4 / 3" eager />
+      </section>
+
+      <section class="blocks">
+        {page.blocks.map((b) => (
+          <div class="blk">
+            <h3 class="h-4 marked">{b.title}</h3>
+            <ul class="ticks">{b.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))}
+      </section>
+
+      {kits.length > 0 && (
+        <section class="sec">
+          <div class="sec-head">
+            <h2 class="h-3 marked">Kit configurations</h2>
+            <p class="mono">Each kit includes power supply and connector cables</p>
+          </div>
+          <div class="kits">
+            {kits.map((k) => (
+              <a class="kit" href={productUrl(k)}>
+                <span class="sku">{k.sku}</span>
+                <span class="kit-name">{k.name}</span>
+                <span class="kit-pens"><span class="label">Pens</span>{spec(k, 'Pens Included')}</span>
+                <span class="kit-best"><span class="label">Best for</span>{spec(k, 'Best For')}</span>
+                <span class="kit-price">{fmtPrice(k.price)}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {page.id === 'micro-metallizer' && (
+        <section class="sec">
+          <div class="sec-head">
+            <h2 class="h-3 marked">Plating compatibility</h2>
+            <p class="mono">Finish · substrate · required underlayer</p>
+          </div>
+          <FinishChart />
+        </section>
+      )}
+
+      <section class="sec" id="parts">
+        <div class="sec-head">
+          <h2 class="h-3 marked">Parts &amp; pricing</h2>
+          <p class="mono">{items.length} items · USD</p>
+        </div>
+        <PartsTable products={items} caption={`${sys.name} parts and pricing`} />
+      </section>
+
+      {apps.length > 0 && (
+        <section class="sec">
+          <div class="sec-head"><h2 class="h-3 marked">Industries using the {sys.name}</h2></div>
+          <div class="apps">
+            {apps.map((a) => (
+              <a class="app" href={`/applications-electroplating/#${a.id}`}>
+                <span class="app-code mono">{a.code}</span>
+                <span><strong>{a.label}</strong><br />{a.lede}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="help">
+        <div>
+          <h2 class="h-3">Not sure which configuration you need?</h2>
+          <p>Tell us the part, the substrate and the finish. Our team will recommend a kit or a custom configuration.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn--ghost-light" href={SITE.phoneHref}>{SITE.phone}</a>
+          <a class="btn btn--primary" href="/contact/?topic=technical#quote">Ask an engineer <span class="arrow">→</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 12px; }
+  .banner-proc { color: var(--brand); margin-top: 16px; }
+  .page { padding-top: 40px; padding-bottom: clamp(64px, 8vw, 104px); }
+  @media (max-width: 960px) { .page aside { order: 2; } }
+  .main { display: grid; gap: clamp(44px, 5vw, 64px); min-width: 0; }
+
+  .intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 4vw, 48px); align-items: start; }
+  @media (max-width: 1100px) { .intro { grid-template-columns: 1fr; } }
+  .intro h2 { margin-bottom: 20px; }
+  .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .from { margin-top: 16px; font-size: 11.5px; color: var(--text-3); }
+  .from strong { color: var(--ink); font-weight: 500; font-size: 13px; }
+
+  .blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 800px) { .blocks { grid-template-columns: 1fr; } }
+  .blk { background: #fff; padding: 24px; display: grid; gap: 16px; align-content: start; }
+  .blk .ticks { font-size: 15px; }
+
+  .sec { display: grid; gap: 18px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 12px 24px; flex-wrap: wrap; }
+  .sec-head .mono { font-size: 11px; color: var(--text-3); }
+
+  .kits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 700px) { .kits { grid-template-columns: 1fr; } }
+  .kit { display: grid; gap: 8px; padding: 20px; border: 1px solid var(--line); text-decoration: none; background: #fff; transition: border-color 0.18s, background 0.18s; }
+  .kit:hover { border-color: var(--brand); background: var(--brand-wash); }
+  .kit-name { font-weight: 650; font-size: 18px; color: var(--ink); font-stretch: 105%; }
+  .kit-pens, .kit-best { display: grid; gap: 2px; font-size: 14px; color: var(--text-2); }
+  .kit-price { font-family: var(--mono); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--line); }
+
+  .apps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 700px) { .apps { grid-template-columns: 1fr; } }
+  .app { display: flex; gap: 14px; padding: 18px; background: #fff; text-decoration: none; font-size: 14.5px; color: var(--text-2); line-height: 1.5; }
+  .app:hover { background: var(--brand-wash); }
+  .app strong { color: var(--ink); font-size: 16px; }
+  .app-code { flex-shrink: 0; width: 34px; height: 34px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; }
+
+  .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .help h2 { color: #fff; margin-bottom: 6px; }
+  .help .ctas { margin-top: 0; }
+</style>

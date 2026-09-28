@@ -1,0 +1,55 @@
+---
+import { fmtPrice, productUrl, typeOf, TYPE_LABEL, type Product } from '../lib/catalog';
+import AddToCart from './AddToCart.astro';
+
+interface Props {
+  products: Product[];
+  caption: string;
+}
+const { products, caption } = Astro.props;
+---
+
+<div class="pt-scroll">
+  <table class="pt">
+    <caption class="sr-only">{caption}</caption>
+    <thead>
+      <tr>
+        <th scope="col">Part no.</th>
+        <th scope="col">Description</th>
+        <th scope="col">Type</th>
+        <th scope="col" class="r">Price</th>
+        <th scope="col"><span class="sr-only">Order</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {products.map((p) => (
+        <tr>
+          <td class="pt-sku">{p.sku}</td>
+          <td>
+            <a class="pt-name" href={productUrl(p)}>{p.name}</a>
+            <span class="pt-desc">{p.description}</span>
+          </td>
+          <td class="pt-type">{TYPE_LABEL[typeOf(p)]}</td>
+          <td class="r pt-price">{fmtPrice(p.price)}</td>
+          <td class="r"><AddToCart product={p} size="sm" label="Add" /></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .pt-scroll { overflow-x: auto; border: 1px solid var(--line); background: #fff; }
+  .pt { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 14.5px; }
+  .pt thead th { background: var(--brand-deep); color: #fff; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; padding: 11px 14px; white-space: nowrap; }
+  .pt td { padding: 12px 14px; border-top: 1px solid var(--line); vertical-align: middle; }
+  .pt tbody tr:nth-child(even) { background: var(--bg-2); }
+  .pt tbody tr:hover { background: var(--brand-wash); }
+  .pt .r { text-align: right; }
+  .pt-sku { font-family: var(--mono); font-size: 13px; color: var(--text-2); white-space: nowrap; }
+  .pt-name { display: block; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .pt-name:hover { color: var(--brand-dk); text-decoration: underline; }
+  .pt-desc { display: block; margin-top: 2px; font-size: 13.5px; color: var(--text-3); max-width: 58ch; }
+  .pt-type { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--brand); white-space: nowrap; }
+  .pt-price { font-family: var(--mono); font-weight: 500; color: var(--ink); white-space: nowrap; }
+</style>

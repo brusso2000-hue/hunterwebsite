@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products, SYSTEMS, systemOf, typeOf, TYPE_LABEL, metalOf, productUrl, type ProductType } from '../lib/catalog';
+import { SITE } from '../lib/site';
+
+const TYPES: ProductType[] = ['kit', 'pen', 'heavy-duty', 'prep', 'system', 'consumable', 'equipment'];
+const count = (fn: (p: (typeof products)[number]) => boolean) => products.filter(fn).length;
+
+// Kits and systems first, then pens, then accessories.
+const order: Record<ProductType, number> = { system: 0, kit: 1, prep: 2, pen: 3, 'heavy-duty': 4, equipment: 5, consumable: 6 };
+const sorted = [...products].sort((a, b) => order[typeOf(a)] - order[typeOf(b)]);
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Hunter Products catalog',
+    itemListElement: sorted.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.origin}${productUrl(p)}`, name: p.name })),
+  },
+];
+---
+
+<Base
+  title="Shop Brush Plating Pens, Kits & Systems | Hunter Products"
+  description="Order Micro-Metallizer brush plating pens and kits, Carbitron 300 tungsten-carbide systems and electrodes, and the Micro-Jet 200 direct from the manufacturer."
+  schema={schema}
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Shop']]} />
+      <h1 class="h-1">Product catalog</h1>
+      <p class="lede">Order direct from the manufacturer. Volume pricing, formal quotations and purchase orders available on request.</p>
+    </div>
+  </div>
+
+  <div class="wrap doc page" data-store>
+    <aside class="filters" aria-label="Filter products">
+      <div class="f-search">
+        <label class="sr-only" for="q">Search products</label>
+        <input class="input" id="q" type="search" placeholder="Search part no., metal…" data-q />
+      </div>
+
+      <fieldset class="f-group">
+        <legend class="f-head mono">System</legend>
+        <label class="f-opt"><input type="radio" name="line" value="" checked /> <span>All systems</span> <span class="f-n">{products.length}</span></label>
+        {SYSTEMS.map((s) => (
+          <label class="f-opt"><input type="radio" name="line" value={s.id} /> <span>{s.name}</span> <span class="f-n">{count((p) => systemOf(p) === s.id)}</span></label>
+        ))}
+      </fieldset>
+
+      <fieldset class="f-group">
+        <legend class="f-head mono">Product type</legend>
+        <label class="f-opt"><input type="radio" name="type" value="" checked /> <span>All types</span></label>
+        {TYPES.map((t) => (
+          <label class="f-opt"><input type="radio" name="type" value={t} /> <span>{TYPE_LABEL[t]}</span> <span class="f-n">{count((p) => typeOf(p) === t)}</span></label>
+        ))}
+      </fieldset>
+
+      <div class="f-help">
+        <p class="h-4">Need a quote or PO?</p>
+        <p>Volume pricing and purchase orders for companies and institutions.</p>
+        <a class="link" href="/contact/?topic=quote#quote">Request a quote <span class="arrow">→</span></a>
+      </div>
+    </aside>
+
+    <div class="results">
+      <div class="r-bar">
+        <p class="mono" aria-live="polite"><span data-count>{products.length}</span> products</p>
+        <button class="link r-clear" type="button" data-clear hidden>Clear filters ×</button>
+      </div>
+      <div class="grid">
+        {sorted.map((p) => (
+          <div
+            class="cell"
+            data-line={systemOf(p)}
+            data-type={typeOf(p)}
+            data-text={[p.name, p.sku, p.description, metalOf(p) ?? ''].join(' ').toLowerCase()}
+          >
+            <ProductCard product={p} />
+          </div>
+        ))}
+      </div>
+      <p class="empty" hidden data-empty>
+        No products match. <a href="/contact/?topic=technical#quote">Ask us</a> — we may have a configuration that fits.
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner h1 { margin-top: 14px; }
+  .page { padding-top: 36px; padding-bottom: clamp(64px, 8vw, 104px); }
+
+  .filters { display: grid; gap: 20px; position: sticky; top: calc(var(--header-h) + 20px); }
+  @media (max-width: 960px) { .filters { position: static; grid-template-columns: 1fr 1fr; } .f-search, .f-help { grid-column: 1 / -1; } }
+  @media (max-width: 520px) { .filters { grid-template-columns: 1fr; } }
+  .f-group { border: 1px solid var(--line); padding: 0 0 8px; margin: 0; min-width: 0; }
+  .f-head { display: block; width: 100%; background: var(--brand-deep); color: #fff; padding: 10px 14px; font-size: 11px; font-weight: 500; margin-bottom: 6px; float: left; }
+  .f-opt { clear: both; display: flex; align-items: center; gap: 10px; padding: 6px 14px; font-size: 14.5px; color: var(--text-2); cursor: pointer; }
+  .f-opt:hover { color: var(--ink); background: var(--bg-2); }
+  .f-opt input { accent-color: var(--brand-deep); margin: 0; }
+  .f-opt:has(input:checked) { color: var(--ink); font-weight: 600; }
+  .f-n { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--text-3); font-weight: 400; }
+  .f-help { border: 1px solid var(--line); background: var(--bg-2); padding: 18px; display: grid; gap: 8px; font-size: 14px; color: var(--text-2); }
+
+  .results { min-width: 0; }
+  .r-bar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .r-bar .mono { color: var(--text-3); font-size: 11.5px; }
+  .r-clear { background: none; border: 0; cursor: pointer; padding: 0; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 1200px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+  .cell[hidden] { display: none; }
+  .empty { padding: 40px 0; color: var(--text-2); }
+  .empty a { color: var(--brand-dk); }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-store]')!;
+  const cells = [...root.querySelectorAll<HTMLElement>('.cell')];
+  const q = root.querySelector<HTMLInputElement>('[data-q]')!;
+  const countEl = root.querySelector('[data-count]')!;
+  const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+  const clear = root.querySelector<HTMLButtonElement>('[data-clear]')!;
+  const radio = (name: string) => root.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)!.value;
+  const set = (name: string, v: string) => {
+    const el = root.querySelector<HTMLInputElement>(`input[name="${name}"][value="${CSS.escape(v)}"]`);
+    if (el) el.checked = true;
+  };
+
+  // Honor ?line= / ?type= / ?q= deep links from the nav and old /store-pen/ redirect.
+  const params = new URLSearchParams(location.search);
+  set('line', params.get('line') ?? '');
+  set('type', params.get('type') ?? '');
+  q.value = params.get('q') ?? '';
+
+  function apply(push = true) {
+    const line = radio('line');
+    const type = radio('type');
+    const terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let n = 0;
+    for (const c of cells) {
+      const show =
+        (!line || c.dataset.line === line) &&
+        (!type || c.dataset.type === type) &&
+        terms.every((t) => c.dataset.text!.includes(t));
+      c.hidden = !show;
+      if (show) n++;
+    }
+    countEl.textContent = String(n);
+    empty.hidden = n > 0;
+    clear.hidden = !line && !type && !terms.length;
+    if (push) {
+      const p = new URLSearchParams();
+      if (line) p.set('line', line);
+      if (type) p.set('type', type);
+      if (q.value.trim()) p.set('q', q.value.trim());
+      history.replaceState(null, '', p.size ? `?${p}` : location.pathname);
+    }
+  }
+
+  root.addEventListener('change', () => apply());
+  q.addEventListener('input', () => apply());
+  clear.addEventListener('click', () => { set('line', ''); set('type', ''); q.value = ''; apply(); });
+  apply(false);
+</script>
