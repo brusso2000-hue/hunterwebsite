@@ -109,49 +109,11 @@ const steps = [
     </div>
   </section>
 
-  <!-- ─── Electronics & PCB (core market) ───────────────── -->
-  <section class="section elx" id="electronics">
-    <div class="wrap elx-in">
-      <div class="elx-copy">
-        <p class="eyebrow">Electronics &amp; PCB</p>
-        <h2 class="h-1">The standard for contact and PCB rework.</h2>
-        <p class="lede">
-          Electronics manufacturers and rework technicians rely on the Micro-Metallizer for precise, localized plating. The pen tip plates a single
-          pad, pin or finger without bridging its neighbors or contaminating the board.
-        </p>
-        <ul class="ticks elx-ticks">
-          {electronics.workflows.map((w) => <li>{w}</li>)}
-        </ul>
-        <div class="hero-ctas">
-          <a class="btn btn--primary" href={`/applications-electroplating/#${electronics.id}`}>Electronics applications <span class="arrow">→</span></a>
-          <a class="btn" href="/contact/?topic=technical#quote">Discuss your board or connector</a>
-        </div>
-      </div>
-      <div class="elx-side">
-        <Photo photo={photo('app-electronics-pcb')} aspect="3 / 2" />
-        <a class="elx-kit" href={productUrl(electronicsKit)}>
-          <span class="mono elx-kit-tag">Recommended starting kit</span>
-          <span class="elx-kit-name">{electronicsKit.name}</span>
-          <span class="elx-kit-desc">{electronicsKit.description}</span>
-          <span class="elx-kit-price">{fmtPrice(electronicsKit.price)} <span class="sku">{electronicsKit.sku}</span></span>
-        </a>
-        <div class="elx-pens">
-          {electronicsPens.map((p) => (
-            <a href={productUrl(p)}>
-              <span>{p.name.replace(' Plating Pen', '')}</span>
-              <span class="mono">{fmtPrice(p.price)}</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── What brush plating is ────────────────────────── -->
+  <!-- ─── How brush plating works (explainer + sequence) ─ -->
   <section class="section section--alt">
     <div class="wrap bp">
       <div>
-        <p class="eyebrow">The process</p>
+        <p class="eyebrow">How it works</p>
         <h2 class="h-1 bp-title">What is brush plating?</h2>
         <div class="prose">
           <p>
@@ -179,6 +141,22 @@ const steps = [
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="wrap seq">
+      <div class="seq-head">
+        <h3 class="h-3 marked">A typical Micro-Metallizer sequence</h3>
+        <p>Each step is a separate pen on the same power supply. Swap the cartridge, keep working.</p>
+      </div>
+      <ol class="steps">
+        {steps.map((s) => (
+          <li class="step">
+            <Photo photo={s.slot} aspect="4 / 3" />
+            <p class="mono step-n">Step {s.n}</p>
+            <h3 class="h-3">{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -215,71 +193,61 @@ const steps = [
     </div>
   </section>
 
-  <!-- ─── Process sequence ─────────────────────────────── -->
-  <section class="section section--navy">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Plating sequence</p>
-        <h2 class="h-1">A typical Micro-Metallizer sequence.</h2>
-        <p class="lede">Each step is a separate pen on the same power supply. Swap the cartridge, keep working.</p>
-      </div>
-      <ol class="steps">
-        {steps.map((s) => (
-          <li class="step">
-            <Photo photo={s.slot} aspect="4 / 3" />
-            <p class="mono step-n">Step {s.n}</p>
-            <h3 class="h-3">{s.title}</h3>
-            <p>{s.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- ─── Finish chart ─────────────────────────────────── -->
-  <section class="section">
+  <!-- ─── Industries (electronics-led) ──────────────────── -->
+  <section class="section section--alt" id="industries">
     <div class="wrap">
       <div class="section-head section-head--split">
         <div>
-          <p class="eyebrow">Plating compatibility</p>
-          <h2 class="h-1">Finishes, substrates &amp; underlayers.</h2>
-          <p class="lede">Pick the deposit, check the substrate, see what prep it needs — then order the pen.</p>
-        </div>
-        <a class="link" href="/systems/micro-metallizer/">Micro-Metallizer system <span class="arrow">→</span></a>
-      </div>
-      <FinishChart compact />
-    </div>
-  </section>
-
-  <!-- ─── Applications ─────────────────────────────────── -->
-  <section class="section section--alt">
-    <div class="wrap">
-      <div class="section-head section-head--split">
-        <div>
-          <p class="eyebrow">Applications</p>
+          <p class="eyebrow">Industries</p>
           <h2 class="h-1">Proven in electronics. <span class="hero-dim">Built for aerospace, medical and beyond.</span></h2>
         </div>
         <a class="link" href="/applications-electroplating/">All applications <span class="arrow">→</span></a>
       </div>
-      <div class="apps">
-        <a class="app app--core" href={`/applications-electroplating/#${electronics.id}`}>
-          <span class="app-code mono">{electronics.code}</span>
-          <h3 class="h-2">{electronics.label}</h3>
-          <p>{electronics.lede}</p>
-          <ul class="ticks">
-            {electronics.workflows.slice(0, 3).map((w) => <li>{w}</li>)}
-          </ul>
-          <span class="link">Electronics applications <span class="arrow">→</span></span>
+      <div class="elx" id="electronics">
+    <div class="elx-in">
+      <div class="elx-copy">
+        <p class="eyebrow">Electronics &amp; PCB</p>
+        <h3 class="h-2">The standard for contact and PCB rework.</h3>
+        <p class="lede">
+          Electronics manufacturers and rework technicians rely on the Micro-Metallizer for precise, localized plating. The pen tip plates a single
+          pad, pin or finger without bridging its neighbors or contaminating the board.
+        </p>
+        <ul class="ticks elx-ticks">
+          {electronics.workflows.map((w) => <li>{w}</li>)}
+        </ul>
+        <div class="hero-ctas">
+          <a class="btn btn--primary" href={`/applications-electroplating/#${electronics.id}`}>Electronics applications <span class="arrow">→</span></a>
+          <a class="btn" href="/contact/?topic=technical#quote">Discuss your board or connector</a>
+        </div>
+      </div>
+      <div class="elx-side">
+        <Photo photo={photo('app-electronics-pcb')} aspect="3 / 2" />
+        <a class="elx-kit" href={productUrl(electronicsKit)}>
+          <span class="mono elx-kit-tag">Recommended starting kit</span>
+          <span class="elx-kit-name">{electronicsKit.name}</span>
+          <span class="elx-kit-desc">{electronicsKit.description}</span>
+          <span class="elx-kit-price">{fmtPrice(electronicsKit.price)} <span class="sku">{electronicsKit.sku}</span></span>
         </a>
-        <a class="app app--growth" href={`/applications-electroplating/#${growth.id}`}>
-          <span class="app-code mono">{growth.code}</span>
-          <h3 class="h-2">{growth.label}</h3>
+        <div class="elx-pens">
+          {electronicsPens.map((p) => (
+            <a href={productUrl(p)}>
+              <span>{p.name.replace(' Plating Pen', '')}</span>
+              <span class="mono">{fmtPrice(p.price)}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+      </div>
+      <a class="growth" href={`/applications-electroplating/#${growth.id}`}>
+        <span class="app-code mono">{growth.code}</span>
+        <div class="growth-copy">
+          <h3 class="h-3">{growth.label}</h3>
           <p>{growth.lede} The same pen workflow our electronics customers rely on — applied to aircraft connectors, avionics contacts, fasteners and fittings.</p>
-          <ul class="ticks">
-            {growth.workflows.slice(0, 3).map((w) => <li>{w}</li>)}
-          </ul>
-          <span class="link">Discuss an aerospace application <span class="arrow">→</span></span>
-        </a>
+        </div>
+        <span class="link">Discuss an aerospace application <span class="arrow">→</span></span>
+      </a>
+      <div class="apps">
         {others.map((a) => (
           <a class="app" href={`/applications-electroplating/#${a.id}`}>
             <span class="app-code mono">{a.code}</span>
@@ -292,13 +260,28 @@ const steps = [
     </div>
   </section>
 
-  <!-- ─── Featured products ────────────────────────────── -->
+  <!-- ─── Finish chart ─────────────────────────────────── -->
   <section class="section">
     <div class="wrap">
       <div class="section-head section-head--split">
         <div>
-          <p class="eyebrow">Most ordered</p>
-          <h2 class="h-1">Order direct from the manufacturer.</h2>
+          <p class="eyebrow">Specify</p>
+          <h2 class="h-1">Finishes, substrates &amp; underlayers.</h2>
+          <p class="lede">Pick the deposit, check the substrate, see what prep it needs — then order the pen.</p>
+        </div>
+        <a class="link" href="/systems/micro-metallizer/">Micro-Metallizer system <span class="arrow">→</span></a>
+      </div>
+      <FinishChart compact />
+    </div>
+  </section>
+
+  <!-- ─── Featured products ────────────────────────────── -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Order</p>
+          <h2 class="h-1">Most-ordered products, direct from the manufacturer.</h2>
         </div>
         <a class="link" href="/store/">Shop all products <span class="arrow">→</span></a>
       </div>
@@ -309,7 +292,7 @@ const steps = [
   </section>
 
   <!-- ─── Company / resources ──────────────────────────── -->
-  <section class="section section--alt" id="about">
+  <section class="section" id="about">
     <div class="wrap about">
       <div>
         <p class="eyebrow">Hunter Products Inc.</p>
@@ -387,32 +370,29 @@ const steps = [
   .steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
   @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
   .step { display: grid; gap: 10px; align-content: start; }
-  .step :global(.ph-box) { border-color: var(--navy-line); }
-  .step-n { color: var(--gold-hi); margin-top: 8px; }
-  .step p:last-child { color: var(--on-navy-2); font-size: 15px; }
+  .step-n { color: var(--gold); margin-top: 8px; }
+  .step p:last-child { color: var(--text-2); font-size: 15px; }
+  .seq { margin-top: clamp(48px, 6vw, 72px); padding-top: clamp(40px, 5vw, 56px); border-top: 1px solid var(--line-2); }
+  .seq-head { display: flex; justify-content: space-between; align-items: end; gap: 12px 32px; flex-wrap: wrap; margin-bottom: 28px; }
+  .seq-head p { color: var(--text-2); max-width: 52ch; }
 
   .apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (max-width: 1000px) { .apps { grid-template-columns: 1fr 1fr; } }
+  .growth { display: grid; grid-template-columns: auto 1fr auto; gap: 20px 28px; align-items: center; margin: 20px 0; padding: clamp(22px, 3vw, 30px); background: var(--navy); color: var(--on-navy-2); text-decoration: none; border-left: 3px solid var(--gold); transition: background 0.18s; }
+  .growth:hover { background: var(--navy-2); }
+  .growth h3 { color: #fff; margin-bottom: 4px; }
+  .growth p { font-size: 15px; max-width: 70ch; }
+  .growth .app-code { background: var(--gold); color: var(--navy); margin: 0; }
+  .growth .link { color: #fff; }
+  @media (max-width: 800px) { .growth { grid-template-columns: 1fr; } }
   @media (max-width: 560px) { .apps { grid-template-columns: 1fr; } }
   .app { display: grid; gap: 10px; align-content: start; padding: 26px; background: #fff; text-decoration: none; transition: background 0.18s; }
   .app:hover { background: var(--brand-wash); }
   .app-code { width: 36px; height: 36px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; margin-bottom: 6px; }
   .app p { color: var(--text-2); font-size: 15px; }
   .app-sys { font-size: 10.5px; color: var(--brand); margin-top: 6px; }
-  .app--growth, .app--core { grid-column: span 2; padding: clamp(26px, 3vw, 36px); }
-  .apps .app--growth { background: var(--navy); color: var(--on-navy-2); }
-  .apps .app--growth:hover { background: var(--navy-2); }
-  .app--growth h3 { color: #fff; }
-  .app--growth p, .app--growth .ticks li { color: var(--on-navy-2); }
-  .app--growth .ticks li::before { background: var(--gold-hi); }
-  .app--growth .app-code { background: var(--gold); color: var(--navy); }
-  .app--growth .link { color: #fff; margin-top: 8px; }
-  .app--core { position: relative; }
-  .app--core .link, .app--growth .link { margin-top: 8px; }
-  .app .ticks li { font-size: 14.5px; }
-  @media (max-width: 700px) { .app--growth, .app--core { grid-column: auto; } }
 
-  .elx { border-bottom: 1px solid var(--line); }
+  .elx { background: #fff; border: 1px solid var(--line); padding: clamp(24px, 3.5vw, 44px); }
   .elx-in { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
   @media (max-width: 920px) { .elx-in { grid-template-columns: 1fr; } }
   .elx-copy { display: grid; gap: 20px; }
