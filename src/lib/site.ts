@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Hunter Products Inc.',
   shortName: 'Hunter Products',
-  origin: 'https://www.hunterproducts.com',
+  origin: 'https://hunterproducts.com',
   founded: 1970,
   phone: '(908) 526-8440',
   phoneHref: 'tel:+19085268440',

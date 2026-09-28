@@ -95,7 +95,7 @@ export function snipcartAttrs(p: Product): Record<string, string> {
     'data-item-url': SNIPCART_CRAWL_URL,
     'data-item-taxable': 'false',
     'data-item-description': p.description.slice(0, 90),
-    'data-item-image': p.image ? `https://www.hunterproducts.com${encodeURI(p.image)}` : '',
+    'data-item-image': p.image ? `https://hunterproducts.com${encodeURI(p.image)}` : '',
     'data-item-weight': String(p.dimensions.weight),
     'data-item-width': String(p.dimensions.width),
     'data-item-height': String(p.dimensions.height),
