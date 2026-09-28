@@ -8,7 +8,7 @@ No code changes needed.
 - Use landscape shots for site photos and square shots for products.
 - Keep files under about 500 KB. Export at the size below, JPEG quality around 80.
 - Until a slot has a photo, it shows a technical line drawing.
-- In `npm run dev`, empty or low-res slots show a small dashed label with the
+- In `npm run dev`, empty slots show a small dashed label with the
   file path to use. That label never appears on the live site.
 
 ## Site photos: `public/img/photos/`

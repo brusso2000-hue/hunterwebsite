@@ -13,7 +13,7 @@ interface Props {
   class?: string;
 }
 const { photo, aspect = '16 / 10', caption, eager = false, class: cls } = Astro.props;
-const showHint = import.meta.env.DEV && (!photo.src || photo.lowRes);
+const showHint = import.meta.env.DEV && !photo.src;
 ---
 
 <figure class:list={['ph', cls, { 'ph--draw': !photo.src, 'ph--lowres': photo.lowRes }]} style={`--ar:${aspect}`}>
@@ -27,7 +27,7 @@ const showHint = import.meta.env.DEV && (!photo.src || photo.lowRes);
     )}
     {showHint && (
       <span class="ph-hint" title={`Drop a ${photo.size}+ image at ${photo.dropPath}`}>
-        {photo.lowRes ? 'Low-res · ' : 'Add photo · '}<code>{photo.dropPath.replace('public', '')}</code>
+        Add photo · <code>{photo.dropPath.replace('public', '')}</code>
       </span>
     )}
   </div>
