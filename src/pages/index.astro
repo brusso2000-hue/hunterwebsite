@@ -54,7 +54,7 @@ const systemPoints: Record<string, string[]> = {
   'micro-jet': ['Controlled micro-abrasive delivery', 'Cleaning, etching, surface preparation', 'Fine wires, thin substrates, intricate detail', 'Pre-plate prep and matte finishing'],
 };
 
-const featured = ['PL-1000C', 'PL-1003', 'PL-1006', 'PL-1012'].map(byId);
+const featured = ['PL-1002', 'PL-1003', 'PL-1006', 'PL-1012'].map(byId);
 
 const electronics = APPLICATIONS.find((a) => a.focus === 'core')!;
 const electronicsKit = bySlug('contact-repair-kit');
@@ -299,8 +299,8 @@ const steps = [
         <h2 class="h-1">Five decades of selective plating.</h2>
         <div class="prose">
           <p>
-            Hunter Products has designed and supported localized plating and surface-treatment equipment from
-            {SITE.city}, New Jersey since {SITE.founded}. We invented the Carbitron diamond-dusting platform and
+            Hunter Products has designed and supported localized plating and surface-treatment equipment
+            from {SITE.city}, New Jersey since {SITE.founded}. We invented the Carbitron diamond-dusting platform and
             continue to build the Micro-Metallizer line used in aerospace MRO, electronics rework, medical instrument
             repair and jewelry restoration.
           </p>
