@@ -116,7 +116,7 @@ const steps = [
         <p class="eyebrow">Electronics &amp; PCB</p>
         <h2 class="h-1">The standard for contact and PCB rework.</h2>
         <p class="lede">
-          Electronics manufacturers and rework technicians are our largest customer base. The pen tip plates a single
+          Electronics manufacturers and rework technicians rely on the Micro-Metallizer for precise, localized plating. The pen tip plates a single
           pad, pin or finger without bridging its neighbors or contaminating the board.
         </p>
         <ul class="ticks elx-ticks">
@@ -264,7 +264,6 @@ const steps = [
       <div class="apps">
         <a class="app app--core" href={`/applications-electroplating/#${electronics.id}`}>
           <span class="app-code mono">{electronics.code}</span>
-          <span class="tag tag--brand app-flag">Largest customer base</span>
           <h3 class="h-2">{electronics.label}</h3>
           <p>{electronics.lede}</p>
           <ul class="ticks">
@@ -411,8 +410,7 @@ const steps = [
   .app--core { position: relative; }
   .app--core .link, .app--growth .link { margin-top: 8px; }
   .app .ticks li { font-size: 14.5px; }
-  .app-flag { position: absolute; top: clamp(26px, 3vw, 36px); right: clamp(26px, 3vw, 36px); }
-  @media (max-width: 700px) { .app--growth, .app--core { grid-column: auto; } .app-flag { position: static; justify-self: start; } }
+  @media (max-width: 700px) { .app--growth, .app--core { grid-column: auto; } }
 
   .elx { border-bottom: 1px solid var(--line); }
   .elx-in { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }

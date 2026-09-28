@@ -11,7 +11,7 @@ export interface Application {
   workflows: string[];
   systems: SystemId[];
   recommended: string[]; // product slugs
-  /** 'core' = largest customer base (lead with it); 'growth' = market we're expanding into. */
+  /** 'core' = primary market (listed first); 'growth' = market we're expanding into. */
   focus?: 'core' | 'growth';
 }
 

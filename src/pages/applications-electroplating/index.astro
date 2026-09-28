@@ -16,9 +16,8 @@ import { photo, type PhotoSlotName } from '../../lib/photos';
       <Breadcrumbs items={[['Home', '/'], ['Applications']]} />
       <h1 class="h-1">Applications by industry</h1>
       <p class="lede">
-        Electronics and PCB rework is where most Hunter systems go to work — and for more than 50 years the same
-        instruments have served aerospace, medical, jewelry and manufacturing teams doing precision work that
-        conventional tank plating cannot.
+        From PCB rework and connector repair to aerospace, medical, jewelry and manufacturing — for more than 50
+        years Hunter instruments have handled precision work that conventional tank plating cannot.
       </p>
     </div>
   </div>
@@ -39,7 +38,7 @@ import { photo, type PhotoSlotName } from '../../lib/photos';
           <header class="ind-head">
             <span class="ind-code mono">{a.code}</span>
             <div>
-              <p class="eyebrow">{a.label}{a.focus === 'core' && <span class="tag tag--brand ind-flag">Largest customer base</span>}</p>
+              <p class="eyebrow">{a.label}</p>
               <h2 class="h-2">{a.title}</h2>
             </div>
           </header>
@@ -128,7 +127,6 @@ import { photo, type PhotoSlotName } from '../../lib/photos';
   @media (max-width: 1080px) { .ind-grid { grid-template-columns: 1fr; } }
   .ind-sys { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 18px !important; }
   .ind-sys .mono { font-size: 11px; color: var(--text-3); }
-  .ind-flag { margin-left: 12px; height: 22px; font-size: 10px; }
   .growth { display: flex; justify-content: space-between; align-items: center; gap: 20px 32px; flex-wrap: wrap; padding: 22px 24px; background: var(--navy); color: var(--on-navy-2); border-left: 3px solid var(--gold); }
   .growth-tag { font-size: 11px; color: var(--gold-hi); margin-bottom: 6px; }
   .growth-text { max-width: 62ch; font-size: 15px; }
