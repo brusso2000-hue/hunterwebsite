@@ -1,4 +1,5 @@
 ---
+import { GUIDES, guideUrl } from '../../lib/guides';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CatalogTree from '../../components/CatalogTree.astro';
@@ -29,6 +30,8 @@ const sys = systemInfo(systemOf(p));
 const type = typeOf(p);
 const canonical = `${SITE.origin}${productUrl(p)}`;
 const pic = productPhoto(p);
+
+const guides = GUIDES.filter((g) => g.products.includes(p.slug));
 
 const finish = FINISHES.find((f) => f.standard === p.id || f.heavy === p.id);
 
@@ -140,6 +143,15 @@ const schema = [
         </div>
       </section>
 
+      {guides.length > 0 && (
+        <section class="block">
+          <h2 class="h-3 marked">How-to guides</h2>
+          <ul class="guides">
+            {guides.map((g) => <li><a href={guideUrl(g.slug)}>{g.h1}</a></li>)}
+          </ul>
+        </section>
+      )}
+
       {related.length > 0 && (
         <section class="block">
           <div class="rel-head">
@@ -184,6 +196,8 @@ const schema = [
   .block { display: grid; gap: 20px; }
   .spec a { color: var(--brand-dk); }
   .apps { display: flex; flex-wrap: wrap; gap: 8px; }
+  .guides { display: grid; gap: 8px; padding-left: 1.1em; }
+  .guides a { color: var(--brand-dk); font-weight: 550; }
   .rel-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
   .rel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   @media (max-width: 1180px) { .rel { grid-template-columns: repeat(2, 1fr); } }

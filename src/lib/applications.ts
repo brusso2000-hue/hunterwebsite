@@ -13,6 +13,8 @@ export interface Application {
   recommended: string[]; // product slugs
   /** 'core' = primary market (listed first); 'growth' = market we're expanding into. */
   focus?: 'core' | 'growth';
+  /** Guide slugs (src/lib/guides.ts) linked from this industry. */
+  guides?: string[];
 }
 
 export const APPLICATIONS: Application[] = [
@@ -21,6 +23,7 @@ export const APPLICATIONS: Application[] = [
     label: 'Electronics & PCB',
     code: 'EP',
     focus: 'core',
+    guides: ['gold-plating-connector-pins', 'pcb-gold-finger-repair', 'restore-pcb-pad-solderability'],
     title: 'PCB rework, contact plating, and electronics restoration',
     lede: 'Restore solderability and contact performance pad-by-pad, without bridging neighbors.',
     body: [
@@ -49,6 +52,7 @@ export const APPLICATIONS: Application[] = [
     label: 'Aerospace & Defense',
     code: 'AD',
     focus: 'growth',
+    guides: ['gold-plating-connector-pins', 'brush-plating-substrate-guide'],
     title: 'Aerospace & defense maintenance and component repair',
     lede: 'Restore connectors, contact rings and fasteners in place — without pulling the assembly for tank plating.',
     body: [

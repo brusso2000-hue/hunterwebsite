@@ -5,6 +5,7 @@ import Photo from '../../components/Photo.astro';
 import { APPLICATIONS } from '../../lib/applications';
 import { bySlug, fmtPrice, productUrl, systemInfo } from '../../lib/catalog';
 import { photo, type PhotoSlotName } from '../../lib/photos';
+import { guideBySlug, guideUrl } from '../../lib/guides';
 ---
 
 <Base
@@ -68,6 +69,12 @@ import { photo, type PhotoSlotName } from '../../lib/photos';
             <div>
               <h3 class="h-4 marked">Typical workflows</h3>
               <ul class="ticks">{a.workflows.map((w) => <li>{w}</li>)}</ul>
+              {a.guides && (
+                <p class="ind-guides">
+                  <span class="mono">Guides:</span>
+                  {a.guides.map((slug) => <a href={guideUrl(slug)}>{guideBySlug(slug).label}</a>)}
+                </p>
+              )}
             </div>
             <div>
               <h3 class="h-4 marked">Recommended instruments</h3>
@@ -133,6 +140,9 @@ import { photo, type PhotoSlotName } from '../../lib/photos';
   .ind-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 40px); }
   @media (max-width: 800px) { .ind-cols { grid-template-columns: 1fr; } }
   .ind-cols h3 { margin-bottom: 16px; }
+  .ind-guides { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 18px; font-size: 14.5px; }
+  .ind-guides .mono { font-size: 11px; color: var(--text-3); align-self: center; }
+  .ind-guides a { color: var(--brand-dk); font-weight: 550; }
 
   .rec { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); }
   .rec td { padding: 9px 12px; border-bottom: 1px solid var(--line); }

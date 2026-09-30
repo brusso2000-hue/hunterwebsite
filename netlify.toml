@@ -50,3 +50,5 @@
   from = "/sitemap.xml"
   to = "/sitemap-index.xml"
   status = 301
+  # Forced: a stale sitemap.xml was still being served over the redirect.
+  force = true
