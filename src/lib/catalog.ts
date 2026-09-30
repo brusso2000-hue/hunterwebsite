@@ -30,7 +30,7 @@ export const SNIPCART_CRAWL_URL = 'https://hunterproducts.com/products.json';
 
 const PREP_IDS = new Set(['PL-1002', 'PL-1014']);
 /** Carbitron replacement hardware (not consumables). */
-const CARBITRON_EQUIPMENT_IDS = new Set(['TS3042', 'TS3053']);
+const CARBITRON_EQUIPMENT_IDS = new Set(['TS3042', 'TS3045', 'TS3053']);
 
 export function systemOf(p: Product): SystemId {
   if (p.category === 'carbitron' || p.id.startsWith('TS')) return 'carbitron';

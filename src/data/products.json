@@ -729,6 +729,29 @@
     "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
   },
   {
+    "id": "TS3045",
+    "name": "Power Cable (Red)",
+    "price": 30,
+    "url": "https://hunterproducts.com/products.json",
+    "taxable": false,
+    "description": "Replacement red power cable for the Carbitron 300 tungsten-carbide coating system.",
+    "dimensions": { "weight": 227, "width": 8, "height": 4, "length": 20 },
+    "slug": "carbitron-power-cable-red",
+    "category": "accessories",
+    "sku": "TS3045",
+    "image": "/img/carbitron.jpeg",
+    "h1": "Power Cable, Red (Carbitron 300)",
+    "metaTitle": "Power Cable (Red) TS3045 | Carbitron 300 | Hunter Products",
+    "metaDescription": "Replacement red power cable (TS3045) for the Carbitron 300 tungsten-carbide diamond dusting system. Direct from Hunter Products, NJ.",
+    "specs": [
+      ["Part No.", "TS3045"],
+      ["Fits", "Carbitron 300 (TS3037)"],
+      ["Color", "Red"]
+    ],
+    "longDescription": "Replacement red power cable for the Carbitron 300 system. Order it when the original cable is worn, cut or damaged.\n\nIf the hand piece also needs replacing, the vibrator hand piece with power cable (TS3053) comes as a complete assembly.",
+    "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
+  },
+  {
     "id": "TS3037",
     "name": "Carbitron 300 System",
     "price": 495,
