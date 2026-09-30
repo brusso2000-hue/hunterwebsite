@@ -21,6 +21,8 @@ export interface Product {
   metaDescription: string;
   specs: [string, string][];
   applications: string[];
+  /** Input-voltage choices (e.g. ["110V", "220V"]). First entry is the default. */
+  voltage?: string[];
 }
 
 export const products = raw as Product[];
@@ -91,7 +93,7 @@ export function slugify(s: string): string {
 
 /** data-item-* attributes for a Snipcart add-to-cart button. */
 export function snipcartAttrs(p: Product): Record<string, string> {
-  return {
+  const attrs: Record<string, string> = {
     'data-item-id': p.id,
     'data-item-name': p.name,
     'data-item-price': p.price.toFixed(2),
@@ -104,6 +106,15 @@ export function snipcartAttrs(p: Product): Record<string, string> {
     'data-item-height': String(p.dimensions.height),
     'data-item-length': String(p.dimensions.length),
   };
+  // Voltage becomes a Snipcart custom field: shown on the order and
+  // editable as a dropdown in the cart. Same price for every option.
+  if (p.voltage?.length) {
+    attrs['data-item-custom1-name'] = 'Voltage';
+    attrs['data-item-custom1-options'] = p.voltage.join('|');
+    attrs['data-item-custom1-value'] = p.voltage[0];
+    attrs['data-item-custom1-required'] = 'true';
+  }
+  return attrs;
 }
 
 // ── Systems ─────────────────────────────────────────────

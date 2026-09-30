@@ -22,6 +22,7 @@ const href = productUrl(p);
     </div>
     <h3 class="pc-name"><a href={href}>{p.name}</a></h3>
     <p class="pc-desc">{p.description}</p>
+    {p.voltage && <p class="mono pc-volt">{p.voltage.join(' / ')} · choose in cart</p>}
     <div class="pc-foot">
       <span class="pc-price">{fmtPrice(p.price)}</span>
       <AddToCart product={p} size="sm" label="Add" />
@@ -36,6 +37,7 @@ const href = productUrl(p);
   .pc-media :global(.ph-box) { border: 0; border-bottom: 1px solid var(--line); }
   .pc-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; flex: 1; }
   .pc-meta { display: flex; justify-content: space-between; gap: 8px; }
+  .pc-volt { font-size: 11px; color: var(--text-3); }
   .pc-type { font-size: 10.5px; color: var(--brand); }
   .pc-name { font-size: 17px; font-stretch: 104%; letter-spacing: -0.01em; line-height: 1.25; }
   .pc-name a { text-decoration: none; }
