@@ -1,0 +1,51 @@
+---
+// Store card for a system that's in development: no price, no cart button,
+// links to its register-interest page instead.
+import SystemGlyph from './SystemGlyph.astro';
+import type { SystemId } from '../lib/catalog';
+
+interface Props {
+  system: SystemId;
+  name: string;
+  sku: string;
+  description: string;
+  href: string;
+}
+const { system, name, sku, description, href } = Astro.props;
+---
+
+<article class="pc">
+  <a href={href} class="pc-media" tabindex="-1" aria-hidden="true">
+    <span class="tag mono">In development</span>
+    <SystemGlyph system={system} />
+  </a>
+  <div class="pc-body">
+    <div class="pc-meta">
+      <span class="mono pc-type">Coming soon</span>
+      <span class="sku">{sku}</span>
+    </div>
+    <h3 class="pc-name"><a href={href}>{name}</a></h3>
+    <p class="pc-desc">{description}</p>
+    <div class="pc-foot">
+      <span class="pc-status mono">Not yet for sale</span>
+      <a class="btn btn--sm" href={href}>Register interest</a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .pc { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--gold); transition: border-color 0.18s, box-shadow 0.18s; height: 100%; }
+  .pc:hover { box-shadow: 0 10px 28px rgba(18, 28, 34, 0.07); }
+  .pc-media { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--bg-2); border-bottom: 1px solid var(--line); color: var(--brand-dk); padding: 12% 10%; }
+  .pc-media :global(svg) { width: 100%; height: 100%; }
+  .tag { position: absolute; top: 10px; left: 10px; background: var(--gold); color: #fff; padding: 3px 8px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .pc-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; flex: 1; }
+  .pc-meta { display: flex; justify-content: space-between; gap: 8px; }
+  .pc-type { font-size: 10.5px; color: var(--gold); }
+  .pc-name { font-size: 17px; font-stretch: 104%; letter-spacing: -0.01em; line-height: 1.25; }
+  .pc-name a { text-decoration: none; }
+  .pc-name a:hover { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
+  .pc-desc { font-size: 14px; color: var(--text-2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .pc-foot { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); }
+  .pc-status { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; }
+</style>

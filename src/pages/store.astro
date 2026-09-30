@@ -2,15 +2,29 @@
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ProductCard from '../components/ProductCard.astro';
+import ComingSoonCard from '../components/ComingSoonCard.astro';
 import { products, SYSTEMS, systemOf, typeOf, TYPE_LABEL, metalOf, productUrl, type ProductType } from '../lib/catalog';
 import { SITE } from '../lib/site';
 
 const TYPES: ProductType[] = ['kit', 'pen', 'heavy-duty', 'prep', 'system', 'consumable', 'equipment', 'media', 'part'];
 const count = (fn: (p: (typeof products)[number]) => boolean) => products.filter(fn).length;
 
+// Systems in development: shown in the grid with a register-interest link, never sold.
+const SOON = [
+  {
+    system: 'carbitron' as const,
+    name: 'Carbitron 1000',
+    sku: 'TS3043',
+    description: 'Heavy-duty tungsten-carbide coating system with a discharge power supply and pneumatic vibrating hand tool.',
+    href: '/systems/carbitron-1000/',
+  },
+];
+const soonFor = (line?: string) => SOON.filter((x) => !line || x.system === line).length;
+
 // Kits and systems first, then pens, then accessories.
 const order: Record<ProductType, number> = { system: 0, kit: 1, prep: 2, pen: 3, 'heavy-duty': 4, equipment: 5, consumable: 6, media: 7, part: 8 };
 const sorted = [...products].sort((a, b) => order[typeOf(a)] - order[typeOf(b)]);
+const lastSystem = sorted.map((p) => typeOf(p)).lastIndexOf('system');
 
 const schema = [
   {
@@ -44,9 +58,9 @@ const schema = [
 
       <fieldset class="f-group">
         <legend class="f-head mono">System</legend>
-        <label class="f-opt"><input type="radio" name="line" value="" checked /> <span>All systems</span> <span class="f-n">{products.length}</span></label>
+        <label class="f-opt"><input type="radio" name="line" value="" checked /> <span>All systems</span> <span class="f-n">{products.length + soonFor()}</span></label>
         {SYSTEMS.map((s) => (
-          <label class="f-opt"><input type="radio" name="line" value={s.id} /> <span>{s.name}</span> <span class="f-n">{count((p) => systemOf(p) === s.id)}</span></label>
+          <label class="f-opt"><input type="radio" name="line" value={s.id} /> <span>{s.name}</span> <span class="f-n">{count((p) => systemOf(p) === s.id) + soonFor(s.id)}</span></label>
         ))}
       </fieldset>
 
@@ -54,7 +68,7 @@ const schema = [
         <legend class="f-head mono">Product type</legend>
         <label class="f-opt"><input type="radio" name="type" value="" checked /> <span>All types</span></label>
         {TYPES.map((t) => (
-          <label class="f-opt"><input type="radio" name="type" value={t} /> <span>{TYPE_LABEL[t]}</span> <span class="f-n">{count((p) => typeOf(p) === t)}</span></label>
+          <label class="f-opt"><input type="radio" name="type" value={t} /> <span>{TYPE_LABEL[t]}</span> <span class="f-n">{count((p) => typeOf(p) === t) + (t === 'system' ? SOON.length : 0)}</span></label>
         ))}
       </fieldset>
 
@@ -67,19 +81,31 @@ const schema = [
 
     <div class="results">
       <div class="r-bar">
-        <p class="mono" aria-live="polite"><span data-count>{products.length}</span> products</p>
+        <p class="mono" aria-live="polite"><span data-count>{products.length + SOON.length}</span> products</p>
         <button class="link r-clear" type="button" data-clear hidden>Clear filters ×</button>
       </div>
       <div class="grid">
-        {sorted.map((p) => (
-          <div
-            class="cell"
-            data-line={systemOf(p)}
-            data-type={typeOf(p)}
-            data-text={[p.name, p.sku, p.description, metalOf(p) ?? ''].join(' ').toLowerCase()}
-          >
-            <ProductCard product={p} />
-          </div>
+        {sorted.map((p, i) => (
+          <>
+            <div
+              class="cell"
+              data-line={systemOf(p)}
+              data-type={typeOf(p)}
+              data-text={[p.name, p.sku, p.description, metalOf(p) ?? ''].join(' ').toLowerCase()}
+            >
+              <ProductCard product={p} />
+            </div>
+            {i === lastSystem && SOON.map((x) => (
+              <div
+                class="cell"
+                data-line={x.system}
+                data-type="system"
+                data-text={[x.name, x.sku, x.description, 'coming soon in development'].join(' ').toLowerCase()}
+              >
+                <ComingSoonCard {...x} />
+              </div>
+            ))}
+          </>
         ))}
       </div>
       <p class="empty" hidden data-empty>
