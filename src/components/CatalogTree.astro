@@ -14,15 +14,24 @@ const GROUPS: [ProductType, string][] = [
   ['prep', 'Surface prep'],
   ['pen', 'Plating pens'],
   ['heavy-duty', 'Heavy-duty pens'],
-  ['equipment', 'Power & cables'],
-  ['consumable', 'Electrodes'],
+  ['equipment', 'Equipment'],
+  ['consumable', 'Consumables'],
+  ['media', 'Abrasive media'],
+  ['part', 'Spare parts'],
 ];
+
+// Group names that read better for a specific system.
+const SYSTEM_LABELS: Partial<Record<SystemId, Partial<Record<ProductType, string>>>> = {
+  'micro-metallizer': { equipment: 'Power & cables' },
+  carbitron: { equipment: 'Hand pieces & cables', consumable: 'Electrodes' },
+  'micro-jet': { equipment: 'Blast cabinet', consumable: 'Nozzles' },
+};
 
 const tree = SYSTEMS.map((s) => {
   const items = productsForSystem(s.id);
   return {
     ...s,
-    groups: GROUPS.map(([t, label]) => ({ label, items: items.filter((p) => typeOf(p) === t) })).filter((g) => g.items.length),
+    groups: GROUPS.map(([t, label]) => ({ label: SYSTEM_LABELS[s.id]?.[t] ?? label, items: items.filter((p) => typeOf(p) === t) })).filter((g) => g.items.length),
   };
 });
 ---

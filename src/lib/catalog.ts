@@ -1,7 +1,7 @@
 import raw from '../data/products.json';
 
 export type SystemId = 'micro-metallizer' | 'carbitron' | 'micro-jet';
-export type ProductType = 'system' | 'kit' | 'pen' | 'heavy-duty' | 'prep' | 'equipment' | 'consumable';
+export type ProductType = 'system' | 'kit' | 'pen' | 'heavy-duty' | 'prep' | 'equipment' | 'consumable' | 'media' | 'part';
 
 export interface Product {
   id: string;
@@ -23,6 +23,8 @@ export interface Product {
   applications: string[];
   /** Input-voltage choices (e.g. ["110V", "220V"]). First entry is the default. */
   voltage?: string[];
+  /** Explicit product type; overrides the id/category rules in typeOf(). */
+  kind?: ProductType;
 }
 
 export const products = raw as Product[];
@@ -36,11 +38,12 @@ const CARBITRON_EQUIPMENT_IDS = new Set(['TS3042', 'TS3045', 'TS3053']);
 
 export function systemOf(p: Product): SystemId {
   if (p.category === 'carbitron' || p.id.startsWith('TS')) return 'carbitron';
-  if (p.category === 'microjet') return 'micro-jet';
+  if (p.category === 'microjet' || p.id.startsWith('AB')) return 'micro-jet';
   return 'micro-metallizer';
 }
 
 export function typeOf(p: Product): ProductType {
+  if (p.kind) return p.kind;
   if (p.category === 'carbitron' || p.category === 'microjet') return 'system';
   if (p.category === 'kits') return 'kit';
   if (PREP_IDS.has(p.id)) return 'prep';
@@ -58,6 +61,8 @@ export const TYPE_LABEL: Record<ProductType, string> = {
   prep: 'Surface Prep',
   equipment: 'Equipment',
   consumable: 'Consumable',
+  media: 'Abrasive Media',
+  part: 'Spare Part',
 };
 
 /** Metal / finish a plating pen deposits, e.g. "Gold 24K". Null for non-pens. */

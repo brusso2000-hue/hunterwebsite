@@ -5,11 +5,11 @@ import ProductCard from '../components/ProductCard.astro';
 import { products, SYSTEMS, systemOf, typeOf, TYPE_LABEL, metalOf, productUrl, type ProductType } from '../lib/catalog';
 import { SITE } from '../lib/site';
 
-const TYPES: ProductType[] = ['kit', 'pen', 'heavy-duty', 'prep', 'system', 'consumable', 'equipment'];
+const TYPES: ProductType[] = ['kit', 'pen', 'heavy-duty', 'prep', 'system', 'consumable', 'equipment', 'media', 'part'];
 const count = (fn: (p: (typeof products)[number]) => boolean) => products.filter(fn).length;
 
 // Kits and systems first, then pens, then accessories.
-const order: Record<ProductType, number> = { system: 0, kit: 1, prep: 2, pen: 3, 'heavy-duty': 4, equipment: 5, consumable: 6 };
+const order: Record<ProductType, number> = { system: 0, kit: 1, prep: 2, pen: 3, 'heavy-duty': 4, equipment: 5, consumable: 6, media: 7, part: 8 };
 const sorted = [...products].sort((a, b) => order[typeOf(a)] - order[typeOf(b)]);
 
 const schema = [
