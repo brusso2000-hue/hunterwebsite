@@ -1,0 +1,226 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { GUIDES, guideBySlug, guideUrl, type GuideTable } from '../../lib/guides';
+import { bySlug, fmtPrice, productUrl } from '../../lib/catalog';
+import { SITE } from '../../lib/site';
+
+export function getStaticPaths() {
+  return GUIDES.map((g) => ({ params: { slug: g.slug } }));
+}
+
+const g = guideBySlug(Astro.params.slug!);
+const canonical = `${SITE.origin}${guideUrl(g.slug)}`;
+const picks = g.products.map(bySlug);
+const related = g.related.map(guideBySlug);
+const allSteps = g.sections.flatMap((s) => s.steps ?? []);
+
+const schema: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: g.h1,
+    description: g.metaDescription,
+    url: canonical,
+    dateModified: g.updated,
+    author: { '@type': 'Organization', name: SITE.name, url: SITE.origin },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.origin,
+      logo: { '@type': 'ImageObject', url: `${SITE.origin}/img/brand/hunter-logo.png` },
+    },
+    mainEntityOfPage: canonical,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: g.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: `${SITE.origin}/guides/` },
+      { '@type': 'ListItem', position: 3, name: g.label, item: canonical },
+    ],
+  },
+];
+if (allSteps.length) {
+  schema.push({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: g.h1,
+    description: g.answer,
+    tool: picks.map((p) => ({ '@type': 'HowToTool', name: `${p.name} (${p.sku})` })),
+    step: allSteps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.title, text: s.text })),
+  });
+}
+
+const tableId = (t: GuideTable) => t.caption;
+---
+
+<Base title={g.metaTitle} description={g.metaDescription} ogType="article" schema={schema}>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Guides', '/guides/'], [g.label]]} />
+      <p class="eyebrow">{g.eyebrow}</p>
+      <h1 class="h-1">{g.h1}</h1>
+      <p class="lede">{g.lede}</p>
+    </div>
+  </div>
+
+  <div class="wrap doc page">
+    <aside>
+      <div class="need">
+        <p class="need-head mono">What you need</p>
+        {picks.map((p, i) => (
+          <a class:list={['need-item', { first: i === 0 }]} href={productUrl(p)}>
+            <span class="sku">{p.sku}</span>
+            <span class="need-name">{p.name}</span>
+            <span class="need-price">{fmtPrice(p.price)}</span>
+          </a>
+        ))}
+        <a class="btn btn--primary btn--block need-cta" href={productUrl(picks[0])}>
+          View {picks[0].name} <span class="arrow">→</span>
+        </a>
+        <a class="need-ask" href="/contact/?topic=technical#quote">Ask an application engineer</a>
+      </div>
+    </aside>
+
+    <article class="main">
+      <section class="answer">
+        <p class="mono answer-tag">Short answer</p>
+        <p>{g.answer}</p>
+      </section>
+
+      {g.sections.map((s) => (
+        <section class="sec">
+          <h2 class="h-3 marked">{s.heading}</h2>
+          {s.paragraphs && <div class="prose">{s.paragraphs.map((t) => <p>{t}</p>)}</div>}
+          {s.list && <ul class="ticks">{s.list.map((t) => <li>{t}</li>)}</ul>}
+          {s.steps && (
+            <ol class="steps">
+              {s.steps.map((st, i) => (
+                <li>
+                  <span class="step-n mono">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3 class="h-4">{st.title}</h3>
+                    <p>{st.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+          {s.table && (
+            <div class="tbl-wrap">
+              <table class="tbl" aria-label={tableId(s.table)}>
+                <caption>{s.table.caption}</caption>
+                <thead><tr>{s.table.head.map((h) => <th scope="col">{h}</th>)}</tr></thead>
+                <tbody>
+                  {s.table.rows.map((r) => (
+                    <tr>{r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}</tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {s.note && <p class="note">{s.note}</p>}
+        </section>
+      ))}
+
+      <section class="sec">
+        <h2 class="h-3 marked">Frequently asked questions</h2>
+        <div class="faq">
+          {g.faq.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="help">
+        <div>
+          <h2 class="h-3">Not sure which pens your part needs?</h2>
+          <p>Tell us the substrate and the finish you need. The people who build the system will tell you the sequence.</p>
+        </div>
+        <div class="help-ctas">
+          <a class="btn btn--ghost-light" href="/store/">Browse catalog</a>
+          <a class="btn btn--primary" href="/contact/?topic=technical#quote">Ask an engineer <span class="arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2 class="h-4 marked">Related guides</h2>
+        <div class="rel">
+          {related.map((r) => (
+            <a href={guideUrl(r.slug)}>
+              <span class="mono">{r.eyebrow}</span>
+              <span class="rel-t">{r.h1}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner .eyebrow { margin-top: 10px; }
+  .page { padding-top: 40px; padding-bottom: clamp(64px, 8vw, 104px); }
+  .main { display: grid; gap: clamp(36px, 4vw, 52px); min-width: 0; }
+  @media (max-width: 960px) { .doc { grid-template-columns: 1fr; } aside { order: 2; } }
+
+  .need { display: grid; border: 1px solid var(--line); background: #fff; position: sticky; top: calc(var(--header-h) + 20px); }
+  @media (max-width: 960px) { .need { position: static; } }
+  .need-head { background: var(--brand-deep); color: #fff; padding: 11px 14px; font-size: 11px; font-weight: 500; }
+  .need-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 12px 14px; border-top: 1px solid var(--line); text-decoration: none; }
+  .need-item:hover { background: var(--brand-wash); }
+  .need-item.first { background: var(--bg-2); }
+  .need-item .sku { grid-column: 1 / -1; font-size: 11px; }
+  .need-name { color: var(--ink); font-weight: 550; font-size: 14.5px; }
+  .need-price { font-family: var(--mono); color: var(--ink); font-size: 14px; }
+  .need-cta { margin: 14px 14px 8px; width: auto; white-space: normal; text-align: center; line-height: 1.3; min-height: 44px; height: auto; padding-top: 10px; padding-bottom: 10px; }
+  .need { min-width: 0; }
+  .need-ask { padding: 0 14px 14px; font-size: 13.5px; color: var(--brand-dk); }
+
+  .answer { border-left: 3px solid var(--gold); background: var(--bg-2); padding: 18px 22px; }
+  .answer-tag { font-size: 11px; color: var(--brand-dk); margin-bottom: 6px; }
+  .answer p:last-child { color: var(--ink); font-size: 16.5px; line-height: 1.6; max-width: 72ch; }
+
+  .sec { display: grid; gap: 18px; }
+  .steps { list-style: none; padding: 0; display: grid; gap: 0; border: 1px solid var(--line); }
+  .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 16px 18px; }
+  .steps li + li { border-top: 1px solid var(--line); }
+  .step-n { width: 36px; height: 36px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 12px; }
+  .steps p { color: var(--text-2); margin-top: 4px; max-width: 70ch; }
+
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--line); }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+  .tbl caption { text-align: left; padding: 10px 12px; font-size: 12.5px; color: var(--text-3); border-bottom: 1px solid var(--line); }
+  .tbl th, .tbl td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .tbl thead th { background: var(--bg-2); font-size: 12.5px; color: var(--text-2); font-weight: 600; }
+  .tbl tbody th { color: var(--ink); font-weight: 550; }
+  .tbl tbody tr:last-child > * { border-bottom: 0; }
+  .note { font-size: 14px; color: var(--text-3); max-width: 70ch; }
+
+  .faq { display: grid; border: 1px solid var(--line); }
+  .faq details + details { border-top: 1px solid var(--line); }
+  .faq summary { cursor: pointer; padding: 14px 18px; font-weight: 550; color: var(--ink); }
+  .faq details p { padding: 0 18px 16px; color: var(--text-2); max-width: 70ch; }
+
+  .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .help h2 { color: #fff; margin-bottom: 6px; }
+  .help-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .rel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .rel a { display: grid; gap: 6px; padding: 16px; border: 1px solid var(--line); text-decoration: none; background: #fff; }
+  .rel a:hover { border-color: var(--line-3); }
+  .rel .mono { font-size: 10.5px; color: var(--brand); }
+  .rel-t { color: var(--ink); font-weight: 550; line-height: 1.3; }
+</style>
