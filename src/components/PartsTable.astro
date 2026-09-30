@@ -28,6 +28,7 @@ const { products, caption } = Astro.props;
           <td>
             <a class="pt-name" href={productUrl(p)}>{p.name}</a>
             <span class="pt-desc">{p.description}</span>
+            {p.voltage && <span class="pt-desc mono">{p.voltage.join(' / ')} · choose in cart</span>}
           </td>
           <td class="pt-type">{TYPE_LABEL[typeOf(p)]}</td>
           <td class="r pt-price">{fmtPrice(p.price)}</td>

@@ -104,6 +104,20 @@ const schema = [
             </dl>
           )}
 
+          {p.voltage && (
+            <fieldset class="volt" data-voltage>
+              <legend class="mono">Input voltage</legend>
+              <div class="volt-opts">
+                {p.voltage.map((v, i) => (
+                  <label>
+                    <input type="radio" name="voltage" value={v} checked={i === 0} />
+                    <span>{v}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
+
           <div class="price-row">
             <span class="price">{fmtPrice(p.price)}</span>
             <span class="mono stock">In stock · ships from NJ within {POLICY.handlingDaysMax} business days</span>
@@ -170,7 +184,34 @@ const schema = [
   </div>
 </Base>
 
+<script>
+  // Carry the chosen voltage onto the Snipcart add-to-cart button.
+  document.querySelectorAll<HTMLFieldSetElement>('[data-voltage]').forEach((fs) => {
+    const btn = fs.closest('.buy')?.querySelector<HTMLElement>('.snipcart-add-item');
+    if (!btn) return;
+    fs.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      if (input.name === 'voltage') btn.setAttribute('data-item-custom1-value', input.value);
+    });
+  });
+</script>
+
 <style>
+  .volt { border: 0; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .volt legend { padding: 0; margin-bottom: 8px; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); }
+  .volt-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .volt-opts label { position: relative; cursor: pointer; }
+  .volt-opts input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .volt-opts span {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 88px; min-height: 42px; padding: 0 18px;
+    border: 1px solid var(--line-3); border-radius: var(--radius); background: #fff;
+    font-family: var(--mono); font-size: 14px; color: var(--ink);
+    transition: border-color 0.18s var(--ease), background 0.18s var(--ease), color 0.18s var(--ease);
+  }
+  .volt-opts label:hover span { border-color: var(--ink); }
+  .volt-opts input:checked + span { background: var(--brand-deep); border-color: var(--brand-deep); color: #fff; }
+  .volt-opts input:focus-visible + span { outline: 2px solid var(--brand); outline-offset: 2px; }
   .bar { border-bottom: 1px solid var(--line); background: var(--bg-2); padding: 14px 0; }
   .page { padding-top: 36px; padding-bottom: clamp(64px, 8vw, 104px); }
   @media (max-width: 960px) { .page aside { order: 2; } }
