@@ -29,6 +29,8 @@ export const products = raw as Product[];
 export const SNIPCART_CRAWL_URL = 'https://hunterproducts.com/products.json';
 
 const PREP_IDS = new Set(['PL-1002', 'PL-1014']);
+/** Carbitron replacement hardware (not consumables). */
+const CARBITRON_EQUIPMENT_IDS = new Set(['TS3042', 'TS3045', 'TS3053']);
 
 export function systemOf(p: Product): SystemId {
   if (p.category === 'carbitron' || p.id.startsWith('TS')) return 'carbitron';
@@ -41,6 +43,7 @@ export function typeOf(p: Product): ProductType {
   if (p.category === 'kits') return 'kit';
   if (PREP_IDS.has(p.id)) return 'prep';
   if (p.category === 'pen') return p.name.includes('Heavy Duty') ? 'heavy-duty' : 'pen';
+  if (CARBITRON_EQUIPMENT_IDS.has(p.id)) return 'equipment';
   if (p.id.startsWith('TS')) return 'consumable';
   return 'equipment';
 }
