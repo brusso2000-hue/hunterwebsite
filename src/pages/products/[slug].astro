@@ -19,7 +19,7 @@ import {
 } from '../../lib/catalog';
 import { FINISHES } from '../../lib/finishes';
 import { productPhoto } from '../../lib/photos';
-import { SITE } from '../../lib/site';
+import { SITE, POLICY, RETURN_POLICY, SHIPPING_DETAILS } from '../../lib/site';
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { slug: p.slug }, props: { product: p } }));
@@ -61,6 +61,8 @@ const schema = [
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: SITE.name },
+      shippingDetails: SHIPPING_DETAILS,
+      hasMerchantReturnPolicy: RETURN_POLICY,
     },
   },
   {
@@ -104,7 +106,7 @@ const schema = [
 
           <div class="price-row">
             <span class="price">{fmtPrice(p.price)}</span>
-            <span class="mono stock">In stock · ships from NJ</span>
+            <span class="mono stock">In stock · ships from NJ within {POLICY.handlingDaysMax} business days</span>
           </div>
           <div class="ctas">
             <AddToCart product={p} />
@@ -114,6 +116,7 @@ const schema = [
             Purchasing for a company? We accept POs and quote volume pricing —
             <a href="/contact/?topic=po#quote">send a PO request</a> or call <a href={SITE.phoneHref}>{SITE.phone}</a>.
           </p>
+          <p class="note">Returns accepted within {POLICY.returnDays} days of delivery. <a href="/contact/">Contact us</a> to start a return.</p>
         </div>
       </article>
 

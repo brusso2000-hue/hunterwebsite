@@ -52,3 +52,95 @@
   status = 301
   # Forced: a stale sitemap.xml was still being served over the redirect.
   force = true
+
+# ── Legacy URLs from the pre-2026 site (Search Console 404 report, Sep 2026) ──
+# Each old page points to its closest current equivalent so links and
+# rankings carry over instead of dead-ending.
+
+[[redirects]]
+  from = "/products/"
+  to = "/store/"
+  status = 301
+
+[[redirects]]
+  from = "/about/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/catalogs/"
+  to = "/resources/"
+  status = 301
+
+[[redirects]]
+  from = "/price-sheets/"
+  to = "/store/"
+  status = 301
+
+[[redirects]]
+  from = "/safety-data-sheets/"
+  to = "/contact/?topic=sds"
+  status = 301
+
+[[redirects]]
+  from = "/store-carbitron/"
+  to = "/systems/carbitron-300/"
+  status = 301
+
+[[redirects]]
+  from = "/applications-carbitron/"
+  to = "/systems/carbitron-300/"
+  status = 301
+
+[[redirects]]
+  from = "/store-microjet/"
+  to = "/systems/micro-jet-200/"
+  status = 301
+
+[[redirects]]
+  from = "/applications-microjet/"
+  to = "/systems/micro-jet-200/"
+  status = 301
+
+[[redirects]]
+  from = "/micro_jet.html"
+  to = "/systems/micro-jet-200/"
+  status = 301
+
+# Old PDF library
+[[redirects]]
+  from = "/docs/catalogs/Micro-Metallizer_Catalog.pdf"
+  to = "/pdfs/Hunter_Micro-Metallizer_Catalog.pdf"
+  status = 301
+
+[[redirects]]
+  from = "/docs/catalogs/Carbitron-Model-300_Catalog.pdf"
+  to = "/pdfs/Carbitron_300_Brochure.pdf"
+  status = 301
+
+[[redirects]]
+  from = "/docs/catalogs/Micro-Jet_Catalog.pdf"
+  to = "/systems/micro-jet-200/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/catalogs/*"
+  to = "/resources/"
+  status = 301
+
+# SDS are now provided on request
+[[redirects]]
+  from = "/docs/sds/*"
+  to = "/contact/?topic=sds"
+  status = 301
+
+# Old price lists and order form; prices now live on the store
+[[redirects]]
+  from = "/docs/price/*"
+  to = "/store/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/order-form.pdf"
+  to = "/store/"
+  status = 301
