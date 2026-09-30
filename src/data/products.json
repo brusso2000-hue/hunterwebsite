@@ -681,6 +681,54 @@
     "applications": ["Industrial MRO", "Manufacturing"]
   },
   {
+    "id": "TS3042",
+    "name": "Vibrator Hand Piece",
+    "price": 89,
+    "url": "https://hunterproducts.com/products.json",
+    "taxable": false,
+    "description": "Replacement vibrator hand piece for the Carbitron 300 tungsten-carbide coating system. Hand piece only; power cable not included.",
+    "dimensions": { "weight": 340, "width": 10, "height": 8, "length": 25 },
+    "slug": "carbitron-vibrator-hand-piece",
+    "category": "accessories",
+    "sku": "TS3042",
+    "image": "/img/carbitron.jpeg",
+    "h1": "Vibrator Hand Piece (Carbitron 300)",
+    "metaTitle": "Vibrator Hand Piece TS3042 | Carbitron 300 | Hunter Products",
+    "metaDescription": "Replacement vibrator hand piece (TS3042) for the Carbitron 300 tungsten-carbide diamond dusting system. Hand piece only. Direct from Hunter Products, NJ.",
+    "specs": [
+      ["Part No.", "TS3042"],
+      ["Fits", "Carbitron 300 (TS3037)"],
+      ["Includes", "Hand piece only, no power cable"],
+      ["Electrodes", "Accepts 1/8\", 1/16\" and 1/32\" electrodes"]
+    ],
+    "longDescription": "The vibrator hand piece holds the tungsten-carbide electrode and delivers the deposit to the work surface on the Carbitron 300 system.\n\nThis SKU is the hand piece alone, for shops that still have a good power cable and only need to replace the hand piece. If you need the cable as well, order the hand piece with power cable (TS3053).\n\nAccepts all three Carbitron 300 electrodes: 1/8\" (TS3038), 1/16\" (TS3039) and 1/32\" (TS3040).",
+    "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
+  },
+  {
+    "id": "TS3053",
+    "name": "Vibrator Hand Piece with Power Cable",
+    "price": 119,
+    "url": "https://hunterproducts.com/products.json",
+    "taxable": false,
+    "description": "Replacement vibrator hand piece with power cable for the Carbitron 300 tungsten-carbide coating system. Ready to connect to the unit.",
+    "dimensions": { "weight": 454, "width": 10, "height": 8, "length": 25 },
+    "slug": "carbitron-vibrator-hand-piece-with-power-cable",
+    "category": "accessories",
+    "sku": "TS3053",
+    "image": "/img/carbitron.jpeg",
+    "h1": "Vibrator Hand Piece with Power Cable (Carbitron 300)",
+    "metaTitle": "Vibrator Hand Piece with Cable TS3053 | Carbitron 300 | Hunter Products",
+    "metaDescription": "Replacement vibrator hand piece with power cable (TS3053) for the Carbitron 300 tungsten-carbide diamond dusting system. Direct from Hunter Products, NJ.",
+    "specs": [
+      ["Part No.", "TS3053"],
+      ["Fits", "Carbitron 300 (TS3037)"],
+      ["Includes", "Hand piece and power cable"],
+      ["Electrodes", "Accepts 1/8\", 1/16\" and 1/32\" electrodes"]
+    ],
+    "longDescription": "The vibrator hand piece holds the tungsten-carbide electrode and delivers the deposit to the work surface on the Carbitron 300 system. This SKU ships with the power cable attached, so it is a complete replacement for a worn or damaged hand piece assembly.\n\nIf your cable is still in good condition, the hand piece alone (TS3042) is also available.\n\nAccepts all three Carbitron 300 electrodes: 1/8\" (TS3038), 1/16\" (TS3039) and 1/32\" (TS3040).",
+    "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
+  },
+  {
     "id": "TS3037",
     "name": "Carbitron 300 System",
     "price": 495,
