@@ -7,7 +7,7 @@ import ProductCard from '../components/ProductCard.astro';
 import { SYSTEMS, products, byId, bySlug, fmtPrice, productUrl, productsForSystem, typeOf } from '../lib/catalog';
 import { APPLICATIONS } from '../lib/applications';
 import { photo } from '../lib/photos';
-import { SITE } from '../lib/site';
+import { SITE, RETURN_POLICY } from '../lib/site';
 
 const address = {
   '@type': 'PostalAddress',
@@ -29,6 +29,7 @@ const schema = [
     foundingDate: String(SITE.founded),
     address,
     contactPoint: { '@type': 'ContactPoint', telephone: '+1-908-526-8440', email: SITE.email, contactType: 'sales', availableLanguage: 'English' },
+    hasMerchantReturnPolicy: RETURN_POLICY,
   },
   {
     '@context': 'https://schema.org',
