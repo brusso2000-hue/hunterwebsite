@@ -1,0 +1,282 @@
+---
+// Carbitron 1000: under consideration, not for sale. Collects interest via Formspree.
+// To launch it for sale later, add it to src/data/products.json and retire this page.
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CatalogTree from '../../components/CatalogTree.astro';
+import { FORMSPREE_ENDPOINT, SITE } from '../../lib/site';
+
+const url = `${SITE.origin}/systems/carbitron-1000/`;
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Carbitron 300', item: `${SITE.origin}/systems/carbitron-300/` },
+      { '@type': 'ListItem', position: 3, name: 'Carbitron 1000', item: url },
+    ],
+  },
+];
+
+// From the Carbitron 1000 parts sheet (TS3043). Prices deliberately not shown.
+const STANDARD = [
+  'Heavy-duty discharge power supply',
+  'Pneumatic-powered vibrating hand tool',
+  'Power cable and ground cable',
+  '7/32" × 2" tungsten-carbide electrode',
+  '1/8" × 2½" tungsten-carbide electrode',
+  '1/16" × 2½" tungsten-carbide electrode',
+  'Instruction manual',
+];
+const ACCESSORIES: [string, string][] = [
+  ['TS3038', 'Tungsten-carbide electrode 1/8" × 2½"'],
+  ['TS3039', 'Tungsten-carbide electrode 1/16" × 2½"'],
+  ['TS3040', 'Tungsten-carbide electrode 1/32" × 2½"'],
+  ['TS3044', 'Tungsten-carbide electrode 7/32" × 2"'],
+  ['TS3041', 'Titanium-carbide electrode 1/8" × 2⅛"'],
+  ['TS3051', 'Power cable (red)'],
+  ['TS3052', 'Ground cable'],
+  ['TS3050', 'Pneumatic-powered vibrating hand tool'],
+  ['TS3047', 'U-66 stereoptic magnifier'],
+  ['TS3048', 'U-68 stereoptic magnifier'],
+  ['TS3049', 'Gooseneck halogen stereoptic lamp'],
+];
+
+const PRIORITIES = [
+  'More deposition power',
+  'Finer control on small features',
+  'Higher throughput for production work',
+  'Larger or heavier parts',
+  'Easier setup and operation',
+  'Lower cost per part',
+];
+---
+
+<Base
+  title="Carbitron 1000 | Register Interest | Hunter Products"
+  description="Carbitron 1000: heavy-duty tungsten-carbide coating system with a discharge power supply and pneumatic vibrating hand tool. In development at Hunter Products. Register interest."
+  schema={schema}
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Carbitron 300', '/systems/carbitron-300/'], ['Carbitron 1000']]} />
+      <p class="mono banner-proc"><span class="pill">In development</span> Heavy-duty tungsten-carbide coating · Part no. TS3043</p>
+      <h1 class="h-1">Carbitron 1000</h1>
+    </div>
+  </div>
+
+  <div class="wrap doc page">
+    <aside><CatalogTree currentSystem="carbitron" currentSlug="carbitron-1000" /></aside>
+
+    <div class="main">
+      <section class="intro">
+        <div>
+          <h2 class="h-2 marked">The heavy-duty Carbitron.</h2>
+          <div class="prose">
+            <p>
+              The Carbitron 1000 is the heavy-duty member of the Carbitron family. It pairs a heavy-duty discharge power
+              supply with a pneumatic-powered vibrating hand tool, and takes a larger 7/32" tungsten-carbide electrode
+              alongside the standard 1/8" and 1/16" sizes. A titanium-carbide electrode is available as an option.
+            </p>
+            <p>
+              We are considering putting the Carbitron 1000 back into production, and demand will decide it. It is not
+              available to order yet. Tell us how you would use it, and you will be first to hear about pricing and
+              availability.
+            </p>
+          </div>
+          <ul class="facts">
+            <li><span class="mono">Status</span>Under evaluation, not yet for sale</li>
+            <li><span class="mono">Commitment</span>None. Registering interest is free and non-binding</li>
+            <li><span class="mono">Need one now?</span><a href="/systems/carbitron-300/">The Carbitron 300 ships today</a></li>
+          </ul>
+        </div>
+
+        <form class="ci" action={FORMSPREE_ENDPOINT} method="POST" data-interest-form>
+          <input type="hidden" name="request_type" value="Carbitron 1000 interest" />
+          <input type="hidden" name="_subject" value="Carbitron 1000 interest registration" />
+          <p class="ci-head">Register interest</p>
+
+          <div class="ci-status ci-ok" hidden data-ok role="status">
+            <p class="mono">You're on the list</p>
+            <p>Thanks. We'll reach out as the Carbitron 1000 takes shape.</p>
+          </div>
+          <div class="ci-status ci-err" hidden data-err role="alert">
+            <p class="mono">Something went wrong</p>
+            <p>Please email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call {SITE.phone}.</p>
+          </div>
+
+          <div class="field">
+            <label for="ci-name">Name *</label>
+            <input class="input" id="ci-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="ci-company">Company</label>
+            <input class="input" id="ci-company" name="company" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="ci-email">Email *</label>
+            <input class="input" id="ci-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="ci-phone">Phone</label>
+            <input class="input" id="ci-phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="ci-owner">Do you use a Carbitron 300 today?</label>
+            <select class="select" id="ci-owner" name="current_carbitron_owner">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No, but I've used one</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ci-units">How many units might you need?</label>
+            <select class="select" id="ci-units" name="units">
+              <option value="">Select</option>
+              <option>1</option>
+              <option>2 to 5</option>
+              <option>6 or more</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field ci-full">
+            <label for="ci-when">When would you buy?</label>
+            <select class="select" id="ci-when" name="timeline">
+              <option value="">Select</option>
+              <option>Within 6 months</option>
+              <option>6 to 12 months</option>
+              <option>More than a year out</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <fieldset class="field ci-full ci-checks">
+            <legend>What matters most to you?</legend>
+            {PRIORITIES.map((p) => (
+              <label class="ci-check"><input type="checkbox" name="priorities" value={p} /> <span>{p}</span></label>
+            ))}
+          </fieldset>
+          <div class="field ci-full">
+            <label for="ci-msg">What would you use it for?</label>
+            <textarea class="textarea" id="ci-msg" name="application" placeholder="Parts, materials, volumes, anything the Carbitron 300 doesn't do for you today"></textarea>
+          </div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+          <div class="ci-full ci-submit">
+            <button class="btn btn--primary" type="submit" data-submit>Register interest <span class="arrow">→</span></button>
+            <span class="mono ci-note">No cost, no commitment</span>
+          </div>
+        </form>
+      </section>
+
+      <section class="specs">
+        <div class="blk">
+          <h3 class="h-4 marked">Standard equipment</h3>
+          <ul class="ticks">{STANDARD.map((i) => <li>{i}</li>)}</ul>
+        </div>
+        <div class="blk">
+          <h3 class="h-4 marked">Accessories</h3>
+          <table class="acc">
+            <tbody>
+              {ACCESSORIES.map(([pn, name]) => <tr><td class="mono">{pn}</td><td>{name}</td></tr>)}
+            </tbody>
+          </table>
+          <p class="acc-note">Accessory pricing will be published if the Carbitron 1000 goes into production. Electrodes TS3038 to TS3040 are <a href="/systems/carbitron-300/#parts">available now</a>.</p>
+        </div>
+      </section>
+
+      <section class="help">
+        <div>
+          <h2 class="h-3">Questions about the Carbitron 1000?</h2>
+          <p>Call or email and we'll tell you where development stands.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn--ghost-light" href={SITE.phoneHref}>{SITE.phone}</a>
+          <a class="btn btn--primary" href={`mailto:${SITE.email}?subject=Carbitron%201000`}>Email us <span class="arrow">→</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-interest-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = form.querySelector<HTMLElement>('[data-ok]')!;
+      const err = form.querySelector<HTMLElement>('[data-err]')!;
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+      ok.hidden = err.hidden = true;
+      btn.disabled = true;
+      try {
+        const data = new FormData(form);
+        // Formspree keeps only the last value of repeated fields, so join the checkboxes.
+        const picks = data.getAll('priorities').join('; ');
+        data.delete('priorities');
+        data.set('priorities', picks || '(none selected)');
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        ok.hidden = false;
+        ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'generate_lead', { lead_type: 'carbitron_1000_interest' });
+      } catch {
+        err.hidden = false;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 12px; }
+  .banner-proc { color: var(--brand); margin-top: 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .pill { background: var(--gold); color: #fff; padding: 4px 10px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .page { padding-top: 40px; padding-bottom: clamp(64px, 8vw, 104px); }
+  @media (max-width: 960px) { .page aside { order: 2; } }
+  .main { display: grid; gap: clamp(44px, 5vw, 64px); min-width: 0; }
+
+  .intro { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 4vw, 48px); align-items: start; }
+  @media (max-width: 1100px) { .intro { grid-template-columns: 1fr; } }
+  .intro h2 { margin-bottom: 20px; }
+  .prose a { color: var(--brand-dk); }
+
+  .facts { list-style: none; padding: 0; margin-top: 28px; border-top: 1px solid var(--line); }
+  .facts li { display: grid; grid-template-columns: 130px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink); }
+  .facts .mono { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); padding-top: 3px; }
+  .facts a { color: var(--brand-dk); }
+
+  .ci { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--line); border-top: 3px solid var(--gold); background: #fff; }
+  .ci-full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .ci { grid-template-columns: 1fr; } }
+  .ci-head { grid-column: 1 / -1; font-weight: 650; font-size: 20px; color: var(--ink); font-stretch: 105%; }
+  .ci-checks { border: 0; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+  @media (max-width: 560px) { .ci-checks { grid-template-columns: 1fr; } }
+  .ci-checks legend { grid-column: 1 / -1; margin-bottom: 8px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); }
+  .ci .ci-check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14.5px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--text-2); cursor: pointer; }
+  .ci-check input { margin-top: 3px; accent-color: var(--brand-deep); }
+  .ci-submit { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+  .ci-note { font-size: 11px; color: var(--text-3); }
+  .ci-status { grid-column: 1 / -1; padding: 14px 16px; border-left: 3px solid; background: var(--bg-2); }
+  .ci-status .mono { font-size: 11px; margin-bottom: 4px; }
+  .ci-ok { border-color: var(--ok); }
+  .ci-ok .mono { color: var(--ok); }
+  .ci-err { border-color: var(--err); }
+  .ci-err .mono { color: var(--err); }
+
+  .specs { display: grid; grid-template-columns: 1fr 1.3fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 800px) { .specs { grid-template-columns: 1fr; } }
+  .blk { background: #fff; padding: 24px; display: grid; gap: 16px; align-content: start; }
+  .blk .ticks { font-size: 15px; }
+  .acc { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  .acc td { padding: 8px 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+  .acc td.mono { width: 80px; font-size: 12px; color: var(--text-3); }
+  .acc-note { font-size: 13.5px; color: var(--text-3); }
+  .acc-note a { color: var(--brand-dk); }
+
+  .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .help h2 { color: #fff; margin-bottom: 6px; }
+  .help .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+</style>

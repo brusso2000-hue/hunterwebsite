@@ -114,6 +114,17 @@ const schema = [
         <PartsTable products={items} caption={`${sys.name} parts and pricing`} />
       </section>
 
+      {page.id === 'carbitron' && (
+        <a class="soon" href="/systems/carbitron-1000/">
+          <span class="soon-tag mono">In development</span>
+          <span class="soon-body">
+            <strong>Carbitron 1000</strong>
+            The heavy-duty Carbitron, with a discharge power supply and pneumatic vibrating hand tool. We're considering bringing it back. Tell us if you'd use one.
+          </span>
+          <span class="soon-cta mono">Register interest <span class="arrow">→</span></span>
+        </a>
+      )}
+
       {apps.length > 0 && (
         <section class="sec">
           <div class="sec-head"><h2 class="h-3 marked">Industries using the {sys.name}</h2></div>
@@ -180,6 +191,14 @@ const schema = [
   .app:hover { background: var(--brand-wash); }
   .app strong { color: var(--ink); font-size: 16px; }
   .app-code { flex-shrink: 0; width: 34px; height: 34px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; }
+
+  .soon { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid var(--line); border-left: 3px solid var(--gold); background: #fff; text-decoration: none; color: var(--text-2); font-size: 15px; transition: background 0.18s; }
+  .soon:hover { background: var(--brand-wash); }
+  @media (max-width: 700px) { .soon { grid-template-columns: 1fr; gap: 10px; } }
+  .soon-tag { background: var(--gold); color: #fff; padding: 4px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .soon-body strong { display: block; color: var(--ink); font-size: 18px; font-stretch: 105%; margin-bottom: 2px; }
+  .soon-cta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--brand-dk); white-space: nowrap; }
+  .soon:hover .arrow { transform: translateX(3px); }
 
   .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
   .help h2 { color: #fff; margin-bottom: 6px; }
