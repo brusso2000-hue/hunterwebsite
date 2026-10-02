@@ -45,7 +45,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
         items: [
           'Contact and connector restoration',
           'PCB pad solderability (tin)',
-          'Gold and rhodium jewelry finishing',
+          'Gold and rhodium on high-contact parts',
           'Zinc corrosion touch-up',
           'Silverware restoration',
           'Copper flash and nickel underlayers',
@@ -130,7 +130,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
         items: [
           'PCB-level cleaning and rework',
           'Fine-feature prep on medical instruments',
-          'Jewelry and antique restoration',
+          'Antique and instrument restoration',
           'Matte finishing on cutting surfaces',
         ],
       },

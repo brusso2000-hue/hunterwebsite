@@ -22,8 +22,8 @@
       ["Best For", "Mixed-metal plating work"],
       ["Power", "110V / 220V, 12V DC output"]
     ],
-    "longDescription": "The Deluxe Kit is Hunter Products' most comprehensive Micro-Metallizer pen plating package. It bundles every pen needed to handle the full standard range of plating work — from prep through final finish — alongside the variable DC power supply and connector cables required to drive the system.\n\nEvery component is shipped from our Flemington, NJ facility and is the same hardware deployed in aerospace MRO shops, dental laboratories, jewelry restoration benches, and electronics repair facilities. The pens are self-contained, disposable cartridges: no tank prep, no plating bath, no hazardous waste handling.\n\nThis kit is the right starting point for any shop bringing portable spot-plating capability in-house for the first time, or for replacing an existing tank-based workflow with something faster and more selective. Heavy-duty equivalents are available individually if you need thicker deposits.",
-    "applications": ["Aerospace & Defense", "Jewelry & Restoration", "Electronics & PCB", "Industrial MRO"]
+    "longDescription": "The Deluxe Kit is Hunter Products' most comprehensive Micro-Metallizer pen plating package. It bundles every pen needed to handle the full standard range of plating work — from prep through final finish — alongside the variable DC power supply and connector cables required to drive the system.\n\nEvery component is shipped from our Flemington, NJ facility and is the same hardware deployed in aerospace MRO shops, dental laboratories, research labs, and electronics repair facilities. The pens are self-contained, disposable cartridges: no tank prep, no plating bath, no hazardous waste handling.\n\nThis kit is the right starting point for any shop bringing portable spot-plating capability in-house for the first time, or for replacing an existing tank-based workflow with something faster and more selective. Heavy-duty equivalents are available individually if you need thicker deposits.",
+    "applications": ["Aerospace & Defense", "Electronics & PCB", "Industrial MRO"]
   },
   {
     "id": "PL-1000HD",
@@ -125,7 +125,7 @@
       ["Required Compatibles", "Micro-Metallizer Power Supply, Connector Cables"]
     ],
     "longDescription": "The Absorbent / Degreaser pen is the mandatory first step in any Micro-Metallizer plating workflow. It removes oils, oxides, and surface contaminants that would otherwise prevent the plating layer from bonding correctly to the substrate.\n\nUsed across every Hunter Products kit, the pen handles all common substrates — copper, brass, nickel, steel, gold, silver — with the single exception of stainless steel, which requires the specialized Stainless Steel Degreaser Pen (PL-1014) instead.\n\nRequires the Micro-Metallizer power supply and connector cables. If you are buying individual pens to assemble a custom kit, start with this pen plus the metal you intend to plate.",
-    "applications": ["Aerospace & Defense", "Medical & Dental", "Jewelry & Restoration", "Electronics & PCB"]
+    "applications": ["Aerospace & Defense", "Medical & Dental", "Electronics & PCB"]
   },
   {
     "id": "PL-1003",
@@ -133,23 +133,23 @@
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces. Ideal for electrical contacts, jewelry repair, and decorative work.",
+    "description": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces. Ideal for connector pins, edge connectors, and switch contacts.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "gold-24k-plating-pen",
     "category": "pen",
     "sku": "PL-1003",
     "image": "/img/plating_pens.jpeg",
     "h1": "24K Gold Plating Pen",
-    "metaTitle": "24K Gold Plating Pen | Electroplating Pen for Contacts & Jewelry",
-    "metaDescription": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces with the Micro-Metallizer pen. Used for electrical contact repair, jewelry restoration, and decorative plating.",
+    "metaTitle": "24K Gold Plating Pen | Electroplating Pen for Contacts & Connectors",
+    "metaDescription": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces with the Micro-Metallizer pen. Used for connector pin, edge connector and switch contact repair.",
     "specs": [
       ["Part No.", "PL-1003"],
       ["Metal", "24 Karat Gold (pure)"],
       ["Compatible Surfaces", "Gold, Nickel, Silver"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The 24K Gold Plating Pen deposits pure 24-karat gold for both functional and decorative applications. For electrical contact work — connector pins, edge connectors, switch contacts — pure gold delivers the highest conductivity and corrosion resistance available, which is why this pen is a staple of aerospace MRO and electronics restoration shops.\n\nFor jewelry repair and decorative work, the same pen allows precision spot plating of pure gold onto gold, silver, or nickel substrates — useful for clasp restoration, ring repair, and selective accenting where a full tank dip is impractical.\n\nRequires surface preparation with the Absorbent / Degreaser pen first. On copper or other non-compatible substrates, apply a nickel underlayer with the Nickel Plating Pen (PL-1006) before plating gold. Heavy-duty variant available as the Gold 24K Heavy Duty Pen (PL-1016).",
-    "applications": ["Jewelry & Restoration", "Electronics & PCB", "Aerospace & Defense"]
+    "longDescription": "The 24K Gold Plating Pen deposits pure 24-karat gold for both functional and decorative applications. For electrical contact work — connector pins, edge connectors, switch contacts — pure gold delivers the highest conductivity and corrosion resistance available, which is why this pen is a staple of aerospace MRO and electronics restoration shops.\n\nThe same pen handles prototype contacts, lab samples, and touch-up on gold-plated parts where a full tank dip is impractical. It plates onto gold, silver, or nickel substrates.\n\nRequires surface preparation with the Absorbent / Degreaser pen first. On copper or other non-compatible substrates, apply a nickel underlayer with the Nickel Plating Pen (PL-1006) before plating gold. Heavy-duty variant available as the Gold 24K Heavy Duty Pen (PL-1016).",
+    "applications": ["Electronics & PCB", "Aerospace & Defense"]
   },
   {
     "id": "PL-1004",
@@ -157,23 +157,23 @@
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Plate 18K gold for jewelry and decorative applications where a warmer tone is preferred over 24K.",
+    "description": "Plate 18K gold onto gold, silver, or nickel for a harder-wearing finish than 24K on high-contact parts.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "gold-18k-plating-pen",
     "category": "pen",
     "sku": "PL-1004",
     "image": "/img/plating_pens.jpeg",
     "h1": "18K Gold Plating Pen",
-    "metaTitle": "18K Gold Plating Pen | Gold Pen for Jewelry Touch-Up",
-    "metaDescription": "Plate 18-karat gold for jewelry and decorative work that calls for a warmer tone than 24K. Compatible with gold, silver, or nickel surfaces. Micro-Metallizer pen system.",
+    "metaTitle": "18K Gold Plating Pen | Durable Gold for High-Contact Parts",
+    "metaDescription": "Plate 18-karat gold for a harder-wearing finish than 24K on high-contact industrial components. Compatible with gold, silver, or nickel surfaces. Micro-Metallizer pen system.",
     "specs": [
       ["Part No.", "PL-1004"],
       ["Metal", "18 Karat Gold"],
       ["Compatible Surfaces", "Gold, Nickel, Silver"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The 18K Gold Plating Pen is the jeweler's standard for spot plating where the warmer, harder-wearing tone of 18-karat gold is preferred over the softer pure 24K finish.\n\nUsed across antique jewelry restoration, custom jewelry finishing, and decorative metalwork. The Micro-Metallizer pen format makes it possible to selectively plate intricate features — engraved detail, settings, clasps — without immersing the entire piece in a plating bath.\n\nRequires Absorbent / Degreaser pen for surface prep. On non-gold/silver/nickel substrates, apply Nickel underlayer first. Heavy-duty variant (PL-1017) is available for higher-volume operations.",
-    "applications": ["Jewelry & Restoration"]
+    "longDescription": "The 18K Gold Plating Pen deposits 18-karat gold, a harder-wearing finish than pure 24K, for high-contact industrial components and touch-up on existing 18K-plated parts.\n\nThe Micro-Metallizer pen format makes it possible to selectively plate small features without immersing the entire part in a plating bath.\n\nRequires Absorbent / Degreaser pen for surface prep. On non-gold/silver/nickel substrates, apply Nickel underlayer first. Heavy-duty variant (PL-1017) is available for higher-volume operations.",
+    "applications": ["Electronics & PCB", "Manufacturing"]
   },
   {
     "id": "PL-1005",
@@ -181,23 +181,23 @@
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Plate 14K gold over gold, silver, or nickel surfaces — the most popular karat for jewelry applications.",
+    "description": "Plate 14K gold over gold, silver, or nickel surfaces for gold-alloy touch-up.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "gold-14k-plating-pen",
     "category": "pen",
     "sku": "PL-1005",
     "image": "/img/plating_pens.jpeg",
     "h1": "14K Gold Plating Pen",
-    "metaTitle": "14K Gold Plating Pen | Gold Pen for Jewelry Touch-Up",
-    "metaDescription": "14-karat gold plating pen — the most common karat in U.S. jewelry. Spot-plate gold, silver, or nickel surfaces with the portable Micro-Metallizer system. Ships from NJ.",
+    "metaTitle": "14K Gold Plating Pen | Gold-Alloy Touch-Up",
+    "metaDescription": "14-karat gold plating pen for gold-alloy touch-up. Spot-plate over gold, silver, or nickel surfaces with the portable Micro-Metallizer system. Ships from NJ.",
     "specs": [
       ["Part No.", "PL-1005"],
       ["Metal", "14 Karat Gold"],
       ["Compatible Surfaces", "Gold, Silver, Nickel"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The 14K Gold Plating Pen targets the karat weight most commonly used in U.S. jewelry manufacturing and repair. Its harder, more wear-resistant finish (compared to higher karats) makes it the practical choice for everyday-wear jewelry items.\n\nUsed by jewelry repair shops, restoration specialists, and small-batch jewelry makers. The Micro-Metallizer pen format eliminates the time and chemical handling overhead of tank plating for repair-volume work.\n\nRequires Absorbent / Degreaser for prep. Apply Nickel as an intermediate layer on non-compatible substrates. Refills sold individually.",
-    "applications": ["Jewelry & Restoration"]
+    "longDescription": "The 14K Gold Plating Pen deposits 14-karat gold over gold, silver, or nickel. It is used for touch-up on existing 14K-plated parts where the color needs to match, and where a harder finish than pure 24K is preferred.\n\nThe Micro-Metallizer pen format eliminates the time and chemical handling overhead of tank plating for repair-volume work.\n\nRequires Absorbent / Degreaser for prep. Apply Nickel as an intermediate layer on non-compatible substrates.",
+    "applications": ["Electronics & PCB", "Manufacturing"]
   },
   {
     "id": "PL-1006",
@@ -221,7 +221,7 @@
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
     "longDescription": "The Nickel Plating Pen is one of the most-used pens in the Micro-Metallizer system. Beyond standalone nickel plating, it serves as the standard underlayer that gives gold, rhodium, and other precious-metal platings the durable, well-bonded substrate they require.\n\nElectrical contact restoration workflows (PL-1000C kit) typically apply nickel as an intermediate before the final gold layer. The same workflow is used for connector pin and edge-connector repair across electronics and aerospace MRO.\n\nApply over copper directly. For other substrates (steel, brass, etc.), apply a copper flash with the Copper Plating Pen first. Heavy-duty variant (PL-1020) available.",
-    "applications": ["Electronics & PCB", "Aerospace & Defense", "Industrial MRO", "Jewelry & Restoration"]
+    "applications": ["Electronics & PCB", "Aerospace & Defense", "Industrial MRO"]
   },
   {
     "id": "PL-1007",
@@ -245,7 +245,7 @@
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
     "longDescription": "The Black Nickel Plating Pen deposits a dark, low-reflectivity nickel finish used for decorative applications (firearms, instruments, fittings) and for functional applications where surface reflectivity needs to be suppressed (optical instruments, camera components).\n\nThe pen is a drop-in alternative to the standard Nickel pen where the visual finish matters. Workflow is identical: apply over copper directly, or apply a copper flash first when working on steel, brass, or other substrates.\n\nRequires Absorbent / Degreaser for prep, plus the Micro-Metallizer power supply and connector cables.",
-    "applications": ["Jewelry & Restoration", "Manufacturing"]
+    "applications": ["Manufacturing"]
   },
   {
     "id": "PL-1008",
@@ -253,7 +253,7 @@
     "price": 85,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Plate silver onto any metallic surface except aluminum or chromium. Common for electrical contacts, silverware restoration, and jewelry.",
+    "description": "Plate silver onto any metallic surface except aluminum or chromium. Common for electrical contacts and silverware restoration.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "silver-plating-pen",
     "category": "pen",
@@ -261,15 +261,15 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Silver Plating Pen",
     "metaTitle": "Silver Plating Pen | Electroplating Pen for Silverware & Contacts",
-    "metaDescription": "Spot-plate silver onto most metals — for electrical contacts, silverware repair, and jewelry restoration. Portable Micro-Metallizer pen. Direct from Hunter Products.",
+    "metaDescription": "Spot-plate silver onto most metals — for electrical contacts and silverware repair. Portable Micro-Metallizer pen. Direct from Hunter Products.",
     "specs": [
       ["Part No.", "PL-1008"],
       ["Metal", "Silver"],
       ["Compatible Surfaces", "Most metals (not aluminum, not chromium)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Silver Plating Pen restores silver on antique silverware, plates fresh silver on electrical contacts where high conductivity is required, and supports jewelry-restoration workflows.\n\nUnlike many of the other pens, the Silver pen will plate directly onto most metallic substrates without an intermediate layer — the two exceptions being aluminum and chromium, which require different surface chemistry the Micro-Metallizer system does not address.\n\nFor silverware restoration, expect to use multiple cartridges per piece on larger items — the Silver Heavy Duty Pen (PL-1018) is the more economical choice once volume justifies it.",
-    "applications": ["Jewelry & Restoration", "Electronics & PCB", "Aerospace & Defense"]
+    "longDescription": "The Silver Plating Pen restores silver on antique silverware, plates fresh silver on electrical contacts where high conductivity is required.\n\nUnlike many of the other pens, the Silver pen will plate directly onto most metallic substrates without an intermediate layer — the two exceptions being aluminum and chromium, which require different surface chemistry the Micro-Metallizer system does not address.\n\nFor silverware restoration, expect to use multiple cartridges per piece on larger items — the Silver Heavy Duty Pen (PL-1018) is the more economical choice once volume justifies it.",
+    "applications": ["Electronics & PCB", "Aerospace & Defense"]
   },
   {
     "id": "PL-1009",
@@ -293,7 +293,7 @@
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
     "longDescription": "The Chrome Color Plating Pen deposits a bright, chrome-like decorative finish — used for restoration of automotive trim, decorative hardware, instrument bezels, and similar visual-finish applications.\n\nThis is a chrome-COLORED finish optimized for portable spot plating; it is not equivalent to industrial hard chrome plating. For decorative restoration and selective re-finishing, however, it allows touch-up work that would otherwise require sending a part out to a plating shop.\n\nPlates directly over copper. For other substrates, apply a copper flash with the Copper Plating Pen (PL-1010) before the chrome color layer.",
-    "applications": ["Jewelry & Restoration", "Manufacturing"]
+    "applications": ["Manufacturing"]
   },
   {
     "id": "PL-1010",
@@ -317,7 +317,7 @@
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
     "longDescription": "The Copper Plating Pen plays two roles in the Micro-Metallizer system. First, as a standalone deposit for restoring copper conductive surfaces (busbars, contact rails, antique copperware). Second — and more commonly — as the intermediate flash layer that lets you build up other plating sequences on substrates that wouldn't normally accept them directly (steel, brass, etc.).\n\nThe standard workflow for plating chrome, nickel, or rhodium onto a non-copper part is: degrease → copper flash with this pen → target metal. For thicker copper buildup on industrial parts, use the Copper Heavy Duty Pen (PL-1019) instead.\n\nPlates over most metals with the two exceptions of aluminum and chromium. Requires Absorbent / Degreaser pen for surface prep.",
-    "applications": ["Electronics & PCB", "Industrial MRO", "Aerospace & Defense", "Jewelry & Restoration"]
+    "applications": ["Electronics & PCB", "Industrial MRO", "Aerospace & Defense"]
   },
   {
     "id": "PL-1011",
@@ -332,16 +332,16 @@
     "sku": "PL-1011",
     "image": "/img/plating_pens.jpeg",
     "h1": "Rhodium Plating Pen",
-    "metaTitle": "Rhodium Plating Pen | Rhodium Touch-Up for Jewelry",
-    "metaDescription": "Rhodium plating pen — the hardest, most reflective finish in the Micro-Metallizer system. Used for white-gold jewelry finishing, optical components, and premium contacts.",
+    "metaTitle": "Rhodium Plating Pen | Hard, Wear-Resistant Reflective Finish",
+    "metaDescription": "Rhodium plating pen — the hardest, most reflective finish in the Micro-Metallizer system. Used for optical components, premium contacts, and hard wear surfaces.",
     "specs": [
       ["Part No.", "PL-1011"],
       ["Metal", "Rhodium"],
       ["Compatible Surfaces", "Nickel (apply copper + nickel flash on others)"],
       ["Required Compatibles", "Absorbent Pen, Nickel Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Rhodium Plating Pen produces the hardest, brightest, and most tarnish-resistant finish available across the Micro-Metallizer pen lineup. Used extensively in jewelry finishing — particularly for white-gold rings and settings where rhodium provides the characteristic bright-white color — and in industrial applications calling for an extremely hard, reflective surface (optical components, premium electrical contacts, decorative instrument work).\n\nRhodium is the most expensive of the standard plating metals, which is reflected in this pen's price. For shops doing high-volume rhodium work, replenishment cartridges should be ordered ahead of need.\n\nRequires a nickel underlayer in nearly all cases. On non-copper substrates, the full sequence is: degrease → copper flash → nickel → rhodium.",
-    "applications": ["Jewelry & Restoration", "Electronics & PCB", "Manufacturing"]
+    "longDescription": "The Rhodium Plating Pen produces the hardest, brightest, and most tarnish-resistant finish available across the Micro-Metallizer pen lineup. Used in industrial applications calling for an extremely hard, reflective surface: optical components, premium electrical contacts, and instrument work.\n\nRhodium is the most expensive of the standard plating metals, which is reflected in this pen's price. For shops doing high-volume rhodium work, replenishment cartridges should be ordered ahead of need.\n\nRequires a nickel underlayer in nearly all cases. On non-copper substrates, the full sequence is: degrease → copper flash → nickel → rhodium.",
+    "applications": ["Electronics & PCB", "Manufacturing"]
   },
   {
     "id": "PL-1012",
@@ -397,7 +397,7 @@
     "price": 140,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Plate palladium for corrosion-resistant, tarnish-proof finishes. Widely used in electronics and fine jewelry as a white-metal alternative to rhodium.",
+    "description": "Plate palladium for corrosion-resistant, tarnish-proof finishes. Widely used in electronics as a white-metal alternative to rhodium.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "palladium-plating-pen",
     "category": "pen",
@@ -405,15 +405,15 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Palladium Plating Pen",
     "metaTitle": "Palladium Plating Pen | White-Metal Electroplating Pen",
-    "metaDescription": "Palladium plating pen — tarnish-resistant white-metal finish for fine jewelry and electronics. A cost-effective alternative to rhodium. Hunter Products Micro-Metallizer system.",
+    "metaDescription": "Palladium plating pen — tarnish-resistant white-metal finish for electronics and connectors. A cost-effective alternative to rhodium. Hunter Products Micro-Metallizer system.",
     "specs": [
       ["Part No.", "PL-1015"],
       ["Metal", "Palladium"],
       ["Compatible Surfaces", "Most metals"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Palladium Plating Pen produces a tarnish-resistant white-metal finish often used as a cost-effective alternative to rhodium where the very-bright rhodium reflectivity isn't required.\n\nUsed in electronics for premium contact plating (palladium-nickel sequences are common in connector manufacturing) and in fine jewelry for white-metal finishing. Palladium's chemistry is more forgiving than rhodium's: it plates onto most metals directly, simplifying the workflow.\n\nRequires Absorbent / Degreaser pen for prep, plus the Micro-Metallizer power supply and connector cables.",
-    "applications": ["Jewelry & Restoration", "Electronics & PCB"]
+    "longDescription": "The Palladium Plating Pen produces a tarnish-resistant white-metal finish often used as a cost-effective alternative to rhodium where the very-bright rhodium reflectivity isn't required.\n\nUsed in electronics for premium contact plating (palladium-nickel sequences are common in connector manufacturing). Palladium's chemistry is more forgiving than rhodium's: it plates onto most metals directly, simplifying the workflow.\n\nRequires Absorbent / Degreaser pen for prep, plus the Micro-Metallizer power supply and connector cables.",
+    "applications": ["Electronics & PCB"]
   },
   {
     "id": "PL-1016",
@@ -429,7 +429,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Heavy-Duty 24K Gold Plating Pen",
     "metaTitle": "Heavy-Duty 24K Gold Plating Pen | Thicker Gold Deposits",
-    "metaDescription": "Heavy-duty 24K gold plating pen for thicker deposits on high-wear contacts and production-volume jewelry work. Micro-Metallizer system. Hunter Products, NJ.",
+    "metaDescription": "Heavy-duty 24K gold plating pen for thicker deposits on high-wear contacts. Micro-Metallizer system. Hunter Products, NJ.",
     "specs": [
       ["Part No.", "PL-1016"],
       ["Metal", "24 Karat Gold (pure)"],
@@ -437,8 +437,8 @@
       ["Compatible Surfaces", "Gold, Nickel, Silver"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Heavy Duty 24K Gold Pen carries significantly more electrolyte per cartridge than the standard Gold 24K pen (PL-1003), allowing for thicker deposits and longer runs between cartridge swaps.\n\nFor production-volume contact restoration (aerospace MRO, switch-bank refurbishment, multi-pin connector repair) and for jewelry shops plating high-wear surfaces (ring shanks, bracelet links), the HD pen is significantly more economical per plated job once volume justifies it.\n\nFollow the same workflow as the standard pen: Absorbent / Degreaser first, Nickel underlayer on non-compatible substrates, then plate.",
-    "applications": ["Aerospace & Defense", "Electronics & PCB", "Jewelry & Restoration"]
+    "longDescription": "The Heavy Duty 24K Gold Pen carries significantly more electrolyte per cartridge than the standard Gold 24K pen (PL-1003), allowing for thicker deposits and longer runs between cartridge swaps.\n\nFor production-volume contact restoration (aerospace MRO, switch-bank refurbishment, multi-pin connector repair) the HD pen is significantly more economical per plated job once volume justifies it.\n\nFollow the same workflow as the standard pen: Absorbent / Degreaser first, Nickel underlayer on non-compatible substrates, then plate.",
+    "applications": ["Aerospace & Defense", "Electronics & PCB"]
   },
   {
     "id": "PL-1017",
@@ -446,15 +446,15 @@
     "price": 235,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Heavy-duty 18K gold pen for thicker deposits. Ideal for high-contact jewelry and industrial components requiring a durable gold finish.",
+    "description": "Heavy-duty 18K gold pen for thicker deposits. Ideal for high-contact industrial components requiring a durable gold finish.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "gold-18k-heavy-duty-plating-pen",
     "category": "pen",
     "sku": "PL-1017",
     "image": "/img/plating_pens.jpeg",
     "h1": "Heavy-Duty 18K Gold Plating Pen",
-    "metaTitle": "Heavy-Duty 18K Gold Plating Pen | High-Wear Jewelry",
-    "metaDescription": "Heavy-duty 18K gold plating pen — thicker deposits for high-contact jewelry and industrial components requiring a durable warm-tone gold finish. Hunter Products.",
+    "metaTitle": "Heavy-Duty 18K Gold Plating Pen | Thicker Deposits on High-Wear Parts",
+    "metaDescription": "Heavy-duty 18K gold plating pen — thicker deposits for high-contact industrial components requiring a durable warm-tone gold finish. Hunter Products.",
     "specs": [
       ["Part No.", "PL-1017"],
       ["Metal", "18 Karat Gold"],
@@ -462,8 +462,8 @@
       ["Compatible Surfaces", "Gold, Nickel, Silver"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Heavy Duty 18K Gold Pen is the standard-pen equivalent (PL-1004) scaled up for higher-volume jewelry shops and industrial components requiring a durable warm-tone gold finish.\n\nThicker deposit capability extends wear life on commonly-handled items — wedding band shanks, watch crowns, decorative trim — making this the preferred choice for shops where customers expect repeat-resistant gold finishes.\n\nWorkflow is identical to the standard pen: degrease, apply nickel underlayer if needed, plate. Power supply and connector cables required.",
-    "applications": ["Jewelry & Restoration"]
+    "longDescription": "The Heavy Duty 18K Gold Pen is the standard-pen equivalent (PL-1004) scaled up for higher-volume work on industrial components requiring a durable warm-tone gold finish.\n\nThicker deposit capability extends wear life on contacts and surfaces that are handled or mated repeatedly.\n\nWorkflow is identical to the standard pen: degrease, apply nickel underlayer if needed, plate. Power supply and connector cables required.",
+    "applications": ["Electronics & PCB", "Manufacturing"]
   },
   {
     "id": "PL-1018",
@@ -471,7 +471,7 @@
     "price": 120,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Heavy-duty silver pen for thicker silver deposits on electrical contacts, silverware restoration, and large surface jewelry work.",
+    "description": "Heavy-duty silver pen for thicker silver deposits on electrical contacts, silverware restoration, and other large surfaces.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "silver-heavy-duty-plating-pen",
     "category": "pen",
@@ -479,7 +479,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Heavy Duty Silver Plating Pen",
     "metaTitle": "Heavy-Duty Silver Plating Pen | Silverware & Large Contacts | Hunter Products",
-    "metaDescription": "Heavy-duty silver plating pen — thicker silver deposits for silverware restoration, large electrical contacts, and high-volume jewelry work. Hunter Products, NJ.",
+    "metaDescription": "Heavy-duty silver plating pen — thicker silver deposits for silverware restoration, large electrical contacts. Hunter Products, NJ.",
     "specs": [
       ["Part No.", "PL-1018"],
       ["Metal", "Silver"],
@@ -488,7 +488,7 @@
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
     "longDescription": "The Heavy Duty Silver Pen is the workhorse for silverware restoration — large surface areas (trays, serving pieces, tea sets) consume electrolyte at a rate that makes the standard Silver pen (PL-1008) impractical.\n\nAlso used for large-area electrical contact plating in industrial switchgear and busbar applications, where standard-pen capacity would require frequent cartridge swaps.\n\nSilver plates directly onto most substrates without an intermediate layer; only aluminum and chromium require alternative chemistry. Requires Absorbent / Degreaser pen for surface preparation.",
-    "applications": ["Jewelry & Restoration", "Electronics & PCB", "Industrial MRO"]
+    "applications": ["Electronics & PCB", "Industrial MRO"]
   },
   {
     "id": "PL-1019",
@@ -538,7 +538,7 @@
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
     "longDescription": "The Heavy Duty Nickel Pen is the production-grade equivalent of the standard Nickel pen (PL-1006). Most often used to lay down the thicker nickel underlayer required for production-volume gold or rhodium plating sequences.\n\nAlso used for standalone nickel build-up applications — restoring worn nickel coatings on machinery components, plating contact surfaces, and corrosion-protection touch-up on industrial equipment.\n\nApply over copper directly; use the Copper Heavy Duty Pen (PL-1019) for a flash layer on steel, brass, and other non-copper substrates.",
-    "applications": ["Industrial MRO", "Manufacturing", "Aerospace & Defense", "Jewelry & Restoration"]
+    "applications": ["Industrial MRO", "Manufacturing", "Aerospace & Defense"]
   },
   {
     "id": "PL-1014",
@@ -802,8 +802,8 @@
       ["Application", "Cleaning, surface prep, etching"],
       ["Best For", "Small or delicate components"]
     ],
-    "longDescription": "The Micro-Jet 200 is Hunter Products' precision micro-abrasive blasting platform — engineered for cleaning, etching, and surface preparation on parts where conventional blasting equipment is too aggressive.\n\nUsed in electronics manufacturing for PCB-level cleaning and rework, in medical instrument production for fine-feature surface prep, in jewelry and antique restoration for selective material removal, and in tooling for matte-finish creation on cutting surfaces.\n\nThe system controls particle delivery to a degree that allows the operator to work on delicate features — fine wires, thin substrates, intricate detail — without the collateral damage standard blasting would cause. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"]
+    "longDescription": "The Micro-Jet 200 is Hunter Products' precision micro-abrasive blasting platform — engineered for cleaning, etching, and surface preparation on parts where conventional blasting equipment is too aggressive.\n\nUsed in electronics manufacturing for PCB-level cleaning and rework, in medical instrument production for fine-feature surface prep, in antique and instrument restoration for selective material removal, and in tooling for matte-finish creation on cutting surfaces.\n\nThe system controls particle delivery to a degree that allows the operator to work on delicate features — fine wires, thin substrates, intricate detail — without the collateral damage standard blasting would cause. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"]
   },
   {
     "id": "AB2001",
@@ -827,7 +827,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Complete tungsten carbide nozzle assembly with a .020\" orifice for the Micro-Jet 200. The .020\" size gives a finer, more concentrated blast pattern for small features.\n\nNozzles wear with abrasive use and are replaced periodically. This is the full assembly; if you only need the tip, order the .020\" nozzle (AB2003).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "consumable"
   },
   {
@@ -852,7 +852,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Complete tungsten carbide nozzle assembly with a .030\" orifice for the Micro-Jet 200. The .030\" size gives a wider blast pattern for faster coverage on larger areas.\n\nNozzles wear with abrasive use and are replaced periodically. This is the full assembly; if you only need the tip, order the .030\" nozzle (AB2004).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "consumable"
   },
   {
@@ -877,7 +877,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Tungsten carbide nozzle tip with a .020\" orifice for the Micro-Jet 200. The .020\" size gives a finer, more concentrated blast pattern for small features.\n\nNozzles wear with abrasive use and are replaced periodically. This is the nozzle alone; for the complete assembly, order the .020\" nozzle assembly (AB2001).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "consumable"
   },
   {
@@ -902,7 +902,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Tungsten carbide nozzle tip with a .030\" orifice for the Micro-Jet 200. The .030\" size gives a wider blast pattern for faster coverage on larger areas.\n\nNozzles wear with abrasive use and are replaced periodically. This is the nozzle alone; for the complete assembly, order the .030\" nozzle assembly (AB2002).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "consumable"
   },
   {
@@ -925,7 +925,7 @@
       ["Use with", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "The Model 1210BCG is the blast cabinet used with the Micro-Jet 200. It keeps abrasive contained during blasting and gives the operator a gloved, enclosed work area with a viewing window.\n\nReplacement gloves (AB2018), O-rings (AB2019) and safety viewing glass (AB2020) are sold separately.",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "equipment"
   },
   {
@@ -950,7 +950,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Aluminum oxide is the general-purpose cutting abrasive for cleaning, deburring, etching and surface prep. Grit 220 is extra fine, suited to fine cleaning and surface prep on small parts.\n\nSold in a 5 lb quantity. Also available in 50 lb (AB2026).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -975,7 +975,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Aluminum oxide is the general-purpose cutting abrasive for cleaning, deburring, etching and surface prep. Grit 320 is super fine, suited to delicate parts and fine detail work.\n\nSold in a 5 lb quantity. Also available in 50 lb (AB2027).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1000,7 +1000,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Aluminum oxide is the general-purpose cutting abrasive for cleaning, deburring, etching and surface prep. Grit 220 is extra fine, suited to fine cleaning and surface prep on small parts.\n\nSold in a 50 lb quantity. Also available in 5 lb (AB2024).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1025,7 +1025,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Aluminum oxide is the general-purpose cutting abrasive for cleaning, deburring, etching and surface prep. Grit 320 is super fine, suited to delicate parts and fine detail work.\n\nSold in a 50 lb quantity. Also available in 5 lb (AB2025).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1050,7 +1050,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Silicon carbide is harder and sharper than aluminum oxide, so it cuts faster on hard materials and tough coatings. Grit 220 is extra fine, suited to fine cleaning and surface prep on small parts.\n\nSold in a 5 lb quantity. Also available in 50 lb (AB2030).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1075,7 +1075,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Silicon carbide is harder and sharper than aluminum oxide, so it cuts faster on hard materials and tough coatings. Grit 320 is super fine, suited to delicate parts and fine detail work.\n\nSold in a 5 lb quantity. Also available in 50 lb (AB2031).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1100,7 +1100,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Silicon carbide is harder and sharper than aluminum oxide, so it cuts faster on hard materials and tough coatings. Grit 220 is extra fine, suited to fine cleaning and surface prep on small parts.\n\nSold in a 50 lb quantity. Also available in 5 lb (AB2028).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1125,7 +1125,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Silicon carbide is harder and sharper than aluminum oxide, so it cuts faster on hard materials and tough coatings. Grit 320 is super fine, suited to delicate parts and fine detail work.\n\nSold in a 50 lb quantity. Also available in 5 lb (AB2029).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1149,7 +1149,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Glass beads clean and peen rather than cut, leaving a smooth satin finish without removing base material. Super-fine beads are suited to delicate parts and fine detail work.\n\nSold in a 5 lb quantity. Also available in 50 lb (AB2033).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {
@@ -1173,7 +1173,7 @@
       ["Fits", "Micro-Jet 200 (AB2000)"]
     ],
     "longDescription": "Glass beads clean and peen rather than cut, leaving a smooth satin finish without removing base material. Super-fine beads are suited to delicate parts and fine detail work.\n\nSold in a 50 lb quantity. Also available in 5 lb (AB2032).",
-    "applications": ["Electronics & PCB", "Medical & Dental", "Jewelry & Restoration", "Manufacturing"],
+    "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"],
     "kind": "media"
   },
   {

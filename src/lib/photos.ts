@@ -82,7 +82,6 @@ export const PHOTO_SLOTS = {
   },
   'app-aerospace-defense': { alt: 'Aerospace connector contact restoration', brief: 'Multi-pin aerospace connector being plated.', size: '1200×800', fallback: 'micro-metallizer' },
   'app-medical-dental': { alt: 'Tungsten-carbide treatment of surgical instruments', brief: 'Scissors or scalpel edge under the Carbitron handpiece.', size: '1200×800', fallback: 'carbitron' },
-  'app-jewelry-restoration': { alt: 'Rhodium plating a white-gold ring', brief: 'Ring or clasp being plated with the pen.', size: '1200×800', fallback: 'micro-metallizer' },
   'app-electronics-pcb': { alt: 'Gold plating PCB edge-connector fingers', brief: 'PCB edge connector or pads being plated.', size: '1200×800', fallback: 'micro-metallizer' },
   'app-manufacturing': { alt: 'Zinc touch-up on a steel component', brief: 'Production part / fastener being touched up.', size: '1200×800', fallback: 'micro-metallizer' },
   'app-industrial-mro': { alt: 'Field repair of switchgear contacts', brief: 'Portable kit in use on equipment in the field.', size: '1200×800', fallback: 'micro-metallizer' },

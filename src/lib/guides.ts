@@ -567,101 +567,6 @@ export const GUIDES: Guide[] = [
   },
 
   {
-    slug: 'gold-plating-jewelry-with-a-pen',
-    label: 'Gold plating jewelry with a pen',
-    h1: 'How to gold plate jewelry with a plating pen',
-    metaTitle: 'Gold Plating Pen for Jewelry: How to Gold Plate Rings, Clasps & Chains',
-    metaDescription:
-      'How to gold plate jewelry with a gold plating pen: prep, the right underlayer for silver, brass and copper, voltages, plating times and which pens to buy.',
-    eyebrow: 'Jewelry & restoration',
-    lede: 'A gold plating pen touches up worn rings, clasps, chains and engraved detail without dipping the whole piece. The trick is knowing what the base metal needs before the gold goes on.',
-    answer:
-      'Clean and degrease the piece at 10 to 12V DC, then plate gold at 6 to 8V. Gold plates directly onto gold, silver or nickel. Copper needs a nickel layer first, and brass or other base metals need a copper flash, then nickel, then gold. A standard gold pen deposits about 0.5 µm in 2 minutes on a 1 in² area.',
-    sections: [
-      {
-        heading: 'What gold will plate onto',
-        table: {
-          caption: 'Sequence before gold, by jewelry base metal',
-          head: ['Base metal', 'Before the gold'],
-          rows: [
-            ['Gold (worn or thin)', 'Clean and degrease only'],
-            ['Sterling or fine silver', 'Clean and degrease only'],
-            ['Nickel', 'Clean and degrease only'],
-            ['Copper', 'Nickel underlayer'],
-            ['Brass, bronze and other base metals', 'Copper flash, then nickel'],
-            ['Steel and zinc die-cast', 'Copper flash, then nickel'],
-            ['Aluminum', 'Not supported'],
-          ],
-        },
-      },
-      {
-        heading: 'Step by step',
-        steps: [
-          PREP_STEP,
-          DEGREASE_STEP,
-          {
-            title: 'Build the base, only if needed',
-            text: 'On brass or other base metals, plate a copper flash with the Copper pen (PL-1010) at 6 to 8V, rinse, then plate nickel with the Nickel pen (PL-1006) at 5 to 6V. On copper, plate nickel only. Skip this step on gold, silver or nickel.',
-          },
-          {
-            title: 'Plate gold at 6 to 8V',
-            text: `${HOOKUP} Use the Gold 24K, 18K or 14K pen to match the color of the piece. Expect about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area.`,
-          },
-          {
-            title: 'Rinse and wipe',
-            text: 'Rinse the piece in water and wipe it with a soft cloth.',
-          },
-        ],
-      },
-      {
-        heading: '24K, 18K or 14K',
-        paragraphs: [
-          'All three gold pens plate over gold, silver or nickel at 6 to 8V. Pick the one that matches the color of the piece you are touching up: 24K is the richest yellow, 18K and 14K are lighter. Standard pens build up to 1.5 to 1.8 µm.',
-          'For high-wear surfaces like ring shanks and bracelet links, the Heavy-Duty 24K and 18K pens carry more solution per cartridge and build up to 3 to 3.6 µm.',
-        ],
-      },
-      {
-        heading: 'Rhodium and silver touch-up',
-        paragraphs: [
-          'The Rhodium pen (PL-1011) plates over nickel at 8 to 10V. On other metals, flash copper and then nickel first. The Silver pen (PL-1008) plates directly onto any metal except aluminum or chromium at 5 to 6V.',
-        ],
-      },
-      {
-        heading: 'What to buy',
-        paragraphs: [
-          'The Deluxe Kit (PL-1000K, $540) covers gold plating on any common jewelry metal. It includes the power supply, cables, and the Absorbent, Copper, Nickel, Gold 24K, Silver and Chrome Color pens. Add an 18K or 14K gold pen ($145) if you need a lighter shade.',
-          'If you only plate over gold or silver, you need the power supply ($220), connector cables ($20), Absorbent pen ($65) and a gold pen ($145).',
-        ],
-      },
-    ],
-    faq: [
-      {
-        q: 'Can you gold plate sterling silver with a pen?',
-        a: 'Yes. Gold plates directly onto silver. Clean and degrease the piece, then plate gold at 6 to 8V DC.',
-      },
-      {
-        q: 'Can you gold plate brass jewelry?',
-        a: 'Yes, with underlayers. Plate a copper flash, then nickel, then gold. Gold does not go directly onto brass.',
-      },
-      {
-        q: 'How thick is gold from a plating pen?',
-        a: 'A standard gold pen deposits about 0.5 µm in 2 minutes on a 1 in² area, up to 1.5 to 1.8 µm. Heavy-duty gold pens reach 3 to 3.6 µm.',
-      },
-      {
-        q: 'Which gold plating pen should I use for jewelry?',
-        a: 'Match the karat to the piece: 24K for the deepest yellow, 18K or 14K for lighter gold. Use a heavy-duty pen on high-wear areas like ring shanks.',
-      },
-      {
-        q: 'Can I gold plate aluminum jewelry?',
-        a: 'No. The Micro-Metallizer system does not plate aluminum.',
-      },
-    ],
-    products: ['deluxe-plating-kit', 'gold-24k-plating-pen', 'gold-18k-plating-pen', 'gold-14k-plating-pen', 'rhodium-plating-pen'],
-    related: ['plating-pen-kit-comparison', 'brush-plating-substrate-guide', 'brush-plating-thickness-chart'],
-    updated: '2026-10-02',
-  },
-
-  {
     slug: 'plating-pen-kit-comparison',
     label: 'Plating pen kit comparison',
     h1: 'Plating pen kits compared: which one to buy',
@@ -681,7 +586,7 @@ export const GUIDES: Guide[] = [
           rows: [
             ['Contact Repair Kit (PL-1000C)', '$400', 'Absorbent, Nickel, Gold 24K', '$520', '$120', 'Connector pins, edge connectors, switch contacts'],
             ['Contact Repair Kit, Heavy Duty (PL-1000CHD)', '$525', 'Absorbent, Nickel HD, Gold 24K HD', '$660', '$135', 'Higher-volume contact restoration'],
-            ['Deluxe Kit (PL-1000K)', '$540', 'Absorbent, Nickel, Gold 24K, Silver, Chrome Color, Copper', '$735', '$195', 'Mixed metals, jewelry, general shop use'],
+            ['Deluxe Kit (PL-1000K)', '$540', 'Absorbent, Nickel, Gold 24K, Silver, Chrome Color, Copper', '$735', '$195', 'Mixed metals, general shop and lab use'],
             ['Deluxe Kit, Heavy Duty (PL-1000HD)', '$900', 'Absorbent, Nickel HD, Gold 24K HD, Silver HD, Copper HD, Rhodium', '$1,190', '$290', 'Production work, thicker deposits, rhodium'],
           ],
         },
@@ -699,7 +604,6 @@ export const GUIDES: Guide[] = [
         list: [
           'Worn gold on connector pins, PCB fingers or switch contacts: Contact Repair Kit',
           'Gold over brass, copper or steel: Deluxe Kit, because it includes the copper pen for the flash layer',
-          'Jewelry touch-up in gold and silver: Deluxe Kit',
           'Rhodium finishing: Deluxe Kit, Heavy Duty, the only kit with a rhodium pen',
           'Only re-tinning PCB pads: skip the kits and buy the power supply, cables, absorbent and tin pens ($375)',
         ],
@@ -714,7 +618,7 @@ export const GUIDES: Guide[] = [
     faq: [
       {
         q: 'Which plating pen kit should I buy?',
-        a: 'For electrical contacts, the Contact Repair Kit ($400). For mixed metals or jewelry, the Deluxe Kit ($540). Choose a Heavy Duty version for thicker deposits and higher volume.',
+        a: 'For electrical contacts, the Contact Repair Kit ($400). For mixed metals, the Deluxe Kit ($540). Choose a Heavy Duty version for thicker deposits and higher volume.',
       },
       {
         q: 'Do the kits include the power supply?',
@@ -730,7 +634,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'deluxe-plating-kit', 'contact-repair-kit-heavy-duty', 'deluxe-plating-kit-heavy-duty'],
-    related: ['gold-plating-connector-pins', 'gold-plating-jewelry-with-a-pen', 'brush-plating-thickness-chart'],
+    related: ['gold-plating-connector-pins', 'pcb-gold-finger-repair', 'brush-plating-thickness-chart'],
     updated: '2026-10-02',
   },
 ];
