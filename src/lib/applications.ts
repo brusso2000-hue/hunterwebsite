@@ -105,6 +105,7 @@ export const APPLICATIONS: Application[] = [
     id: 'jewelry-restoration',
     label: 'Jewelry & Restoration',
     code: 'JR',
+    guides: ['gold-plating-jewelry-with-a-pen', 'plating-pen-kit-comparison'],
     title: 'Jewelry repair, finishing, and antique restoration',
     lede: 'Gold, rhodium, silver and palladium on settings, clasps and engraved detail — no immersion.',
     body: [
