@@ -27,6 +27,8 @@ export const RETURN_POLICY = {
   returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
   merchantReturnDays: POLICY.returnDays,
   returnMethod: 'https://schema.org/ReturnByMail',
+  // Hunter Products pays return shipping (stated Oct 2026).
+  returnFees: 'https://schema.org/FreeReturn',
 };
 
 export const SHIPPING_DETAILS = {

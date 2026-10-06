@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE, POLICY } from '../lib/site';
+---
+
+<Base
+  title="Shipping & Returns | Hunter Products Inc."
+  description={`Hunter Products ships worldwide from Flemington, NJ. Orders ship within ${POLICY.handlingDaysMax} business days. ${POLICY.returnDays}-day returns, and we pay return shipping.`}
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Shipping & Returns']]} />
+      <h1 class="h-1">Shipping &amp; Returns</h1>
+      <p class="lede">Every order ships from our facility in {SITE.city}, {SITE.region}.</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap cols">
+      <div class="blk">
+        <h2 class="h-2">Shipping</h2>
+        <ul class="ticks">
+          <li>We ship to customers in the United States and worldwide.</li>
+          <li>Orders ship within {POLICY.handlingDaysMax} business days.</li>
+          <li>Shipping cost is calculated at checkout based on weight and destination.</li>
+          <li>International customers are responsible for any import duties and taxes.</li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">Returns</h2>
+        <ul class="ticks">
+          <li>Products may be returned within {POLICY.returnDays} days of delivery.</li>
+          <li>Hunter Products pays return shipping.</li>
+          <li>Returns are by mail. Contact us before sending so we can provide a return label and instructions.</li>
+          <li>Refunds are issued to the original payment method once the return is received.</li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">Questions</h2>
+        <p>
+          Call <a href={SITE.phoneHref}>{SITE.phone}</a> ({SITE.hours}) or email
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        </p>
+        <address>{SITE.name}<br />{SITE.street}<br />{SITE.city}, {SITE.region} {SITE.postal}</address>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner h1 { margin-top: 14px; }
+  .cols { display: grid; gap: 40px; max-width: 760px; }
+  .blk { display: grid; gap: 14px; }
+  .blk p, address { color: var(--text-2); }
+  address { font-style: normal; }
+</style>

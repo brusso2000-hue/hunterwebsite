@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // /products.json is a Snipcart crawler endpoint, not a page.
-      filter: (page) => !page.endsWith('.json/') && !page.endsWith('.json'),
+      filter: (page) => !/\.(json|xml)\/?$/.test(page),
     }),
   ],
 });
