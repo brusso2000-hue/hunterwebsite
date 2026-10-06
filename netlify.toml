@@ -6,20 +6,21 @@
   NODE_VERSION = "22"
 
 # ── Retired / consolidated URLs ─────────────────────────
-# The dedicated pen store is now a filtered view of the main store.
+# The old pen store ranked for "plating pen" terms; send it to the indexable
+# Micro-Metallizer page (all pens, prices and links), not a canonicalized filter URL.
 [[redirects]]
   from = "/store-pen/"
-  to = "/store/?line=micro-metallizer"
+  to = "/systems/micro-metallizer/"
   status = 301
 
 [[redirects]]
   from = "/store-pen"
-  to = "/store/?line=micro-metallizer"
+  to = "/systems/micro-metallizer/"
   status = 301
 
 [[redirects]]
   from = "/store-pen.html"
-  to = "/store/?line=micro-metallizer"
+  to = "/systems/micro-metallizer/"
   status = 301
 
 # Old flat .html paths from the hand-built site

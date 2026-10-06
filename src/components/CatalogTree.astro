@@ -1,5 +1,9 @@
 ---
 // Left-hand product tree used on system and product pages.
+// Only the current system's products are linked. Linking all 64 products
+// from every page spread internal link weight evenly across spare parts
+// (the $2.25 barb fitting out-linked the 24K gold pen); other systems are
+// reached through their system page link instead.
 import { SYSTEMS, productsForSystem, typeOf, productUrl, type SystemId, type ProductType } from '../lib/catalog';
 
 interface Props {
@@ -43,7 +47,7 @@ const tree = SYSTEMS.map((s) => {
       <summary>
         <a href={s.href} class:list={{ on: s.id === currentSystem && !currentSlug }}>{s.name}</a>
       </summary>
-      <div class="tree-body">
+      {s.id === currentSystem && <div class="tree-body">
         {s.groups.map((g) => (
           <div class="tree-group">
             {s.groups.length > 1 && <p class="tree-glabel">{g.label}</p>}
@@ -70,7 +74,7 @@ const tree = SYSTEMS.map((s) => {
             </ul>
           </div>
         )}
-      </div>
+      </div>}
     </details>
   ))}
   <a class="tree-all" href="/store/">Shop all products →</a>

@@ -19,7 +19,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'micro-metallizer',
     id: 'micro-metallizer',
     title: 'Micro-Metallizer Brush Plating System',
-    metaTitle: 'Micro-Metallizer Brush Plating System | Selective Plating Pens | Hunter Products',
+    metaTitle: 'Plating Pens & Brush Plating System | Micro-Metallizer | Hunter Products',
     metaDescription:
       'Micro-Metallizer brush plating system: variable DC power supply and self-contained plating pens for gold, rhodium, silver, nickel, tin, zinc and more. No tanks. Built by Hunter Products, NJ.',
     headline: 'Selective brush plating in a pen.',

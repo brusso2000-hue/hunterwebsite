@@ -1,9 +1,19 @@
 ---
-import { SYSTEMS } from '../lib/catalog';
+import { SYSTEMS, bySlug, productUrl } from '../lib/catalog';
 import { APPLICATIONS } from '../lib/applications';
 import { SITE } from '../lib/site';
 import Logo from './Logo.astro';
 const year = new Date().getFullYear();
+// Sitewide links to the pages that earn search traffic and orders.
+const POPULAR: [string, string][] = [
+  ['gold-24k-plating-pen', '24K gold plating pen'],
+  ['nickel-plating-pen', 'Nickel plating pen'],
+  ['zinc-plating-pen', 'Zinc plating pen'],
+  ['silver-plating-pen', 'Silver plating pen'],
+  ['contact-repair-kit', 'Contact repair kit'],
+  ['deluxe-plating-kit', 'Electroplating pen kit'],
+  ['carbitron-300-system', 'Carbitron 300 system'],
+];
 ---
 
 <footer class="ftr">
@@ -36,6 +46,10 @@ const year = new Date().getFullYear();
         {SYSTEMS.map((s) => <a href={s.href}>{s.name}</a>)}
         <a href="/store/">Shop all products</a>
       </nav>
+      <nav class="ftr-col" aria-label="Popular products">
+        <h3 class="label">Popular products</h3>
+        {POPULAR.map(([slug, label]) => <a href={productUrl(bySlug(slug))}>{label}</a>)}
+      </nav>
       <nav class="ftr-col" aria-label="Applications">
         <h3 class="label">Applications</h3>
         {APPLICATIONS.map((a) => <a href={`/applications-electroplating/#${a.id}`}>{a.label}</a>)}
@@ -67,7 +81,7 @@ const year = new Date().getFullYear();
   .ftr-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
   .ftr-main { background: var(--navy); color: var(--on-navy-2); padding: 64px 0 48px; }
-  .ftr-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+  .ftr-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; }
   @media (max-width: 900px) { .ftr-grid { grid-template-columns: 1fr 1fr; } .ftr-brand { grid-column: 1 / -1; } }
   @media (max-width: 480px) { .ftr-grid { grid-template-columns: 1fr; } }
   .ftr-brand { display: grid; gap: 20px; align-content: start; font-size: 15px; max-width: 380px; }
