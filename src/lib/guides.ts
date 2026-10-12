@@ -6,7 +6,9 @@
  *
  * Every number here comes from the Micro-Metallizer catalog
  * (public/pdfs/Hunter_Micro-Metallizer_Catalog.pdf), the Carbitron 300 brochure
- * (public/pdfs/Carbitron_300_Brochure.pdf) or src/data/products.json.
+ * (public/pdfs/Carbitron_300_Brochure.pdf) or src/data/products.json. The diamond-dusting
+ * guide also draws on HPN, "Proper care, inspection crucial for needle holder performance"
+ * (hpnonline.com) for jaw types and ring markings.
  * Do not add specs that are not in one of those two sources.
  */
 
@@ -1061,6 +1063,77 @@ export const GUIDES: Guide[] = [
   },
 
   {
+    slug: 'diamond-dusting-surgical-instruments',
+    label: 'Diamond dusting surgical instruments',
+    h1: 'Diamond dusting surgical instruments: what it is and how it is applied',
+    metaTitle: 'Diamond Dusting Surgical Instruments: How It Is Applied',
+    metaDescription:
+      'What diamond dusting is, why needle holders and forceps get it, and the equipment used to apply it: a tungsten carbide electrode system like the Carbitron 300.',
+    eyebrow: 'Surgical instruments',
+    lede: 'Diamond-dusted needle holders and forceps grip fine needles and delicate tissue without slipping. The name is misleading: the grip surface is tungsten carbide, applied with an electrical applicator.',
+    answer:
+      'Diamond dusting is a fine layer of tungsten carbide applied to an instrument working surface, usually needle holder or forceps jaws, with an electrical applicator and a tungsten carbide electrode. It gives a hard, textured grip for fine suture needles and tissue. The Carbitron 300, the original diamond-dusting system, deposits it at 78 to 80 Rockwell C.',
+    sections: [
+      {
+        heading: 'What diamond dusting is',
+        paragraphs: [
+          'Despite the name, there is no diamond involved. A tungsten carbide electrode is held against the instrument while short electrical discharges transfer carbide into and onto the surface. The result is a fused, textured layer of tungsten carbide, much harder than the stainless steel underneath.',
+          'Instrument makers mark diamond-dusted needle holders with black handle rings, which helps sterile processing staff tell them apart from instruments with tungsten carbide inserts, usually marked with gold rings.',
+        ],
+      },
+      {
+        heading: 'Which instruments get it',
+        list: [
+          'Needle holders for very fine suture needles, where a smooth jaw would let the needle rotate or slip',
+          'Forceps that need a secure grip on delicate tissue',
+          'Other instrument working surfaces where a hard, textured grip helps',
+        ],
+      },
+      {
+        heading: 'Diamond dusting vs carbide inserts vs plain stainless',
+        table: {
+          caption: 'Common needle holder jaw types',
+          head: ['Jaw type', 'How it is made', 'Typical marking'],
+          rows: [
+            ['Plain stainless steel', 'Serrated stainless jaws', 'None'],
+            ['Tungsten carbide inserts', 'Separate carbide pieces fitted into the jaws', 'Gold handle rings'],
+            ['Diamond dusted', 'Fine tungsten carbide layer deposited onto the jaws', 'Black handle rings'],
+          ],
+        },
+        note: 'Plain stainless steel jaws cannot be repaired once they wear out, so the instrument is replaced.',
+      },
+      {
+        heading: 'Equipment used to apply it',
+        paragraphs: [
+          'Diamond dusting is applied with an electro-spark deposition system: a power supply plus a vibrating hand tool holding a tungsten carbide electrode. Hunter Products invented the Carbitron 300 as the original diamond-dusting platform for the medical and dental industries, and it is used today by surgical instrument repair companies and instrument manufacturers.',
+          'The Carbitron 300 deposits tungsten carbide at 78 to 80 Rockwell C, with thickness set from 0.0002" to 0.001" in 0.0002" steps. Electrodes come in 1/8", 1/16" and 1/32" sizes; the 1/32" electrode is the one for fine, precise work. The system is $495 and replacement electrodes are $12.50.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Is diamond dusting made of diamond?',
+        a: 'No. Diamond dusting is a fine layer of tungsten carbide applied with an electrical applicator and a carbide electrode.',
+      },
+      {
+        q: 'How do you identify a diamond-dusted needle holder?',
+        a: 'Diamond-dusted needle holders are commonly marked with black handle rings. Gold rings usually mark tungsten carbide inserts.',
+      },
+      {
+        q: 'What equipment applies diamond dusting?',
+        a: 'An electro-spark deposition system with a tungsten carbide electrode in a vibrating hand tool. The Carbitron 300 is the original diamond-dusting system.',
+      },
+      {
+        q: 'How hard is a diamond-dusted surface?',
+        a: 'The tungsten carbide deposited by the Carbitron 300 is 78 to 80 Rockwell C, much harder than the stainless steel of the instrument.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-32', 'tungsten-carbide-electrode-1-16'],
+    related: ['carbide-grip-surfaces-collets-grippers', 'extend-cutting-tool-life-tungsten-carbide'],
+    updated: '2026-10-12',
+  },
+
+  {
     slug: 'extend-cutting-tool-life-tungsten-carbide',
     label: 'Extending cutting tool life',
     h1: 'How to extend cutting tool life with tungsten carbide deposition',
@@ -1166,7 +1239,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-16', 'tungsten-carbide-electrode-1-32'],
-    related: ['punch-and-die-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
+    related: ['diamond-dusting-surgical-instruments', 'punch-and-die-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
     updated: '2026-10-12',
   },
 
@@ -1331,7 +1404,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-32'],
-    related: ['extend-cutting-tool-life-tungsten-carbide', 'punch-and-die-life-tungsten-carbide'],
+    related: ['diamond-dusting-surgical-instruments', 'extend-cutting-tool-life-tungsten-carbide', 'punch-and-die-life-tungsten-carbide'],
     updated: '2026-10-12',
   },
 

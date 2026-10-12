@@ -69,14 +69,14 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'carbitron-300',
     id: 'carbitron',
     title: 'Carbitron 300 Tungsten-Carbide Coating System',
-    metaTitle: 'Carbitron 300 | Tungsten Carbide Coating for Tools, {from}',
+    metaTitle: 'Carbitron 300 | Diamond Dusting & Tungsten Carbide, {from}',
     metaDescription:
-      'Deposit a 78 to 80 HRC tungsten carbide layer on cutting tools, dies, grippers and surgical instruments. Extends tool life 5x to 10x. Invented and built in NJ.',
-    headline: 'Tungsten carbide, exactly where tools wear.',
+      'The original diamond-dusting system for surgical instrument repair and manufacturing. Restores grip on needle holder and forceps jaws. Also extends tool life.',
+    headline: 'Diamond dusting for surgical instruments.',
     intro: [
-      'The Carbitron 300 deposits tungsten carbide onto cutting edges and wear surfaces. A tungsten-carbide electrode in a vibrating hand tool touches and lifts off the work, and each small arc transfers carbide into and onto the surface, a process generally known as electro-spark deposition. The result is a fused metallic layer of 78 to 80 Rockwell C, not a coating that can flake off.',
-      'In the tool room, that means end mills, taps, lathe bits, saws, punches and dies that last 5x to 10x longer than standard tooling, worn tools that can be resized and saved, and gripping surfaces that hold better and wear slower. Hunter Products originally built it for medical and dental instruments, and it remains the original diamond-dusting platform for edge hardening on scalpels, scissors and dental tools.',
-      'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. A 1/8" x 2 1/2" electrode typically covers about 50 square inches at 0.0005" average thickness, and replacement electrodes are $12.50. The savings come from less downtime, fewer tool changes, less regrinding and fewer replacement tools.',
+      'The Carbitron 300 is the original diamond-dusting system. Surgical instrument repair companies and instrument makers use it to apply a fine layer of tungsten carbide to working surfaces such as needle holder and forceps jaws, giving them the textured, hard grip that fine needles and tissue need.',
+      'Plain stainless steel jaws cannot be repaired once they wear, so the whole instrument gets replaced. A diamond-dusted surface adds a hard tungsten carbide grip where the instrument does its work. The deposit is fused to the instrument at 78 to 80 Rockwell C, applied with a tungsten-carbide electrode in a vibrating hand tool, a process generally known as electro-spark deposition.',
+      'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. A 1/8" x 2 1/2" electrode covers about 50 square inches at 0.0005" average thickness, and replacement electrodes are $12.50, so one unit at each repair bench runs for very little. The same system also extends the life of cutting tools, punches and dies 5x to 10x in machine shops.',
     ],
     photo: 'system-carbitron',
     blocks: [
@@ -94,27 +94,25 @@ export const SYSTEM_PAGES: SystemPage[] = [
       {
         title: 'Applications',
         items: [
-          'Cutting tools: end mills, taps, reamers, lathe bits, saws, hobs',
-          'Punches, dies and forming tools',
-          'Collets, chucks, grippers and machine parts',
-          'Casting molds and wear surfaces',
-          'Surgical and dental instrument edges',
-          'Resizing and salvaging worn tools',
+          'Diamond dusting needle holder and forceps jaws',
+          'Restoring grip on instruments during repair',
+          'Surgical and dental instrument manufacturing',
+          'Cutting tools: end mills, taps, reamers, lathe bits, saws',
+          'Punches, dies, collets, chucks and grippers',
         ],
       },
       {
         title: 'Used by',
         items: [
+          'Surgical instrument repair companies',
+          'Surgical and dental instrument manufacturers',
           'Machine shops and tool rooms',
           'Tool and die and stamping shops',
-          'Medical instrument manufacturers',
-          'Dental laboratories',
-          'Surgical-tool refurbishment shops',
         ],
       },
     ],
     table: {
-      title: 'Where to deposit, and how much',
+      title: 'Tooling: where to deposit, and how much',
       caption: 'Recommended tungsten carbide deposit by tool type, from the Carbitron 300 brochure',
       head: ['Tool', 'Deposit', 'Where', 'Then'],
       rows: [
