@@ -430,7 +430,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['deluxe-plating-kit', 'contact-repair-kit', 'deluxe-plating-kit-heavy-duty'],
-    related: ['brush-plating-thickness-chart', 'brush-plating-substrate-guide', 'plating-pen-kit-comparison'],
+    related: ['self-contained-brush-plating', 'brush-plating-thickness-chart', 'brush-plating-substrate-guide'],
     updated: '2026-09-30',
   },
 
@@ -637,6 +637,384 @@ export const GUIDES: Guide[] = [
     related: ['gold-plating-connector-pins', 'pcb-gold-finger-repair', 'brush-plating-thickness-chart'],
     updated: '2026-10-02',
   },
+  {
+    slug: 'gold-plating-pen-guide',
+    label: 'Using a gold plating pen',
+    h1: 'How to use a gold plating pen: 24K, 18K and 14K',
+    metaTitle: 'How to Use a Gold Plating Pen: Steps, Voltage, Thickness',
+    metaDescription:
+      'Gold plating pen how-to: which karat to use, which base metals need nickel first, 6 to 8V settings, plating times and thickness, from the maker of the pen.',
+    eyebrow: 'Gold plating',
+    lede: 'A gold plating pen carries its own gold solution in the tip. Touch it to a grounded part and gold deposits only where you work, with no tank, no bath and nothing to mix.',
+    answer:
+      'Degrease the part at 10 to 12V DC, plate a nickel underlayer if the surface is not already gold, nickel or silver, then stroke the gold pen across it at 6 to 8V. A standard gold pen deposits about 0.5 µm in 2 minutes on a 1 in² copper surface and builds up to 1.5 to 1.8 µm. Gold pens start at $145.',
+    sections: [
+      {
+        heading: 'Choosing 24K, 18K or 14K',
+        paragraphs: [
+          'All three karats plate the same way, at the same voltage, onto the same surfaces. The choice comes down to what the part does.',
+        ],
+        table: {
+          caption: 'Micro-Metallizer gold pens',
+          head: ['Pen', 'Catalog no.', 'Price', 'Use it for'],
+          rows: [
+            ['Gold 24K', 'PL-1003', '$145', 'Pure gold for the best conductivity and corrosion resistance: connector pins, edge connectors, switch contacts'],
+            ['Gold 18K', 'PL-1004', '$145', 'A harder-wearing finish than 24K on high-contact industrial parts'],
+            ['Gold 14K', 'PL-1005', '$145', 'Matching existing 14K-plated parts, where a harder finish than 24K is preferred'],
+            ['Gold 24K Heavy', 'PL-1016', '$235', 'Thicker 24K deposits and longer runs between pens'],
+            ['Gold 18K Heavy', 'PL-1017', '$235', 'Thicker 18K deposits on high-wear parts'],
+          ],
+        },
+      },
+      {
+        heading: 'What gold will plate onto',
+        paragraphs: [
+          'Every gold pen plates over gold, nickel or silver. It does not bond directly to copper, brass or steel, so those surfaces get an underlayer first. Nickel is the standard layer under gold: it plates over copper and keeps the copper from migrating into the gold.',
+        ],
+        table: {
+          caption: 'Plating sequence by base metal',
+          head: ['Base metal', 'Sequence'],
+          rows: [
+            ['Gold, nickel or silver', 'Degrease, then gold'],
+            ['Copper', 'Degrease, nickel, then gold'],
+            ['Brass, steel or zinc die-cast', 'Degrease, copper flash, nickel, then gold'],
+            ['Stainless steel', 'Stainless degreaser, copper flash, nickel, then gold'],
+            ['Aluminum', 'Not supported by the Micro-Metallizer system'],
+          ],
+        },
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Build the underlayer if you need one',
+            text: 'On brass or steel, flash copper first with the Copper pen (PL-1010) at 6 to 8V. Then plate nickel with the Nickel pen (PL-1006) at 5 to 6V over any copper. Rinse between pens. Skip this step on gold, nickel or silver surfaces.',
+          },
+          {
+            title: 'Plate gold at 6 to 8V',
+            text: `Set the supply to 6 to 8V and switch to the gold pen. ${HOOKUP} Keep stroking until the finish is even. A standard pen lays down about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area.`,
+          },
+          {
+            title: 'Rinse and wipe',
+            text: 'Rinse the part in water and wipe it with a soft cloth.',
+          },
+        ],
+      },
+      {
+        heading: 'How thick and how fast',
+        table: {
+          caption: 'Gold deposit on a 1 in × 1 in copper surface, from the Micro-Metallizer catalog',
+          head: ['Pen', '2 minutes', '3 minutes', 'Maximum'],
+          rows: [
+            ['Standard gold (24K, 18K, 14K)', '0.5 µm', '0.8 µm', '1.5 to 1.8 µm'],
+            ['Heavy gold (24K, 18K)', '0.8 µm', '1.2 µm', '3 to 3.6 µm'],
+          ],
+        },
+        paragraphs: [
+          'Each pen holds 10 ml of concentrated solution and plates roughly 300 square inches, so one pen covers a lot of small contact work.',
+        ],
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'A gold pen runs on the Micro-Metallizer power supply ($220) and connector cables ($20), or on your own variable DC supply up to 12V at 0.1A. You also need the Absorbent / Degreaser pen ($65) for prep.',
+          'Bought separately, a 24K gold pen, degreaser, power supply and cables come to $450. The Contact Repair Kit is $400 and adds the nickel pen, so for most gold work the kit is the better buy.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can a gold plating pen plate directly onto copper?',
+        a: 'No. Gold pens plate over gold, nickel or silver. Plate nickel over the copper first, then the gold.',
+      },
+      {
+        q: 'What voltage does a gold plating pen use?',
+        a: '6 to 8V DC, with the part on the negative lead and the pen on the positive lead. Degreasing beforehand runs at 10 to 12V.',
+      },
+      {
+        q: 'How long does it take to gold plate with a pen?',
+        a: 'A standard gold pen deposits about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area. The heavy gold pen deposits about 0.8 µm in 2 minutes.',
+      },
+      {
+        q: 'Should I use 24K or 18K gold?',
+        a: 'Use 24K for electrical contacts, where pure gold gives the best conductivity and corrosion resistance. Use 18K where the part sees a lot of physical contact and a harder finish lasts longer.',
+      },
+      {
+        q: 'Do I need a special power supply?',
+        a: 'No. The Micro-Metallizer power supply is designed for the pens, but any variable DC supply up to 12V at 0.1A will run them.',
+      },
+    ],
+    products: ['gold-24k-plating-pen', 'contact-repair-kit', 'gold-24k-heavy-duty-plating-pen', 'gold-18k-plating-pen'],
+    related: ['gold-plating-connector-pins', 'brush-plating-substrate-guide', 'self-contained-brush-plating'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'zinc-plating-pen-touch-up',
+    label: 'Zinc touch-up on steel',
+    h1: 'Zinc plating pen: touch up galvanized steel and fasteners',
+    metaTitle: 'Zinc Plating Pen Guide: Touch Up Galvanized Steel',
+    metaDescription:
+      'Repair scratched galvanizing and re-zinc bare steel fasteners with a zinc plating pen: prep, 6 to 8V settings, plating times and what one $65 pen covers.',
+    eyebrow: 'Corrosion protection',
+    lede: 'When a galvanized finish gets scratched or a fastener loses its zinc, the bare steel starts to rust. A zinc plating pen puts real zinc back on that spot, in place, without dipping the part.',
+    answer:
+      'Polish off any rust, degrease at 10 to 12V DC, then stroke the zinc pen over the bare steel at 6 to 8V. Zinc plates directly onto steel and most other metals, except aluminum and chromium, at about 0.3 µm in 2 minutes on a 1 in² area. One $65 pen covers roughly 300 square inches.',
+    sections: [
+      {
+        heading: 'Why zinc protects steel',
+        paragraphs: [
+          'Zinc is a sacrificial coating. Where zinc and steel sit together, the zinc corrodes first and the steel underneath is spared, which is why galvanizing works. Once a scratch or worn spot exposes the steel, that protection is gone at that spot.',
+          'The zinc pen electroplates real zinc metal onto the exposed area, so the repair works the same way as the original coating: it is a metal layer bonded to the part, not a coat of paint sitting on top of it.',
+        ],
+      },
+      {
+        heading: 'Good jobs for a zinc pen',
+        list: [
+          'Scratched or worn galvanized finishes',
+          'Exposed steel fasteners that have lost their zinc',
+          'Zinc surfaces that have lost their protective layer over time',
+          'Field repairs where dipping the whole part is not an option',
+        ],
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          {
+            title: 'Remove rust and oxide',
+            text: 'Polish the area with a fine metal polish until the rust and discoloration are gone and bright metal shows. Wipe it clean with a lint-free cloth. Zinc will not bond over rust.',
+          },
+          DEGREASE_STEP,
+          {
+            title: 'Plate zinc at 6 to 8V',
+            text: `Set the supply to 6 to 8V and switch to the Zinc pen (PL-1013). ${HOOKUP} Overlap slightly onto the surrounding zinc so the repair blends into the existing coating.`,
+          },
+          {
+            title: 'Build up with more passes',
+            text: 'The zinc pen deposits about 0.3 µm in 2 minutes and 0.5 µm in 3 minutes on a 1 in² area, up to a maximum of 1.5 to 1.8 µm. Keep working the spot to build thickness.',
+          },
+          {
+            title: 'Rinse and wipe',
+            text: 'Rinse the part in water and wipe it dry with a soft cloth.',
+          },
+        ],
+      },
+      {
+        heading: 'What it will and will not do',
+        paragraphs: [
+          'The zinc pen builds up to 1.5 to 1.8 µm, which is far thinner than a galvanizing line puts down. It is a touch-up and spot-repair tool for damaged areas, not a way to galvanize whole parts. For new parts that need a full coating, send them to a galvanizer.',
+          'Zinc plates over any metallic surface except aluminum and chromium. The Micro-Metallizer system does not work on aluminum.',
+        ],
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Zinc pen ($65), the Absorbent / Degreaser pen ($65), the power supply ($220) and connector cables ($20): $370 in all. If you already own a Micro-Metallizer supply, or any variable DC supply up to 12V at 0.1A, the two pens are $130.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you zinc plate steel without a tank?',
+        a: 'Yes. A zinc plating pen holds the solution in its tip and plates only where it touches, so you can re-zinc a scratch or a fastener in place at 6 to 8V DC.',
+      },
+      {
+        q: 'Can I use a zinc pen on rusty steel?',
+        a: 'Remove the rust first. Polish the area to bright metal and degrease it, then plate. Zinc will not bond over rust.',
+      },
+      {
+        q: 'How thick is zinc from a plating pen?',
+        a: 'About 0.3 µm in 2 minutes and 0.5 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm. That suits touch-up and repair, not full galvanizing.',
+      },
+      {
+        q: 'Can you zinc plate aluminum with a pen?',
+        a: 'No. Zinc plates over any metal except aluminum and chromium, and the Micro-Metallizer system does not work on aluminum.',
+      },
+      {
+        q: 'How much area does one zinc pen cover?',
+        a: 'Each pen holds 10 ml of concentrated solution and plates roughly 300 square inches.',
+      },
+    ],
+    products: ['zinc-plating-pen', 'absorbent-degreaser-plating-pen', 'micro-metallizer-power-supply', 'micro-metallizer-connector-cables'],
+    related: ['brush-plating-substrate-guide', 'brush-plating-thickness-chart', 'self-contained-brush-plating'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'self-contained-brush-plating',
+    label: 'Why self-contained plating pens',
+    h1: 'Self-contained brush plating: why a pen beats mixing solutions',
+    metaTitle: 'Self-Contained Brush Plating Pens: No Tank, No Mixing',
+    metaDescription:
+      'Self-contained plating pens hold their own sealed solution: no tank, no mixing, no bath waste, no cross-contamination. How they compare and when they fit.',
+    eyebrow: 'Selective plating basics',
+    lede: 'Every Micro-Metallizer pen is a fully self-contained plating solution. The electrolyte is sealed inside a marker-style cartridge: connect the pen to the power supply and start plating.',
+    answer:
+      'A self-contained plating pen carries its own sealed plating solution in the tip, so there is no bath to prepare, no solution to mix or pour, and no way to contaminate one metal with another. You change metals by picking up a different pen. Each pen holds 10 ml of concentrated solution, plates about 300 square inches and runs on a small DC supply.',
+    sections: [
+      {
+        heading: 'Three ways to plate a small area',
+        table: {
+          caption: 'Where the plating solution lives decides how much setup a job takes',
+          head: ['', 'Tank plating', 'Brush system with separate solutions', 'Self-contained pen'],
+          rows: [
+            ['Solution', 'Open bath', 'Bottles, applied through a brush or wand tip', 'Sealed inside the pen'],
+            ['Before you plate', 'Prepare and maintain the bath', 'Set out solutions and fit tips', 'Connect the pen to the supply'],
+            ['Changing metals', 'Move to another tank', 'Swap or clean tips between solutions', 'Pick up another pen'],
+            ['Contamination', 'Drag-in between baths', 'Shared tips and open bottles', 'Solution sealed and protected'],
+            ['Where it works', 'Plating line', 'Bench', 'Bench, lab, office or field'],
+            ['Afterward', 'Bath to dispose of', 'Leftover solution to store or dispose of', 'A used pen'],
+          ],
+        },
+      },
+      {
+        heading: 'What self-contained gets you',
+        list: [
+          'No setup: there are no special plating baths or solutions to prepare. Connect the pen and plate.',
+          'No cross-contamination: each metal lives in its own disposable, non-refillable pen, so the solution stays protected.',
+          'Instant metal changes: degrease, copper, nickel and gold are four pens on one power supply, swapped in seconds.',
+          'Portable: the pens and the compact supply go to the part, at the bench, in the lab or in the field.',
+          'No special skill: the whole process is prep, degrease and plate, with the voltage for each pen listed in the catalog.',
+          'Known cost per job: pens run $65 to $310 and each covers roughly 300 square inches.',
+        ],
+      },
+      {
+        heading: 'The tradeoffs',
+        paragraphs: [
+          'Pens are built for selective work. Standard pens build up to 1.5 to 1.8 µm and heavy-duty pens to 3 to 3.6 µm. If you need thicker deposits or need to plate whole parts by the thousand, a tank line is the right tool. See brush plating vs tank plating for the full comparison.',
+          'Large surfaces use up pens faster. For bus bars, large contacts and production repair, the heavy-duty pens carry more solution per cartridge. The system does not work on aluminum.',
+        ],
+      },
+      {
+        heading: 'What it costs to start',
+        paragraphs: [
+          'The Contact Repair Kit ($400) includes the power supply, cables and degreaser, nickel and 24K gold pens. The Deluxe Kit ($540) has six pens for mixed-metal work. If you already own a variable DC supply up to 12V at 0.1A, you can buy pens on their own.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'What does self-contained brush plating mean?',
+        a: 'The plating solution is sealed inside the pen itself. There is no bath or separate solution to prepare: you connect the pen to a DC supply and plate.',
+      },
+      {
+        q: 'Are self-contained plating pens refillable?',
+        a: 'No. Micro-Metallizer pens are disposable and non-refillable, which keeps the solution protected from accidental contamination.',
+      },
+      {
+        q: 'What metals come in self-contained pens?',
+        a: '24K, 18K and 14K gold, rhodium, palladium, silver, nickel, black nickel, copper, tin, zinc and chrome color, plus degreaser pens for prep.',
+      },
+      {
+        q: 'Can I use my own power supply?',
+        a: 'Yes. Any variable DC supply up to 12V at 0.1A runs the pens. The Micro-Metallizer supply is also sold separately for $220.',
+      },
+      {
+        q: 'Do I need plating experience?',
+        a: 'No special skill is required. Polish off any oxide, degrease, then plate at the voltage listed for each pen.',
+      },
+    ],
+    products: ['deluxe-plating-kit', 'contact-repair-kit', 'micro-metallizer-power-supply'],
+    related: ['brush-plating-vs-tank-plating', 'plating-pen-kit-comparison', 'brush-plating-thickness-chart'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'silver-plating-pen-guide',
+    label: 'Silver plating contacts',
+    h1: 'How to silver plate contacts and bus bars with a plating pen',
+    metaTitle: 'Silver Plating Pen Guide: Contacts, Bus Bars, Steps',
+    metaDescription:
+      'Silver plating pen how-to for contacts, bus bars and switchgear: no underlayer on most metals, 5 to 6V settings, plating times and heavy-duty options.',
+    eyebrow: 'Silver plating',
+    lede: 'Silver is the finish of choice where conductivity matters. A silver plating pen restores it on contacts and bus bars at the bench or in place, without a tank.',
+    answer:
+      'Degrease at 10 to 12V DC, then stroke the silver pen over the surface at 5 to 6V. Silver plates directly onto most metals, including copper, brass and steel, with no underlayer; only aluminum and chromium are not supported. A standard pen deposits about 0.5 µm in 2 minutes on a 1 in² area, and the heavy-duty pen about 0.8 µm.',
+    sections: [
+      {
+        heading: 'Where silver plating pens are used',
+        list: [
+          'Electrical contacts where high conductivity is required',
+          'Large-area contact plating in industrial switchgear and bus bar applications',
+          'Touch-up on silver-plated parts where a full tank dip is impractical',
+          'Restoring silver on silverware and serving pieces',
+        ],
+      },
+      {
+        heading: 'No underlayer on most metals',
+        paragraphs: [
+          'Gold, nickel, rhodium and palladium each need the right base layer before they bond. Silver does not. It plates over any metallic surface except aluminum and chromium, so on copper, brass or steel you degrease and go straight to silver.',
+        ],
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Plate silver at 5 to 6V',
+            text: `Set the supply to 5 to 6V and switch to the Silver pen (PL-1008), or the Silver Heavy pen (PL-1018) for large areas. ${HOOKUP}`,
+          },
+          {
+            title: 'Build to thickness',
+            text: 'Keep stroking until the finish is even. A standard silver pen deposits about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
+          },
+          {
+            title: 'Rinse and wipe',
+            text: 'Rinse the part in water and wipe it with a soft cloth.',
+          },
+        ],
+      },
+      {
+        heading: 'Standard or heavy-duty silver',
+        table: {
+          caption: 'Silver deposit on a 1 in × 1 in copper surface, from the Micro-Metallizer catalog',
+          head: ['Pen', 'Price', '2 minutes', '3 minutes', 'Maximum'],
+          rows: [
+            ['Silver (PL-1008)', '$85', '0.5 µm', '0.8 µm', '1.5 to 1.8 µm'],
+            ['Silver Heavy (PL-1018)', '$120', '0.8 µm', '1.2 µm', '3 to 3.6 µm'],
+          ],
+        },
+        paragraphs: [
+          'Choose the heavy-duty pen for bus bars, switchgear and other large surfaces. It carries more solution per cartridge, so you swap pens less often and build thicker silver.',
+        ],
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Silver pen ($85), the Absorbent / Degreaser pen ($65), the power supply ($220) and connector cables ($20): $390 in all. The Deluxe Kit ($540) includes the silver pen plus degreaser, copper, nickel, chrome color and 24K gold pens, which covers most mixed-metal shop work.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you silver plate copper with a pen?',
+        a: 'Yes, directly. Silver plates over any metallic surface except aluminum and chromium, so copper needs no underlayer.',
+      },
+      {
+        q: 'Can you silver plate steel?',
+        a: 'Yes. Degrease the steel and plate silver directly. No copper flash or nickel layer is needed for silver.',
+      },
+      {
+        q: 'What voltage does a silver plating pen use?',
+        a: '5 to 6V DC, with the part on the negative lead and the pen on the positive lead. Degreasing beforehand runs at 10 to 12V.',
+      },
+      {
+        q: 'How thick is brush-plated silver?',
+        a: 'A standard silver pen builds up to 1.5 to 1.8 µm and the heavy-duty pen up to 3 to 3.6 µm.',
+      },
+      {
+        q: 'Can you silver plate aluminum?',
+        a: 'Not with the Micro-Metallizer system. Silver does not plate onto aluminum or chromium.',
+      },
+    ],
+    products: ['silver-plating-pen', 'silver-heavy-duty-plating-pen', 'deluxe-plating-kit', 'absorbent-degreaser-plating-pen'],
+    related: ['brush-plating-substrate-guide', 'brush-plating-thickness-chart', 'self-contained-brush-plating'],
+    updated: '2026-10-12',
+  },
+
 ];
 
 export function guideBySlug(slug: string): Guide {
