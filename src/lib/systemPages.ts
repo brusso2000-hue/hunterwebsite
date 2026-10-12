@@ -11,6 +11,8 @@ export interface SystemPage {
   intro: string[];
   photo: PhotoSlotName;
   blocks: { title: string; items: string[] }[];
+  /** Optional reference table shown under the blocks (e.g. the Carbitron application guide). */
+  table?: { title: string; caption: string; head: string[]; rows: string[][]; note?: string };
 }
 
 // Copy is drawn from products.json and the Hunter catalogs — no invented specs.
@@ -67,45 +69,67 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'carbitron-300',
     id: 'carbitron',
     title: 'Carbitron 300 Tungsten-Carbide Coating System',
-    metaTitle: 'Carbitron 300 | Tungsten Carbide Coating System, {from}',
+    metaTitle: 'Carbitron 300 | Diamond Dusting & Tungsten Carbide, {from}',
     metaDescription:
-      'The original tungsten carbide diamond-dusting system. Adds grip and wear life to surgical, dental and cutting instruments. Invented and built in NJ.',
-    headline: 'Tungsten-carbide edge hardening.',
+      'The original diamond-dusting system for surgical instrument repair and manufacturing. Restores grip on needle holder and forceps jaws. Also extends tool life.',
+    headline: 'Diamond dusting for surgical instruments.',
     intro: [
-      'The Carbitron 300 is the original commercial diamond-dusting platform, invented by Hunter Products for the medical and dental industries. It deposits a hard tungsten-carbide layer onto cutting edges and wear surfaces, extending the working life of surgical instruments, dental tools and precision cutting equipment.',
-      'The system ships complete with three tungsten-carbide electrodes — 1/8", 1/16" and 1/32" — covering general-purpose deposition through precision detail work. Electrodes are consumables and are sold individually for replacement.',
+      'The Carbitron 300 is the original diamond-dusting system. Surgical instrument repair companies and instrument makers use it to apply a fine layer of tungsten carbide to working surfaces such as needle holder and forceps jaws, giving them the textured, hard grip that fine needles and tissue need.',
+      'Plain stainless steel jaws cannot be repaired once they wear, so the whole instrument gets replaced. A diamond-dusted surface adds a hard tungsten carbide grip where the instrument does its work. The deposit is fused to the instrument at 78 to 80 Rockwell C, applied with a tungsten-carbide electrode in a vibrating hand tool, a process generally known as electro-spark deposition.',
+      'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. A 1/8" x 2 1/2" electrode covers about 50 square inches at 0.0005" average thickness, and replacement electrodes are $12.50, so one unit at each repair bench runs for very little. The same system also extends the life of cutting tools, punches and dies 5x to 10x in machine shops.',
     ],
     photo: 'system-carbitron',
     blocks: [
       {
         title: 'System features',
         items: [
-          'Tungsten-carbide (WC) deposition',
-          'Three electrodes included: 1/8", 1/16", 1/32" × 2½"',
-          'Replacement electrodes sold individually',
-          '110V / 220V operation',
+          'Tungsten carbide layer, 78 to 80 Rockwell C',
+          'Deposit from 0.0002" to 0.001" in 0.0002" steps',
+          'About 50 sq in per 1/8" electrode at 0.0005"',
+          'Electrodes in 1/8", 1/16" and 1/32"',
+          '110V/60Hz, 4A; also available for 230V/50Hz',
+          '15 lb, 11" x 6" x 5"',
         ],
       },
       {
         title: 'Applications',
         items: [
-          'Edge hardening on scalpels and scissors',
-          'Curettes, explorers and dental instruments',
-          'Re-coating instruments instead of replacing',
-          'Precision tooling and cutting edges',
-          'Dies and wear surfaces',
+          'Diamond dusting needle holder and forceps jaws',
+          'Restoring grip on instruments during repair',
+          'Surgical and dental instrument manufacturing',
+          'Cutting tools: end mills, taps, reamers, lathe bits, saws',
+          'Punches, dies, collets, chucks and grippers',
         ],
       },
       {
         title: 'Used by',
         items: [
-          'Medical instrument manufacturers',
-          'Dental laboratories',
-          'Surgical-tool refurbishment shops',
-          'Precision tooling operations',
+          'Surgical instrument repair companies',
+          'Surgical and dental instrument manufacturers',
+          'Machine shops and tool rooms',
+          'Tool and die and stamping shops',
         ],
       },
     ],
+    table: {
+      title: 'Tooling: where to deposit, and how much',
+      caption: 'Recommended tungsten carbide deposit by tool type, from the Carbitron 300 brochure',
+      head: ['Tool', 'Deposit', 'Where', 'Then'],
+      rows: [
+        ['Lathe bits, single-point tools', '0.0004" to 0.004"', 'Top side of the cutting edge', 'Re-sharpen by grinding the front'],
+        ['End mills, counterbores', '0.0002" to 0.0006"', 'Cutting edges inside the flute, bottom and sides, full length', 'Re-sharpen'],
+        ['Horizontal milling cutters, hobs', '0.0002" to 0.004"', 'Front face of each tooth along the cutting edge', 'Re-sharpen (grind the land on milling cutters)'],
+        ['Shell mills', '0.0002" to 0.0006"', 'Front face of the cutting surface along the edge', 'Re-sharpen'],
+        ['Reamers', '0.0002" to 0.0008"', 'Inside the flute along the cutting edge', 'Re-sharpen'],
+        ['Countersinks', '0.0002" to 0.0006"', 'Cutting edge inside the flute, full length', 'Re-sharpen'],
+        ['Taps', '0.0002" to 0.001"', 'Inside the flute along the cutting edge, 2 to 3 full threads', 'Re-sharpen dull taps first'],
+        ['Thread chasers', '0.0002" to 0.001"', 'Top cutting edge', 'Re-sharpen dull chasers first'],
+        ['Saws', '0.0002" to 0.001"', 'Front edge of each tooth (sides of the teeth on very fine saws)', 'Re-sharpen'],
+        ['Punches and dies', '0.0002" to 0.001"', 'Sides, face or both, wherever it wears', 'Usually coat the sides and grind the face'],
+        ['Molds, chucks, grippers, collets', '0.0002" to 0.004"', 'The entire wear or gripping surface', 'Finish with a light 0.0002" coat for smoothness'],
+      ],
+      note: 'In every application, a light stoning with a cubic boron nitride or diamond stone removes burrs and gives the sharpest edge and smoothest surface.',
+    },
   },
   {
     slug: 'micro-jet-200',

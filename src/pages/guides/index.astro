@@ -8,21 +8,21 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Brush plating guides',
+    name: 'Brush plating and tungsten carbide guides',
     itemListElement: GUIDES.map((g, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.origin}${guideUrl(g.slug)}`, name: g.h1 })),
   },
 ];
 ---
 
 <Base
-  title="Brush Plating Guides: Gold, Silver, Zinc & PCB Repair"
-  description="Step-by-step brush plating guides from the maker of the Micro-Metallizer: gold, silver and zinc plating, connector pins, PCB repair, thickness and substrate prep."
+  title="Brush Plating & Tungsten Carbide Guides | Hunter Products"
+  description="Step-by-step guides from the maker of the Micro-Metallizer and Carbitron 300: gold, silver and zinc plating, PCB repair, and tungsten carbide for tooling."
   schema={schema}
 >
   <div class="banner">
     <div class="wrap banner-in">
       <Breadcrumbs items={[['Home', '/'], ['Guides']]} />
-      <h1 class="h-1">Brush plating guides</h1>
+      <h1 class="h-1">Plating and tooling guides</h1>
       <p class="lede">
         Practical, step-by-step answers for the jobs our customers bring us most, with the voltages, plating times and
         pens straight from our catalog.

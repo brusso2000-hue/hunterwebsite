@@ -5,7 +5,10 @@
  * "pcb gold finger repair") and ends at the kit that solves it.
  *
  * Every number here comes from the Micro-Metallizer catalog
- * (public/pdfs/Hunter_Micro-Metallizer_Catalog.pdf) or src/data/products.json.
+ * (public/pdfs/Hunter_Micro-Metallizer_Catalog.pdf), the Carbitron 300 brochure
+ * (public/pdfs/Carbitron_300_Brochure.pdf) or src/data/products.json. The diamond-dusting
+ * guide also draws on HPN, "Proper care, inspection crucial for needle holder performance"
+ * (hpnonline.com) for jaw types and ring markings.
  * Do not add specs that are not in one of those two sources.
  */
 
@@ -1056,6 +1059,352 @@ export const GUIDES: Guide[] = [
     ],
     products: ['silver-plating-pen', 'silver-heavy-duty-plating-pen', 'deluxe-plating-kit', 'absorbent-degreaser-plating-pen'],
     related: ['brush-plating-substrate-guide', 'brush-plating-thickness-chart', 'brush-plating-cost'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'diamond-dusting-surgical-instruments',
+    label: 'Diamond dusting surgical instruments',
+    h1: 'Diamond dusting surgical instruments: what it is and how it is applied',
+    metaTitle: 'Diamond Dusting Surgical Instruments: How It Is Applied',
+    metaDescription:
+      'What diamond dusting is, why needle holders and forceps get it, and the equipment used to apply it: a tungsten carbide electrode system like the Carbitron 300.',
+    eyebrow: 'Surgical instruments',
+    lede: 'Diamond-dusted needle holders and forceps grip fine needles and delicate tissue without slipping. The name is misleading: the grip surface is tungsten carbide, applied with an electrical applicator.',
+    answer:
+      'Diamond dusting is a fine layer of tungsten carbide applied to an instrument working surface, usually needle holder or forceps jaws, with an electrical applicator and a tungsten carbide electrode. It gives a hard, textured grip for fine suture needles and tissue. The Carbitron 300, the original diamond-dusting system, deposits it at 78 to 80 Rockwell C.',
+    sections: [
+      {
+        heading: 'What diamond dusting is',
+        paragraphs: [
+          'Despite the name, there is no diamond involved. A tungsten carbide electrode is held against the instrument while short electrical discharges transfer carbide into and onto the surface. The result is a fused, textured layer of tungsten carbide, much harder than the stainless steel underneath.',
+          'Instrument makers mark diamond-dusted needle holders with black handle rings, which helps sterile processing staff tell them apart from instruments with tungsten carbide inserts, usually marked with gold rings.',
+        ],
+      },
+      {
+        heading: 'Which instruments get it',
+        list: [
+          'Needle holders for very fine suture needles, where a smooth jaw would let the needle rotate or slip',
+          'Forceps that need a secure grip on delicate tissue',
+          'Other instrument working surfaces where a hard, textured grip helps',
+        ],
+      },
+      {
+        heading: 'Diamond dusting vs carbide inserts vs plain stainless',
+        table: {
+          caption: 'Common needle holder jaw types',
+          head: ['Jaw type', 'How it is made', 'Typical marking'],
+          rows: [
+            ['Plain stainless steel', 'Serrated stainless jaws', 'None'],
+            ['Tungsten carbide inserts', 'Separate carbide pieces fitted into the jaws', 'Gold handle rings'],
+            ['Diamond dusted', 'Fine tungsten carbide layer deposited onto the jaws', 'Black handle rings'],
+          ],
+        },
+        note: 'Plain stainless steel jaws cannot be repaired once they wear out, so the instrument is replaced.',
+      },
+      {
+        heading: 'Equipment used to apply it',
+        paragraphs: [
+          'Diamond dusting is applied with an electro-spark deposition system: a power supply plus a vibrating hand tool holding a tungsten carbide electrode. Hunter Products invented the Carbitron 300 as the original diamond-dusting platform for the medical and dental industries, and it is used today by surgical instrument repair companies and instrument manufacturers.',
+          'The Carbitron 300 deposits tungsten carbide at 78 to 80 Rockwell C, with thickness set from 0.0002" to 0.001" in 0.0002" steps. Electrodes come in 1/8", 1/16" and 1/32" sizes; the 1/32" electrode is the one for fine, precise work. The system is $495 and replacement electrodes are $12.50.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Is diamond dusting made of diamond?',
+        a: 'No. Diamond dusting is a fine layer of tungsten carbide applied with an electrical applicator and a carbide electrode.',
+      },
+      {
+        q: 'How do you identify a diamond-dusted needle holder?',
+        a: 'Diamond-dusted needle holders are commonly marked with black handle rings. Gold rings usually mark tungsten carbide inserts.',
+      },
+      {
+        q: 'What equipment applies diamond dusting?',
+        a: 'An electro-spark deposition system with a tungsten carbide electrode in a vibrating hand tool. The Carbitron 300 is the original diamond-dusting system.',
+      },
+      {
+        q: 'How hard is a diamond-dusted surface?',
+        a: 'The tungsten carbide deposited by the Carbitron 300 is 78 to 80 Rockwell C, much harder than the stainless steel of the instrument.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-32', 'tungsten-carbide-electrode-1-16'],
+    related: ['carbide-grip-surfaces-collets-grippers', 'extend-cutting-tool-life-tungsten-carbide'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'extend-cutting-tool-life-tungsten-carbide',
+    label: 'Extending cutting tool life',
+    h1: 'How to extend cutting tool life with tungsten carbide deposition',
+    metaTitle: 'Extend Cutting Tool Life With Tungsten Carbide Coating',
+    metaDescription:
+      'Deposit tungsten carbide on end mills, taps, reamers, lathe bits and saws: where to apply it, how thick, and how to re-sharpen for 5x to 10x tool life.',
+    eyebrow: 'Tooling',
+    lede: 'A cutting edge wears where it works. Depositing tungsten carbide on just that edge, then re-sharpening, gives standard tooling a carbide working surface for a fraction of the cost of new tools.',
+    answer:
+      'With the Carbitron 300, a vibrating tungsten-carbide electrode deposits a fused 78 to 80 Rockwell C layer onto the cutting edge, typically 0.0002" to 0.001" thick depending on the tool. Deposit along the cutting edge, re-sharpen, then lightly stone the edge with a CBN or diamond stone. Hunter Products rates the result at 5x to 10x the life of standard tooling.',
+    sections: [
+      {
+        heading: 'How the deposit works',
+        paragraphs: [
+          'The Carbitron 300 pairs an adjustable discharge power supply with a vibrating hand tool that holds a tungsten-carbide electrode. As the electrode repeatedly touches and lifts off the work, small arcs knock tungsten carbide off the electrode and deposit it into and onto the surface. The process is generally known as electro-spark deposition.',
+          'The deposit forms a true metallic bond with the tool at 78 to 80 Rockwell C. Because it is fused to the surface rather than sitting on top of it, it does not behave like a paint or a thin film coating.',
+        ],
+      },
+      {
+        heading: 'Why shops do it',
+        list: [
+          'Extend tool life: rated at 5x to 10x over standard tooling',
+          'Self-sharpening cutting edges',
+          'Resize and salvage worn tools instead of replacing them',
+          'A non-brittle tungsten carbide surface with better thermal-shock and impact resistance',
+          'Less downtime, fewer tool changes and less regrinding',
+        ],
+      },
+      {
+        heading: 'Where to deposit and how much, by tool',
+        table: {
+          caption: 'Recommended deposit by cutting tool, from the Carbitron 300 brochure',
+          head: ['Tool', 'Deposit', 'Where', 'Then'],
+          rows: [
+            ['Lathe bits, single-point tools', '0.0004" to 0.004"', 'Top side of the cutting edge', 'Re-sharpen by grinding the front'],
+            ['End mills', '0.0002" to 0.0006"', 'Cutting edges inside the flute, at the bottom and sides, along the full length', 'Re-sharpen'],
+            ['Counterbores', '0.0002" to 0.0006"', 'Same as end mills', 'Re-sharpen'],
+            ['Horizontal milling cutters', '0.0002" to 0.004"', 'Front face of each tooth along the cutting edge', 'Re-sharpen by grinding the land'],
+            ['Hobs', '0.0002" to 0.004"', 'Front face of each tooth along the cutting edge', 'Re-sharpen'],
+            ['Shell mills', '0.0002" to 0.0006"', 'Front face of the cutting surface along the edge', 'Re-sharpen'],
+            ['Reamers', '0.0002" to 0.0008"', 'Inside the flute along the cutting edge', 'Re-sharpen'],
+            ['Countersinks', '0.0002" to 0.0006"', 'Along the cutting edge inside the flute, full length', 'Re-sharpen'],
+            ['Taps', '0.0002" to 0.001"', 'Inside the flute along the cutting edge for 2 to 3 full threads', 'Re-sharpen dull taps before depositing'],
+            ['Thread chasers', '0.0002" to 0.001"', 'Along the top cutting edge', 'Re-sharpen dull chasers before depositing'],
+            ['Saws', '0.0002" to 0.001"', 'Front edge of each tooth; on very fine teeth, the sides instead', 'Re-sharpen'],
+          ],
+        },
+        note: 'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. For recommendations above 0.001", contact us for the build-up procedure.',
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          {
+            title: 'Re-sharpen first if the tool is dull',
+            text: 'Taps and thread chasers in particular should be sharp before depositing. Deposit onto a good edge, not a worn one.',
+          },
+          {
+            title: 'Set the deposit thickness',
+            text: 'Use the discharge intensity selector on the power supply to choose a thickness from 0.0002" to 0.001", based on the table above and how much build-up the tool can tolerate.',
+          },
+          {
+            title: 'Deposit along the cutting edge',
+            text: 'Connect the ground cable to the tool and work the vibrating electrode along the area shown for that tool type. On taps, take care not to nick the cutting edge.',
+          },
+          {
+            title: 'Re-sharpen',
+            text: 'Grind as listed for the tool, usually the front or the land, so the carbide sits right at the working edge.',
+          },
+          {
+            title: 'Stone the edge',
+            text: 'Lightly stone the deposit with a cubic boron nitride or diamond stone to remove burrs and get the sharpest edge.',
+          },
+        ],
+      },
+      {
+        heading: 'What it costs to run',
+        paragraphs: [
+          'The Carbitron 300 is $495. Electrodes are $12.50 each in 1/8", 1/16" and 1/32" sizes, and a 1/8" x 2 1/2" electrode typically covers about 50 square inches at 0.0005" average thickness, so about $0.25 of electrode per square inch at that thickness. Cutting edges are small, so one electrode treats a lot of tools.',
+          'The unit runs on 110V, 60Hz at 4 amps (230V/50Hz available) with a 50% duty cycle and a 10-minute maximum continuous on-time.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'How much longer do tools last with tungsten carbide deposition?',
+        a: 'Hunter Products rates Carbitron-treated tooling at 5x to 10x the life of standard tooling, depending on the tool and the work.',
+      },
+      {
+        q: 'How hard is the tungsten carbide deposit?',
+        a: '78 to 80 Rockwell C. It forms a fused metallic bond with the tool surface.',
+      },
+      {
+        q: 'How thick is the deposit?',
+        a: 'Set on the power supply from 0.0002" to 0.001" in 0.0002" steps. The right amount depends on the tool and how much build-up it can tolerate.',
+      },
+      {
+        q: 'Do I need to re-sharpen after depositing?',
+        a: 'Yes, for cutting tools. Deposit along the cutting edge, re-sharpen as listed for the tool type, then lightly stone with a CBN or diamond stone.',
+      },
+      {
+        q: 'What is electro-spark deposition?',
+        a: 'A process where short electrical arcs between a consumable electrode and the work transfer electrode material into the surface. The Carbitron 300 uses a tungsten-carbide electrode in a vibrating hand tool.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-16', 'tungsten-carbide-electrode-1-32'],
+    related: ['diamond-dusting-surgical-instruments', 'punch-and-die-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'punch-and-die-life-tungsten-carbide',
+    label: 'Punch and die life',
+    h1: 'Extend punch and die life with tungsten carbide',
+    metaTitle: 'Extend Punch and Die Life With Tungsten Carbide',
+    metaDescription:
+      'Deposit tungsten carbide on punches, dies, forming tools and molds where they wear. Where to apply it, how thick, and how to finish. Rated 5x to 10x life.',
+    eyebrow: 'Tooling',
+    lede: 'Punches, dies and forming tools wear at a few predictable spots. Building tungsten carbide onto those spots, instead of replacing the tool, keeps them in tolerance far longer.',
+    answer:
+      'Deposit 0.0002" to 0.001" of tungsten carbide with the Carbitron 300 on the sides, face or both, wherever the punch or die is wearing. Most often the sides are coated and the face is ground. The fused deposit is 78 to 80 Rockwell C, and Hunter Products rates forming, stamping and forging tools at 5x to 10x their standard life.',
+    sections: [
+      {
+        heading: 'Good jobs for tungsten carbide',
+        list: [
+          'Punches and dies in stamping and blanking',
+          'Forming and forging tools and their contact surfaces',
+          'Casting molds and other wear surfaces',
+          'Repairing worn parts and resizing worn tools back into tolerance',
+        ],
+      },
+      {
+        heading: 'How much to deposit',
+        table: {
+          caption: 'Recommended deposit, from the Carbitron 300 brochure',
+          head: ['Part', 'Deposit', 'Where'],
+          rows: [
+            ['Punches and dies', '0.0002" to 0.001"', 'Sides, face or both, wherever it wears. Most commonly the sides, with the face ground afterward.'],
+            ['Casting molds and non-cutting wear surfaces', '0.0002" to 0.004"', 'The entire wear surface, depending on the thickness that can be tolerated'],
+          ],
+        },
+        note: 'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. For build-ups above 0.001", contact us for the procedure.',
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          {
+            title: 'Find the wear',
+            text: 'Check where the punch or die is losing size or edge: sides, face or both. That is where the carbide goes.',
+          },
+          {
+            title: 'Set the thickness',
+            text: 'Choose 0.0002" to 0.001" on the discharge intensity selector, based on how much build-up the clearance can tolerate.',
+          },
+          {
+            title: 'Deposit on the wear area',
+            text: 'Connect the ground cable to the part and work the vibrating electrode over the wear area. For the smoothest surface, move the electrode briskly side to side.',
+          },
+          {
+            title: 'Finish coat and grind',
+            text: 'After a heavier coat, apply a light 0.0002" finish coat. When the sides are coated, grind the face.',
+          },
+          {
+            title: 'Stone',
+            text: 'Lightly stone the deposit with a cubic boron nitride or diamond stone to remove burrs.',
+          },
+        ],
+      },
+      {
+        heading: 'Why deposit instead of replace',
+        paragraphs: [
+          'A new punch or die means the tool cost plus the downtime to source and set it up. Depositing tungsten carbide on the wear area of the tool you already have takes it back toward size with a 78 to 80 Rockwell C working surface. The Carbitron 300 is $495, and replacement electrodes are $12.50.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can tungsten carbide be added to a worn punch or die?',
+        a: 'Yes. The Carbitron 300 deposits 0.0002" to 0.001" of tungsten carbide onto the wear area, which can bring a worn tool back toward size.',
+      },
+      {
+        q: 'Where on a punch should the carbide go?',
+        a: 'Wherever it wears. Most commonly the sides are coated and the face is ground afterward.',
+      },
+      {
+        q: 'How smooth is the deposit?',
+        a: 'Moving the electrode briskly side to side and finishing with a light 0.0002" coat gives the smoothest surface. A light stone with CBN or diamond removes remaining burrs.',
+      },
+      {
+        q: 'How long will a treated die last?',
+        a: 'Hunter Products rates forming, stamping and forging tools at 5x to 10x their standard life with a tungsten carbide deposit.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-16'],
+    related: ['extend-cutting-tool-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
+    updated: '2026-10-12',
+  },
+
+  {
+    slug: 'carbide-grip-surfaces-collets-grippers',
+    label: 'Carbide grip surfaces',
+    h1: 'Tungsten carbide grip surfaces for collets, chucks and grippers',
+    metaTitle: 'Tungsten Carbide Grip Surfaces: Collets, Chucks, Grippers',
+    metaDescription:
+      'Add a tungsten carbide grip surface to collets, chucks, grippers and machine parts for more holding friction and less wear. Thickness, technique and cost.',
+    eyebrow: 'Tooling',
+    lede: 'Gripping surfaces wear smooth and start to slip. A tungsten carbide deposit gives them a hard, textured surface that grips better and wears slower.',
+    answer:
+      'Deposit 0.0002" to 0.004" of tungsten carbide over the whole gripping surface with the Carbitron 300. The fused 78 to 80 Rockwell C deposit increases friction and wear life on collets, chucks, grippers and machine parts. It is the same process as diamond dusting on surgical instruments.',
+    sections: [
+      {
+        heading: 'What it does for a gripping surface',
+        list: [
+          'Increases friction, so parts slip less',
+          'Increases wear life on the contact surface',
+          'Improves surface texture',
+          'A non-brittle tungsten carbide surface',
+        ],
+      },
+      {
+        heading: 'Where it is used',
+        list: [
+          'Collets and chucks',
+          'Grippers',
+          'General machine parts with gripping or wear surfaces',
+          'Surgical and dental instruments, where the Carbitron is the original diamond-dusting system',
+        ],
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          {
+            title: 'Set the thickness',
+            text: 'Choose a deposit on the discharge intensity selector, from 0.0002" to 0.001" per setting. The brochure recommends 0.0002" to 0.004" total on gripping surfaces, depending on the thickness that can be tolerated.',
+          },
+          {
+            title: 'Cover the whole gripping surface',
+            text: 'Connect the ground cable to the part and work the vibrating electrode evenly over the entire gripping or wear surface.',
+          },
+          {
+            title: 'Finish if you need it smoother',
+            text: 'For a smoother surface, move the electrode briskly side to side and finish with a light 0.0002" coat. Lightly stone with a CBN or diamond stone to remove burrs.',
+          },
+        ],
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Carbitron 300 ($495) and tungsten-carbide electrodes ($12.50 each). A 1/8" x 2 1/2" electrode typically covers about 50 square inches at 0.0005" average thickness. Use the 1/16" or 1/32" electrode for small or detailed surfaces.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you add tungsten carbide to a collet or chuck?',
+        a: 'Yes. Deposit 0.0002" to 0.004" over the gripping surface with the Carbitron 300 to increase grip and wear life.',
+      },
+      {
+        q: 'Is it the same as diamond dusting?',
+        a: 'It is the same process. The Carbitron 300 is the original diamond-dusting system used on surgical and dental instruments, applied here to industrial gripping surfaces.',
+      },
+      {
+        q: 'How hard is the grip surface?',
+        a: '78 to 80 Rockwell C, fused to the part.',
+      },
+      {
+        q: 'Which electrode should I use?',
+        a: 'The 1/8" electrode for general surfaces, the 1/16" for finer work and the 1/32" for precision detail.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-32'],
+    related: ['diamond-dusting-surgical-instruments', 'extend-cutting-tool-life-tungsten-carbide', 'punch-and-die-life-tungsten-carbide'],
     updated: '2026-10-12',
   },
 
