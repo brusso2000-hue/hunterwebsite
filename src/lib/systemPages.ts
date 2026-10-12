@@ -19,9 +19,9 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'micro-metallizer',
     id: 'micro-metallizer',
     title: 'Micro-Metallizer Brush Plating System',
-    metaTitle: 'Plating Pens & Brush Plating System | Micro-Metallizer | Hunter Products',
+    metaTitle: 'Plating Pens from {penFrom} | Micro-Metallizer Brush Plating',
     metaDescription:
-      'Micro-Metallizer brush plating system: variable DC power supply and self-contained plating pens for gold, rhodium, silver, nickel, tin, zinc and more. No tanks. Built by Hunter Products, NJ.',
+      'Gold, silver, nickel, tin, zinc, rhodium and palladium plating pens from {penFrom}, plus kits and power supply. Plate in place, no tank. Ships from NJ, free returns.',
     headline: 'Selective brush plating in a pen.',
     intro: [
       'The Micro-Metallizer is a portable brush plating system: a variable DC power supply, connector cables and a family of self-contained plating pens. Each pen holds its own solution in an absorbent tip — touch it to the grounded part and metal deposits exactly where you work.',
@@ -67,9 +67,9 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'carbitron-300',
     id: 'carbitron',
     title: 'Carbitron 300 Tungsten-Carbide Coating System',
-    metaTitle: 'Carbitron 300 | Tungsten-Carbide Coating & Diamond Dusting System | Hunter Products',
+    metaTitle: 'Carbitron 300 | Tungsten Carbide Coating System, {from}',
     metaDescription:
-      'Carbitron 300 — the original tungsten-carbide diamond-dusting platform. Edge-hardens surgical, dental and industrial cutting instruments. Invented and built by Hunter Products, NJ.',
+      'The original tungsten carbide diamond-dusting system. Adds grip and wear life to surgical, dental and cutting instruments. Invented and built in NJ.',
     headline: 'Tungsten-carbide edge hardening.',
     intro: [
       'The Carbitron 300 is the original commercial diamond-dusting platform, invented by Hunter Products for the medical and dental industries. It deposits a hard tungsten-carbide layer onto cutting edges and wear surfaces, extending the working life of surgical instruments, dental tools and precision cutting equipment.',
@@ -111,9 +111,9 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'micro-jet-200',
     id: 'micro-jet',
     title: 'Micro-Jet 200 Micro-Abrasive Blasting System',
-    metaTitle: 'Micro-Jet 200 | Precision Micro-Abrasive Blaster | Hunter Products',
+    metaTitle: 'Micro-Jet 200 Micro-Abrasive Blaster, {from} | Hunter Products',
     metaDescription:
-      'Micro-Jet 200 — precision micro-abrasive blasting for cleaning, etching and surface prep on small or delicate components, where standard blasting causes damage.',
+      'Precision micro-abrasive blasting to clean, etch and prep small or delicate parts where standard blasting does damage. Built in NJ, ships in 2 business days.',
     headline: 'Micro-abrasive surface preparation.',
     intro: [
       'The Micro-Jet 200 is a precision micro-abrasive blasting platform for cleaning, etching and surface preparation on parts where conventional blasting equipment is too aggressive.',

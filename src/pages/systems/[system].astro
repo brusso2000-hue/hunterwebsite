@@ -5,7 +5,7 @@ import CatalogTree from '../../components/CatalogTree.astro';
 import Photo from '../../components/Photo.astro';
 import PartsTable from '../../components/PartsTable.astro';
 import FinishChart from '../../components/FinishChart.astro';
-import { productsForSystem, systemInfo, typeOf, fmtPrice, productUrl } from '../../lib/catalog';
+import { productsForSystem, systemInfo, typeOf, fmtPrice, snippetPrice, productUrl } from '../../lib/catalog';
 import { APPLICATIONS } from '../../lib/applications';
 import { photo } from '../../lib/photos';
 import { SYSTEM_PAGES, type SystemPage } from '../../lib/systemPages';
@@ -20,6 +20,11 @@ const sys = systemInfo(page.id);
 const items = productsForSystem(page.id);
 const fromPrice = Math.min(...items.filter((p) => ['system', 'kit'].includes(typeOf(p))).map((p) => p.price));
 const kits = items.filter((p) => typeOf(p) === 'kit');
+const penPrices = items.filter((p) => ['pen', 'heavy-duty'].includes(typeOf(p))).map((p) => p.price);
+const fill = (s: string) =>
+  s
+    .replaceAll('{from}', snippetPrice(fromPrice))
+    .replaceAll('{penFrom}', penPrices.length ? snippetPrice(Math.min(...penPrices)) : snippetPrice(fromPrice));
 const apps = APPLICATIONS.filter((a) => a.systems.includes(page.id));
 const spec = (p: (typeof items)[number], key: string) => p.specs.find(([k]) => k === key)?.[1] ?? '—';
 
@@ -41,7 +46,7 @@ const schema = [
 ];
 ---
 
-<Base title={page.metaTitle} description={page.metaDescription} schema={schema}>
+<Base title={fill(page.metaTitle)} description={fill(page.metaDescription)} schema={schema}>
   <div class="banner">
     <div class="wrap banner-in">
       <Breadcrumbs items={[['Home', '/'], ['Systems', '/#systems'], [sys.name]]} />
