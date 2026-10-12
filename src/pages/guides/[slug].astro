@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { GUIDES, guideBySlug, guideUrl, type GuideTable } from '../../lib/guides';
-import { bySlug, fmtPrice, productUrl } from '../../lib/catalog';
+import { bySlug, fmtPrice, productUrl, systemOf } from '../../lib/catalog';
 import { SITE } from '../../lib/site';
 
 export function getStaticPaths() {
@@ -14,6 +14,7 @@ const canonical = `${SITE.origin}${guideUrl(g.slug)}`;
 const picks = g.products.map(bySlug);
 const related = g.related.map(guideBySlug);
 const allSteps = g.sections.flatMap((s) => s.steps ?? []);
+const isTooling = picks.some((p) => systemOf(p) === 'carbitron');
 
 const schema: object[] = [
   {
@@ -144,8 +145,17 @@ const tableId = (t: GuideTable) => t.caption;
 
       <section class="help">
         <div>
-          <h2 class="h-3">Not sure which pens your part needs?</h2>
-          <p>Tell us the substrate and the finish you need. The people who build the system will tell you the sequence.</p>
+          {isTooling ? (
+            <>
+              <h2 class="h-3">Not sure how much carbide your tool needs?</h2>
+              <p>Tell us the tool, the material it cuts or forms, and where it wears. The people who build the Carbitron will tell you how to apply it.</p>
+            </>
+          ) : (
+            <>
+              <h2 class="h-3">Not sure which pens your part needs?</h2>
+              <p>Tell us the substrate and the finish you need. The people who build the system will tell you the sequence.</p>
+            </>
+          )}
         </div>
         <div class="help-ctas">
           <a class="btn btn--ghost-light" href="/store/">Browse catalog</a>

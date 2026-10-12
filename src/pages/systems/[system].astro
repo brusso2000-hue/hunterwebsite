@@ -1,4 +1,5 @@
 ---
+import { GUIDES, guideUrl } from '../../lib/guides';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CatalogTree from '../../components/CatalogTree.astro';
@@ -20,6 +21,7 @@ const sys = systemInfo(page.id);
 const items = productsForSystem(page.id);
 const fromPrice = Math.min(...items.filter((p) => ['system', 'kit'].includes(typeOf(p))).map((p) => p.price));
 const kits = items.filter((p) => typeOf(p) === 'kit');
+const sysGuides = GUIDES.filter((g) => g.products.some((slug) => items.some((p) => p.slug === slug)));
 const penPrices = items.filter((p) => ['pen', 'heavy-duty'].includes(typeOf(p))).map((p) => p.price);
 const fill = (s: string) =>
   s
@@ -80,6 +82,33 @@ const schema = [
           </div>
         ))}
       </section>
+
+      {page.table && (
+        <section class="sec">
+          <div class="sec-head"><h2 class="h-3 marked">{page.table.title}</h2></div>
+          <div class="tbl-wrap">
+            <table class="spec">
+              <caption class="tbl-cap">{page.table.caption}</caption>
+              <thead><tr>{page.table.head.map((h) => <th scope="col">{h}</th>)}</tr></thead>
+              <tbody>
+                {page.table.rows.map((r) => (
+                  <tr>{r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}</tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {page.table.note && <p class="tbl-note">{page.table.note}</p>}
+        </section>
+      )}
+
+      {sysGuides.length > 0 && (
+        <section class="sec">
+          <div class="sec-head"><h2 class="h-3 marked">How-to guides</h2></div>
+          <ul class="sys-guides">
+            {sysGuides.map((g) => <li><a href={guideUrl(g.slug)}>{g.h1}</a></li>)}
+          </ul>
+        </section>
+      )}
 
       {kits.length > 0 && (
         <section class="sec">
@@ -179,6 +208,12 @@ const schema = [
   .blk .ticks { font-size: 15px; }
 
   .sec { display: grid; gap: 18px; }
+  .tbl-wrap { overflow-x: auto; }
+  .tbl-wrap .spec { min-width: 640px; font-size: 14.5px; }
+  .tbl-cap { caption-side: top; text-align: left; padding: 10px 16px; font-size: 12.5px; color: var(--text-3); border-bottom: 1px solid var(--line); }
+  .tbl-note { font-size: 14px; color: var(--text-3); }
+  .sys-guides { display: grid; gap: 8px; padding-left: 1.1em; }
+  .sys-guides a { color: var(--brand-dk); font-weight: 550; }
   .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 12px 24px; flex-wrap: wrap; }
   .sec-head .mono { font-size: 11px; color: var(--text-3); }
 
