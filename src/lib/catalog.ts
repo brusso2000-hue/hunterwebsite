@@ -76,6 +76,17 @@ export function fmtPrice(price: number): string {
   return `$${price.toFixed(2)}`;
 }
 
+/** Short price for search snippets: $65, $12.50. */
+export function snippetPrice(price: number): string {
+  return Number.isInteger(price) ? `$${price.toLocaleString('en-US')}` : `$${price.toFixed(2)}`;
+}
+
+/** Meta title/description with the live price filled in, so snippets never show a stale price. */
+export function metaFor(p: Product): { title: string; description: string } {
+  const fill = (s: string) => s.replaceAll('{price}', snippetPrice(p.price));
+  return { title: fill(p.metaTitle), description: fill(p.metaDescription) };
+}
+
 export function bySlug(slug: string): Product {
   const p = products.find((x) => x.slug === slug);
   if (!p) throw new Error(`Unknown product slug: ${slug}`);

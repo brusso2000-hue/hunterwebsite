@@ -13,6 +13,7 @@ import {
   typeOf,
   TYPE_LABEL,
   fmtPrice,
+  metaFor,
   productUrl,
   slugify,
   type Product,
@@ -30,6 +31,7 @@ const sys = systemInfo(systemOf(p));
 const type = typeOf(p);
 const canonical = `${SITE.origin}${productUrl(p)}`;
 const pic = productPhoto(p);
+const meta = metaFor(p);
 
 const guides = GUIDES.filter((g) => g.products.includes(p.slug));
 
@@ -77,7 +79,7 @@ const schema = [
 ];
 ---
 
-<Base title={p.metaTitle} description={p.metaDescription} image={pic.src ?? undefined} ogType="product" schema={schema}>
+<Base title={meta.title} description={meta.description} image={pic.src ?? undefined} ogType="product" schema={schema}>
   <div class="bar">
     <div class="wrap">
       <Breadcrumbs items={[['Home', '/'], [sys.name, sys.href], [TYPE_LABEL[type]], [p.name]]} />
