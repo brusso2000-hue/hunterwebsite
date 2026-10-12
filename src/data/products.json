@@ -14,7 +14,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Deluxe Electroplating Pen Kit",
     "metaTitle": "Electroplating Pen Kit, {price} | 6 Pens + Power Supply",
-    "metaDescription": "Start brush plating: power supply, cables and 6 pens (prep, copper, nickel, chrome, silver, 24K gold). {price}. Free returns.",
+    "metaDescription": "Power supply, cables and 6 pens, each a fully self-contained plating solution (prep, copper, nickel, chrome, silver, 24K gold). No tank. {price}. Free returns.",
     "specs": [
       ["Part No.", "PL-1000K"],
       ["Contents", "Power supply + connector cables + 6 pens"],
@@ -66,7 +66,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Gold Plating Pen Kit for Contact Repair",
     "metaTitle": "Gold Plating Pen Kit, {price} | Contact Repair, No Tank",
-    "metaDescription": "Restore worn contacts and connector pins with gold over nickel. Includes power supply, prep, nickel and 24K gold pens. {price}. Free returns.",
+    "metaDescription": "Restore worn contacts with gold over nickel. Power supply plus prep, nickel and 24K gold pens, each with self-contained plating solution. {price}. Free returns.",
     "specs": [
       ["Part No.", "PL-1000C"],
       ["Contents", "Power supply + cables + 3 pens"],
@@ -141,7 +141,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "24K Gold Plating Pen",
     "metaTitle": "24K Gold Plating Pen, {price} | Plate Contacts, No Tank",
-    "metaDescription": "Brush-plate pure 24K gold onto connector pins, edge connectors and contacts in minutes. No tank. {price}. Ships from NJ in 2 business days, free returns.",
+    "metaDescription": "Pure 24K gold for connector pins & contacts. Fully self-contained plating solution in the pen, no tank. {price}. Ships from NJ in 2 business days, free returns.",
     "specs": [
       ["Part No.", "PL-1003"],
       ["Metal", "24 Karat Gold (pure)"],
@@ -261,7 +261,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Silver Plating Pen",
     "metaTitle": "Silver Plating Pen, {price} | Contacts & Silverware Repair",
-    "metaDescription": "Spot-plate real silver onto most metals: electrical contacts, bus bars, silverware touch-up. No tank. {price}. Ships from NJ in 2 business days, free returns.",
+    "metaDescription": "Spot-plate real silver on contacts and bus bars. Fully self-contained plating solution, no tank or bath. {price}. Ships from NJ in 2 business days, free returns.",
     "specs": [
       ["Part No.", "PL-1008"],
       ["Metal", "Silver"],
@@ -357,7 +357,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Tin Plating Pen",
     "metaTitle": "Tin Plating Pen, {price} | Re-Tin PCB Pads, Restore Solder",
-    "metaDescription": "Re-tin oxidized PCB pads, leads and terminals so they take solder again. Brush-plate in place, no tank. {price}. Ships from NJ in 2 business days, free returns.",
+    "metaDescription": "Re-tin oxidized PCB pads and leads so they take solder again. Self-contained plating solution, no tank. {price}. Ships from NJ in 2 business days, free returns.",
     "specs": [
       ["Part No.", "PL-1012"],
       ["Metal", "Tin"],
@@ -405,7 +405,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Palladium Plating Pen",
     "metaTitle": "Palladium Plating Pen, {price} | Lower-Cost Rhodium Alternative",
-    "metaDescription": "Tarnish-resistant white-metal finish for connectors and electronics, at under half the price of rhodium. {price}. Ships from NJ in 2 business days, free returns.",
+    "metaDescription": "Tarnish-resistant white metal at under half the price of rhodium. Fully self-contained plating solution, no tank. {price}. Ships in 2 business days, free returns.",
     "specs": [
       ["Part No.", "PL-1015"],
       ["Metal", "Palladium"],
