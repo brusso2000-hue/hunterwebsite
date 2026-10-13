@@ -7,7 +7,7 @@ import ProductCard from '../components/ProductCard.astro';
 import { SYSTEMS, products, byId, bySlug, fmtPrice, productUrl, productsForSystem, typeOf } from '../lib/catalog';
 import { APPLICATIONS } from '../lib/applications';
 import { photo } from '../lib/photos';
-import { SITE, RETURN_POLICY } from '../lib/site';
+import { SITE, POLICY, RETURN_POLICY } from '../lib/site';
 
 const address = {
   '@type': 'PostalAddress',
@@ -100,6 +100,7 @@ const steps = [
           pads and plate contacts exactly where they need it — at the bench or on the line, without tanks, masking
           or disassembly.
         </p>
+        <p class="hero-ship mono">Plating solution today: pens in stock, order by {POLICY.sameDayCutoff} and it ships same day.</p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href="#systems">Explore systems <span class="arrow">→</span></a>
           <a class="btn" href="/contact/?topic=technical#quote">Ask an application engineer</a>
@@ -113,7 +114,7 @@ const steps = [
       <dl class="stats">
         <div><dt>Established</dt><dd>{SITE.founded}</dd></div>
         <div><dt>Plating finishes</dt><dd>12</dd></div>
-        <div><dt>Pen operation</dt><dd>DC · portable</dd></div>
+        <div><dt>Shipping</dt><dd>Same day</dd></div>
         <div><dt>Tanks required</dt><dd>0</dd></div>
       </dl>
     </div>
@@ -348,7 +349,7 @@ const steps = [
             continue to build the Micro-Metallizer line used in aerospace MRO, electronics rework and medical instrument
             repair.
           </p>
-          <p>Every order ships direct from our facility, and every question is answered by people who build the equipment.</p>
+          <p>Every order ships same day, direct from our facility, and every question is answered by people who build the equipment.</p>
         </div>
       </div>
       <div class="res">
@@ -381,6 +382,7 @@ const steps = [
   .hero-dim { color: var(--brand); }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
 
+  .hero-ship { margin: 0 0 24px; font-size: 13px; letter-spacing: 0.02em; color: var(--ink); border-left: 2px solid var(--brand); padding-left: 12px; }
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
   .stats > div { padding: 22px 20px 26px 0; border-right: 1px solid var(--line); }
   .stats > div + div { padding-left: 20px; }

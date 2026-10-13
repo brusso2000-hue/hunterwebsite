@@ -23,11 +23,12 @@ export const SYSTEM_PAGES: SystemPage[] = [
     title: 'Micro-Metallizer Brush Plating System',
     metaTitle: 'Plating Pens from {penFrom} | Micro-Metallizer Brush Plating',
     metaDescription:
-      'Fully self-contained plating solutions in a pen: gold, silver, nickel, tin, zinc, rhodium, palladium. From {penFrom}. No tank or bath. Ships from NJ, free returns.',
+      'Fully self-contained plating solutions in a pen: gold, silver, nickel, tin, zinc, rhodium, palladium. From {penFrom}. No tank or bath. Ships same day, free returns.',
     headline: 'Selective brush plating in a pen.',
     intro: [
       'The Micro-Metallizer is a portable brush plating system: a variable DC power supply, connector cables and a family of self-contained plating pens. Each pen holds its own solution in an absorbent tip — touch it to the grounded part and metal deposits exactly where you work.',
       'There is no tank to fill, no bath to maintain and no plating waste to handle. Swap one pen for the next to run a full sequence — degrease, copper flash, nickel underlayer, final finish — on the same supply, at the bench or in the field.',
+      'Every pen is stocked in Flemington, NJ and ships same day. Need gold, nickel or tin on a part this week? Order by 2 PM ET and the plating solution is on a truck that afternoon, not waiting in a plating shop queue.',
     ],
     photo: 'system-micro-metallizer',
     blocks: [
@@ -137,7 +138,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
     title: 'Micro-Jet 200 Micro-Abrasive Blasting System',
     metaTitle: 'Micro-Jet 200 Micro-Abrasive Blaster, {from} | Hunter Products',
     metaDescription:
-      'Precision micro-abrasive blasting to clean, etch and prep small or delicate parts where standard blasting does damage. Built in NJ, ships in 2 business days.',
+      'Precision micro-abrasive blasting to clean, etch and prep small or delicate parts where standard blasting does damage. Built in NJ, ships same day.',
     headline: 'Micro-abrasive surface preparation.',
     intro: [
       'The Micro-Jet 200 is a precision micro-abrasive blasting platform for cleaning, etching and surface preparation on parts where conventional blasting equipment is too aggressive.',

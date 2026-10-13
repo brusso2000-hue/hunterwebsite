@@ -6,7 +6,7 @@ import { SITE, POLICY } from '../lib/site';
 
 <Base
   title="Shipping & Returns | Hunter Products Inc."
-  description={`Hunter Products ships worldwide from Flemington, NJ. Orders ship within ${POLICY.handlingDaysMax} business days. ${POLICY.returnDays}-day returns, and we pay return shipping.`}
+  description={`Hunter Products ships worldwide from Flemington, NJ. Orders ship same day. ${POLICY.returnDays}-day returns, and we pay return shipping.`}
 >
   <div class="banner">
     <div class="wrap banner-in">
@@ -22,7 +22,7 @@ import { SITE, POLICY } from '../lib/site';
         <h2 class="h-2">Shipping</h2>
         <ul class="ticks">
           <li>We ship to customers in the United States and worldwide.</li>
-          <li>Orders ship within {POLICY.handlingDaysMax} business days.</li>
+          <li>Orders placed by {POLICY.sameDayCutoff} on a business day ship the same day. Later orders ship the next business day.</li>
           <li>Shipping cost is calculated at checkout based on weight and destination.</li>
           <li>International customers are responsible for any import duties and taxes.</li>
         </ul>
