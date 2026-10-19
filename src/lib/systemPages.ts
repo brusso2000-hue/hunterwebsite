@@ -82,12 +82,22 @@ export const SYSTEM_PAGES: SystemPage[] = [
     photo: 'system-carbitron',
     blocks: [
       {
+        title: 'In the box',
+        items: [
+          'Carbitron 300 power supply',
+          'Vibrator hand piece with power cable',
+          'Grounding cable',
+          '1/8" tungsten-carbide electrode',
+          '1/16" tungsten-carbide electrode',
+        ],
+      },
+      {
         title: 'System features',
         items: [
           'Tungsten carbide layer, 78 to 80 Rockwell C',
           'Deposit from 0.0002" to 0.001" in 0.0002" steps',
           'About 50 sq in per 1/8" electrode at 0.0005"',
-          'Electrodes in 1/8", 1/16" and 1/32"',
+          'Replacement electrodes in 1/8", 1/16" and 1/32"',
           '110V/60Hz, 4A; also available for 230V/50Hz',
           '15 lb, 11" x 6" x 5"',
         ],
