@@ -74,7 +74,7 @@ const schema = [
         <Photo photo={photo(page.photo)} aspect="4 / 3" eager />
       </section>
 
-      <section class="blocks">
+      <section class:list={['blocks', { 'blocks--4': page.blocks.length === 4 }]}>
         {page.blocks.map((b) => (
           <div class="blk">
             <h3 class="h-4 marked">{b.title}</h3>
@@ -203,6 +203,7 @@ const schema = [
   .from strong { color: var(--ink); font-weight: 500; font-size: 13px; }
 
   .blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .blocks--4 { grid-template-columns: repeat(2, 1fr); }
   @media (max-width: 800px) { .blocks { grid-template-columns: 1fr; } }
   .blk { background: #fff; padding: 24px; display: grid; gap: 16px; align-content: start; }
   .blk .ticks { font-size: 15px; }
