@@ -762,7 +762,7 @@
     "price": 495,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Professional tungsten carbide coating system. The original diamond dusting platform for medical instruments, tooling, and industrial applications.",
+    "description": "Complete tungsten carbide coating system. Ships with vibrator hand piece and power cable, grounding cable, and 1/8\" and 1/16\" electrodes. The original diamond dusting platform for medical instruments and tooling.",
     "dimensions": { "weight": 4536, "width": 30, "height": 25, "length": 20 },
     "slug": "carbitron-300-system",
     "category": "carbitron",
@@ -777,9 +777,9 @@
       ["Technology", "Tungsten Carbide (WC) deposition"],
       ["Application", "Diamond dusting, edge hardening"],
       ["Power", "110V / 220V"],
-      ["Includes", "Three electrodes (1/8\", 1/16\", 1/32\")"]
+      ["Includes", "Vibrator hand piece with power cable, grounding cable, 1/8\" and 1/16\" electrodes"]
     ],
-    "longDescription": "The Carbitron 300 is the original commercial diamond-dusting platform. Invented by Hunter Products for the medical and dental industries, the system deposits a hard tungsten-carbide layer onto cutting edges and wear surfaces — extending the operational life of surgical instruments, dental tools, and precision cutting equipment.\n\nThe system ships complete with three tungsten-carbide electrodes (1/8\", 1/16\", and 1/32\") covering the range from general-purpose deposition to precision detail work. Electrodes are consumables and are sold individually for replacement.\n\nDeployed across medical instrument manufacturers, dental laboratories, surgical-tool refurbishment shops, precision tooling operations, and industrial cutting applications. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
+    "longDescription": "The Carbitron 300 is the original commercial diamond-dusting platform. Invented by Hunter Products for the medical and dental industries, the system deposits a hard tungsten-carbide layer onto cutting edges and wear surfaces — extending the operational life of surgical instruments, dental tools, and precision cutting equipment.\n\nEvery system ships ready to use. In the box: the Carbitron 300 power supply, the vibrator hand piece with power cable, a grounding cable, and two tungsten-carbide electrodes, 1/8\" for general deposition and 1/16\" for finer work. Electrodes are consumables and are sold individually, along with a 1/32\" electrode for precision detail work.\n\nDeployed across medical instrument manufacturers, dental laboratories, surgical-tool refurbishment shops, precision tooling operations, and industrial cutting applications. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
     "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
   },
   {
