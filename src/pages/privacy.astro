@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../lib/site';
+
+const updated = 'October 21, 2026';
+---
+
+<Base
+  title="Privacy Policy | Hunter Products Inc."
+  description="How Hunter Products collects and uses information on hunterproducts.com: orders, quote requests, cookies, and advertising measurement."
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <Breadcrumbs items={[['Home', '/'], ['Privacy Policy']]} />
+      <h1 class="h-1">Privacy Policy</h1>
+      <p class="lede">Last updated {updated}.</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap cols">
+      <div class="blk">
+        <h2 class="h-2">What we collect</h2>
+        <ul class="ticks">
+          <li><strong>Orders.</strong> Name, company, email, phone, billing and shipping address, and the items you buy. Card payments are handled by our checkout provider (Snipcart) and its payment processor. We never see or store your full card number.</li>
+          <li><strong>Quote and contact requests.</strong> What you type into our forms: name, company, email, the system you're interested in and your message. Forms are delivered to us by Formspree.</li>
+          <li><strong>Site usage.</strong> Pages viewed, the ad or link that brought you here, device and browser type, and general location, collected through cookies and similar technology.</li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">How we use it</h2>
+        <ul class="ticks">
+          <li>To process and ship orders, answer quote requests and provide technical support.</li>
+          <li>To send order confirmations and replies to your requests.</li>
+          <li>To measure which of our ads and pages lead to orders and inquiries, so we spend our advertising budget on what works.</li>
+          <li>To show our ads to people who have visited our site before (remarketing).</li>
+        </ul>
+        <p>We do not sell your personal information.</p>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">Advertising and analytics</h2>
+        <p>
+          We use Google Ads, including conversion tracking, enhanced conversions and remarketing. When you place an
+          order or submit a form, your email address and name may be hashed in your browser and shared with Google so
+          it can match the conversion to an ad click. Google may use cookies to show you our ads on other sites.
+          You can control ad personalization at <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>
+          and learn how Google uses data at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.
+        </p>
+        <p>
+          We also use Apollo.io website visitor tracking, which identifies the company associated with a visitor's
+          network so we can follow up with businesses interested in our products.
+        </p>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">Sharing</h2>
+        <p>
+          We share information only with the service providers that run our store, forms, email, shipping and
+          advertising, and only as needed to provide those services, or when required by law.
+        </p>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">Your choices</h2>
+        <ul class="ticks">
+          <li>You can block or delete cookies in your browser settings. The store and forms still work.</li>
+          <li>You can ask us what personal information we hold about you, or ask us to correct or delete it, by emailing <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</li>
+          <li>Our site is intended for businesses and adults. We do not knowingly collect information from children.</li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h2 class="h-2">Contact</h2>
+        <p>
+          Call <a href={SITE.phoneHref}>{SITE.phone}</a> ({SITE.hours}) or email
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        </p>
+        <address>{SITE.name}<br />{SITE.street}<br />{SITE.city}, {SITE.region} {SITE.postal}</address>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 22px 0 34px; }
+  .banner-in { display: grid; gap: 14px; }
+  .banner h1 { margin-top: 14px; }
+  .cols { display: grid; gap: 40px; max-width: 760px; }
+  .blk { display: grid; gap: 14px; }
+  .blk p, address { color: var(--text-2); }
+  address { font-style: normal; }
+</style>

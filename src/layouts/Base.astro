@@ -2,12 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import {
-  SITE,
-  GOOGLE_ADS_ID,
-  GOOGLE_ADS_PURCHASE_LABEL,
-  SNIPCART_PUBLIC_KEY,
-} from '../lib/site';
+import { SITE, GOOGLE_ADS_ID, GOOGLE_ADS_LABELS, SNIPCART_PUBLIC_KEY } from '../lib/site';
 
 interface Props {
   title: string;
@@ -29,7 +24,6 @@ const {
 
 const canonical = new URL(Astro.url.pathname, SITE.origin).href;
 const ogImage = new URL(encodeURI(image), SITE.origin).href;
-const sendTo = `${GOOGLE_ADS_ID}/${GOOGLE_ADS_PURCHASE_LABEL}`;
 ---
 
 <!doctype html>
@@ -39,30 +33,78 @@ const sendTo = `${GOOGLE_ADS_ID}/${GOOGLE_ADS_PURCHASE_LABEL}`;
 
     <!-- Google tag (gtag.js) -->
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}></script>
-    <script is:inline define:vars={{ GOOGLE_ADS_ID }}>
+    <script is:inline define:vars={{ GOOGLE_ADS_ID, GOOGLE_ADS_LABELS }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       window.gtag = gtag;
       gtag('js', new Date());
-      gtag('config', GOOGLE_ADS_ID);
+      gtag('config', GOOGLE_ADS_ID, { allow_enhanced_conversions: true });
+
+      // Fire a Google Ads conversion by name ('purchase' | 'lead' | 'call').
+      // userData (email, name) feeds enhanced conversions; Google hashes it in the browser.
+      window.hpConvert = function (name, params, userData) {
+        try {
+          var label = GOOGLE_ADS_LABELS[name];
+          if (userData) gtag('set', 'user_data', userData);
+          if (!label) return;
+          gtag('event', 'conversion', Object.assign({ send_to: GOOGLE_ADS_ID + '/' + label }, params || {}));
+        } catch (e) { /* tracking must never break the page */ }
+      };
+
+      // Keep the ad click ID (90 days) so a quote that turns into a PO weeks later
+      // can be uploaded back to Google Ads as an offline conversion.
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search);
+          ['gclid', 'gbraid', 'wbraid'].forEach(function (k) {
+            var v = q.get(k);
+            if (v) localStorage.setItem('hp_' + k, JSON.stringify({ v: v, t: Date.now() }));
+          });
+        } catch (e) {}
+      })();
+      window.hpClickId = function () {
+        try {
+          var keys = ['gclid', 'gbraid', 'wbraid'];
+          for (var i = 0; i < keys.length; i++) {
+            var raw = localStorage.getItem('hp_' + keys[i]);
+            if (!raw) continue;
+            var o = JSON.parse(raw);
+            if (Date.now() - o.t < 90 * 864e5) return { type: keys[i], value: o.v, at: new Date(o.t).toISOString() };
+          }
+        } catch (e) {}
+        return null;
+      };
+
+      // Phone taps are the main way shops reach us from a phone search.
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
+        if (a) window.hpConvert('call');
+      });
     </script>
 
     <!-- Apollo website visitor tracking -->
     <script is:inline>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"69b45679ef90270019029191"})},document.head.appendChild(o)}initApollo();</script>
 
-    <!-- Snipcart → Google Ads purchase conversion. Counts once GOOGLE_ADS_PURCHASE_LABEL
-         in src/lib/site.ts is set to the label from the Purchase conversion action. -->
-    <script is:inline define:vars={{ sendTo }}>
+    <!-- Snipcart → Google Ads purchase conversion. Snipcart v3 announces a placed order
+         as 'cart.confirmed' (v2's 'order.completed' never fires on v3). -->
+    <script is:inline>
       document.addEventListener('snipcart.ready', function () {
-        if (typeof Snipcart === 'undefined' || typeof gtag !== 'function') return;
-        Snipcart.events.on('order.completed', function (order) {
+        if (typeof Snipcart === 'undefined') return;
+        Snipcart.events.on('cart.confirmed', function (r) {
           try {
-            gtag('event', 'conversion', {
-              send_to: sendTo,
-              value: order.total,
-              currency: order.currency || 'USD',
-              transaction_id: order.invoiceNumber || order.token,
-            });
+            r = r || {};
+            var b = r.billingAddress || {};
+            var email = r.email || b.email;
+            var total = Number(r.total != null ? r.total : r.grandTotal) || 0;
+            window.hpConvert(
+              'purchase',
+              {
+                value: total,
+                currency: (r.currency || 'USD').toUpperCase(),
+                transaction_id: r.invoiceNumber || r.token,
+              },
+              email ? { email: email, phone_number: b.phone || undefined } : null
+            );
           } catch (e) { /* never break checkout */ }
         });
       });

@@ -68,7 +68,7 @@ const POPULAR: [string, string][] = [
 
   <div class="ftr-base">
     <div class="wrap ftr-base-in">
-      <span>© {year} {SITE.name}</span>
+      <span>© {year} {SITE.name} · <a href="/privacy/">Privacy</a> · <a href="/shipping-returns/">Shipping &amp; returns</a></span>
       <span>{SITE.city}, {SITE.region} · Est. {SITE.founded}</span>
     </div>
   </div>
@@ -94,5 +94,6 @@ const POPULAR: [string, string][] = [
   .ftr-col a:hover { color: #fff; }
 
   .ftr-base { background: var(--navy); border-top: 1px solid var(--navy-line); color: var(--on-navy-2); }
+  .ftr-base a { color: inherit; }
   .ftr-base-in { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; }
 </style>

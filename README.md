@@ -25,5 +25,5 @@ npm run build    # outputs to dist/
 - **`/products.json`** is Snipcart's price-validation crawler (built from `src/data/products.json`).
   Keep each product's `id`, `price` and `url` fields.
 - **Google Ads**: the tag and the purchase-conversion bridge are in `src/layouts/Base.astro`.
-  Set `GOOGLE_ADS_PURCHASE_LABEL` in `src/lib/site.ts` once the Purchase conversion action exists.
+  Fill in `GOOGLE_ADS_LABELS` (purchase, lead, call) in `src/lib/site.ts`; each conversion fires only once its label is set.
 - **Quote form** posts to Formspree (`FORMSPREE_ENDPOINT` in `src/lib/site.ts`).

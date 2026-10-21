@@ -90,11 +90,29 @@ import { SYSTEMS } from '../lib/catalog';
       ok.hidden = err.hidden = true;
       btn.disabled = true;
       try {
-        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const w = window as any;
+        const data = new FormData(form);
+        // Ad click ID rides along in the Formspree email so a PO that closes later
+        // can be uploaded to Google Ads as an offline conversion.
+        const click = typeof w.hpClickId === 'function' ? w.hpClickId() : null;
+        if (click) {
+          data.set('google_click_id', `${click.type}=${click.value}`);
+          data.set('google_click_time', click.at);
+        }
+        data.set('landing_page', location.pathname);
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
         if (!res.ok) throw new Error(String(res.status));
+        const email = String(data.get('email') || '');
+        const first = String(data.get('first_name') || '');
+        const last = String(data.get('last_name') || '');
+        const type = String(data.get('request_type') || '');
         form.reset();
         ok.hidden = false;
-        if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'generate_lead');
+        if (typeof w.gtag === 'function') w.gtag('event', 'generate_lead', { lead_type: type });
+        // SDS requests aren't sales leads; keep them out of the Ads conversion count.
+        if (type !== 'sds' && typeof w.hpConvert === 'function') {
+          w.hpConvert('lead', {}, { email, address: { first_name: first, last_name: last } });
+        }
       } catch {
         err.hidden = false;
       } finally {

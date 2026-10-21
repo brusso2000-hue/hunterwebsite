@@ -42,8 +42,14 @@ export const SHIPPING_DETAILS = {
 };
 
 export const GOOGLE_ADS_ID = 'AW-18182868076';
-// Replace with the label from Google Ads → Conversions → Purchase → Tag setup.
-export const GOOGLE_ADS_PURCHASE_LABEL = 'CONVERSION_LABEL_PLACEHOLDER';
+// Conversion labels from Google Ads → Goals → Conversions → (action) → Tag setup →
+// "Use Google tag" → the part after the slash in send_to: 'AW-18182868076/<LABEL>'.
+// A conversion only fires once its label is filled in (empty string = off).
+export const GOOGLE_ADS_LABELS = {
+  purchase: '', // Snipcart order placed (value = order total)
+  lead: '', // Quote / contact form submitted
+  call: '', // Click on the phone number (mobile tap-to-call)
+};
 
 export const SNIPCART_PUBLIC_KEY =
   'ZjIxNzU3ZjctNTRiMS00YWFiLWJhNDktMDc3NzNjYzQzY2RhNjM3OTQ2MTE5MTQ0MjI3OTM2';
