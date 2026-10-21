@@ -46,9 +46,9 @@ export const GOOGLE_ADS_ID = 'AW-18182868076';
 // "Use Google tag" → the part after the slash in send_to: 'AW-18182868076/<LABEL>'.
 // A conversion only fires once its label is filled in (empty string = off).
 export const GOOGLE_ADS_LABELS = {
-  purchase: '', // Snipcart order placed (value = order total)
-  lead: '', // Quote / contact form submitted
-  call: '', // Click on the phone number (mobile tap-to-call)
+  purchase: 'xRtsCO6_8aQdEOyYot5D', // Snipcart order placed (value = order total)
+  lead: 'woaxCPG_8aQdEOyYot5D', // Quote / contact form submitted
+  call: 'RpoFCPe_8aQdEOyYot5D', // Click on the phone number (mobile tap-to-call)
 };
 
 export const SNIPCART_PUBLIC_KEY =
