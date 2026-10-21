@@ -7,6 +7,8 @@ import Photo from '../../components/Photo.astro';
 import AddToCart from '../../components/AddToCart.astro';
 import BoughtTogether from '../../components/BoughtTogether.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import PlatingVideo from '../../components/PlatingVideo.astro';
+import { videoSchema } from '../../lib/video';
 import {
   products,
   systemOf,
@@ -43,7 +45,10 @@ const related = products
   .concat(products.filter((x) => x.id !== p.id && systemOf(x) === systemOf(p) && typeOf(x) !== type))
   .slice(0, 4);
 
+// Gold pens get the how-it-works animation (it shows a gold deposit).
+const showVideo = (type === 'pen' || type === 'heavy-duty') && p.slug.startsWith('gold-');
 const schema = [
+  ...(showVideo ? [videoSchema()] : []),
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -145,6 +150,13 @@ const schema = [
       </article>
 
       {(type === 'pen' || type === 'heavy-duty') && <BoughtTogether product={p} />}
+
+      {showVideo && (
+        <section class="block">
+          <h2 class="h-3 marked">How it works</h2>
+          <PlatingVideo />
+        </section>
+      )}
 
       <section class="block">
         <h2 class="h-3 marked">Overview</h2>

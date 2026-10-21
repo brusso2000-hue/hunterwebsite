@@ -6,6 +6,8 @@ import CatalogTree from '../../components/CatalogTree.astro';
 import Photo from '../../components/Photo.astro';
 import PartsTable from '../../components/PartsTable.astro';
 import FinishChart from '../../components/FinishChart.astro';
+import PlatingVideo from '../../components/PlatingVideo.astro';
+import { videoSchema } from '../../lib/video';
 import { productsForSystem, systemInfo, typeOf, fmtPrice, snippetPrice, productUrl } from '../../lib/catalog';
 import { APPLICATIONS } from '../../lib/applications';
 import { photo } from '../../lib/photos';
@@ -30,7 +32,9 @@ const fill = (s: string) =>
 const apps = APPLICATIONS.filter((a) => a.systems.includes(page.id));
 const spec = (p: (typeof items)[number], key: string) => p.specs.find(([k]) => k === key)?.[1] ?? '—';
 
+const showVideo = page.id === 'micro-metallizer';
 const schema = [
+  ...(showVideo ? [videoSchema()] : []),
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -82,6 +86,13 @@ const schema = [
           </div>
         ))}
       </section>
+
+      {showVideo && (
+        <section class="sec">
+          <div class="sec-head"><h2 class="h-3 marked">How it works</h2></div>
+          <PlatingVideo />
+        </section>
+      )}
 
       {page.table && (
         <section class="sec">

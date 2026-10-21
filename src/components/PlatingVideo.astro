@@ -1,0 +1,47 @@
+---
+// Muted, looping "how brush plating works" animation. Loads and plays only when
+// scrolled into view; stays paused for visitors who prefer reduced motion.
+import { HOW_IT_WORKS_VIDEO as V } from '../lib/video';
+interface Props { caption?: string }
+const { caption = 'Fig. — Clamp, prep, connect, plate. Pen (+) · part (−) · gold deposit' } = Astro.props;
+---
+
+<figure class="pv">
+  <video
+    class="pv-video"
+    data-plating-video
+    poster={V.poster}
+    width={V.width}
+    height={V.height}
+    muted
+    loop
+    playsinline
+    controls
+    preload="none"
+    aria-label={V.title}
+  >
+    <source src={V.src} type="video/mp4" />
+    <source src={V.webm} type="video/webm" />
+  </video>
+  {caption && <figcaption class="pv-cap">{caption}</figcaption>}
+</figure>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLVideoElement>('[data-plating-video]').forEach((v) => {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(
+      (entries) => entries.forEach((e) => (e.isIntersecting ? v.play().catch(() => {}) : v.pause())),
+      { threshold: 0.35 }
+    ).observe(v);
+  });
+</script>
+
+<style>
+  .pv { margin: 0; display: grid; gap: 10px; }
+  .pv-video {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+    background: #0d151a; border-radius: 6px; border: 1px solid var(--line);
+  }
+  .pv-cap { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.03em; color: var(--text-2); }
+</style>
