@@ -58,7 +58,7 @@ const kitSpec = (p: (typeof kits)[number], key: string) => p.specs.find(([k]) =>
 
 // Hunter's other two systems — shown in their own section so the page stays about brush plating.
 const otherBlurb: Record<string, string> = {
-  carbitron: 'Tungsten-carbide deposition that hardens cutting edges and wear surfaces on surgical, dental and industrial tools.',
+  carbitron: 'Deposits tungsten carbide onto tools to sharply increase hardness, wear resistance and heat tolerance.',
   'micro-jet': 'Controlled micro-abrasive blasting for cleaning, etching and surface prep on fine or delicate parts.',
 };
 const otherSystems = SYSTEMS.filter((x) => x.id !== 'micro-metallizer').map((x) => ({
@@ -75,11 +75,6 @@ const electronicsPens = ['tin-plating-pen', 'gold-24k-plating-pen', 'nickel-plat
 const growth = APPLICATIONS.find((a) => a.focus === 'growth')!;
 const others = APPLICATIONS.filter((a) => !a.focus);
 
-const steps = [
-  { n: '01', title: 'Clean & degrease', text: 'Absorbent/degreaser pen removes oils and oxides from the work area. Stainless steel takes its own degreaser.', slot: photo('process-clean') },
-  { n: '02', title: 'Strike & underlayer', text: 'A copper flash and nickel underlayer build a compatible base on substrates that need one.', slot: photo('process-plate') },
-  { n: '03', title: 'Plate the finish', text: 'Brush the final deposit — gold, rhodium, silver, tin — only where the part needs it.', slot: photo('process-finish') },
-];
 ---
 
 <Base
@@ -96,29 +91,28 @@ const steps = [
   <section class="hero">
     <div class="wrap hero-in">
       <div class="hero-copy">
-        <p class="eyebrow">Brush plating · Selective plating · Since {SITE.founded}</p>
+        <p class="eyebrow">Brush plating since {SITE.founded}</p>
         <h1 class="h-display">Compact, convenient <span class="hero-dim">selective plating.</span></h1>
         <p class="lede">
           Portable brush plating for electronics and beyond. Restore gold on connector pins, re-tin oxidized PCB
           pads and plate contacts exactly where they need it — at the bench or on the line, without tanks, masking
           or disassembly.
         </p>
-        <p class="hero-ship mono">Plating solution today: pens in stock, order by {POLICY.sameDayCutoff} and it ships same day.</p>
+        <p class="hero-ship"><span class="hero-dot" aria-hidden="true"></span>Pens in stock. Order by {POLICY.sameDayCutoff} and it ships same day.</p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href="#systems">Explore systems <span class="arrow">→</span></a>
           <a class="btn" href="/contact/?topic=technical#quote">Ask an application engineer</a>
         </div>
       </div>
       <div class="hero-media">
-        <Photo photo={photo('home-hero')} aspect="5 / 4" eager caption="Fig. 1 — Micro-Metallizer brush plating: pen (+) · workpiece (−) · deposit" />
+        <Photo photo={photo('home-hero')} aspect="5 / 4" eager />
       </div>
     </div>
     <div class="wrap">
       <dl class="stats">
         <div><dt>Established</dt><dd>{SITE.founded}</dd></div>
         <div><dt>Plating finishes</dt><dd>12</dd></div>
-        <div><dt>Shipping</dt><dd>Same day</dd></div>
-        <div><dt>Tanks required</dt><dd>0</dd></div>
+        <div><dt>Orders by {POLICY.sameDayCutoff}</dt><dd>Ship same day</dd></div>
       </dl>
     </div>
   </section>
@@ -163,22 +157,6 @@ const steps = [
       </div>
       <PlatingVideo />
     </div>
-    <div class="wrap seq">
-      <div class="seq-head">
-        <h3 class="h-3 marked">A typical Micro-Metallizer sequence</h3>
-        <p>Each step is a separate pen on the same power supply. Swap the cartridge, keep working.</p>
-      </div>
-      <ol class="steps">
-        {steps.map((s) => (
-          <li class="step">
-            <Photo photo={s.slot} aspect="4 / 3" />
-            <p class="mono step-n">Step {s.n}</p>
-            <h3 class="h-3">{s.title}</h3>
-            <p>{s.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
   </section>
 
   <!-- ─── The Micro-Metallizer system ───────────────────── -->
@@ -192,32 +170,32 @@ const steps = [
         <a class="link" href={mm.href}>System details <span class="arrow">→</span></a>
       </div>
 
-      <article class="sys">
-        <Photo photo={photo('system-micro-metallizer')} aspect="16 / 11" />
+      <div class="sys">
         <div class="sys-body">
-          <p class="mono sys-idx">{mm.process}</p>
           <p class="sys-sum">{mm.summary}</p>
           <ul class="ticks">{mmPoints.map((pt) => <li>{pt}</li>)}</ul>
           <div class="sys-ctas">
-            <a class="btn btn--primary btn--sm" href={mm.href}>System details <span class="arrow">→</span></a>
-            <a class="btn btn--sm" href="/store/?line=micro-metallizer">Shop pens &amp; kits</a>
+            <a class="btn btn--primary" href={mm.href}>System details <span class="arrow">→</span></a>
+            <a class="btn" href="/store/?line=micro-metallizer">Shop pens &amp; kits</a>
           </div>
         </div>
-      </article>
-
-      <div class="kits-head">
-        <h3 class="h-3 marked">Kit configurations</h3>
-        <p class="mono">Each kit includes the power supply and connector cables</p>
-      </div>
-      <div class="kits">
-        {kits.map((k) => (
-          <a class="kit" href={productUrl(k)}>
-            <span class="sku">{k.sku}</span>
-            <span class="kit-name">{k.name}</span>
-            <span class="kit-pens">{kitSpec(k, 'Pens Included')}</span>
-            <span class="kit-price">{fmtPrice(k.price)}</span>
-          </a>
-        ))}
+        <div class="kits-wrap">
+          <div class="kits-head">
+            <h3 class="h-3">Kit configurations</h3>
+            <p>Every kit includes the power supply and connector cables.</p>
+          </div>
+          <div class="kits">
+            {kits.map((k) => (
+              <a class="kit" href={productUrl(k)}>
+                <span class="kit-main">
+                  <span class="kit-name">{k.name}</span>
+                  <span class="kit-pens">{kitSpec(k, 'Pens Included')}</span>
+                </span>
+                <span class="kit-price">{fmtPrice(k.price)}</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -250,9 +228,8 @@ const steps = [
         </div>
       </div>
       <div class="elx-side">
-        <Photo photo={photo('app-electronics-pcb')} aspect="3 / 2" />
         <a class="elx-kit" href={productUrl(electronicsKit)}>
-          <span class="mono elx-kit-tag">Recommended starting kit</span>
+          <span class="elx-kit-tag">Recommended starting kit</span>
           <span class="elx-kit-name">{electronicsKit.name}</span>
           <span class="elx-kit-desc">{electronicsKit.description}</span>
           <span class="elx-kit-price">{fmtPrice(electronicsKit.price)} <span class="sku">{electronicsKit.sku}</span></span>
@@ -282,7 +259,7 @@ const steps = [
             <span class="app-code mono">{a.code}</span>
             <h3 class="h-3">{a.label}</h3>
             <p>{a.lede}</p>
-            <span class="app-sys mono">{a.systems.map((id) => SYSTEMS.find((s) => s.id === id)!.name).join(' · ')}</span>
+            <span class="app-sys">{a.systems.map((id) => SYSTEMS.find((s) => s.id === id)!.name).join(' · ')}</span>
           </a>
         ))}
       </div>
@@ -391,46 +368,35 @@ const steps = [
   .hero-dim { color: var(--brand); }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
 
-  .hero-ship { margin: 0 0 24px; font-size: 13px; letter-spacing: 0.02em; color: var(--ink); border-left: 2px solid var(--brand); padding-left: 12px; }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
-  .stats > div { padding: 22px 20px 26px 0; border-right: 1px solid var(--line); }
-  .stats > div + div { padding-left: 20px; }
-  .stats > div:last-child { border-right: 0; }
-  .stats dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
-  .stats dd { margin: 6px 0 0; font-stretch: 108%; font-weight: 650; font-size: clamp(22px, 2.4vw, 30px); color: var(--ink); letter-spacing: -0.02em; }
-  @media (max-width: 700px) {
-    .stats { grid-template-columns: 1fr 1fr; }
-    .stats > div:nth-child(2) { border-right: 0; }
-    .stats > div:nth-child(3) { padding-left: 0; }
-    .stats > div:nth-child(n + 3) { border-top: 1px solid var(--line); }
-  }
+  .hero-ship { margin: 0 0 20px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--ink); }
+  .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(47, 125, 87, 0.15); flex-shrink: 0; }
+  .stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 24px clamp(40px, 7vw, 96px); margin-top: clamp(48px, 6vw, 80px); padding: 28px 0 clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
+  .stats dt { font-size: 14px; color: var(--text-3); }
+  .stats dd { margin: 4px 0 0; font-stretch: 108%; font-weight: 650; font-size: clamp(22px, 2.4vw, 30px); color: var(--ink); letter-spacing: -0.02em; }
+  @media (max-width: 600px) { .stats { grid-template-columns: 1fr 1fr; } }
 
   .bp { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
   @media (max-width: 920px) { .bp { grid-template-columns: 1fr; } }
   .bp-title { margin: 16px 0 22px; }
-  .cmp thead th { background: var(--brand-deep); color: #fff; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 12px 16px; text-align: left; }
+  .cmp thead th { background: var(--brand-deep); color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0; padding: 12px 16px; text-align: left; }
   .cmp thead th:first-child { background: var(--brand-deep); }
   .cmp td:last-child { color: var(--ink); font-weight: 550; background: var(--brand-wash); }
   .cmp { background: #fff; }
 
-  .sys { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  .sys { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
   @media (max-width: 860px) { .sys { grid-template-columns: 1fr; } }
-  .sys-body { display: grid; gap: 16px; }
-  .sys-idx { color: var(--brand); }
-  .sys-sum { color: var(--text-2); max-width: 58ch; }
-  .sys-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-  .sys-sum { font-size: 17px; }
-
-  .kits-head { display: flex; justify-content: space-between; align-items: end; gap: 12px 24px; flex-wrap: wrap; margin: clamp(48px, 6vw, 72px) 0 20px; }
-  .kits-head .mono { font-size: 11px; color: var(--text-3); }
-  .kits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  @media (max-width: 1000px) { .kits { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .kits { grid-template-columns: 1fr; } }
-  .kit { display: flex; flex-direction: column; gap: 6px; padding: 20px; border: 1px solid var(--line); background: #fff; text-decoration: none; transition: border-color 0.18s, background 0.18s; }
-  .kit:hover { border-color: var(--brand); background: var(--brand-wash); }
+  .sys-body { display: grid; gap: 22px; }
+  .sys-sum { color: var(--text-2); max-width: 54ch; font-size: 18px; line-height: 1.6; }
+  .sys-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .kits-head { margin-bottom: 8px; }
+  .kits-head p { color: var(--text-3); font-size: 15px; margin-top: 4px; }
+  .kits { display: grid; border-top: 1px solid var(--line); }
+  .kit { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .kit-main { display: grid; gap: 2px; }
   .kit-name { font-stretch: 105%; font-weight: 650; font-size: 18px; color: var(--ink); }
-  .kit-pens { font-size: 14px; color: var(--text-2); line-height: 1.45; }
-  .kit-price { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-family: var(--mono); font-weight: 500; font-size: 17px; color: var(--ink); }
+  .kit:hover .kit-name { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
+  .kit-pens { font-size: 14.5px; color: var(--text-2); line-height: 1.45; }
+  .kit-price { font-weight: 600; font-size: 17px; color: var(--ink); white-space: nowrap; }
 
   .also { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 860px) { .also { grid-template-columns: 1fr; } }
@@ -440,56 +406,51 @@ const steps = [
   .also-glyph { background: var(--bg-2); border-right: 1px solid var(--line); display: grid; place-items: center; padding: 16px; color: var(--brand-dk); }
   .also-glyph :global(svg) { width: 100%; height: auto; }
   .also-body { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; }
-  .also-proc { font-size: 10.5px; color: var(--brand); }
+  .also-proc { font-size: 13px; color: var(--brand); }
   .also-name { font-stretch: 106%; font-weight: 650; font-size: 20px; color: var(--ink); }
   .also-sum { font-size: 14.5px; color: var(--text-2); line-height: 1.5; }
   .also-foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .also-price { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--ink); }
+  .also-price { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); }
 
-  .steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
-  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
-  .step { display: grid; gap: 10px; align-content: start; }
-  .step-n { color: var(--gold); margin-top: 8px; }
-  .step p:last-child { color: var(--text-2); font-size: 15px; }
-  .pv-row { margin-top: clamp(48px, 6vw, 72px); padding-top: clamp(40px, 5vw, 56px); border-top: 1px solid var(--line-2); }
-  .seq { margin-top: clamp(48px, 6vw, 72px); padding-top: clamp(40px, 5vw, 56px); border-top: 1px solid var(--line-2); }
+  .pv-row { margin-top: clamp(64px, 8vw, 104px); }
   .seq-head { display: flex; justify-content: space-between; align-items: end; gap: 12px 32px; flex-wrap: wrap; margin-bottom: 28px; }
   .seq-head p { color: var(--text-2); max-width: 52ch; }
 
-  .apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); margin-top: clamp(40px, 5vw, 56px); }
   @media (max-width: 1000px) { .apps { grid-template-columns: 1fr 1fr; } }
-  .growth { display: grid; grid-template-columns: auto 1fr auto; gap: 20px 28px; align-items: center; margin: 20px 0; padding: clamp(22px, 3vw, 30px); background: var(--navy); color: var(--on-navy-2); text-decoration: none; border-left: 3px solid var(--gold); transition: background 0.18s; }
+  .growth { display: grid; grid-template-columns: 1fr auto; gap: 20px 28px; align-items: center; margin: clamp(40px, 5vw, 56px) 0 0; padding: clamp(28px, 3.5vw, 40px); background: var(--navy); color: var(--on-navy-2); text-decoration: none; border-left: 3px solid var(--gold); transition: background 0.18s; }
   .growth:hover { background: var(--navy-2); }
   .growth h3 { color: #fff; margin-bottom: 4px; }
   .growth p { font-size: 15px; max-width: 70ch; }
-  .growth .app-code { background: var(--gold); color: var(--navy); margin: 0; }
+  .growth .app-code { display: none; }
   .growth .link { color: #fff; }
   @media (max-width: 800px) { .growth { grid-template-columns: 1fr; } }
   @media (max-width: 560px) { .apps { grid-template-columns: 1fr; } }
-  .app { display: grid; gap: 10px; align-content: start; padding: 26px; background: #fff; text-decoration: none; transition: background 0.18s; }
-  .app:hover { background: var(--brand-wash); }
-  .app-code { width: 36px; height: 36px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; margin-bottom: 6px; }
+  .app { display: grid; gap: 10px; align-content: start; padding-top: 22px; border-top: 2px solid var(--line-2); text-decoration: none; transition: border-color 0.18s; }
+  .app:hover { border-top-color: var(--gold); }
+  .app:hover h3 { color: var(--brand-dk); }
+  .app-code { display: none; }
   .app p { color: var(--text-2); font-size: 15px; }
-  .app-sys { font-size: 10.5px; color: var(--brand); margin-top: 6px; }
+  .app-sys { font-size: 13px; color: var(--brand); margin-top: 6px; }
 
-  .elx { background: #fff; border: 1px solid var(--line); padding: clamp(24px, 3.5vw, 44px); }
+  .elx { }
   .elx-in { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
   @media (max-width: 920px) { .elx-in { grid-template-columns: 1fr; } }
   .elx-copy { display: grid; gap: 20px; }
   .elx-ticks { font-size: 16px; gap: 8px; }
-  .elx-side { display: grid; gap: 0; border: 1px solid var(--line); }
+  .elx-side { display: grid; gap: 0; border: 1px solid var(--line); background: #fff; }
   .elx-side :global(.ph-box) { border: 0; border-bottom: 1px solid var(--line); }
   .elx-kit { display: grid; gap: 6px; padding: 20px; text-decoration: none; background: var(--brand-wash); border-bottom: 1px solid var(--line); }
   .elx-kit:hover { background: #e4ebee; }
-  .elx-kit-tag { font-size: 10.5px; color: var(--brand-dk); }
+  .elx-kit-tag { font-size: 14px; font-weight: 600; color: var(--brand-dk); }
   .elx-kit-name { font-stretch: 106%; font-weight: 650; font-size: 20px; color: var(--ink); }
   .elx-kit-desc { font-size: 14.5px; color: var(--text-2); }
-  .elx-kit-price { font-family: var(--mono); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 4px; }
+  .elx-kit-price { font-family: var(--sans); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 4px; }
   .elx-kit-price .sku { font-size: 12px; margin-left: 8px; }
   .elx-pens { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); }
   .elx-pens a { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; background: #fff; text-decoration: none; font-size: 14.5px; font-weight: 550; color: var(--ink); }
   .elx-pens a:hover { background: var(--bg-2); }
-  .elx-pens .mono { font-size: 12.5px; color: var(--text-2); }
+  .elx-pens .mono { font-size: 14px; color: var(--text-2); }
 
   .feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   @media (max-width: 1000px) { .feat { grid-template-columns: 1fr 1fr; } }
@@ -503,5 +464,5 @@ const steps = [
   .res-item { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center; padding: 18px 20px; background: #fff; text-decoration: none; color: var(--text-2); font-size: 15px; line-height: 1.45; transition: background 0.18s; }
   .res-item:hover { background: var(--brand-wash); }
   .res-item strong { color: var(--ink); font-weight: 600; }
-  .res-item .mono { height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); font-size: 11px; color: var(--brand-dk); }
+  .res-item .mono { height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); font-size: 13px; color: var(--brand-dk); }
 </style>

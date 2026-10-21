@@ -50,6 +50,7 @@ const schema = [
     itemListElement: items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.origin}${productUrl(p)}`, name: p.name })),
   },
 ];
+const introPhoto = photo(page.photo);
 ---
 
 <Base title={fill(page.metaTitle)} description={fill(page.metaDescription)} schema={schema}>
@@ -65,7 +66,7 @@ const schema = [
     <aside><CatalogTree currentSystem={page.id} /></aside>
 
     <div class="main">
-      <section class="intro">
+      <section class:list={['intro', { 'intro--solo': !introPhoto.src }]}>
         <div>
           <h2 class="h-2 marked">{page.headline}</h2>
           <div class="prose">{page.intro.map((t) => <p>{t}</p>)}</div>
@@ -75,7 +76,7 @@ const schema = [
           </div>
           <p class="from mono">From <strong>{fmtPrice(fromPrice)}</strong> · ships direct from {SITE.city}, NJ</p>
         </div>
-        <Photo photo={photo(page.photo)} aspect="4 / 3" eager />
+        {introPhoto.src && <Photo photo={introPhoto} aspect="4 / 3" eager />}
       </section>
 
       <section class:list={['blocks', { 'blocks--4': page.blocks.length === 4 }]}>
@@ -208,26 +209,30 @@ const schema = [
 
   .intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 4vw, 48px); align-items: start; }
   @media (max-width: 1100px) { .intro { grid-template-columns: 1fr; } }
+  .intro--solo { grid-template-columns: 1fr; }
+  .intro--solo .prose p { max-width: 68ch; }
   .intro h2 { margin-bottom: 20px; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-  .from { margin-top: 16px; font-size: 11.5px; color: var(--text-3); }
-  .from strong { color: var(--ink); font-weight: 500; font-size: 13px; }
+  .from { margin-top: 18px; font-size: 15px; color: var(--text-3); }
+  .from strong { color: var(--ink); font-weight: 600; font-size: 15px; }
 
-  .blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
   .blocks--4 { grid-template-columns: repeat(2, 1fr); }
   @media (max-width: 800px) { .blocks { grid-template-columns: 1fr; } }
-  .blk { background: #fff; padding: 24px; display: grid; gap: 16px; align-content: start; }
-  .blk .ticks { font-size: 15px; }
+  .blk { padding-top: 20px; border-top: 2px solid var(--line-2); display: grid; gap: 14px; align-content: start; }
+  .blk .ticks { font-size: 15.5px; gap: 8px; }
+  .blk .marked { padding-bottom: 0; }
+  .blk .marked::after { display: none; }
 
   .sec { display: grid; gap: 18px; }
-  .tbl-wrap { overflow-x: auto; }
+  .tbl-wrap { overflow-x: auto; position: relative; }
   .tbl-wrap .spec { min-width: 640px; font-size: 14.5px; }
   .tbl-cap { caption-side: top; text-align: left; padding: 10px 16px; font-size: 12.5px; color: var(--text-3); border-bottom: 1px solid var(--line); }
   .tbl-note { font-size: 14px; color: var(--text-3); }
   .sys-guides { display: grid; gap: 8px; padding-left: 1.1em; }
   .sys-guides a { color: var(--brand-dk); font-weight: 550; }
   .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 12px 24px; flex-wrap: wrap; }
-  .sec-head .mono { font-size: 11px; color: var(--text-3); }
+  .sec-head .mono { font-size: 13px; color: var(--text-3); }
 
   .kits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   @media (max-width: 700px) { .kits { grid-template-columns: 1fr; } }
@@ -235,21 +240,21 @@ const schema = [
   .kit:hover { border-color: var(--brand); background: var(--brand-wash); }
   .kit-name { font-weight: 650; font-size: 18px; color: var(--ink); font-stretch: 105%; }
   .kit-pens, .kit-best { display: grid; gap: 2px; font-size: 14px; color: var(--text-2); }
-  .kit-price { font-family: var(--mono); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .kit-price { font-family: var(--sans); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--line); }
 
   .apps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (max-width: 700px) { .apps { grid-template-columns: 1fr; } }
   .app { display: flex; gap: 14px; padding: 18px; background: #fff; text-decoration: none; font-size: 14.5px; color: var(--text-2); line-height: 1.5; }
   .app:hover { background: var(--brand-wash); }
   .app strong { color: var(--ink); font-size: 16px; }
-  .app-code { flex-shrink: 0; width: 34px; height: 34px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 11px; }
+  .app-code { flex-shrink: 0; width: 34px; height: 34px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 13px; }
 
   .soon { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid var(--line); border-left: 3px solid var(--gold); background: #fff; text-decoration: none; color: var(--text-2); font-size: 15px; transition: background 0.18s; }
   .soon:hover { background: var(--brand-wash); }
   @media (max-width: 700px) { .soon { grid-template-columns: 1fr; gap: 10px; } }
-  .soon-tag { background: var(--gold); color: #fff; padding: 4px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .soon-tag { background: var(--gold); color: #fff; padding: 4px 10px; font-size: 13px; letter-spacing: 0; }
   .soon-body strong { display: block; color: var(--ink); font-size: 18px; font-stretch: 105%; margin-bottom: 2px; }
-  .soon-cta { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--brand-dk); white-space: nowrap; }
+  .soon-cta { font-size: 14px; letter-spacing: 0; color: var(--brand-dk); white-space: nowrap; }
   .soon:hover .arrow { transform: translateX(3px); }
 
   .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }

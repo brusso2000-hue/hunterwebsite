@@ -82,24 +82,24 @@ const tree = SYSTEMS.map((s) => {
 
 <style>
   .tree { border: 1px solid var(--line); background: #fff; position: sticky; top: calc(var(--header-h) + 20px); max-height: calc(100vh - var(--header-h) - 40px); overflow-y: auto; }
-  .tree-head { background: var(--brand-deep); color: #fff; padding: 12px 16px; font-size: 11px; font-weight: 500; }
+  .tree-head { background: var(--brand-deep); color: #fff; padding: 12px 16px; font-size: 13px; font-weight: 500; }
   .tree-sys { border-bottom: 1px solid var(--line); }
   .tree-sys summary { list-style: none; cursor: pointer; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; background: var(--bg-2); }
   .tree-sys summary::-webkit-details-marker { display: none; }
-  .tree-sys summary::after { content: '+'; font-family: var(--mono); color: var(--text-3); }
+  .tree-sys summary::after { content: '+'; font-family: var(--sans); color: var(--text-3); }
   .tree-sys[open] summary::after { content: '–'; }
   .tree-sys summary a { font-weight: 650; font-size: 15px; text-decoration: none; color: var(--ink); }
   .tree-sys summary a:hover, .tree-sys summary a.on { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
   .tree-body { padding: 6px 0 12px; }
   .tree-group + .tree-group { margin-top: 6px; }
-  .tree-glabel { padding: 6px 16px 2px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
+  .tree-glabel { padding: 6px 16px 2px; font-family: var(--sans); font-size: 13px; letter-spacing: 0; color: var(--text-3); }
   .tree ul { list-style: none; padding: 0; }
   .tree li a { display: block; padding: 4px 16px 4px 26px; font-size: 14px; color: var(--text-2); text-decoration: none; position: relative; }
   .tree li a::before { content: '›'; position: absolute; left: 14px; color: var(--line-3); }
   .tree li a:hover { color: var(--ink); background: var(--bg-2); }
   .tree li a.on { color: var(--ink); font-weight: 600; background: var(--brand-wash); box-shadow: inset 2px 0 0 var(--gold); }
-  .tree-soon { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gold); margin-left: 4px; }
-  .tree-all { display: block; padding: 12px 16px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--brand-dk); text-decoration: none; }
+  .tree-soon { font-family: var(--sans); font-size: 13px; letter-spacing: 0; color: var(--gold); margin-left: 4px; }
+  .tree-all { display: block; padding: 12px 16px; font-family: var(--sans); font-size: 14px; letter-spacing: 0; color: var(--brand-dk); text-decoration: none; }
   .tree-all:hover { background: var(--bg-2); }
   @media (max-width: 960px) { .tree { position: static; max-height: none; } }
 </style>

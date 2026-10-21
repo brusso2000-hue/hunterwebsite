@@ -134,7 +134,7 @@ const schema = [
   .doc-icon::after { content: ''; position: absolute; top: -1px; right: -1px; width: 14px; height: 14px; background: linear-gradient(225deg, #fff 50%, var(--line-2) 50%); }
   .doc-body { display: grid; gap: 8px; align-content: start; }
   .doc-body > p:not(.doc-kind) { font-size: 14.5px; color: var(--text-2); }
-  .doc-kind { font-size: 11px; color: var(--brand); }
+  .doc-kind { font-size: 13px; color: var(--brand); }
   .doc-ctas { display: flex; gap: 8px; margin-top: 8px; }
 
   .faq-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
@@ -145,8 +145,8 @@ const schema = [
   .faq details { border-bottom: 1px solid var(--line-2); }
   .faq summary { list-style: none; cursor: pointer; display: flex; gap: 16px; align-items: baseline; padding: 18px 32px 18px 0; font-weight: 600; font-size: 17px; color: var(--ink); position: relative; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; position: absolute; right: 4px; font-family: var(--mono); font-weight: 400; color: var(--text-3); }
+  .faq summary::after { content: '+'; position: absolute; right: 4px; font-family: var(--sans); font-weight: 400; color: var(--text-3); }
   .faq details[open] summary::after { content: '–'; }
-  .faq summary .mono { font-size: 11px; color: var(--brand); flex-shrink: 0; }
+  .faq summary .mono { font-size: 13px; color: var(--brand); flex-shrink: 0; }
   .faq details p { padding: 0 0 20px 44px; color: var(--text-2); max-width: 64ch; }
 </style>
