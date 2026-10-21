@@ -135,7 +135,6 @@ const schema = [
             <AddToCart product={p} />
             <a class="btn" href={`/contact/?topic=quote#quote`}>Volume quote</a>
           </div>
-          {(type === 'pen' || type === 'heavy-duty') && <BoughtTogether product={p} />}
           <p class="note">
             Purchasing for a company? We accept POs and quote volume pricing —
             <a href="/contact/?topic=po#quote">send a PO request</a> or call <a href={SITE.phoneHref}>{SITE.phone}</a>.
@@ -144,6 +143,8 @@ const schema = [
           <p class="note">Returns accepted within {POLICY.returnDays} days of delivery. <a href="/contact/">Contact us</a> to start a return.</p>
         </div>
       </article>
+
+      {(type === 'pen' || type === 'heavy-duty') && <BoughtTogether product={p} />}
 
       <section class="block">
         <h2 class="h-3 marked">Overview</h2>
