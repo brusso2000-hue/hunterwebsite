@@ -25,6 +25,19 @@ export interface Product {
   voltage?: string[];
   /** Explicit product type; overrides the id/category rules in typeOf(). */
   kind?: ProductType;
+  /** Optional extra content sections for pages that target a competitive search. */
+  sections?: ProductSection[];
+  /** Optional FAQ, rendered on the page and as FAQPage schema. */
+  faq?: { q: string; a: string }[];
+}
+
+export interface ProductSection {
+  heading: string;
+  paragraphs?: string[];
+  /** rowLinks maps a first-column cell label to a URL. */
+  table?: { head: string[]; rows: string[][]; links?: Record<string, string> };
+  /** [label, href] pairs shown as a link list under the section. */
+  links?: [string, string][];
 }
 
 export const products = raw as Product[];

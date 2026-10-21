@@ -5,7 +5,7 @@ import { products, metaFor } from '../lib/catalog';
 
 export function GET() {
   return new Response(JSON.stringify(
-      products.map((p) => {
+      products.map(({ sections: _s, faq: _f, ...p }) => {
         const m = metaFor(p);
         // Snipcart rejects an order ("invalid products") when a cart item carries a
         // custom field the crawled product doesn't declare. Mirror the Voltage field

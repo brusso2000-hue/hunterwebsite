@@ -133,23 +133,203 @@
     "price": 145,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Plate pure 24-karat gold onto gold, nickel, or silver surfaces. Ideal for connector pins, edge connectors, and switch contacts.",
-    "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
+    "description": "A gold plating pen that deposits pure 24-karat gold onto gold, nickel or silver. The self-contained solution is in the pen, so there is no tank or bath. Built for connector pins, edge connectors and switch contacts.",
+    "dimensions": {
+      "weight": 45,
+      "width": 3,
+      "height": 3,
+      "length": 18
+    },
     "slug": "gold-24k-plating-pen",
     "category": "pen",
     "sku": "PL-1003",
     "image": "/img/plating_pens.jpeg",
-    "h1": "24K Gold Plating Pen",
-    "metaTitle": "24K Gold Plating Pen, {price} | Plate Contacts, No Tank",
-    "metaDescription": "Pure 24K gold for connector pins & contacts. Fully self-contained plating solution in the pen, no tank. {price}. Ships same day from NJ, free returns.",
+    "h1": "Gold Plating Pen, 24K",
+    "metaTitle": "Gold Plating Pen, 24K Pure Gold, {price} | No Tank Needed",
+    "metaDescription": "24K gold plating pen for connector pins, edge connectors and contacts. Plates 0.5 µm in 2 minutes at 6 to 8V, no tank. {price}. Ships same day from NJ.",
     "specs": [
-      ["Part No.", "PL-1003"],
-      ["Metal", "24 Karat Gold (pure)"],
-      ["Compatible Surfaces", "Gold, Nickel, Silver"],
-      ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
+      [
+        "Part No.",
+        "PL-1003"
+      ],
+      [
+        "Metal",
+        "24 Karat Gold (pure)"
+      ],
+      [
+        "Compatible Surfaces",
+        "Gold, Nickel, Silver"
+      ],
+      [
+        "Required Compatibles",
+        "Absorbent Pen, Power Supply, Connector Cables"
+      ]
     ],
-    "longDescription": "The 24K Gold Plating Pen deposits pure 24-karat gold for both functional and decorative applications. For electrical contact work — connector pins, edge connectors, switch contacts — pure gold delivers the highest conductivity and corrosion resistance available, which is why this pen is a staple of aerospace MRO and electronics restoration shops.\n\nThe same pen handles prototype contacts, lab samples, and touch-up on gold-plated parts where a full tank dip is impractical. It plates onto gold, silver, or nickel substrates.\n\nRequires surface preparation with the Absorbent / Degreaser pen first. On copper or other non-compatible substrates, apply a nickel underlayer with the Nickel Plating Pen (PL-1006) before plating gold. Heavy-duty variant available as the Gold 24K Heavy Duty Pen (PL-1016).",
-    "applications": ["Electronics & PCB", "Aerospace & Defense"]
+    "longDescription": "The 24K gold plating pen deposits pure 24-karat gold exactly where you touch it. The gold solution is sealed inside the pen and feeds through the tip, so there is no tank to fill, no bath to maintain and nothing to mix. Connect the part to the negative lead of the power supply, the pen to the positive lead, and stroke the tip across the surface at 6 to 8V DC.\n\nFor electrical contact work (connector pins, edge connectors, PCB gold fingers, switch contacts) pure gold gives the highest conductivity and corrosion resistance available, which is why this pen is a staple of aerospace MRO and electronics repair shops. The same pen handles prototype contacts, lab samples and touch-up on gold-plated parts where a full tank dip is impractical or would plate areas you need to keep bare.\n\nEach pen holds 10 ml of concentrated solution and plates roughly 300 square inches. Pens are disposable and non-refillable, which keeps the solution free of contamination from one job to the next.\n\nThe pen plates onto gold, nickel or silver. Prepare the surface with the Absorbent / Degreaser pen (PL-1002) first. On copper, plate a nickel underlayer with the Nickel Plating Pen (PL-1006) before gold. For thicker deposits, use the Gold 24K Heavy Duty Pen (PL-1016).",
+    "applications": [
+      "Electronics & PCB",
+      "Aerospace & Defense"
+    ],
+    "sections": [
+      {
+        "heading": "Which gold plating pen to choose",
+        "paragraphs": [
+          "All Micro-Metallizer gold pens plate the same way, at the same voltage, onto the same surfaces. Pick by what the part does."
+        ],
+        "table": {
+          "head": [
+            "Pen",
+            "Part no.",
+            "Price",
+            "Use it for"
+          ],
+          "rows": [
+            [
+              "Gold 24K (this pen)",
+              "PL-1003",
+              "$145",
+              "Electrical contacts: best conductivity and corrosion resistance"
+            ],
+            [
+              "Gold 24K Heavy Duty",
+              "PL-1016",
+              "$235",
+              "Thicker 24K deposits, longer runs between pens"
+            ],
+            [
+              "Gold 18K",
+              "PL-1004",
+              "$145",
+              "Harder-wearing finish on high-contact parts"
+            ],
+            [
+              "Gold 18K Heavy Duty",
+              "PL-1017",
+              "$235",
+              "Thicker 18K deposits on high-wear parts"
+            ],
+            [
+              "Gold 14K",
+              "PL-1005",
+              "$145",
+              "Matching existing 14K-plated parts"
+            ]
+          ],
+          "links": {
+            "Gold 24K Heavy Duty": "/products/gold-24k-heavy-duty-plating-pen/",
+            "Gold 18K": "/products/gold-18k-plating-pen/",
+            "Gold 18K Heavy Duty": "/products/gold-18k-heavy-duty-plating-pen/",
+            "Gold 14K": "/products/gold-14k-plating-pen/"
+          }
+        }
+      },
+      {
+        "heading": "How fast and how thick",
+        "paragraphs": [
+          "Typical gold deposit on a 1 in × 1 in copper surface, from the Micro-Metallizer catalog."
+        ],
+        "table": {
+          "head": [
+            "Pen",
+            "2 minutes",
+            "3 minutes",
+            "Maximum"
+          ],
+          "rows": [
+            [
+              "Gold 24K (PL-1003)",
+              "0.5 µm",
+              "0.8 µm",
+              "1.5 to 1.8 µm"
+            ],
+            [
+              "Gold 24K Heavy Duty (PL-1016)",
+              "0.8 µm",
+              "1.2 µm",
+              "3 to 3.6 µm"
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "What it plates onto",
+        "table": {
+          "head": [
+            "Base metal",
+            "Sequence"
+          ],
+          "rows": [
+            [
+              "Gold, nickel or silver",
+              "Degrease, then gold"
+            ],
+            [
+              "Copper",
+              "Degrease, nickel, then gold"
+            ],
+            [
+              "Brass, steel or zinc die-cast",
+              "Degrease, copper flash, nickel, then gold"
+            ],
+            [
+              "Stainless steel",
+              "Stainless degreaser, copper flash, nickel, then gold"
+            ],
+            [
+              "Aluminum",
+              "Not supported by the Micro-Metallizer system"
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "What you need to use it",
+        "paragraphs": [
+          "A gold plating pen runs on the Micro-Metallizer power supply ($220) and connector cables ($20), or on your own variable DC supply up to 12V at 0.1A. You also need the Absorbent / Degreaser pen ($65) for surface prep.",
+          "Bought separately, the 24K gold pen, degreaser, power supply and cables come to $450. The Contact Repair Kit (PL-1000C) is $400 and also includes the nickel pen, so for a first setup the kit is the better buy."
+        ],
+        "links": [
+          [
+            "Contact Repair Kit",
+            "/products/contact-repair-kit/"
+          ],
+          [
+            "Micro-Metallizer power supply",
+            "/store/?type=equipment"
+          ],
+          [
+            "Step-by-step: how to use a gold plating pen",
+            "/guides/gold-plating-pen-guide/"
+          ]
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "How does a gold plating pen work?",
+        "a": "The pen holds a gold plating solution that feeds through its tip. With the part on the negative lead of a DC power supply and the pen on the positive lead, gold deposits wherever the tip touches. No tank or bath is needed."
+      },
+      {
+        "q": "Can a gold plating pen plate directly onto copper?",
+        "a": "No. The gold pen plates over gold, nickel or silver. Plate a nickel underlayer over the copper with the Nickel pen (PL-1006) first, then the gold."
+      },
+      {
+        "q": "What voltage does the 24K gold plating pen use?",
+        "a": "6 to 8V DC. Degreasing beforehand runs at 10 to 12V."
+      },
+      {
+        "q": "How much area does one gold pen cover?",
+        "a": "Each pen holds 10 ml of concentrated solution and plates roughly 300 square inches."
+      },
+      {
+        "q": "Is the gold plating pen refillable?",
+        "a": "No. Pens are disposable and non-refillable so the solution stays free of contamination."
+      },
+      {
+        "q": "Do you offer volume pricing or accept purchase orders?",
+        "a": "Yes. We accept company POs and quote volume pricing. Use the volume quote form or call (908) 526-8440."
+      }
+    ]
   },
   {
     "id": "PL-1004",

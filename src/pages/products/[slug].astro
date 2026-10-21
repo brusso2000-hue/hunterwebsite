@@ -76,6 +76,13 @@ const schema = [
       { '@type': 'ListItem', position: 3, name: p.name, item: canonical },
     ],
   },
+  ...(p.faq?.length
+    ? [{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }]
+    : []),
 ];
 ---
 
@@ -144,6 +151,37 @@ const schema = [
         </div>
       </section>
 
+      {p.sections?.map((sec) => (
+        <section class="block">
+          <h2 class="h-3 marked">{sec.heading}</h2>
+          {sec.paragraphs && <div class="prose">{sec.paragraphs.map((para) => <p>{para}</p>)}</div>}
+          {sec.table && (
+            <div class="tbl">
+              <table class="spec">
+                <thead><tr>{sec.table.head.map((h) => <th scope="col">{h}</th>)}</tr></thead>
+                <tbody>
+                  {sec.table.rows.map((r) => (
+                    <tr>
+                      {r.map((c, i) => {
+                        const href = i === 0 ? sec.table?.links?.[c] : undefined;
+                        return i === 0
+                          ? <th scope="row">{href ? <a href={href}>{c}</a> : c}</th>
+                          : <td>{c}</td>;
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {sec.links && (
+            <ul class="guides">
+              {sec.links.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+            </ul>
+          )}
+        </section>
+      ))}
+
       <section class="block">
         <h2 class="h-3 marked">Specifications</h2>
         <table class="spec">
@@ -162,6 +200,20 @@ const schema = [
           {p.applications.map((a) => <a class="tag" href={`/applications-electroplating/#${slugify(a)}`}>{a}</a>)}
         </div>
       </section>
+
+      {p.faq && p.faq.length > 0 && (
+        <section class="block">
+          <h2 class="h-3 marked">Frequently asked questions</h2>
+          <div class="faq">
+            {p.faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       {guides.length > 0 && (
         <section class="block">
@@ -241,6 +293,14 @@ const schema = [
   .note a { color: var(--brand-dk); }
 
   .block { display: grid; gap: 20px; }
+  .tbl { overflow-x: auto; }
+  .tbl .spec th { width: auto; white-space: nowrap; }
+  .tbl .spec td:last-child { min-width: 260px; }
+  .spec thead th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); }
+  .faq { display: grid; border: 1px solid var(--line); }
+  .faq details + details { border-top: 1px solid var(--line); }
+  .faq summary { cursor: pointer; padding: 14px 18px; font-weight: 550; color: var(--ink); }
+  .faq details p { padding: 0 18px 16px; color: var(--text-2); max-width: 70ch; }
   .spec a { color: var(--brand-dk); }
   .apps { display: flex; flex-wrap: wrap; gap: 8px; }
   .guides { display: grid; gap: 8px; padding-left: 1.1em; }
