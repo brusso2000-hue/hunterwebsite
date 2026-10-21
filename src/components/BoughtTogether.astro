@@ -102,8 +102,18 @@ const isGold = /gold/i.test(product.slug);
     };
     const cfName = d('custom1-name');
     if (cfName) {
+      const options = d('custom1-options') || '';
+      const value = voltage || d('custom1-value');
       item.customFields = [
-        { name: cfName, options: d('custom1-options'), value: voltage || d('custom1-value'), required: true },
+        {
+          name: cfName,
+          type: 'dropdown',
+          options,
+          optionsArray: options.split('|'),
+          value,
+          displayValue: value,
+          required: true,
+        },
       ];
     }
     return item;
