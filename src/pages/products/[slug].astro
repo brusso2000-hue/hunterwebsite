@@ -51,7 +51,6 @@ const schema = [
     mpn: p.sku,
     description: p.description,
     brand: { '@type': 'Brand', name: SITE.name },
-    manufacturer: { '@type': 'Organization', name: SITE.name },
     category: TYPE_LABEL[type],
     image: pic.src ? [`${SITE.origin}${encodeURI(pic.src)}`] : [],
     url: canonical,

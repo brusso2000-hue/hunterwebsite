@@ -148,7 +148,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
     title: 'Micro-Jet 200 Micro-Abrasive Blasting System',
     metaTitle: 'Micro-Jet 200 Micro-Abrasive Blaster, {from} | Hunter Products',
     metaDescription:
-      'Precision micro-abrasive blasting to clean, etch and prep small or delicate parts where standard blasting does damage. Built in NJ, ships same day.',
+      'Precision micro-abrasive blasting to clean, etch and prep small or delicate parts where standard blasting does damage. NJ-based, ships same day.',
     headline: 'Micro-abrasive surface preparation.',
     intro: [
       'The Micro-Jet 200 is a precision micro-abrasive blasting platform for cleaning, etching and surface preparation on parts where conventional blasting equipment is too aggressive.',

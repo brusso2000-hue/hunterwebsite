@@ -12,7 +12,7 @@ export const SITE = {
   postal: '08822',
   hours: 'Mon–Fri · 9:00–5:00 ET',
   defaultDescription:
-    'Brush plating and selective plating systems, tungsten-carbide coating and micro-abrasive blasting. Micro-Metallizer, Carbitron 300, Micro-Jet 200 — built in New Jersey since 1970.',
+    'Brush plating and selective plating systems, tungsten-carbide coating and micro-abrasive blasting. Micro-Metallizer, Carbitron 300, Micro-Jet 200. Sold and supported from Flemington, NJ since 1970.',
 };
 
 /** Shipping and returns, as stated by Hunter Products (Oct 2026). */

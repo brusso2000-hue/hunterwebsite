@@ -25,7 +25,7 @@ const schema = [
     name: SITE.name,
     url: SITE.origin,
     logo: `${SITE.origin}/img/brand/hunter-logo.png`,
-    description: 'Manufacturer of brush plating (selective electroplating) pens, Carbitron tungsten-carbide coating systems, and Micro-Jet micro-abrasive blasters since 1970.',
+    description: 'Brush plating (selective electroplating) pens, Carbitron tungsten-carbide coating systems, and Micro-Jet micro-abrasive blasters, sold and supported from Flemington, NJ since 1970.',
     foundingDate: String(SITE.founded),
     address,
     contactPoint: { '@type': 'ContactPoint', telephone: '+1-908-526-8440', email: SITE.email, contactType: 'sales', availableLanguage: 'English' },
@@ -300,7 +300,7 @@ const steps = [
       <div class="section-head section-head--split">
         <div>
           <p class="eyebrow">Order</p>
-          <h2 class="h-1">Most-ordered products, direct from the manufacturer.</h2>
+          <h2 class="h-1">Most-ordered products, direct from Hunter Products.</h2>
         </div>
         <a class="link" href="/store/">Shop all products <span class="arrow">→</span></a>
       </div>
@@ -344,12 +344,11 @@ const steps = [
         <h2 class="h-1">Five decades of selective plating.</h2>
         <div class="prose">
           <p>
-            Hunter Products has designed and supported localized plating and surface-treatment equipment
-            from {SITE.city}, New Jersey since {SITE.founded}. We invented the Carbitron diamond-dusting platform and
-            continue to build the Micro-Metallizer line used in aerospace MRO, electronics rework and medical instrument
-            repair.
+            Hunter Products has supplied and supported localized plating and surface-treatment equipment
+            from {SITE.city}, New Jersey since {SITE.founded}. We invented the Carbitron diamond-dusting platform, and our
+            Micro-Metallizer line is used in aerospace MRO, electronics rework and medical instrument repair.
           </p>
-          <p>Every order ships same day, direct from our facility, and every question is answered by people who build the equipment.</p>
+          <p>Orders placed by {POLICY.sameDayCutoff} on a business day ship the same day, direct from our facility, and every question is answered by people who know the equipment.</p>
         </div>
       </div>
       <div class="res">
