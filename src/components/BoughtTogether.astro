@@ -1,0 +1,186 @@
+---
+// "Frequently bought together" for plating pens: the pen plus the degreaser,
+// connector cables and power supply, added to the Snipcart cart in one click.
+import { bySlug, snipcartAttrs, fmtPrice, productUrl, type Product } from '../lib/catalog';
+import { productPhoto } from '../lib/photos';
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+
+// Checked by default: cheap items nearly every pen order needs.
+// The power supply is a one-time purchase, so repeat pen buyers start with it unchecked.
+const addOns: { p: Product; checked: boolean; note: string }[] = [
+  { p: bySlug('absorbent-degreaser-plating-pen'), checked: true, note: 'Cleans the part first. Needed for every metal except stainless.' },
+  { p: bySlug('micro-metallizer-connector-cables'), checked: true, note: 'Connects the pen and the part to the power supply.' },
+  { p: bySlug('micro-metallizer-power-supply'), checked: false, note: 'Skip if you already have one.' },
+].filter((a) => a.p.id !== product.id);
+
+const items = [{ p: product, checked: true, note: '' }, ...addOns];
+const kit = bySlug('contact-repair-kit');
+const isGold = /gold/i.test(product.slug);
+---
+
+<section class="fbt" data-fbt aria-labelledby="fbt-h">
+  <h2 class="fbt-h" id="fbt-h">Frequently bought together</h2>
+
+  <ul class="fbt-list">
+    {items.map(({ p, checked, note }, i) => {
+      const photo = productPhoto(p);
+      const attrs = snipcartAttrs(p);
+      return (
+        <li class="fbt-item">
+          <label class="fbt-row">
+            <input type="checkbox" checked={checked} data-fbt-item data-price={p.price} {...attrs} />
+            <span class="fbt-thumb" aria-hidden="true">
+              {photo.src ? <img src={encodeURI(photo.src)} alt="" loading="lazy" decoding="async" /> : <span class="fbt-dot" />}
+            </span>
+            <span class="fbt-text">
+              <span class="fbt-name">
+                {i === 0 ? <strong>This item: {p.name}</strong> : <a href={productUrl(p)}>{p.name}</a>}
+              </span>
+              {note && <span class="fbt-note">{note}</span>}
+            </span>
+            <span class="fbt-price mono">{fmtPrice(p.price)}</span>
+          </label>
+          {p.voltage?.length && (
+            <div class="fbt-volt" data-fbt-volt hidden={!checked}>
+              <span class="mono">Voltage</span>
+              {p.voltage.map((v, j) => (
+                <label><input type="radio" name={`fbt-volt-${p.id}`} value={v} checked={j === 0} /> {v}</label>
+              ))}
+            </div>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+
+  <div class="fbt-foot">
+    <p class="fbt-total">Total for <span data-fbt-count>0</span> items: <strong class="mono" data-fbt-total>$0.00</strong></p>
+    <button type="button" class="btn btn--primary" data-fbt-add>Add selected to cart</button>
+  </div>
+  <p class="fbt-tip">
+    {isGold ? (
+      <>Starting from scratch? The <a href={productUrl(kit)}>{kit.name}</a> ({fmtPrice(kit.price)}) includes the power supply,
+      cables, degreaser, nickel and 24K gold pens.</>
+    ) : (
+      <>Starting from scratch? Our <a href="/systems/micro-metallizer/">plating kits</a> include the power supply and cables.</>
+    )}
+  </p>
+  <p class="fbt-msg mono" data-fbt-msg role="status" hidden></p>
+</section>
+
+<script>
+  type W = Window & { Snipcart?: any; LoadSnipcart?: () => void; gtag?: (...a: unknown[]) => void };
+  const w = window as W;
+
+  function snipcartReady(): Promise<any> {
+    if (w.Snipcart?.api) return Promise.resolve(w.Snipcart);
+    return new Promise((resolve) => {
+      document.addEventListener('snipcart.ready', () => resolve(w.Snipcart), { once: true });
+      w.LoadSnipcart?.();
+    });
+  }
+
+  function toItem(el: HTMLInputElement, voltage?: string) {
+    const d = (k: string) => el.getAttribute(`data-item-${k}`) || undefined;
+    const item: Record<string, unknown> = {
+      id: d('id'),
+      name: d('name'),
+      price: Number(d('price')),
+      url: d('url'),
+      description: d('description'),
+      image: d('image'),
+      taxable: false,
+      quantity: 1,
+      weight: Number(d('weight')) || undefined,
+      width: Number(d('width')) || undefined,
+      height: Number(d('height')) || undefined,
+      length: Number(d('length')) || undefined,
+    };
+    const cfName = d('custom1-name');
+    if (cfName) {
+      item.customFields = [
+        { name: cfName, options: d('custom1-options'), value: voltage || d('custom1-value'), required: true },
+      ];
+    }
+    return item;
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-fbt]').forEach((root) => {
+    const boxes = [...root.querySelectorAll<HTMLInputElement>('[data-fbt-item]')];
+    const totalEl = root.querySelector<HTMLElement>('[data-fbt-total]')!;
+    const countEl = root.querySelector<HTMLElement>('[data-fbt-count]')!;
+    const btn = root.querySelector<HTMLButtonElement>('[data-fbt-add]')!;
+    const msg = root.querySelector<HTMLElement>('[data-fbt-msg]')!;
+
+    const refresh = () => {
+      const picked = boxes.filter((b) => b.checked);
+      const total = picked.reduce((s, b) => s + Number(b.dataset.price), 0);
+      totalEl.textContent = `$${total.toFixed(2)}`;
+      countEl.textContent = String(picked.length);
+      btn.disabled = picked.length === 0;
+      boxes.forEach((b) => {
+        const volt = b.closest('.fbt-item')?.querySelector<HTMLElement>('[data-fbt-volt]');
+        if (volt) volt.hidden = !b.checked;
+      });
+    };
+    root.addEventListener('change', refresh);
+    refresh();
+
+    btn.addEventListener('click', async () => {
+      const picked = boxes.filter((b) => b.checked);
+      if (!picked.length) return;
+      btn.disabled = true;
+      msg.hidden = true;
+      try {
+        const Snipcart = await snipcartReady();
+        for (const b of picked) {
+          const v = b.closest('.fbt-item')?.querySelector<HTMLInputElement>('[data-fbt-volt] input:checked')?.value;
+          await Snipcart.api.cart.items.add(toItem(b, v));
+        }
+        w.gtag?.('event', 'add_to_cart', { items: picked.map((b) => ({ item_id: b.getAttribute('data-item-id') })) });
+        Snipcart.api.theme.cart.open();
+      } catch (e) {
+        msg.textContent = 'Could not add everything to the cart. Please add the items one at a time or call us.';
+        msg.hidden = false;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .fbt { border: 1px solid var(--line); padding: 18px 18px 16px; display: grid; gap: 12px; background: #fff; }
+  .fbt-h { font-size: 15px; font-weight: 600; margin: 0; }
+  .fbt-list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .fbt-item + .fbt-item { border-top: 1px solid var(--line); }
+  .fbt-row { display: grid; grid-template-columns: auto 44px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; cursor: pointer; }
+  .fbt-row input { width: 18px; height: 18px; accent-color: var(--brand-deep); margin: 0; }
+  .fbt-thumb { width: 44px; height: 44px; border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; background: var(--bg-2); }
+  .fbt-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .fbt-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line-3); }
+  .fbt-text { display: grid; gap: 2px; min-width: 0; }
+  .fbt-name { font-size: 15px; line-height: 1.3; }
+  .fbt-name a { color: var(--ink); }
+  .fbt-note { font-size: 13px; color: var(--text-3); line-height: 1.35; }
+  .fbt-price { font-size: 14px; white-space: nowrap; }
+  .fbt-volt { display: flex; gap: 14px; align-items: center; padding: 0 0 10px 74px; font-size: 14px; }
+  .fbt-volt .mono { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); }
+  .fbt-volt[hidden] { display: none; }
+  .fbt-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 12px; }
+  .fbt-total { margin: 0; font-size: 15px; }
+  .fbt-total strong { font-size: 17px; }
+  .fbt-tip { margin: 0; font-size: 13px; color: var(--text-2); }
+  .fbt-msg { margin: 0; font-size: 12px; color: var(--err); }
+  @media (max-width: 480px) {
+    .fbt-row { grid-template-columns: auto 36px minmax(0, 1fr); }
+    .fbt-thumb { width: 36px; height: 36px; }
+    .fbt-price { grid-column: 3; }
+    .fbt-volt { padding-left: 60px; }
+    .fbt-foot .btn { width: 100%; }
+  }
+</style>
