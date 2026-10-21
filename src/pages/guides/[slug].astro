@@ -188,19 +188,19 @@ const tableId = (t: GuideTable) => t.caption;
 
   .need { display: grid; border: 1px solid var(--line); background: #fff; position: sticky; top: calc(var(--header-h) + 20px); }
   @media (max-width: 960px) { .need { position: static; } }
-  .need-head { background: var(--brand-deep); color: #fff; padding: 11px 14px; font-size: 11px; font-weight: 500; }
+  .need-head { background: var(--brand-deep); color: #fff; padding: 11px 14px; font-size: 13px; font-weight: 500; }
   .need-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 12px 14px; border-top: 1px solid var(--line); text-decoration: none; }
   .need-item:hover { background: var(--brand-wash); }
   .need-item.first { background: var(--bg-2); }
-  .need-item .sku { grid-column: 1 / -1; font-size: 11px; }
+  .need-item .sku { grid-column: 1 / -1; font-size: 13px; }
   .need-name { color: var(--ink); font-weight: 550; font-size: 14.5px; }
-  .need-price { font-family: var(--mono); color: var(--ink); font-size: 14px; }
+  .need-price { font-family: var(--sans); color: var(--ink); font-size: 14px; }
   .need-cta { margin: 14px 14px 8px; width: auto; white-space: normal; text-align: center; line-height: 1.3; min-height: 44px; height: auto; padding-top: 10px; padding-bottom: 10px; }
   .need { min-width: 0; }
   .need-ask { padding: 0 14px 14px; font-size: 13.5px; color: var(--brand-dk); }
 
   .answer { border-left: 3px solid var(--gold); background: var(--bg-2); padding: 18px 22px; }
-  .answer-tag { font-size: 11px; color: var(--brand-dk); margin-bottom: 6px; }
+  .answer-tag { font-size: 13px; color: var(--brand-dk); margin-bottom: 6px; }
   .answer p:last-child { color: var(--ink); font-size: 16.5px; line-height: 1.6; max-width: 72ch; }
 
   .sec { display: grid; gap: 18px; }
@@ -210,7 +210,7 @@ const tableId = (t: GuideTable) => t.caption;
   .step-n { width: 36px; height: 36px; display: grid; place-items: center; background: var(--brand-deep); color: #fff; font-size: 12px; }
   .steps p { color: var(--text-2); margin-top: 4px; max-width: 70ch; }
 
-  .tbl-wrap { overflow-x: auto; border: 1px solid var(--line); }
+  .tbl-wrap { overflow-x: auto; position: relative; border: 1px solid var(--line); }
   .tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
   .tbl caption { text-align: left; padding: 10px 12px; font-size: 12.5px; color: var(--text-3); border-bottom: 1px solid var(--line); }
   .tbl th, .tbl td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -231,6 +231,6 @@ const tableId = (t: GuideTable) => t.caption;
   .rel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
   .rel a { display: grid; gap: 6px; padding: 16px; border: 1px solid var(--line); text-decoration: none; background: #fff; }
   .rel a:hover { border-color: var(--line-3); }
-  .rel .mono { font-size: 10.5px; color: var(--brand); }
+  .rel .mono { font-size: 13px; color: var(--brand); }
   .rel-t { color: var(--ink); font-weight: 550; line-height: 1.3; }
 </style>

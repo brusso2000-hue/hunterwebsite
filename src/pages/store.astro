@@ -125,17 +125,17 @@ const schema = [
   @media (max-width: 960px) { .filters { position: static; grid-template-columns: 1fr 1fr; } .f-search, .f-help { grid-column: 1 / -1; } }
   @media (max-width: 520px) { .filters { grid-template-columns: 1fr; } }
   .f-group { border: 1px solid var(--line); padding: 0 0 8px; margin: 0; min-width: 0; }
-  .f-head { display: block; width: 100%; background: var(--brand-deep); color: #fff; padding: 10px 14px; font-size: 11px; font-weight: 500; margin-bottom: 6px; float: left; }
+  .f-head { display: block; width: 100%; background: var(--brand-deep); color: #fff; padding: 10px 14px; font-size: 13px; font-weight: 500; margin-bottom: 6px; float: left; }
   .f-opt { clear: both; display: flex; align-items: center; gap: 10px; padding: 6px 14px; font-size: 14.5px; color: var(--text-2); cursor: pointer; }
   .f-opt:hover { color: var(--ink); background: var(--bg-2); }
   .f-opt input { accent-color: var(--brand-deep); margin: 0; }
   .f-opt:has(input:checked) { color: var(--ink); font-weight: 600; }
-  .f-n { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--text-3); font-weight: 400; }
+  .f-n { margin-left: auto; font-family: var(--sans); font-size: 13px; color: var(--text-3); font-weight: 400; }
   .f-help { border: 1px solid var(--line); background: var(--bg-2); padding: 18px; display: grid; gap: 8px; font-size: 14px; color: var(--text-2); }
 
   .results { min-width: 0; }
   .r-bar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
-  .r-bar .mono { color: var(--text-3); font-size: 11.5px; }
+  .r-bar .mono { color: var(--text-3); font-size: 13px; }
   .r-clear { background: none; border: 0; cursor: pointer; padding: 0; }
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   @media (max-width: 1200px) { .grid { grid-template-columns: repeat(2, 1fr); } }

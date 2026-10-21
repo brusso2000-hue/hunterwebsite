@@ -38,14 +38,14 @@ const { system, name, sku, description, href } = Astro.props;
   .pc:hover { box-shadow: 0 10px 28px rgba(18, 28, 34, 0.07); }
   .pc-media { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--bg-2); border-bottom: 1px solid var(--line); color: var(--brand-dk); padding: 12% 10%; }
   .pc-media :global(svg) { width: 100%; height: 100%; }
-  .tag { position: absolute; top: 10px; left: 10px; background: var(--gold); color: #fff; padding: 3px 8px; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tag { position: absolute; top: 10px; left: 10px; background: var(--gold); color: #fff; padding: 3px 8px; font-size: 13px; letter-spacing: 0; }
   .pc-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; flex: 1; }
   .pc-meta { display: flex; justify-content: space-between; gap: 8px; }
-  .pc-type { font-size: 10.5px; color: var(--gold); }
+  .pc-type { font-size: 13px; color: var(--gold); }
   .pc-name { font-size: 17px; font-stretch: 104%; letter-spacing: -0.01em; line-height: 1.25; }
   .pc-name a { text-decoration: none; }
   .pc-name a:hover { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
   .pc-desc { font-size: 14px; color: var(--text-2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .pc-foot { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); }
-  .pc-status { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .pc-status { font-size: 13px; color: var(--text-3); letter-spacing: 0; }
 </style>
