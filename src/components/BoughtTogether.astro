@@ -9,11 +9,10 @@ interface Props {
 }
 const { product } = Astro.props;
 
-// Checked by default: cheap items nearly every pen order needs.
-// The power supply is a one-time purchase, so repeat pen buyers start with it unchecked.
+// Add-ons start unchecked: the buyer opts in to whatever they need.
 const addOns: { p: Product; checked: boolean; note: string }[] = [
-  { p: bySlug('absorbent-degreaser-plating-pen'), checked: true, note: 'Cleans the part first. Needed for every metal except stainless.' },
-  { p: bySlug('micro-metallizer-connector-cables'), checked: true, note: 'Connects the pen and the part to the power supply.' },
+  { p: bySlug('absorbent-degreaser-plating-pen'), checked: false, note: 'Cleans the part first. Needed for every metal except stainless.' },
+  { p: bySlug('micro-metallizer-connector-cables'), checked: false, note: 'Connects the pen and the part to the power supply.' },
   { p: bySlug('micro-metallizer-power-supply'), checked: false, note: 'Skip if you already have one.' },
 ].filter((a) => a.p.id !== product.id);
 
