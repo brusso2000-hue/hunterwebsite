@@ -90,6 +90,26 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
     <script is:inline>
       document.addEventListener('snipcart.ready', function () {
         if (typeof Snipcart === 'undefined') return;
+
+        // Stamp the saved ad click ID onto the cart so it lands on the order
+        // (Snipcart dashboard → order → Metadata). Lets an order be matched to an
+        // ad click and uploaded to Google Ads as an offline conversion if needed.
+        function stampClickId() {
+          try {
+            var click = typeof window.hpClickId === 'function' ? window.hpClickId() : null;
+            if (!click) return;
+            var tag = click.type + '=' + click.value;
+            var cart = Snipcart.store.getState().cart || {};
+            var meta = cart.metadata || {};
+            if (meta.google_click_id === tag) return;
+            Snipcart.api.cart.update({
+              metadata: Object.assign({}, meta, { google_click_id: tag, google_click_time: click.at }),
+            }).catch(function () {});
+          } catch (e) { /* never break the cart */ }
+        }
+        stampClickId();
+        Snipcart.events.on('item.added', stampClickId);
+
         Snipcart.events.on('cart.confirmed', function (r) {
           try {
             r = r || {};
