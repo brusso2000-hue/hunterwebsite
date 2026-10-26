@@ -105,7 +105,7 @@ const PREP_STEP: GuideStep = {
 
 const DEGREASE_STEP: GuideStep = {
   title: 'Degrease at 10 to 12V',
-  text: `Set the supply to 10 to 12V and use the Absorbent / Degreaser pen (PL-1002). ${HOOKUP} Small bubbles form as oil and grease come off. Rinse with water when done. Stainless steel takes the Stainless Steel Degreaser pen (PL-1014) instead.`,
+  text: `Set the supply to 10 to 12V and use the Absorbent / Degreaser pen (PL-1002). ${HOOKUP} Small bubbles form as oil and grease come off. Wipe the area clean with a cloth when done. Stainless steel takes the Stainless Steel Degreaser pen (PL-1014) instead.`,
 };
 
 // ── Guides ──────────────────────────────────────────────────────────
@@ -144,19 +144,19 @@ export const GUIDES: Guide[] = [
           DEGREASE_STEP,
           {
             title: 'Copper flash, only on brass or steel',
-            text: 'On non-copper pins, plate a thin copper layer with the Copper pen (PL-1010) at 6 to 8V so the nickel has a compatible base. Rinse. Skip this on copper pins.',
+            text: 'On non-copper pins, plate a thin copper layer with the Copper pen (PL-1010) at 6 to 8V so the nickel has a compatible base. Wipe clean with a cloth. Skip this on copper pins.',
           },
           {
             title: 'Nickel underlayer at 5 to 6V',
-            text: 'Plate nickel with the Nickel pen (PL-1006) over any exposed copper. A standard nickel pen lays down about 0.4 µm in 2 minutes on a 1 in² area. Rinse.',
+            text: 'Plate nickel with the Nickel pen (PL-1006) over any exposed copper. A standard nickel pen lays down about 0.4 µm in 2 minutes on a 1 in² area. Wipe clean with a cloth.',
           },
           {
             title: 'Plate 24K gold at 6 to 8V',
             text: 'Switch to the Gold 24K pen (PL-1003), set 6 to 8V, and stroke the pin until you have an even gold finish. About 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area.',
           },
           {
-            title: 'Rinse and wipe',
-            text: 'Rinse the part in water and wipe it with a soft cloth.',
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
           },
         ],
       },
@@ -250,15 +250,15 @@ export const GUIDES: Guide[] = [
           },
           {
             title: 'Nickel over exposed copper at 5 to 6V',
-            text: 'Plate with the Nickel pen (PL-1006), working one finger at a time. About 0.4 µm in 2 minutes on a 1 in² area. Rinse.',
+            text: 'Plate with the Nickel pen (PL-1006), working one finger at a time. About 0.4 µm in 2 minutes on a 1 in² area. Wipe clean with a cloth.',
           },
           {
             title: '24K gold at 6 to 8V',
             text: 'Plate each finger with the Gold 24K pen (PL-1003). About 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area. Standard pens reach 1.5 to 1.8 µm maximum.',
           },
           {
-            title: 'Rinse and wipe',
-            text: 'Rinse and wipe the fingers with a soft cloth before reseating the board.',
+            title: 'Wipe clean',
+            text: 'Wipe the fingers with a clean, soft cloth before reseating the board.',
           },
         ],
       },
@@ -326,8 +326,8 @@ export const GUIDES: Guide[] = [
             text: `Set the supply to 6 to 8V and use the Tin pen (PL-1012). ${HOOKUP} Expect about 0.3 µm in 2 minutes and 0.5 µm in 3 minutes on a 1 in² area.`,
           },
           {
-            title: 'Rinse and wipe',
-            text: 'Rinse with water and wipe with a soft cloth. The pad is ready to solder.',
+            title: 'Wipe clean',
+            text: 'Wipe with a clean, soft cloth. The pad is ready to solder.',
           },
         ],
       },
@@ -693,15 +693,15 @@ export const GUIDES: Guide[] = [
           DEGREASE_STEP,
           {
             title: 'Build the underlayer if you need one',
-            text: 'On brass or steel, flash copper first with the Copper pen (PL-1010) at 6 to 8V. Then plate nickel with the Nickel pen (PL-1006) at 5 to 6V over any copper. Rinse between pens. Skip this step on gold, nickel or silver surfaces.',
+            text: 'On brass or steel, flash copper first with the Copper pen (PL-1010) at 6 to 8V. Then plate nickel with the Nickel pen (PL-1006) at 5 to 6V over any copper. Wipe clean with a cloth between pens. Skip this step on gold, nickel or silver surfaces.',
           },
           {
             title: 'Plate gold at 6 to 8V',
             text: `Set the supply to 6 to 8V and switch to the gold pen. ${HOOKUP} Keep stroking until the finish is even. A standard pen lays down about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area.`,
           },
           {
-            title: 'Rinse and wipe',
-            text: 'Rinse the part in water and wipe it with a soft cloth.',
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
           },
         ],
       },
@@ -799,8 +799,8 @@ export const GUIDES: Guide[] = [
             text: 'The zinc pen deposits about 0.3 µm in 2 minutes and 0.5 µm in 3 minutes on a 1 in² area, up to a maximum of 1.5 to 1.8 µm. Keep working the spot to build thickness.',
           },
           {
-            title: 'Rinse and wipe',
-            text: 'Rinse the part in water and wipe it dry with a soft cloth.',
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
           },
         ],
       },
@@ -1009,8 +1009,8 @@ export const GUIDES: Guide[] = [
             text: 'Keep stroking until the finish is even. A standard silver pen deposits about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
           },
           {
-            title: 'Rinse and wipe',
-            text: 'Rinse the part in water and wipe it with a soft cloth.',
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
           },
         ],
       },
