@@ -99,7 +99,11 @@ import { SYSTEMS } from '../lib/catalog';
           data.set('google_click_id', `${click.type}=${click.value}`);
           data.set('google_click_time', click.at);
         }
-        data.set('landing_page', location.pathname);
+        // Where this visitor came from (see Base.astro). form_page is just the page the
+        // form sits on; source_landing_page is where they first entered the site.
+        data.set('form_page', location.pathname);
+        const src = typeof w.hpSourceFields === 'function' ? w.hpSourceFields() : {};
+        for (const [k, v] of Object.entries(src)) data.set(k, String(v));
         const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
         if (!res.ok) throw new Error(String(res.status));
         const email = String(data.get('email') || '');

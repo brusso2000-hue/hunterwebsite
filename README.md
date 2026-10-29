@@ -27,3 +27,10 @@ npm run build    # outputs to dist/
 - **Google Ads**: the tag and the purchase-conversion bridge are in `src/layouts/Base.astro`.
   Fill in `GOOGLE_ADS_LABELS` (purchase, lead, call) in `src/lib/site.ts`; each conversion fires only once its label is set.
 - **Quote form** posts to Formspree (`FORMSPREE_ENDPOINT` in `src/lib/site.ts`).
+- **Traffic source tracking** (`src/layouts/Base.astro`): on arrival the site saves where the visitor came
+  from (referrer, UTM tags, ad click ID, landing page) in the browser for 180 days. Every quote form email
+  and every Snipcart order (Metadata tab) carries `source`, `source_landing_page`, `first_visit` and, when
+  different, `latest_source`. Each order also triggers an "Order HUN-xxxx came from: …" email through Formspree.
+  Tag links you control (Apollo emails, ThomasNet, Tech Briefs ads) with `utm_source` / `utm_medium` /
+  `utm_campaign` so they show up by name instead of as "Direct". Set `GA4_ID` in `src/lib/site.ts` to turn on
+  Google Analytics.

@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, GOOGLE_ADS_ID, GOOGLE_ADS_LABELS, SNIPCART_PUBLIC_KEY } from '../lib/site';
+import { SITE, GOOGLE_ADS_ID, GOOGLE_ADS_LABELS, GA4_ID, SNIPCART_PUBLIC_KEY, FORMSPREE_ENDPOINT } from '../lib/site';
 
 interface Props {
   title: string;
@@ -33,7 +33,7 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
 
     <!-- Google tag (gtag.js) -->
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}></script>
-    <script is:inline define:vars={{ GOOGLE_ADS_ID, GOOGLE_ADS_LABELS }}>
+    <script is:inline define:vars={{ GOOGLE_ADS_ID, GOOGLE_ADS_LABELS, GA4_ID }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       window.gtag = gtag;
@@ -80,6 +80,118 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
         var a = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
         if (a) window.hpConvert('call');
       });
+
+      if (GA4_ID) gtag('config', GA4_ID);
+    </script>
+
+    <!-- Where did this visitor come from? Saved in the browser on arrival and attached to
+         every form submission and Snipcart order. "first" = the visit that first brought
+         them to the site; "last" = the most recent visit that came from somewhere trackable
+         (an ad, a search, a link, a tagged email). Kept 180 days. -->
+    <script is:inline>
+      (function () {
+        var MAX_AGE = 180 * 864e5;
+        var SELF = location.hostname.replace(/^www\./, '');
+        // Checkout and payment pages send people back here; they are not traffic sources.
+        var IGNORE = /(^|\.)(hunterproducts\.com|snipcart\.com|stripe\.com|paypal\.com|squareup\.com|3dsecure\.io|cardinalcommerce\.com|arcot\.com)$/;
+
+        function load(k) {
+          try {
+            var o = JSON.parse(localStorage.getItem(k) || 'null');
+            if (o && Date.now() - o.t < MAX_AGE) return o;
+          } catch (e) {}
+          return null;
+        }
+        function save(k, o) { try { localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} }
+        function host(u) { try { return new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { return ''; } }
+
+        function classify(t) {
+          var q = t.utm || {}, r = t.ref || '';
+          var s = (q.source || '').toLowerCase(), m = (q.medium || '').toLowerCase();
+          var camp = q.campaign ? ' (' + q.campaign + ')' : '';
+          if (t.click === 'gclid' || t.click === 'gbraid' || t.click === 'wbraid') return 'Google Ads' + camp;
+          if (t.click === 'msclkid') return 'Microsoft Ads' + camp;
+          if (s) {
+            var kind = /cpc|ppc|paid|display|banner/.test(m) ? 'Paid' : /e-?mail|newsletter/.test(m) ? 'Email' : /social/.test(m) ? 'Social' : 'Tagged link';
+            return kind + ': ' + q.source + camp;
+          }
+          if (t.click === 'fbclid') return 'Social: Facebook/Instagram';
+          if (!r) return 'Direct (typed URL, bookmark, or untagged link)';
+          if (/(^|\.)google\.[a-z.]+$/.test(r)) return t.srsltid ? 'Organic search: Google (product listing)' : 'Organic search: Google';
+          if (/(^|\.)bing\.com$/.test(r)) return 'Organic search: Bing';
+          if (/(^|\.)(duckduckgo\.com|search\.yahoo\.com|yahoo\.com|ecosia\.org|search\.brave\.com|yandex\.[a-z]+|baidu\.com|naver\.com|daum\.net)$/.test(r)) return 'Organic search: ' + r;
+          if (/thomasnet\.com$/.test(r)) return 'ThomasNet';
+          if (/techbriefs\.com$|sae\.org$/.test(r)) return 'Tech Briefs';
+          if (/chatgpt\.com$|openai\.com$|perplexity\.ai$|claude\.ai$|gemini\.google\.com$|copilot\.microsoft\.com$/.test(r)) return 'AI assistant: ' + r;
+          if (/linkedin\.com$|lnkd\.in$/.test(r)) return 'Social: LinkedIn';
+          if (/facebook\.com$|instagram\.com$|fb\.com$/.test(r)) return 'Social: Facebook/Instagram';
+          if (/youtube\.com$|youtu\.be$/.test(r)) return 'Social: YouTube';
+          if (/tiktok\.com$/.test(r)) return 'Social: TikTok';
+          if (/reddit\.com$/.test(r)) return 'Social: Reddit';
+          if (/(^|\.)(t\.co|x\.com|twitter\.com)$/.test(r)) return 'Social: X';
+          if (/apollo\.io$/.test(r)) return 'Email: Apollo sequence';
+          if (/mail\.google\.com$|outlook\.(live|office|office365)\.com$|mail\.yahoo\.com$/.test(r)) return 'Email link (' + r + ')';
+          if (/amazon\.|ebay\./.test(r)) return 'Marketplace: ' + r;
+          return 'Referral: ' + r;
+        }
+
+        try {
+          var q = new URLSearchParams(location.search);
+          var utm = {}, hasUtm = false;
+          ['source', 'medium', 'campaign', 'term', 'content'].forEach(function (k) {
+            var v = q.get('utm_' + k);
+            if (v) { utm[k] = v.slice(0, 100); hasUtm = true; }
+          });
+          var click = null;
+          ['gclid', 'gbraid', 'wbraid', 'msclkid', 'fbclid'].some(function (k) { return q.get(k) ? (click = k) : false; });
+          var ref = host(document.referrer);
+          if (ref === SELF || IGNORE.test(ref)) ref = '';
+
+          var touch = {
+            t: Date.now(),
+            ref: ref,
+            utm: hasUtm ? utm : null,
+            click: click,
+            srsltid: !!q.get('srsltid'),
+            landing: location.pathname,
+          };
+          touch.channel = classify(touch);
+
+          if (!load('hp_src_first')) save('hp_src_first', touch);
+          // A new trackable arrival replaces "last". Moving between our own pages does not.
+          if (ref || hasUtm || click || !load('hp_src_last')) save('hp_src_last', touch);
+
+          var pv = Number(sessionStorage.getItem('hp_pv') || 0) + 1;
+          sessionStorage.setItem('hp_pv', String(pv));
+        } catch (e) { /* never break the page */ }
+
+        function day(ts) { return new Date(ts).toISOString().slice(0, 10); }
+        function utmText(u) {
+          if (!u) return '';
+          return Object.keys(u).map(function (k) { return k + '=' + u[k]; }).join(', ');
+        }
+
+        // Flat, human-readable fields for a Formspree email or Snipcart order metadata.
+        window.hpSourceFields = function () {
+          var out = {};
+          try {
+            var f = load('hp_src_first'), l = load('hp_src_last');
+            if (!f) return out;
+            var days = Math.floor((Date.now() - f.t) / 864e5);
+            out.source = f.channel;
+            out.source_landing_page = f.landing;
+            out.source_referrer = f.ref || '(none)';
+            if (f.utm) out.source_utm = utmText(f.utm);
+            out.first_visit = day(f.t) + (days === 0 ? ' (today)' : ' (' + days + ' day' + (days === 1 ? '' : 's') + ' before)');
+            if (l && l.t !== f.t) {
+              out.latest_source = l.channel + ' on ' + day(l.t) + ', landed on ' + l.landing;
+              if (l.utm) out.latest_utm = utmText(l.utm);
+            }
+            out.pages_this_visit = sessionStorage.getItem('hp_pv') || '1';
+          } catch (e) {}
+          return out;
+        };
+      })();
     </script>
 
     <!-- Apollo website visitor tracking -->
@@ -87,32 +199,61 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
 
     <!-- Snipcart → Google Ads purchase conversion. Snipcart v3 announces a placed order
          as 'cart.confirmed' (v2's 'order.completed' never fires on v3). -->
-    <script is:inline>
+    <script is:inline define:vars={{ FORMSPREE_ENDPOINT }}>
       document.addEventListener('snipcart.ready', function () {
         if (typeof Snipcart === 'undefined') return;
 
-        // Stamp the saved ad click ID onto the cart so it lands on the order
-        // (Snipcart dashboard → order → Metadata). Lets an order be matched to an
-        // ad click and uploaded to Google Ads as an offline conversion if needed.
-        function stampClickId() {
+        // Stamp the visitor's traffic source and saved ad click ID onto the cart so they
+        // land on the order (Snipcart dashboard → order → Metadata). The click ID lets an
+        // order be uploaded to Google Ads as an offline conversion if needed.
+        function stampSource() {
           try {
+            var add = typeof window.hpSourceFields === 'function' ? window.hpSourceFields() : {};
             var click = typeof window.hpClickId === 'function' ? window.hpClickId() : null;
-            if (!click) return;
-            var tag = click.type + '=' + click.value;
+            if (click) {
+              add.google_click_id = click.type + '=' + click.value;
+              add.google_click_time = click.at;
+            }
+            delete add.pages_this_visit; // changes every page; not worth a cart update
+            if (!Object.keys(add).length) return;
             var cart = Snipcart.store.getState().cart || {};
             var meta = cart.metadata || {};
-            if (meta.google_click_id === tag) return;
-            Snipcart.api.cart.update({
-              metadata: Object.assign({}, meta, { google_click_id: tag, google_click_time: click.at }),
-            }).catch(function () {});
+            var changed = Object.keys(add).some(function (k) { return meta[k] !== add[k]; });
+            if (!changed) return;
+            Snipcart.api.cart.update({ metadata: Object.assign({}, meta, add) }).catch(function () {});
           } catch (e) { /* never break the cart */ }
         }
-        stampClickId();
-        Snipcart.events.on('item.added', stampClickId);
+        stampSource();
+        Snipcart.events.on('item.added', stampSource);
+
+        // Email the order's traffic source to the shop inbox (Snipcart's own order email
+        // has no room for it). Sent through the same Formspree form as quote requests.
+        function emailOrderSource(r) {
+          try {
+            var b = r.billingAddress || {};
+            var src = typeof window.hpSourceFields === 'function' ? window.hpSourceFields() : {};
+            var total = Number(r.total != null ? r.total : r.grandTotal) || 0;
+            var order = r.invoiceNumber || r.token || '';
+            var data = new FormData();
+            data.set('_subject', 'Order ' + order + ' came from: ' + (src.source || 'unknown'));
+            data.set('request_type', 'order_source');
+            data.set('order', order);
+            data.set('order_total', '$' + total.toFixed(2));
+            data.set('customer', b.fullName || b.name || '');
+            data.set('company', b.company || '');
+            data.set('email', r.email || b.email || '');
+            Object.keys(src).forEach(function (k) { data.set(k, src[k]); });
+            if (!src.source) data.set('source', 'unknown (browser blocked storage or source was never saved)');
+            var click = typeof window.hpClickId === 'function' ? window.hpClickId() : null;
+            if (click) data.set('google_click_id', click.type + '=' + click.value);
+            fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' }, keepalive: true }).catch(function () {});
+          } catch (e) { /* never break checkout */ }
+        }
 
         Snipcart.events.on('cart.confirmed', function (r) {
+          r = r || {};
+          emailOrderSource(r);
           try {
-            r = r || {};
             var b = r.billingAddress || {};
             var email = r.email || b.email;
             var total = Number(r.total != null ? r.total : r.grandTotal) || 0;

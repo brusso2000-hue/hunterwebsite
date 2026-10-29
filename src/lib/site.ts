@@ -51,6 +51,10 @@ export const GOOGLE_ADS_LABELS = {
   call: 'RpoFCPe_8aQdEOyYot5D', // Click on the phone number (mobile tap-to-call)
 };
 
+// Google Analytics 4 measurement ID (G-XXXXXXXXXX), from analytics.google.com → Admin →
+// Data streams → hunterproducts.com. Empty string = GA4 off; the Google Ads tag still runs.
+export const GA4_ID = '';
+
 export const SNIPCART_PUBLIC_KEY =
   'ZjIxNzU3ZjctNTRiMS00YWFiLWJhNDktMDc3NzNjYzQzY2RhNjM3OTQ2MTE5MTQ0MjI3OTM2';
 
