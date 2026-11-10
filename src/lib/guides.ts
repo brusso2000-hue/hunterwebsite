@@ -115,9 +115,9 @@ export const GUIDES: Guide[] = [
     slug: 'gold-plating-connector-pins',
     label: 'Gold plating connector pins',
     h1: 'How to gold plate connector pins without a tank',
-    metaTitle: 'How to Gold Plate Connector Pins Without a Tank | Hunter Products',
+    metaTitle: 'Gold Plate Connector Pins Without a Tank: 3 Pens, 2 Minutes',
     metaDescription:
-      'Selective gold plating for worn or corroded connector pins and contacts: degrease, nickel underlayer, 24K gold. Voltages, plating times and the kit to use.',
+      'Restore worn or corroded connector pins in place: degrease, nickel at 5 to 6V, 24K gold at 6 to 8V. About 0.5 µm in 2 minutes. Full kit $400, ships same day.',
     eyebrow: 'Contact restoration',
     lede: 'Worn or corroded connector pins can be re-plated in place with a brush plating pen. No tank, no masking the whole part, and usually no pulling the connector out of the assembly.',
     answer:
@@ -215,9 +215,9 @@ export const GUIDES: Guide[] = [
     slug: 'pcb-gold-finger-repair',
     label: 'PCB gold finger repair',
     h1: 'PCB gold finger repair: re-plating worn edge connectors',
-    metaTitle: 'PCB Gold Finger Repair | Re-Plate Worn Edge Connectors | Hunter Products',
+    metaTitle: 'PCB Gold Finger Repair: Re-Plate Edge Connectors, No Tank',
     metaDescription:
-      'Re-plate worn PCB gold fingers and edge connectors one finger at a time with a brush plating pen. Nickel and 24K gold sequence, voltages, plating times and kit.',
+      'Re-plate worn gold fingers one at a time, right on the board: nickel over exposed copper, then 24K gold. Voltages, plating times and the $400 kit. Ships same day.',
     eyebrow: 'Electronics & PCB',
     lede: 'Edge-connector fingers wear through from repeated insertion. A plating pen restores them finger by finger, on the board, without bridging the neighbors.',
     answer:
@@ -371,9 +371,9 @@ export const GUIDES: Guide[] = [
     slug: 'brush-plating-vs-tank-plating',
     label: 'Brush plating vs tank plating',
     h1: 'Brush plating vs tank plating: when each one wins',
-    metaTitle: 'Brush Plating vs Tank Plating: Differences and When to Use Each | Hunter Products',
+    metaTitle: 'Brush Plating vs Tank Plating: Cost, Thickness, When to Use',
     metaDescription:
-      'Brush (selective) plating vs tank plating compared: area plated, disassembly, thickness, waste and cost. When a plating pen beats a plating line, and when it does not.',
+      'Brush plating coats only where the pen touches: no tank, masking or bath waste. Compare area, thickness, turnaround and cost, and see when a tank line is still the better call.',
     eyebrow: 'Selective plating basics',
     lede: 'Brush plating and tank plating deposit metal the same way. The difference is where the solution lives, and that decides which one fits your job.',
     answer:
@@ -441,9 +441,9 @@ export const GUIDES: Guide[] = [
     slug: 'brush-plating-thickness-chart',
     label: 'Plating thickness and voltage chart',
     h1: 'Brush plating thickness, plating rates and voltage chart',
-    metaTitle: 'Brush Plating Thickness, Plating Rate and Voltage Chart | Hunter Products',
+    metaTitle: 'Brush Plating Thickness & Voltage Chart (Gold, Nickel, Zinc)',
     metaDescription:
-      'How thick is brush plating? Plating rates for gold, silver, nickel, rhodium, palladium, copper, tin and zinc pens, maximum thickness, coverage and operating voltages.',
+      'How thick does brush plating get? 1.5 to 1.8 µm standard, 3 to 3.6 µm heavy-duty. Plating rates and voltages for gold, silver, nickel, rhodium, palladium, copper, tin and zinc.',
     eyebrow: 'Technical reference',
     lede: 'Plating rates, maximum thickness, coverage and operating voltage for every Micro-Metallizer pen, in one place.',
     answer:
@@ -644,9 +644,9 @@ export const GUIDES: Guide[] = [
     slug: 'gold-plating-pen-guide',
     label: 'Using a gold plating pen',
     h1: 'How to use a gold plating pen: 24K, 18K and 14K',
-    metaTitle: 'How to Use a Gold Plating Pen: Steps, Voltage, Thickness',
+    metaTitle: 'Gold Plating Pen: How to Use It, 6 to 8V, 0.5 µm in 2 Min',
     metaDescription:
-      'Gold plating pen how-to: which karat to use, which base metals need nickel first, 6 to 8V settings, plating times and thickness, from the maker of the pen.',
+      'Step-by-step from the maker of the pen: when you need nickel first, voltage settings, plating times and thickness for 24K, 18K and 14K. Pens from $145, ships same day.',
     eyebrow: 'Gold plating',
     lede: 'A gold plating pen carries its own gold solution in the tip. Touch it to a grounded part and gold deposits only where you work, with no tank, no bath and nothing to mix.',
     answer:
@@ -758,9 +758,9 @@ export const GUIDES: Guide[] = [
     slug: 'zinc-plating-pen-touch-up',
     label: 'Zinc touch-up on steel',
     h1: 'Zinc plating pen: touch up galvanized steel and fasteners',
-    metaTitle: 'Zinc Plating Pen Guide: Touch Up Galvanized Steel',
+    metaTitle: 'Zinc Plating Pen: Touch Up Galvanized Steel in 2 Minutes',
     metaDescription:
-      'Repair scratched galvanizing and re-zinc bare steel fasteners with a zinc plating pen: prep, 6 to 8V settings, plating times and what one $65 pen covers.',
+      'Fix scratched galvanizing and re-zinc bare steel fasteners without a tank. Plates straight onto steel at 6 to 8V. One $65 pen covers about 300 sq in. Ships same day.',
     eyebrow: 'Corrosion protection',
     lede: 'When a galvanized finish gets scratched or a fastener loses its zinc, the bare steel starts to rust. A zinc plating pen puts real zinc back on that spot, in place, without dipping the part.',
     answer:
