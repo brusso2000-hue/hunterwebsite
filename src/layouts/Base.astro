@@ -199,7 +199,7 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
 
     <!-- Snipcart → Google Ads purchase conversion. Snipcart v3 announces a placed order
          as 'cart.confirmed' (v2's 'order.completed' never fires on v3). -->
-    <script is:inline define:vars={{ FORMSPREE_ENDPOINT }}>
+    <script is:inline define:vars={{ FORMSPREE_ENDPOINT, GA4_ID }}>
       document.addEventListener('snipcart.ready', function () {
         if (typeof Snipcart === 'undefined') return;
 
@@ -266,6 +266,22 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
               },
               email ? { email: email, phone_number: b.phone || undefined } : null
             );
+          } catch (e) { /* never break checkout */ }
+
+          // GA4 ecommerce purchase, so orders show up by traffic source in Analytics.
+          try {
+            var items = (r.items && (r.items.items || r.items)) || [];
+            if (!Array.isArray(items)) items = [];
+            window.gtag('event', 'purchase', {
+              send_to: GA4_ID,
+              transaction_id: r.invoiceNumber || r.token,
+              value: Number(r.total != null ? r.total : r.grandTotal) || 0,
+              currency: (r.currency || 'USD').toUpperCase(),
+              shipping: Number(r.shippingFees || (r.shippingInformation && r.shippingInformation.fees)) || 0,
+              items: items.map(function (it) {
+                return { item_id: it.id, item_name: it.name, price: Number(it.price) || 0, quantity: it.quantity || 1 };
+              }),
+            });
           } catch (e) { /* never break checkout */ }
         });
       });
