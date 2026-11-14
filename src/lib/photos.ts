@@ -97,6 +97,8 @@ export interface ResolvedPhoto extends PhotoSlot {
   dropPath: string;
   /** Legacy low-res photo: render small, never stretched. */
   lowRes?: boolean;
+  /** New studio shot on white: show the whole product, never crop. */
+  studio?: boolean;
 }
 
 export function photo(slot: PhotoSlotName): ResolvedPhoto {
@@ -118,6 +120,7 @@ export function productPhoto(p: Product): ResolvedPhoto {
     fallback: systemOf(p),
     src: supplied ?? p.image ?? null,
     lowRes: !supplied && !!p.image,
+    studio: !!supplied,
     dropPath: `public/img/products/${p.slug}.jpg`,
   };
 }

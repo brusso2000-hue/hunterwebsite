@@ -16,7 +16,7 @@ const { photo, aspect = '16 / 10', caption, eager = false, class: cls } = Astro.
 const showHint = import.meta.env.DEV && !photo.src;
 ---
 
-<figure class:list={['ph', cls, { 'ph--draw': !photo.src, 'ph--lowres': photo.lowRes }]} style={`--ar:${aspect}`}>
+<figure class:list={['ph', cls, { 'ph--draw': !photo.src, 'ph--lowres': photo.lowRes, 'ph--studio': photo.studio }]} style={`--ar:${aspect}`}>
   <div class="ph-box">
     {photo.src ? (
       <img src={encodeURI(photo.src)} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
@@ -49,6 +49,11 @@ const showHint = import.meta.env.DEV && !photo.src;
      never stretched to fill. */
   .ph--lowres .ph-box { background: #fff; display: grid; place-items: center; }
   .ph--lowres .ph-box > img { width: auto; height: auto; max-width: min(100%, 320px); max-height: 100%; object-fit: contain; }
+
+  /* Studio product shots are square on white: fit the whole product in the
+     frame instead of cropping it to the card's shape. */
+  .ph--studio .ph-box { background: #fff; }
+  .ph--studio .ph-box > img { object-fit: contain; }
 
   .ph-draw { position: absolute; inset: 0; display: grid; place-items: center; background-color: var(--bg-2); color: var(--brand-dk); padding: 8%; }
   .ph-draw :global(svg) { width: 100%; height: 100%; max-width: 520px; }
