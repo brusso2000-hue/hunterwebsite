@@ -366,9 +366,9 @@ const others = APPLICATIONS.filter((a) => !a.focus);
 
 <style>
   /* Dark shop-floor hero with the real kit on a white plate. */
-  .hero { padding: clamp(44px, 6vw, 84px) 0 0; background: var(--navy); color: var(--on-navy); border-bottom: 4px solid var(--brand); }
+  .hero { padding: clamp(44px, 6vw, 84px) 0 0; background: var(--brand-deep); color: var(--on-navy); border-bottom: 4px solid var(--ink); }
   .hero h1 { color: #fff; }
-  .hero .lede { color: #c9ced2; }
+  .hero .lede { color: #d3dce0; }
   .hero .eyebrow { background: #fff; color: var(--ink); }
   .hero-in { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
   @media (max-width: 920px) { .hero-in { grid-template-columns: 1fr; } }
@@ -376,17 +376,17 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .hero-dim { color: inherit; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
   .hero .hero-ctas .btn--primary { background: #fff; border-color: #fff; color: var(--ink); }
-  .hero .hero-ctas .btn--primary:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .hero .hero-ctas .btn--primary:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
   .hero .hero-ctas .btn:not(.btn--primary) { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.6); }
   .hero .hero-ctas .btn:not(.btn--primary):hover { background: #fff; color: var(--ink); border-color: #fff; }
   .hero-media :global(.ph-box) { border: 0; }
 
   .hero-ship { margin: 0 0 20px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #fff; }
   .hero-dot { width: 9px; height: 9px; background: #4cb27c; flex-shrink: 0; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(44px, 6vw, 72px); border-top: 1px solid var(--navy-line); }
-  .stats > div { padding: 22px 24px 28px; border-left: 1px solid var(--navy-line); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(44px, 6vw, 72px); border-top: 1px solid rgba(255, 255, 255, 0.16); }
+  .stats > div { padding: 22px 24px 28px; border-left: 1px solid rgba(255, 255, 255, 0.16); }
   .stats > div:first-child { border-left: 0; padding-left: 0; }
-  .stats dt { font-size: 13px; font-weight: 600; color: #9aa1a7; }
+  .stats dt { font-size: 13px; font-weight: 600; color: #b4c2c8; }
   .stats dd { margin: 2px 0 0; font-stretch: 78%; font-weight: 850; font-size: clamp(28px, 3.2vw, 42px); color: #fff; line-height: 1.05; }
   @media (max-width: 600px) { .stats { grid-template-columns: 1fr; } .stats > div { border-left: 0; padding-left: 0; border-top: 1px solid var(--navy-line); } }
 
