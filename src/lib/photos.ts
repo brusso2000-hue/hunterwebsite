@@ -52,7 +52,7 @@ export const PHOTO_SLOTS = {
     brief: 'The full kit on a clean bench: power supply, leads, a row of pens.',
     size: '1600×1000',
     fallback: 'micro-metallizer',
-    standIn: 'micro-metallizer-power-supply',
+    standIn: 'contact-repair-kit',
   },
   'system-carbitron': {
     alt: 'Carbitron 300 tungsten-carbide coating system',
