@@ -1,4 +1,6 @@
 @import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource/barlow-condensed/latin-600.css';
+@import '@fontsource/barlow-condensed/latin-700.css';
 
 /* ─── Tokens ───────────────────────────────────────────── */
 /* Brand slate comes straight from the Hunter Products logo (#5E747E / #44565F). */
@@ -36,6 +38,7 @@
   --err: #b4432f;
 
   --sans: 'Archivo Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
   --mono: var(--sans); /* legacy alias: the site no longer uses a monospace face */
 
   --wrap: 1240px;
@@ -70,19 +73,18 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ─── Type ─────────────────────────────────────────────── */
 h1, h2, h3, h4 {
-  font-family: var(--sans);
-  font-stretch: 78%;
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: 600;
   line-height: 1.02;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
   color: var(--ink);
   text-wrap: balance;
 }
-.h-display { font-size: clamp(44px, 5.4vw, 76px); letter-spacing: -0.01em; font-weight: 850; }
-.h-1 { font-size: clamp(34px, 4.6vw, 58px); }
+.h-display { font-size: clamp(48px, 6vw, 84px); letter-spacing: 0; font-weight: 600; }
+.h-1 { font-size: clamp(36px, 5vw, 62px); }
 .h-2 { font-size: clamp(26px, 3vw, 38px); }
-.h-3 { font-size: clamp(20px, 1.8vw, 24px); font-stretch: 85%; line-height: 1.2; }
-.h-4 { font-size: 18px; font-stretch: 88%; font-weight: 750; line-height: 1.25; }
+.h-3 { font-size: clamp(22px, 2vw, 26px); line-height: 1.15; }
+.h-4 { font-size: 20px; font-weight: 600; line-height: 1.2; }
 .lede { font-size: clamp(17px, 1.35vw, 19px); color: var(--text-2); line-height: 1.6; max-width: 64ch; text-wrap: pretty; }
 .prose p { color: var(--text-2); max-width: 70ch; text-wrap: pretty; }
 .prose p + p { margin-top: 1em; }

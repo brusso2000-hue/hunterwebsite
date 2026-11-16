@@ -387,7 +387,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .stats > div { padding: 22px 24px 28px; border-left: 1px solid rgba(255, 255, 255, 0.16); }
   .stats > div:first-child { border-left: 0; padding-left: 0; }
   .stats dt { font-size: 13px; font-weight: 600; color: #b4c2c8; }
-  .stats dd { margin: 2px 0 0; font-stretch: 78%; font-weight: 850; font-size: clamp(28px, 3.2vw, 42px); color: #fff; line-height: 1.05; }
+  .stats dd { margin: 2px 0 0; font-family: var(--display); font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); color: #fff; line-height: 1.05; }
   @media (max-width: 600px) { .stats { grid-template-columns: 1fr; } .stats > div { border-left: 0; padding-left: 0; border-top: 1px solid var(--navy-line); } }
 
   .bp { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
@@ -408,7 +408,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .kits { display: grid; border-top: 1px solid var(--line); }
   .kit { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
   .kit-main { display: grid; gap: 2px; }
-  .kit-name { font-stretch: 82%; font-weight: 800; font-size: 18px; color: var(--ink); }
+  .kit-name { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--ink); }
   .kit:hover .kit-name { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
   .kit-pens { font-size: 14.5px; color: var(--text-2); line-height: 1.45; }
   .kit-price { font-weight: 600; font-size: 17px; color: var(--ink); white-space: nowrap; }
@@ -422,7 +422,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .also-glyph :global(svg) { width: 100%; height: auto; }
   .also-body { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; }
   .also-proc { font-size: 13px; color: var(--brand); }
-  .also-name { font-stretch: 82%; font-weight: 800; font-size: 20px; color: var(--ink); }
+  .also-name { font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink); }
   .also-sum { font-size: 14.5px; color: var(--text-2); line-height: 1.5; }
   .also-foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
   .also-price { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); }
@@ -458,7 +458,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .elx-kit { display: grid; gap: 6px; padding: 20px; text-decoration: none; background: var(--brand-wash); border-bottom: 1px solid var(--line); }
   .elx-kit:hover { background: #e4ebee; }
   .elx-kit-tag { font-size: 14px; font-weight: 600; color: var(--brand-dk); }
-  .elx-kit-name { font-stretch: 82%; font-weight: 800; font-size: 20px; color: var(--ink); }
+  .elx-kit-name { font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink); }
   .elx-kit-desc { font-size: 14.5px; color: var(--text-2); }
   .elx-kit-price { font-family: var(--sans); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 4px; }
   .elx-kit-price .sku { font-size: 12px; margin-left: 8px; }
