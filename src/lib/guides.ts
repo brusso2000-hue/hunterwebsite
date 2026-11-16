@@ -122,9 +122,9 @@ export const GUIDES: Guide[] = [
     path: '/brush-plating/',
     label: 'Brush plating',
     h1: 'Brush plating: how it works, what it plates, and the equipment you need',
-    metaTitle: 'Brush Plating: Process, Equipment & Kits from $400 | Hunter Products',
+    metaTitle: 'Brush Plating: Process, Equipment & Kits from $400',
     metaDescription:
-      'What brush plating is, how it works, which metals it plates, how thick it goes and what it costs. Micro-Metallizer brush plating systems, made for bench and field. Ships same day.',
+      'What brush plating is, how it works, which metals it plates, how thick it goes and what it costs. Brush plating kits from $400 that ship same day.',
     eyebrow: 'Brush plating explained',
     lede: 'Brush plating is electroplating without the tank. The solution rides in an absorbent tip, and metal goes down only where the tip touches the part. Hunter Products has sold brush plating equipment from Flemington, NJ since 1970.',
     answer:
@@ -235,9 +235,9 @@ export const GUIDES: Guide[] = [
     path: '/selective-plating/',
     label: 'Selective plating',
     h1: 'Selective plating: plate only the area you need',
-    metaTitle: 'Selective Plating Equipment: No Tank, No Masking | Hunter Products',
+    metaTitle: 'Selective Plating Equipment: No Tank, No Masking',
     metaDescription:
-      'Selective plating puts gold, nickel, tin, silver or zinc only on the area that needs it. Compare masking, production and brush methods, and plate in place with a Micro-Metallizer kit.',
+      'Selective plating puts gold, nickel, tin or silver only where it is needed. Compare masking, production and brush methods. Plate in place, kits from $400.',
     eyebrow: 'Selective plating explained',
     lede: 'Selective plating means putting metal on one area of a part and nowhere else: a contact surface, a solder pad, a worn spot. There are several ways to do it, and the right one depends on volume and whether the part can leave the bench.',
     answer:
@@ -707,7 +707,7 @@ export const GUIDES: Guide[] = [
     slug: 'brush-plating-substrate-guide',
     label: 'Substrate and underlayer guide',
     h1: 'What can you brush plate onto? Substrate and underlayer guide',
-    metaTitle: 'Brush Plating Substrates: Steel, Stainless, Brass, Copper, Aluminum | Hunter Products',
+    metaTitle: 'Brush Plating Substrates: Steel, Stainless, Brass, Copper',
     metaDescription:
       'Which metals take which brush plating finish, and when you need a copper flash or nickel underlayer. Steel, stainless steel, brass, copper, zinc die-cast and aluminum covered.',
     eyebrow: 'Technical reference',
