@@ -92,13 +92,12 @@ const others = APPLICATIONS.filter((a) => !a.focus);
     <div class="wrap hero-in">
       <div class="hero-copy">
         <p class="eyebrow">Brush plating since {SITE.founded}</p>
-        <h1 class="h-display">Compact, convenient <span class="hero-dim">selective plating.</span></h1>
+        <h1 class="h-display">Compact, convenient <span class="hero-dim">selective plating</span></h1>
         <p class="lede">
           Portable brush plating for electronics and beyond. Restore gold on connector pins, re-tin oxidized PCB
-          pads and plate contacts exactly where they need it — at the bench or on the line, without tanks, masking
+          pads and plate contacts exactly where they need it, at the bench or on the line, without tanks, masking
           or disassembly.
         </p>
-        <p class="hero-ship"><span class="hero-dot" aria-hidden="true"></span>Pens in stock. Order by {POLICY.sameDayCutoff} and it ships same day.</p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href="#systems">Explore systems <span class="arrow">→</span></a>
           <a class="btn" href="/contact/?topic=technical#quote">Ask an application engineer</a>
@@ -125,7 +124,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
         <h2 class="h-1 bp-title">What is brush plating?</h2>
         <div class="prose">
           <p>
-            Brush plating — also called selective or spot plating — is electroplating without the tank. The plating
+            Brush plating, also called selective or spot plating, is electroplating without the tank. The plating
             solution is held in an absorbent tip connected to the positive lead of a DC power supply; the part is
             connected to the negative. Wherever the tip touches, metal is deposited.
           </p>
@@ -169,7 +168,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
       <div class="section-head section-head--split">
         <div>
           <p class="eyebrow">The system</p>
-          <h2 class="h-1">The Micro-Metallizer brush plating system.</h2>
+          <h2 class="h-1">The Micro-Metallizer brush plating system</h2>
         </div>
         <a class="link" href={mm.href}>System details <span class="arrow">→</span></a>
       </div>
@@ -210,7 +209,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
       <div class="section-head section-head--split">
         <div>
           <p class="eyebrow">Industries</p>
-          <h2 class="h-1">Proven in electronics. <span class="hero-dim">Built for aerospace, medical and beyond.</span></h2>
+          <h2 class="h-1">Proven in electronics. <span class="hero-dim">Built for aerospace, medical and beyond</span></h2>
         </div>
         <a class="link" href="/applications-electroplating/">All applications <span class="arrow">→</span></a>
       </div>
@@ -218,7 +217,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
     <div class="elx-in">
       <div class="elx-copy">
         <p class="eyebrow">Electronics &amp; PCB</p>
-        <h3 class="h-2">The standard for contact and PCB rework.</h3>
+        <h3 class="h-2">The standard for contact and PCB rework</h3>
         <p class="lede">
           Electronics manufacturers and rework technicians rely on the Micro-Metallizer for precise, localized plating. The pen tip plates a single
           pad, pin or finger without bridging its neighbors or contaminating the board.
@@ -253,7 +252,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
         <span class="app-code mono">{growth.code}</span>
         <div class="growth-copy">
           <h3 class="h-3">{growth.label}</h3>
-          <p>{growth.lede} The same pen workflow our electronics customers rely on — applied to aircraft connectors, avionics contacts, fasteners and fittings.</p>
+          <p>{growth.lede} The same pen workflow our electronics customers rely on, applied to aircraft connectors, avionics contacts, fasteners and fittings.</p>
         </div>
         <span class="link">Discuss an aerospace application <span class="arrow">→</span></span>
       </a>
@@ -276,8 +275,8 @@ const others = APPLICATIONS.filter((a) => !a.focus);
       <div class="section-head section-head--split">
         <div>
           <p class="eyebrow">Specify</p>
-          <h2 class="h-1">Finishes, substrates &amp; underlayers.</h2>
-          <p class="lede">Pick the deposit, check the substrate, see what prep it needs — then order the pen.</p>
+          <h2 class="h-1">Finishes, substrates &amp; underlayers</h2>
+          <p class="lede">Pick the deposit, check the substrate, see what prep it needs, then order the pen.</p>
         </div>
         <a class="link" href="/systems/micro-metallizer/">Micro-Metallizer system <span class="arrow">→</span></a>
       </div>
@@ -291,7 +290,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
       <div class="section-head section-head--split">
         <div>
           <p class="eyebrow">Order</p>
-          <h2 class="h-1">Most-ordered products, direct from Hunter Products.</h2>
+          <h2 class="h-1">Most-ordered products, direct from Hunter Products</h2>
         </div>
         <a class="link" href="/store/">Shop all products <span class="arrow">→</span></a>
       </div>
@@ -306,7 +305,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Also from Hunter</p>
-        <h2 class="h-2">Beyond plating: coating and surface prep.</h2>
+        <h2 class="h-2">Beyond plating: coating and surface prep</h2>
       </div>
       <div class="also">
         {otherSystems.map((x) => (
@@ -332,7 +331,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
     <div class="wrap about">
       <div>
         <p class="eyebrow">Hunter Products Inc.</p>
-        <h2 class="h-1">Five decades of selective plating.</h2>
+        <h2 class="h-1">Five decades of selective plating</h2>
         <div class="prose">
           <p>
             Hunter Products has supplied and supported localized plating and surface-treatment equipment
@@ -366,24 +365,35 @@ const others = APPLICATIONS.filter((a) => !a.focus);
 </Base>
 
 <style>
-  .hero { padding: clamp(40px, 6vw, 80px) 0 0; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--bg-2), #fff 70%); }
+  /* Dark shop-floor hero with the real kit on a white plate. */
+  .hero { padding: clamp(44px, 6vw, 84px) 0 0; background: var(--brand-deep); color: var(--on-navy); border-bottom: 4px solid var(--ink); }
+  .hero h1 { color: #fff; }
+  .hero .lede { color: #d3dce0; }
+  .hero .eyebrow { background: #fff; color: var(--ink); }
   .hero-in { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
   @media (max-width: 920px) { .hero-in { grid-template-columns: 1fr; } }
   .hero-copy { display: grid; gap: 22px; }
-  .hero-dim { color: var(--brand); }
+  .hero-dim { color: inherit; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  .hero .hero-ctas .btn--primary { background: #fff; border-color: #fff; color: var(--ink); }
+  .hero .hero-ctas .btn--primary:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .hero .hero-ctas .btn:not(.btn--primary) { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+  .hero .hero-ctas .btn:not(.btn--primary):hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .hero-media :global(.ph-box) { border: 0; }
 
-  .hero-ship { margin: 0 0 20px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--ink); }
-  .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(47, 125, 87, 0.15); flex-shrink: 0; }
-  .stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 24px clamp(40px, 7vw, 96px); margin-top: clamp(48px, 6vw, 80px); padding: 28px 0 clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
-  .stats dt { font-size: 14px; color: var(--text-3); }
-  .stats dd { margin: 4px 0 0; font-stretch: 108%; font-weight: 650; font-size: clamp(22px, 2.4vw, 30px); color: var(--ink); letter-spacing: -0.02em; }
-  @media (max-width: 600px) { .stats { grid-template-columns: 1fr 1fr; } }
+  .hero-ship { margin: 0 0 20px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #fff; }
+  .hero-dot { width: 9px; height: 9px; background: #4cb27c; flex-shrink: 0; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(44px, 6vw, 72px); border-top: 1px solid rgba(255, 255, 255, 0.16); }
+  .stats > div { padding: 22px 24px 28px; border-left: 1px solid rgba(255, 255, 255, 0.16); }
+  .stats > div:first-child { border-left: 0; padding-left: 0; }
+  .stats dt { font-size: 13px; font-weight: 600; color: #b4c2c8; }
+  .stats dd { margin: 2px 0 0; font-family: var(--display); font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); color: #fff; line-height: 1.05; }
+  @media (max-width: 600px) { .stats { grid-template-columns: 1fr; } .stats > div { border-left: 0; padding-left: 0; border-top: 1px solid var(--navy-line); } }
 
   .bp { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
   @media (max-width: 920px) { .bp { grid-template-columns: 1fr; } }
   .bp-title { margin: 16px 0 22px; }
-  .cmp thead th { background: var(--brand-deep); color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0; padding: 12px 16px; text-align: left; }
+  .cmp thead th { background: var(--brand-deep); color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0; padding: 12px 16px; text-align: left; }
   .cmp thead th:first-child { background: var(--brand-deep); }
   .cmp td:last-child { color: var(--ink); font-weight: 550; background: var(--brand-wash); }
   .cmp { background: #fff; }
@@ -398,7 +408,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .kits { display: grid; border-top: 1px solid var(--line); }
   .kit { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
   .kit-main { display: grid; gap: 2px; }
-  .kit-name { font-stretch: 105%; font-weight: 650; font-size: 18px; color: var(--ink); }
+  .kit-name { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--ink); }
   .kit:hover .kit-name { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
   .kit-pens { font-size: 14.5px; color: var(--text-2); line-height: 1.45; }
   .kit-price { font-weight: 600; font-size: 17px; color: var(--ink); white-space: nowrap; }
@@ -412,7 +422,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .also-glyph :global(svg) { width: 100%; height: auto; }
   .also-body { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; }
   .also-proc { font-size: 13px; color: var(--brand); }
-  .also-name { font-stretch: 106%; font-weight: 650; font-size: 20px; color: var(--ink); }
+  .also-name { font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink); }
   .also-sum { font-size: 14.5px; color: var(--text-2); line-height: 1.5; }
   .also-foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
   .also-price { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); }
@@ -448,7 +458,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .elx-kit { display: grid; gap: 6px; padding: 20px; text-decoration: none; background: var(--brand-wash); border-bottom: 1px solid var(--line); }
   .elx-kit:hover { background: #e4ebee; }
   .elx-kit-tag { font-size: 14px; font-weight: 600; color: var(--brand-dk); }
-  .elx-kit-name { font-stretch: 106%; font-weight: 650; font-size: 20px; color: var(--ink); }
+  .elx-kit-name { font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink); }
   .elx-kit-desc { font-size: 14.5px; color: var(--text-2); }
   .elx-kit-price { font-family: var(--sans); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 4px; }
   .elx-kit-price .sku { font-size: 12px; margin-left: 8px; }

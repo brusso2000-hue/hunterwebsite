@@ -30,7 +30,7 @@ const fill = (s: string) =>
     .replaceAll('{from}', snippetPrice(fromPrice))
     .replaceAll('{penFrom}', penPrices.length ? snippetPrice(Math.min(...penPrices)) : snippetPrice(fromPrice));
 const apps = APPLICATIONS.filter((a) => a.systems.includes(page.id));
-const spec = (p: (typeof items)[number], key: string) => p.specs.find(([k]) => k === key)?.[1] ?? '—';
+const spec = (p: (typeof items)[number], key: string) => p.specs.find(([k]) => k === key)?.[1] ?? '–';
 
 const showVideo = page.id === 'micro-metallizer';
 const schema = [
@@ -238,7 +238,7 @@ const introPhoto = photo(page.photo);
   @media (max-width: 700px) { .kits { grid-template-columns: 1fr; } }
   .kit { display: grid; gap: 8px; padding: 20px; border: 1px solid var(--line); text-decoration: none; background: #fff; transition: border-color 0.18s, background 0.18s; }
   .kit:hover { border-color: var(--brand); background: var(--brand-wash); }
-  .kit-name { font-weight: 650; font-size: 18px; color: var(--ink); font-stretch: 105%; }
+  .kit-name { font-family: var(--display); font-weight: 600; font-size: 21px; color: var(--ink); }
   .kit-pens, .kit-best { display: grid; gap: 2px; font-size: 14px; color: var(--text-2); }
   .kit-price { font-family: var(--sans); font-weight: 500; font-size: 18px; color: var(--ink); margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--line); }
 
@@ -253,7 +253,7 @@ const introPhoto = photo(page.photo);
   .soon:hover { background: var(--brand-wash); }
   @media (max-width: 700px) { .soon { grid-template-columns: 1fr; gap: 10px; } }
   .soon-tag { background: var(--gold); color: #fff; padding: 4px 10px; font-size: 13px; letter-spacing: 0; }
-  .soon-body strong { display: block; color: var(--ink); font-size: 18px; font-stretch: 105%; margin-bottom: 2px; }
+  .soon-body strong { display: block; color: var(--ink); font-family: var(--display); font-weight: 600; font-size: 21px; margin-bottom: 2px; }
   .soon-cta { font-size: 14px; letter-spacing: 0; color: var(--brand-dk); white-space: nowrap; }
   .soon:hover .arrow { transform: translateX(3px); }
 

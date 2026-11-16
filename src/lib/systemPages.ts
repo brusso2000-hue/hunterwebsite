@@ -24,10 +24,10 @@ export const SYSTEM_PAGES: SystemPage[] = [
     metaTitle: 'Electroplating Pens & Brush Plating Kits from {penFrom}',
     metaDescription:
       'Selective brush plating in a pen: gold, silver, nickel, tin, zinc, rhodium, palladium. Pens from {penFrom}, complete kits from $400. No tank or bath. Ships same day, free returns.',
-    headline: 'Selective brush plating in a pen.',
+    headline: 'Selective brush plating in a pen',
     intro: [
-      'The Micro-Metallizer is a portable brush plating system: a variable DC power supply, connector cables and a family of self-contained plating pens. Each pen holds its own solution in an absorbent tip — touch it to the grounded part and metal deposits exactly where you work.',
-      'There is no tank to fill, no bath to maintain and no plating waste to handle. Swap one pen for the next to run a full sequence — degrease, copper flash, nickel underlayer, final finish — on the same supply, at the bench or in the field.',
+      'The Micro-Metallizer is a portable brush plating system: a variable DC power supply, connector cables and a family of self-contained plating pens. Each pen holds its own solution in an absorbent tip. Touch it to the grounded part and metal deposits exactly where you work.',
+      'There is no tank to fill, no bath to maintain and no plating waste to handle. Swap one pen for the next to run a full sequence (degrease, copper flash, nickel underlayer, final finish) on the same supply, at the bench or in the field.',
       'Every pen is stocked in Flemington, NJ and ships same day. Need gold, nickel or tin on a part this week? Order by 2 PM ET and the plating solution is on a truck that afternoon, not waiting in a plating shop queue.',
     ],
     photo: 'system-micro-metallizer',
@@ -35,7 +35,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
       {
         title: 'System features',
         items: [
-          'Variable DC power supply — 110V/60Hz or 220V/50Hz',
+          'Variable DC power supply, 110V/60Hz or 220V/50Hz',
           'Self-contained, disposable pen cartridges',
           'Standard and heavy-duty cartridges',
           'One supply drives every pen in the line',
@@ -59,8 +59,8 @@ export const SYSTEM_PAGES: SystemPage[] = [
         items: [
           'Copper and copper alloys',
           'Nickel, silver and gold',
-          'Steel — with copper flash',
-          'Stainless steel — with stainless degreaser',
+          'Steel, with copper flash',
+          'Stainless steel, with stainless degreaser',
           'Not for aluminum or chromium (copper, silver, tin, zinc)',
         ],
       },
@@ -73,7 +73,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
     metaTitle: 'Carbitron 300 | Diamond Dusting & Tungsten Carbide, {from}',
     metaDescription:
       'The original diamond-dusting system for surgical instrument repair and manufacturing. Restores grip on needle holder and forceps jaws. Also extends tool life.',
-    headline: 'Diamond dusting for surgical instruments.',
+    headline: 'Diamond dusting for surgical instruments',
     intro: [
       'The Carbitron 300 is the original diamond-dusting system. Surgical instrument repair companies and instrument makers use it to apply a fine layer of tungsten carbide to working surfaces such as needle holder and forceps jaws, giving them the textured, hard grip that fine needles and tissue need.',
       'Plain stainless steel jaws cannot be repaired once they wear, so the whole instrument gets replaced. A diamond-dusted surface adds a hard tungsten carbide grip where the instrument does its work. The deposit is fused to the instrument at 78 to 80 Rockwell C, applied with a tungsten-carbide electrode in a vibrating hand tool, a process generally known as electro-spark deposition.',
@@ -149,10 +149,10 @@ export const SYSTEM_PAGES: SystemPage[] = [
     metaTitle: 'Micro-Jet 200 Micro-Abrasive Blaster, {from} | Hunter Products',
     metaDescription:
       'Precision micro-abrasive blasting to clean, etch and prep small or delicate parts where standard blasting does damage. NJ-based, ships same day.',
-    headline: 'Micro-abrasive surface preparation.',
+    headline: 'Micro-abrasive surface preparation',
     intro: [
       'The Micro-Jet 200 is a precision micro-abrasive blasting platform for cleaning, etching and surface preparation on parts where conventional blasting equipment is too aggressive.',
-      'Particle delivery is controlled finely enough to work on delicate features — fine wires, thin substrates, intricate detail — without the collateral damage standard blasting would cause. It is also the natural pre-plate prep step before brush plating.',
+      'Particle delivery is controlled finely enough to work on delicate features (fine wires, thin substrates, intricate detail) without the collateral damage standard blasting would cause. It is also the natural pre-plate prep step before brush plating.',
     ],
     photo: 'system-micro-jet',
     blocks: [

@@ -29,7 +29,7 @@ export const FINISHES: Finish[] = [
   { metal: 'Copper', symbol: 'Cu', standard: 'PL-1010', heavy: 'PL-1019', substrate: ANY_BUT_AL_CR, underlayer: null, use: 'Strike layer; buildup on busbars and contact rails' },
   { metal: 'Tin', symbol: 'Sn', standard: 'PL-1012', substrate: ANY_BUT_AL_CR, underlayer: null, use: 'Restores solderability on PCB pads and component leads' },
   { metal: 'Zinc', symbol: 'Zn', standard: 'PL-1013', substrate: ANY_BUT_AL_CR, underlayer: null, use: 'Sacrificial corrosion protection on steel and galvanized parts' },
-  { metal: 'Chrome Color', symbol: '—', standard: 'PL-1009', substrate: 'Copper', underlayer: COPPER_FLASH, use: 'Chrome-color finish on trim, hardware and fittings' },
+  { metal: 'Chrome Color', symbol: '–', standard: 'PL-1009', substrate: 'Copper', underlayer: COPPER_FLASH, use: 'Chrome-color finish on trim, hardware and fittings' },
 ];
 
 export const PREP = [

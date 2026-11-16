@@ -23,7 +23,10 @@ const soonFor = (line?: string) => SOON.filter((x) => !line || x.system === line
 
 // Kits and systems first, then pens, then accessories.
 const order: Record<ProductType, number> = { system: 0, kit: 1, prep: 2, pen: 3, 'heavy-duty': 4, equipment: 5, consumable: 6, media: 7, part: 8 };
-const sorted = [...products].sort((a, b) => order[typeOf(a)] - order[typeOf(b)]);
+// Always listed first, in this order, under every filter (owner's call, Nov 2026).
+const PINNED = ['contact-repair-kit', 'deluxe-plating-kit', 'gold-24k-plating-pen', 'gold-24k-heavy-duty-plating-pen'];
+const pin = (slug: string) => { const i = PINNED.indexOf(slug); return i === -1 ? PINNED.length : i; };
+const sorted = [...products].sort((a, b) => pin(a.slug) - pin(b.slug) || order[typeOf(a)] - order[typeOf(b)]);
 const lastSystem = sorted.map((p) => typeOf(p)).lastIndexOf('system');
 
 const schema = [
@@ -109,7 +112,7 @@ const schema = [
         ))}
       </div>
       <p class="empty" hidden data-empty>
-        No products match. <a href="/contact/?topic=technical#quote">Ask us</a> — we may have a configuration that fits.
+        No products match. <a href="/contact/?topic=technical#quote">Ask us</a>. We may have a configuration that fits.
       </p>
     </div>
   </div>

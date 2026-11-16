@@ -54,9 +54,9 @@ export const APPLICATIONS: Application[] = [
     focus: 'growth',
     guides: ['gold-plating-connector-pins', 'brush-plating-substrate-guide'],
     title: 'Aerospace & defense maintenance and component repair',
-    lede: 'Restore connectors, contact rings and fasteners in place — without pulling the assembly for tank plating.',
+    lede: 'Restore connectors, contact rings and fasteners in place, without pulling the assembly for tank plating.',
     body: [
-      'Aerospace MRO (maintenance, repair and overhaul) shops use Hunter Products electroplating pens to restore worn or corroded surfaces on aircraft components — connectors, fasteners, contact rings, edge connectors — without full disassembly of the assembly the part lives in. Selective spot plating of nickel and gold restores conductivity and corrosion resistance in place, dramatically reducing repair turnaround vs. tank-based methods.',
+      'Aerospace MRO (maintenance, repair and overhaul) shops use Hunter Products electroplating pens to restore worn or corroded surfaces on aircraft components, connectors, fasteners, contact rings, edge connectors, without full disassembly of the assembly the part lives in. Selective spot plating of nickel and gold restores conductivity and corrosion resistance in place, dramatically reducing repair turnaround vs. tank-based methods.',
       'Defense electronics teams use the same workflow on radar contacts, communications connectors, and avionics modules where pulling a sub-assembly for tank plating is impractical or impossible.',
     ],
     workflows: [
@@ -82,8 +82,8 @@ export const APPLICATIONS: Application[] = [
     title: 'Medical instrument hardening and surgical-tool restoration',
     lede: 'Tungsten-carbide edge hardening that lets instruments be re-coated instead of replaced.',
     body: [
-      'The Carbitron 300 — the diamond-dusting tungsten-carbide coating platform Hunter Products invented — is the standard tool for hardening cutting edges on surgical scalpels, scissors, dental burrs, and precision medical instruments. The deposited tungsten carbide layer extends the operational life of cutting edges far beyond untreated steel and lets older instruments be re-coated rather than replaced.',
-      'Stainless steel instruments require specialized surface preparation before any plating step. The Stainless Steel Degreaser Pen is the correct prep for stainless substrates — the standard Absorbent / Degreaser pen will not work.',
+      'The Carbitron 300, the diamond-dusting tungsten-carbide coating platform Hunter Products invented, is the standard tool for hardening cutting edges on surgical scalpels, scissors, dental burrs, and precision medical instruments. The deposited tungsten carbide layer extends the operational life of cutting edges far beyond untreated steel and lets older instruments be re-coated rather than replaced.',
+      'Stainless steel instruments require specialized surface preparation before any plating step. The Stainless Steel Degreaser Pen is the correct prep for stainless substrates; the standard Absorbent / Degreaser pen will not work.',
     ],
     workflows: [
       'Tungsten-carbide edge hardening on scalpels, scissors, curettes, and explorers',
@@ -134,8 +134,8 @@ export const APPLICATIONS: Application[] = [
     title: 'General industrial MRO and field repair',
     lede: 'Bring the system to the part, not the part to the shop.',
     body: [
-      'Maintenance teams across heavy industry use Hunter Products pens for on-site, in-place repair of plated surfaces — touch-up of corrosion on galvanized steel, restoration of plated machinery surfaces, contact repair on industrial control panels, and field plating wherever sending the part out is not an option.',
-      'The portability of the Micro-Metallizer system — 12V DC operation, no tanks, no waste handling, no plating bath — is the key advantage. Bring the system to the part, not the part to the shop.',
+      'Maintenance teams across heavy industry use Hunter Products pens for on-site, in-place repair of plated surfaces, touch-up of corrosion on galvanized steel, restoration of plated machinery surfaces, contact repair on industrial control panels, and field plating wherever sending the part out is not an option.',
+      'The portability of the Micro-Metallizer system, 12V DC operation, no tanks, no waste handling, no plating bath, is the key advantage. Bring the system to the part, not the part to the shop.',
     ],
     workflows: [
       'Field zinc touch-up on galvanized structural components',
