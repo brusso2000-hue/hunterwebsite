@@ -13,7 +13,7 @@
 //
 // Netlify environment variables:
 //   SNIPCART_SECRET_KEY  Snipcart dashboard → Account → API keys → Secret (Live)
-//   GA4_API_SECRET       GA4 → Admin → Data streams → hunterproducts.com →
+//   GA4_API_SECRET (or GA4_API_KEY)  GA4 → Admin → Data streams → hunterproducts.com →
 //                        Measurement Protocol API secrets
 // Snipcart dashboard → Account → Webhooks → URL:
 //   https://hunterproducts.com/api/snipcart-order
@@ -26,7 +26,8 @@ export default async (req) => {
   if (req.method !== 'POST') return new Response('POST only', { status: 405 });
 
   const secret = process.env.SNIPCART_SECRET_KEY;
-  const apiSecret = process.env.GA4_API_SECRET;
+  // Netlify variable names can't be renamed, so accept the names that have been used.
+  const apiSecret = process.env.GA4_API_SECRET || process.env.GA4_API_KEY || process.env.GA4_SECRET_KEY;
   if (!secret || !apiSecret) {
     console.error('snipcart-order: SNIPCART_SECRET_KEY or GA4_API_SECRET not set');
     return new Response('Not configured', { status: 500 });
