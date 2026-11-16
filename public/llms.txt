@@ -1,0 +1,33 @@
+# Hunter Products Inc.
+
+> Hunter Products Inc. (Flemington, NJ, est. 1970) sells portable brush plating (selective plating) equipment, tungsten-carbide coating systems and micro-abrasive blasters. Products ship same day from New Jersey on orders placed by 2 PM ET on business days.
+
+Product lines:
+- Micro-Metallizer: brush plating system made of a variable DC power supply, connector cables and self-contained plating pens (gold 24K/18K/14K, silver, nickel, black nickel, copper, tin, zinc, rhodium, palladium, chrome color, heavy-duty versions, degreasers). No tank, bath or plating waste. Standard pens build 1.5 to 1.8 µm, heavy-duty pens 3 to 3.6 µm. Kits from $400, pens $65 to $310.
+- Carbitron 300: deposits tungsten carbide on tools and instruments to increase hardness, wear resistance and heat tolerance (including diamond dusting of surgical instrument jaws). $495.
+- Micro-Jet 200: micro-abrasive blaster for precision cleaning and surface prep. $495.
+
+Contact: hunter@hunterproducts.com, (908) 526-8440, 36 Madison Avenue, Flemington, NJ 08822.
+
+## Key pages
+- [Brush plating explained](https://hunterproducts.com/brush-plating/): process, voltages, thickness, equipment, cost
+- [Selective plating](https://hunterproducts.com/selective-plating/): methods compared, selective gold, tin, nickel, silver
+- [Micro-Metallizer brush plating system](https://hunterproducts.com/systems/micro-metallizer/)
+- [Carbitron 300](https://hunterproducts.com/systems/carbitron-300/)
+- [Micro-Jet 200](https://hunterproducts.com/systems/micro-jet-200/)
+- [Shop all products](https://hunterproducts.com/store/)
+
+## Guides
+- [Gold plating connector pins](https://hunterproducts.com/guides/gold-plating-connector-pins/)
+- [PCB gold finger repair](https://hunterproducts.com/guides/pcb-gold-finger-repair/)
+- [Restore PCB pad solderability](https://hunterproducts.com/guides/restore-pcb-pad-solderability/)
+- [Brush plating vs tank plating](https://hunterproducts.com/guides/brush-plating-vs-tank-plating/)
+- [Brush plating thickness and voltage chart](https://hunterproducts.com/guides/brush-plating-thickness-chart/)
+- [Brush plating substrate guide](https://hunterproducts.com/guides/brush-plating-substrate-guide/)
+- [Brush plating cost](https://hunterproducts.com/guides/brush-plating-cost/)
+- [Plating pen kit comparison](https://hunterproducts.com/guides/plating-pen-kit-comparison/)
+- [All guides](https://hunterproducts.com/guides/)
+
+## Reference
+- [Micro-Metallizer catalog (PDF)](https://hunterproducts.com/pdfs/Hunter_Micro-Metallizer_Catalog.pdf)
+- [Technical resources](https://hunterproducts.com/resources/)
