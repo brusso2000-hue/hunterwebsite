@@ -203,12 +203,28 @@ const ogImage = new URL(encodeURI(image), SITE.origin).href;
       document.addEventListener('snipcart.ready', function () {
         if (typeof Snipcart === 'undefined') return;
 
-        // Stamp the visitor's traffic source and saved ad click ID onto the cart so they
-        // land on the order (Snipcart dashboard → order → Metadata). The click ID lets an
-        // order be uploaded to Google Ads as an offline conversion if needed.
+        // GA4 client and session IDs, so the server-side order webhook
+        // (netlify/functions/snipcart-order.mjs) can credit the purchase to this visit
+        // even when the buyer never returns to the page after paying (PayPal, 3-D Secure).
+        function gaIds(cb) {
+          var out = {}, got = 0, done = false;
+          function finish() { if (!done) { done = true; cb(out); } }
+          if (!GA4_ID || typeof window.gtag !== 'function') return finish();
+          setTimeout(finish, 1500);
+          window.gtag('get', GA4_ID, 'client_id', function (v) { if (v) out.ga_client_id = String(v); if (++got === 2) finish(); });
+          window.gtag('get', GA4_ID, 'session_id', function (v) { if (v) out.ga_session_id = String(v); if (++got === 2) finish(); });
+        }
+
+        // Stamp the visitor's traffic source, saved ad click ID and GA4 IDs onto the cart
+        // so they land on the order (Snipcart dashboard → order → Metadata) and reach the
+        // order webhook.
         function stampSource() {
+          gaIds(function (ids) { stampWith(ids); });
+        }
+        function stampWith(ids) {
           try {
             var add = typeof window.hpSourceFields === 'function' ? window.hpSourceFields() : {};
+            Object.assign(add, ids || {});
             var click = typeof window.hpClickId === 'function' ? window.hpClickId() : null;
             if (click) {
               add.google_click_id = click.type + '=' + click.value;
