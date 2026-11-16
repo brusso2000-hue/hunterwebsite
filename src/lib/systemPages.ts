@@ -21,9 +21,9 @@ export const SYSTEM_PAGES: SystemPage[] = [
     slug: 'micro-metallizer',
     id: 'micro-metallizer',
     title: 'Micro-Metallizer Brush Plating System',
-    metaTitle: 'Plating Pens from {penFrom} | Micro-Metallizer Brush Plating',
+    metaTitle: 'Electroplating Pens & Brush Plating Kits from {penFrom} | Micro-Metallizer',
     metaDescription:
-      'Fully self-contained plating solutions in a pen: gold, silver, nickel, tin, zinc, rhodium, palladium. From {penFrom}. No tank or bath. Ships same day, free returns.',
+      'Selective brush plating in a pen: gold, silver, nickel, tin, zinc, rhodium, palladium. Pens from {penFrom}, complete kits from $400. No tank or bath. Ships same day, free returns.',
     headline: 'Selective brush plating in a pen.',
     intro: [
       'The Micro-Metallizer is a portable brush plating system: a variable DC power supply, connector cables and a family of self-contained plating pens. Each pen holds its own solution in an absorbent tip — touch it to the grounded part and metal deposits exactly where you work.',
