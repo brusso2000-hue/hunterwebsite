@@ -34,6 +34,8 @@ export interface GuideSection {
 
 export interface Guide {
   slug: string;
+  /** Root-level URL for pillar pages (e.g. '/brush-plating/'). Omit for normal /guides/<slug>/ pages. */
+  path?: string;
   /** Short label for cards and nav. */
   label: string;
   h1: string;
@@ -111,6 +113,215 @@ const DEGREASE_STEP: GuideStep = {
 // ── Guides ──────────────────────────────────────────────────────────
 
 export const GUIDES: Guide[] = [
+
+  // ── Pillar pages (root URLs) ────────────────────────────────────────
+  // These target the head terms "brush plating" and "selective plating" and
+  // link out to every narrower guide. Rendered at /brush-plating/ and /selective-plating/.
+  {
+    slug: 'brush-plating',
+    path: '/brush-plating/',
+    label: 'Brush plating',
+    h1: 'Brush plating: how it works, what it plates, and the equipment you need',
+    metaTitle: 'Brush Plating: Process, Equipment & Kits from $400 | Hunter Products',
+    metaDescription:
+      'What brush plating is, how it works, which metals it plates, how thick it goes and what it costs. Micro-Metallizer brush plating systems, made for bench and field. Ships same day.',
+    eyebrow: 'Brush plating explained',
+    lede: 'Brush plating is electroplating without the tank. The solution rides in an absorbent tip, and metal goes down only where the tip touches the part. Hunter Products has sold brush plating equipment from Flemington, NJ since 1970.',
+    answer:
+      'Brush plating (also called selective plating, pen plating or tankless plating) is a form of electroplating where the plating solution is held in an absorbent tip on the positive lead of a DC power supply, and the part is connected to the negative lead. Metal deposits only where the tip touches, so you can plate a connector, pad or worn spot in place with no tank, no masking and no bath to dispose of.',
+    sections: [
+      {
+        heading: 'How brush plating works',
+        paragraphs: [
+          'Tank plating and brush plating use the same chemistry: a DC current drives metal ions out of solution and onto a conductive part. In a tank, the whole part sits in the bath. In brush plating, the solution is carried in a tip and only the area under the tip is plated.',
+          HOOKUP,
+        ],
+        steps: [
+          { title: 'Degrease', text: 'Clean the work area with the Absorbent / Degreaser pen at 10 to 12V (stainless steel gets the Stainless Steel Degreaser pen). Wipe clean.' },
+          { title: 'Build the base layer if the finish needs one', text: 'Flash copper on steel, brass or zinc die-cast, then nickel if the final finish is gold, rhodium or palladium. Wipe clean between pens.' },
+          { title: 'Plate the finish', text: 'Run the finish pen at its catalog voltage with light, even strokes. More passes build more thickness.' },
+          { title: 'Wipe clean', text: 'Wipe the plated area with a clean cloth. The part is ready to use.' },
+        ],
+      },
+      {
+        heading: 'What you can brush plate',
+        paragraphs: [
+          'The Micro-Metallizer line covers 16 pens: gold (24K, 18K, 14K), silver, nickel, black nickel, copper, tin, zinc, rhodium, palladium, chrome color, heavy-duty versions of the most-used metals, and two prep pens. One power supply runs all of them.',
+        ],
+        table: VOLTAGE_TABLE,
+      },
+      {
+        heading: 'How thick brush plating goes',
+        paragraphs: [
+          'Standard pens build 1.5 to 1.8 µm. Heavy-duty pens build 3 to 3.6 µm. Thickness depends on time under the tip, so you control it by the number of passes.',
+        ],
+        table: RATE_TABLE,
+      },
+      {
+        heading: 'Brush plating equipment',
+        paragraphs: [
+          'A brush plating setup is three things: a variable DC power supply, connector cables, and the plating pens. Each pen is a sealed cartridge holding 10 ml of concentrated solution, enough for roughly 300 square inches. There is no bath chemistry to mix, maintain or dispose of.',
+        ],
+        table: {
+          caption: 'Micro-Metallizer brush plating kits and parts',
+          head: ['Item', 'Catalog no.', 'What it includes', 'Price'],
+          rows: [
+            ['Contact Repair Kit', 'PL-1000C', 'Power supply, cables, gold, nickel and prep pens for contact work', '$400'],
+            ['Contact Repair Kit (Heavy Duty)', 'PL-1000CHD', 'Contact Repair Kit with heavy-duty pens', '$525'],
+            ['Deluxe Kit', 'PL-1000K', 'Power supply, cables and 6 pens', '$540'],
+            ['Deluxe Kit (Heavy Duty)', 'PL-1000HD', 'Power supply, cables and 6 heavy-duty pens', '$900'],
+            ['Power Supply', 'PL-1000', 'Variable DC supply, 110V/60Hz or 220V/50Hz', '$220'],
+            ['Individual pens', 'PL-1002 to PL-1020', 'One metal or prep step per pen', '$65 to $310'],
+          ],
+        },
+        note: 'Every pen and kit ships same day from New Jersey on orders placed by 2 PM ET on business days.',
+      },
+      {
+        heading: 'Where brush plating is used',
+        list: [
+          'Restoring gold on worn connector pins, edge connectors and PCB gold fingers',
+          'Re-tinning oxidized PCB pads so they take solder again',
+          'Zinc touch-up on scratched or rusted plated steel',
+          'Silver on electrical contacts and bus bars',
+          'Nickel and copper underlayers before a final finish',
+          'Rhodium or palladium on high-wear contact surfaces',
+          'Prototype and field work where a tank line is not practical',
+        ],
+      },
+      {
+        heading: 'Brush plating vs tank plating',
+        paragraphs: [
+          'Brush plating wins when you need a finish on part of a part, need it in place, or need it today. Tank plating wins when you need the whole part covered, deposits thicker than a few microns, or thousands of parts a day. Many shops use both: a plating line for production and a brush plating kit for repair, rework and touch-up.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'What is brush plating?',
+        a: 'Brush plating is electroplating done with a solution-soaked tip instead of a tank. The part is connected to the negative lead of a DC supply, the tip to the positive lead, and metal deposits wherever the tip touches.',
+      },
+      {
+        q: 'What else is brush plating called?',
+        a: 'Selective plating, selective brush plating, brush electroplating, pen plating, spot plating and tankless plating all describe the same process.',
+      },
+      {
+        q: 'How long does a brush plating pen last?',
+        a: 'Each Micro-Metallizer pen holds 10 ml of solution and covers roughly 300 square inches.',
+      },
+      {
+        q: 'What voltage is used for brush plating?',
+        a: 'It depends on the metal. Degreasing runs at 10 to 12V, nickel and silver at 5 to 6V, gold, copper, tin and zinc at 6 to 8V, and rhodium and black nickel at 8 to 10V.',
+      },
+      {
+        q: 'Can you brush plate nickel?',
+        a: 'Yes. The Nickel pen (PL-1006) and Nickel Heavy Duty pen (PL-1020) plate over copper at 5 to 6V. Flash copper first on steel, brass and other metals.',
+      },
+      {
+        q: 'Can you brush plate aluminum?',
+        a: 'Not with the Micro-Metallizer system. Contact Hunter Products to discuss aluminum parts.',
+      },
+      {
+        q: 'How much does brush plating equipment cost?',
+        a: 'A complete Micro-Metallizer kit starts at $400 (Contact Repair Kit). The power supply alone is $220 and pens run $65 to $310.',
+      },
+    ],
+    products: ['contact-repair-kit', 'deluxe-plating-kit', 'deluxe-plating-kit-heavy-duty', 'micro-metallizer-power-supply'],
+    related: ['brush-plating-vs-tank-plating', 'brush-plating-thickness-chart', 'brush-plating-substrate-guide', 'brush-plating-cost', 'plating-pen-kit-comparison', 'selective-plating'],
+    updated: '2026-11-16',
+  },
+
+  {
+    slug: 'selective-plating',
+    path: '/selective-plating/',
+    label: 'Selective plating',
+    h1: 'Selective plating: plate only the area you need',
+    metaTitle: 'Selective Plating Equipment: No Tank, No Masking | Hunter Products',
+    metaDescription:
+      'Selective plating puts gold, nickel, tin, silver or zinc only on the area that needs it. Compare masking, production and brush methods, and plate in place with a Micro-Metallizer kit.',
+    eyebrow: 'Selective plating explained',
+    lede: 'Selective plating means putting metal on one area of a part and nowhere else: a contact surface, a solder pad, a worn spot. There are several ways to do it, and the right one depends on volume and whether the part can leave the bench.',
+    answer:
+      'Selective plating deposits metal only on a defined area of a part instead of the whole surface. In production it is done by masking parts or plating strip in specialized lines. For repair, rework, prototypes and in-place work, selective brush plating does it with a pen-style tip and a DC power supply: no tank, no masking, and precious metal goes only where you put it.',
+    sections: [
+      {
+        heading: 'Why plate selectively',
+        list: [
+          'Precious metal goes only on the functional surface, which cuts gold, silver and rhodium use',
+          'Parts can be plated in place without disassembly',
+          'No masking to apply and strip on one-off and low-volume jobs',
+          'Repairs a worn or damaged area without re-plating the whole part',
+          'Puts solderable tin on pads without touching the rest of the board',
+        ],
+      },
+      {
+        heading: 'Selective plating methods compared',
+        table: {
+          caption: 'Common ways to plate selectively',
+          head: ['Method', 'How the area is controlled', 'Best for'],
+          rows: [
+            ['Masking + tank', 'Tape, lacquer or fixtures cover what should not plate; part goes in the bath', 'Production runs where the mask can be reused or automated'],
+            ['Production selective lines', 'Strip or parts are plated to a set depth or zone on dedicated equipment', 'High-volume connectors and stamped contacts'],
+            ['Selective brush plating', 'Only the area under the plating tip receives metal', 'Repair, rework, prototypes, field work, low volume'],
+          ],
+        },
+      },
+      {
+        heading: 'Selective brush plating with the Micro-Metallizer',
+        paragraphs: [
+          'The Micro-Metallizer is a selective brush plating system: a variable DC power supply, connector cables and self-contained plating pens. The pen tip defines the plated area, so there is nothing to mask on most jobs. Swap pens to run a full sequence on the same supply.',
+          HOOKUP,
+        ],
+        steps: [
+          { title: 'Degrease the target area', text: 'Absorbent / Degreaser pen at 10 to 12V, or the Stainless Steel Degreaser pen on stainless. Wipe clean.' },
+          { title: 'Underlayer', text: 'Copper flash on steel, brass or zinc die-cast; nickel at 5 to 6V before gold, rhodium or palladium. Wipe clean between pens.' },
+          { title: 'Selective finish', text: 'Plate the finish only where it is needed, at the pen\'s catalog voltage. More passes build more thickness.' },
+          { title: 'Wipe clean', text: 'Wipe the plated area with a clean cloth.' },
+        ],
+      },
+      {
+        heading: 'Selective gold, tin, nickel and silver',
+        list: [
+          'Selective gold plating: connector pins, edge connectors, PCB gold fingers and switch contacts (Gold 24K, 18K, 14K and heavy-duty pens)',
+          'Selective tin plating: oxidized PCB pads and component leads that will not take solder (Tin pen, PL-1012)',
+          'Selective nickel plating: diffusion barrier under gold and base for rhodium and palladium (Nickel and Nickel Heavy Duty pens)',
+          'Selective silver plating: contacts and bus bar surfaces (Silver and Silver Heavy Duty pens)',
+          'Selective zinc plating: corrosion touch-up on plated steel (Zinc pen, PL-1013)',
+        ],
+      },
+      {
+        heading: 'Thickness and coverage',
+        paragraphs: [
+          'Standard pens build 1.5 to 1.8 µm and heavy-duty pens build 3 to 3.6 µm. Each pen holds 10 ml of solution and covers roughly 300 square inches. For deposits much thicker than that, or for whole-part finishing at volume, a tank line is the better tool.',
+        ],
+        table: RATE_TABLE,
+      },
+    ],
+    faq: [
+      {
+        q: 'What is selective plating?',
+        a: 'Plating only a defined area of a part, such as a contact surface or solder pad, instead of the whole part.',
+      },
+      {
+        q: 'Is selective plating the same as brush plating?',
+        a: 'Brush plating is one form of selective plating. Selective plating can also be done by masking parts before tank plating or on dedicated production lines.',
+      },
+      {
+        q: 'Do I need masking for selective brush plating?',
+        a: 'Usually not. Metal deposits only where the pen tip touches.',
+      },
+      {
+        q: 'What is selective gold plating used for?',
+        a: 'Putting gold only on contact surfaces such as connector pins, edge connectors and PCB gold fingers, which saves gold and leaves the rest of the part as is.',
+      },
+      {
+        q: 'What equipment do I need for selective plating?',
+        a: 'For brush-style selective plating: a DC power supply, connector cables, a degreaser pen and the plating pens for your sequence. Micro-Metallizer kits with all of that start at $400.',
+      },
+    ],
+    products: ['contact-repair-kit', 'deluxe-plating-kit', 'tin-plating-pen', 'gold-24k-plating-pen'],
+    related: ['brush-plating', 'gold-plating-connector-pins', 'pcb-gold-finger-repair', 'restore-pcb-pad-solderability', 'brush-plating-vs-tank-plating', 'brush-plating-substrate-guide'],
+    updated: '2026-11-16',
+  },
   {
     slug: 'gold-plating-connector-pins',
     label: 'Gold plating connector pins',
@@ -1416,4 +1627,4 @@ export function guideBySlug(slug: string): Guide {
   return g;
 }
 
-export const guideUrl = (slug: string) => `/guides/${slug}/`;
+export const guideUrl = (slug: string) => GUIDES.find((g) => g.slug === slug)?.path ?? `/guides/${slug}/`;
