@@ -166,7 +166,7 @@ export const SYSTEMS: SystemInfo[] = [
     process: 'Selective electroplating',
     href: '/systems/micro-metallizer/',
     summary:
-      'Self-contained plating pens driven by a 12V DC supply. Deposit gold, silver, nickel, rhodium, tin and more exactly where the part needs it — no tanks, no bath, no waste handling.',
+      'Self-contained plating pens driven by a 12V DC supply. Deposit gold, silver, nickel, rhodium, tin and more exactly where the part needs it. No tanks, no bath, no waste handling.',
     flagship: 'PL-1000K',
   },
   {

@@ -35,20 +35,24 @@ export interface PhotoSlot {
   size: string;
   /** Drawing shown until a photo is supplied. */
   fallback: SystemId;
+  /** Product slug whose studio photo stands in until a site photo is supplied. */
+  standIn?: string;
 }
 
 export const PHOTO_SLOTS = {
   'home-hero': {
     alt: 'Technician brush plating a connector with a Micro-Metallizer pen',
-    brief: 'Close-up of a pen plating a real part — hands, pen tip and the fresh deposit in focus. Landscape.',
+    brief: 'Close-up of a pen plating a real part, hands, pen tip and the fresh deposit in focus. Landscape.',
     size: '2000×1250',
     fallback: 'micro-metallizer',
+    standIn: 'contact-repair-kit',
   },
   'system-micro-metallizer': {
     alt: 'Micro-Metallizer power supply, cables and plating pens',
     brief: 'The full kit on a clean bench: power supply, leads, a row of pens.',
     size: '1600×1000',
     fallback: 'micro-metallizer',
+    standIn: 'micro-metallizer-power-supply',
   },
   'system-carbitron': {
     alt: 'Carbitron 300 tungsten-carbide coating system',
@@ -70,7 +74,7 @@ export const PHOTO_SLOTS = {
   },
   'process-plate': {
     alt: 'Brush plating the prepared surface',
-    brief: 'Pen actively plating — visible wet deposit.',
+    brief: 'Pen actively plating, visible wet deposit.',
     size: '1200×900',
     fallback: 'micro-metallizer',
   },
@@ -82,7 +86,7 @@ export const PHOTO_SLOTS = {
   },
   'app-aerospace-defense': { alt: 'Aerospace connector contact restoration', brief: 'Multi-pin aerospace connector being plated.', size: '1200×800', fallback: 'micro-metallizer' },
   'app-medical-dental': { alt: 'Tungsten-carbide treatment of surgical instruments', brief: 'Scissors or scalpel edge under the Carbitron handpiece.', size: '1200×800', fallback: 'carbitron' },
-  'app-electronics-pcb': { alt: 'Gold plating PCB edge-connector fingers', brief: 'PCB edge connector or pads being plated.', size: '1200×800', fallback: 'micro-metallizer' },
+  'app-electronics-pcb': { alt: 'Gold plating PCB edge-connector fingers', brief: 'PCB edge connector or pads being plated.', size: '1200×800', fallback: 'micro-metallizer', standIn: 'gold-24k-plating-pen' },
   'app-manufacturing': { alt: 'Zinc touch-up on a steel component', brief: 'Production part / fastener being touched up.', size: '1200×800', fallback: 'micro-metallizer' },
   'app-industrial-mro': { alt: 'Field repair of switchgear contacts', brief: 'Portable kit in use on equipment in the field.', size: '1200×800', fallback: 'micro-metallizer' },
 } satisfies Record<string, PhotoSlot>;
@@ -102,8 +106,10 @@ export interface ResolvedPhoto extends PhotoSlot {
 }
 
 export function photo(slot: PhotoSlotName): ResolvedPhoto {
-  const def = PHOTO_SLOTS[slot];
-  return { ...def, slot, src: findFile('photos', slot), dropPath: `public/img/photos/${slot}.jpg` };
+  const def: PhotoSlot = PHOTO_SLOTS[slot];
+  const own = findFile('photos', slot);
+  const standIn = !own && def.standIn ? findFile('products', def.standIn) : null;
+  return { ...def, slot, src: own ?? standIn, studio: !!standIn, dropPath: `public/img/photos/${slot}.jpg` };
 }
 
 /**

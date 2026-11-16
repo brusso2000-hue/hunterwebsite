@@ -30,7 +30,7 @@ const rows = FINISHES.map((f) => ({ ...f, std: byId(f.standard), hd: f.heavy ? b
             <span>{r.metal}</span>
           </th>
           <td>{r.substrate ?? <span class="fc-na">See catalog</span>}</td>
-          {!compact && <td>{r.underlayer ?? <span class="fc-na">—</span>}</td>}
+          {!compact && <td>{r.underlayer ?? <span class="fc-na">–</span>}</td>}
           <td class="fc-use">{r.use}</td>
           <td class="num">
             <a href={productUrl(r.std)}><span class="sku">{r.std.sku}</span><span>{fmtPrice(r.std.price)}</span></a>
@@ -39,7 +39,7 @@ const rows = FINISHES.map((f) => ({ ...f, std: byId(f.standard), hd: f.heavy ? b
             {r.hd ? (
               <a href={productUrl(r.hd)}><span class="sku">{r.hd.sku}</span><span>{fmtPrice(r.hd.price)}</span></a>
             ) : (
-              <span class="fc-na">—</span>
+              <span class="fc-na">–</span>
             )}
           </td>
         </tr>
@@ -52,7 +52,7 @@ const rows = FINISHES.map((f) => ({ ...f, std: byId(f.standard), hd: f.heavy ? b
   {PREP.map((p, i) => (
     <>
       {i > 0 && ' · '}
-      <a href={productUrl(byId(p.id))}>{p.name}</a> — {p.substrate.toLowerCase()}
+      <a href={productUrl(byId(p.id))}>{p.name}</a>, {p.substrate.toLowerCase()}
     </>
   ))}
 </p>

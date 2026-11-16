@@ -22,7 +22,7 @@
       ["Best For", "Mixed-metal plating work"],
       ["Power", "110V / 220V, 12V DC output"]
     ],
-    "longDescription": "The Deluxe Kit is Hunter Products' most comprehensive Micro-Metallizer pen plating package. It bundles every pen needed to handle the full standard range of plating work — from prep through final finish — alongside the variable DC power supply and connector cables required to drive the system.\n\nEvery component is shipped from our Flemington, NJ facility and is the same hardware deployed in aerospace MRO shops, dental laboratories, research labs, and electronics repair facilities. The pens are self-contained, disposable cartridges: no tank prep, no plating bath, no hazardous waste handling.\n\nThis kit is the right starting point for any shop bringing portable spot-plating capability in-house for the first time, or for replacing an existing tank-based workflow with something faster and more selective. Heavy-duty equivalents are available individually if you need thicker deposits.",
+    "longDescription": "The Deluxe Kit is Hunter Products' most comprehensive Micro-Metallizer pen plating package. It bundles every pen needed to handle the full standard range of plating work, from prep through final finish, alongside the variable DC power supply and connector cables required to drive the system.\n\nEvery component is shipped from our Flemington, NJ facility and is the same hardware deployed in aerospace MRO shops, dental laboratories, research labs, and electronics repair facilities. The pens are self-contained, disposable cartridges: no tank prep, no plating bath, no hazardous waste handling.\n\nThis kit is the right starting point for any shop bringing portable spot-plating capability in-house for the first time, or for replacing an existing tank-based workflow with something faster and more selective. Heavy-duty equivalents are available individually if you need thicker deposits.",
     "applications": ["Aerospace & Defense", "Electronics & PCB", "Industrial MRO"]
   },
   {
@@ -48,7 +48,7 @@
       ["Best For", "Industrial plating, thicker deposits"],
       ["Power", "110V / 220V, 12V DC output"]
     ],
-    "longDescription": "The Heavy Duty Deluxe Kit is engineered for shops that plate at industrial volume. Each pen carries significantly more electrolyte per cartridge than the standard pens, allowing for thicker deposits and longer runs between cartridge changes — critical when plating wear surfaces, large-area contacts, or production-volume restoration work.\n\nThe kit includes the heavy-duty pens for the five most commonly plated metals (Gold 24K, Silver, Copper, Nickel, Rhodium) plus the Absorbent / Degreaser pen for surface preparation. The accompanying Micro-Metallizer power supply and connector cables complete the system.\n\nRecommended for aerospace MRO, dental and surgical instrument restoration, industrial component repair, and any operation where the standard pens would require frequent cartridge replacement. The pens included here are also sold individually for replenishment.",
+    "longDescription": "The Heavy Duty Deluxe Kit is engineered for shops that plate at industrial volume. Each pen carries significantly more electrolyte per cartridge than the standard pens, allowing for thicker deposits and longer runs between cartridge changes, critical when plating wear surfaces, large-area contacts, or production-volume restoration work.\n\nThe kit includes the heavy-duty pens for the five most commonly plated metals (Gold 24K, Silver, Copper, Nickel, Rhodium) plus the Absorbent / Degreaser pen for surface preparation. The accompanying Micro-Metallizer power supply and connector cables complete the system.\n\nRecommended for aerospace MRO, dental and surgical instrument restoration, industrial component repair, and any operation where the standard pens would require frequent cartridge replacement. The pens included here are also sold individually for replenishment.",
     "applications": ["Aerospace & Defense", "Medical & Dental", "Industrial MRO", "Manufacturing"]
   },
   {
@@ -74,7 +74,7 @@
       ["Best For", "Electrical contact restoration, connector repair"],
       ["Power", "110V / 220V, 12V DC output"]
     ],
-    "longDescription": "The Contact Repair Kit is the focused subset of the Micro-Metallizer system used by electronics technicians, aerospace MRO crews, and avionics repair shops to restore conductivity to worn or corroded electrical contacts.\n\nThe three pens in the kit — Absorbent (for cleaning the contact surface), Nickel (as an underlayer), and Gold 24K (as the final conductive layer) — execute the standard contact-restoration sequence on copper-based connectors, edge connectors, switch contacts, and connector pins.\n\nThis kit is significantly more cost-effective than the Deluxe Kit if your work is centered on electrical contact repair rather than general-purpose plating. The Heavy Duty version is available for shops doing higher-volume restoration work.",
+    "longDescription": "The Contact Repair Kit is the focused subset of the Micro-Metallizer system used by electronics technicians, aerospace MRO crews, and avionics repair shops to restore conductivity to worn or corroded electrical contacts.\n\nThe three pens in the kit, Absorbent (for cleaning the contact surface), Nickel (as an underlayer), and Gold 24K (as the final conductive layer), execute the standard contact-restoration sequence on copper-based connectors, edge connectors, switch contacts, and connector pins.\n\nThis kit is significantly more cost-effective than the Deluxe Kit if your work is centered on electrical contact repair rather than general-purpose plating. The Heavy Duty version is available for shops doing higher-volume restoration work.",
     "applications": ["Electronics & PCB", "Aerospace & Defense", "Industrial MRO"]
   },
   {
@@ -100,7 +100,7 @@
       ["Best For", "High-volume contact restoration"],
       ["Power", "110V / 220V, 12V DC output"]
     ],
-    "longDescription": "The Heavy Duty Contact Repair Kit pairs the same three-pen contact-restoration workflow with the heavy-duty pen cartridges, which carry more electrolyte and allow for thicker gold and nickel deposits per session.\n\nFor electronics manufacturers and MRO shops handling production-volume contact restoration — switch banks, multi-pin connectors, edge connectors at scale — the HD pens significantly reduce cartridge swap frequency and total cost per repair compared to the standard kit.\n\nIncludes the variable DC Micro-Metallizer power supply and connector cables required for operation. Refills are sold individually if a single pen runs out before the others.",
+    "longDescription": "The Heavy Duty Contact Repair Kit pairs the same three-pen contact-restoration workflow with the heavy-duty pen cartridges, which carry more electrolyte and allow for thicker gold and nickel deposits per session.\n\nFor electronics manufacturers and MRO shops handling production-volume contact restoration, switch banks, multi-pin connectors, edge connectors at scale, the HD pens significantly reduce cartridge swap frequency and total cost per repair compared to the standard kit.\n\nIncludes the variable DC Micro-Metallizer power supply and connector cables required for operation. Refills are sold individually if a single pen runs out before the others.",
     "applications": ["Electronics & PCB", "Aerospace & Defense", "Manufacturing", "Industrial MRO"]
   },
   {
@@ -124,7 +124,7 @@
       ["Use On", "All metals except stainless steel"],
       ["Required Compatibles", "Micro-Metallizer Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Absorbent / Degreaser pen is the mandatory first step in any Micro-Metallizer plating workflow. It removes oils, oxides, and surface contaminants that would otherwise prevent the plating layer from bonding correctly to the substrate.\n\nUsed across every Hunter Products kit, the pen handles all common substrates — copper, brass, nickel, steel, gold, silver — with the single exception of stainless steel, which requires the specialized Stainless Steel Degreaser Pen (PL-1014) instead.\n\nRequires the Micro-Metallizer power supply and connector cables. If you are buying individual pens to assemble a custom kit, start with this pen plus the metal you intend to plate.",
+    "longDescription": "The Absorbent / Degreaser pen is the mandatory first step in any Micro-Metallizer plating workflow. It removes oils, oxides, and surface contaminants that would otherwise prevent the plating layer from bonding correctly to the substrate.\n\nUsed across every Hunter Products kit, the pen handles all common substrates, copper, brass, nickel, steel, gold, silver, with the single exception of stainless steel, which requires the specialized Stainless Steel Degreaser Pen (PL-1014) instead.\n\nRequires the Micro-Metallizer power supply and connector cables. If you are buying individual pens to assemble a custom kit, start with this pen plus the metal you intend to plate.",
     "applications": ["Aerospace & Defense", "Medical & Dental", "Electronics & PCB"]
   },
   {
@@ -448,7 +448,7 @@
       ["Compatible Surfaces", "Most metals (not aluminum, not chromium)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Silver Plating Pen restores silver on antique silverware, plates fresh silver on electrical contacts where high conductivity is required.\n\nUnlike many of the other pens, the Silver pen will plate directly onto most metallic substrates without an intermediate layer — the two exceptions being aluminum and chromium, which require different surface chemistry the Micro-Metallizer system does not address.\n\nFor silverware restoration, expect to use multiple cartridges per piece on larger items — the Silver Heavy Duty Pen (PL-1018) is the more economical choice once volume justifies it.",
+    "longDescription": "The Silver Plating Pen restores silver on antique silverware, plates fresh silver on electrical contacts where high conductivity is required.\n\nUnlike many of the other pens, the Silver pen will plate directly onto most metallic substrates without an intermediate layer, the two exceptions being aluminum and chromium, which require different surface chemistry the Micro-Metallizer system does not address.\n\nFor silverware restoration, expect to use multiple cartridges per piece on larger items, the Silver Heavy Duty Pen (PL-1018) is the more economical choice once volume justifies it.",
     "applications": ["Electronics & PCB", "Aerospace & Defense"]
   },
   {
@@ -472,7 +472,7 @@
       ["Compatible Surfaces", "Copper (apply copper flash on others)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Chrome Color Plating Pen deposits a bright, chrome-like decorative finish — used for restoration of automotive trim, decorative hardware, instrument bezels, and similar visual-finish applications.\n\nThis is a chrome-COLORED finish optimized for portable spot plating; it is not equivalent to industrial hard chrome plating. For decorative restoration and selective re-finishing, however, it allows touch-up work that would otherwise require sending a part out to a plating shop.\n\nPlates directly over copper. For other substrates, apply a copper flash with the Copper Plating Pen (PL-1010) before the chrome color layer.",
+    "longDescription": "The Chrome Color Plating Pen deposits a bright, chrome-like decorative finish, used for restoration of automotive trim, decorative hardware, instrument bezels, and similar visual-finish applications.\n\nThis is a chrome-COLORED finish optimized for portable spot plating; it is not equivalent to industrial hard chrome plating. For decorative restoration and selective re-finishing, however, it allows touch-up work that would otherwise require sending a part out to a plating shop.\n\nPlates directly over copper. For other substrates, apply a copper flash with the Copper Plating Pen (PL-1010) before the chrome color layer.",
     "applications": ["Manufacturing"]
   },
   {
@@ -496,7 +496,7 @@
       ["Compatible Surfaces", "Most metals (not aluminum, not chromium)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Copper Plating Pen plays two roles in the Micro-Metallizer system. First, as a standalone deposit for restoring copper conductive surfaces (busbars, contact rails, antique copperware). Second — and more commonly — as the intermediate flash layer that lets you build up other plating sequences on substrates that wouldn't normally accept them directly (steel, brass, etc.).\n\nThe standard workflow for plating chrome, nickel, or rhodium onto a non-copper part is: degrease → copper flash with this pen → target metal. For thicker copper buildup on industrial parts, use the Copper Heavy Duty Pen (PL-1019) instead.\n\nPlates over most metals with the two exceptions of aluminum and chromium. Requires Absorbent / Degreaser pen for surface prep.",
+    "longDescription": "The Copper Plating Pen plays two roles in the Micro-Metallizer system. First, as a standalone deposit for restoring copper conductive surfaces (busbars, contact rails, antique copperware). Second, and more commonly, as the intermediate flash layer that lets you build up other plating sequences on substrates that wouldn't normally accept them directly (steel, brass, etc.).\n\nThe standard workflow for plating chrome, nickel, or rhodium onto a non-copper part is: degrease → copper flash with this pen → target metal. For thicker copper buildup on industrial parts, use the Copper Heavy Duty Pen (PL-1019) instead.\n\nPlates over most metals with the two exceptions of aluminum and chromium. Requires Absorbent / Degreaser pen for surface prep.",
     "applications": ["Electronics & PCB", "Industrial MRO", "Aerospace & Defense"]
   },
   {
@@ -505,7 +505,7 @@
     "price": 310,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Premium rhodium plating for the hardest, most reflective finish available. Plate over nickel — apply copper flash and nickel first on non-copper surfaces.",
+    "description": "Premium rhodium plating for the hardest, most reflective finish available. Plates over nickel; apply copper flash and nickel first on non-copper surfaces.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "rhodium-plating-pen",
     "category": "pen",
@@ -568,7 +568,7 @@
       ["Compatible Surfaces", "Most metals (not aluminum, not chromium)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Zinc Plating Pen handles corrosion-protection work on steel and other ferrous components. Touch up scratched or worn galvanized finishes, plate exposed steel fasteners, and re-coat zinc surfaces that have lost their protective layer over time.\n\nZinc functions as a sacrificial coating — it corrodes preferentially to the steel underneath, extending the substrate's service life. The Micro-Metallizer pen format makes it practical to spot-repair zinc coatings in the field, where dipping the entire part is not an option.\n\nApply over most metals; aluminum and chromium are the two non-compatible substrates. Requires Absorbent / Degreaser for surface prep.",
+    "longDescription": "The Zinc Plating Pen handles corrosion-protection work on steel and other ferrous components. Touch up scratched or worn galvanized finishes, plate exposed steel fasteners, and re-coat zinc surfaces that have lost their protective layer over time.\n\nZinc functions as a sacrificial coating, it corrodes preferentially to the steel underneath, extending the substrate's service life. The Micro-Metallizer pen format makes it practical to spot-repair zinc coatings in the field, where dipping the entire part is not an option.\n\nApply over most metals; aluminum and chromium are the two non-compatible substrates. Requires Absorbent / Degreaser for surface prep.",
     "applications": ["Industrial MRO", "Manufacturing", "Aerospace & Defense"]
   },
   {
@@ -613,7 +613,7 @@
     "specs": [
       ["Part No.", "PL-1016"],
       ["Metal", "24 Karat Gold (pure)"],
-      ["Type", "Heavy Duty — higher volume per cartridge"],
+      ["Type", "Heavy Duty, higher volume per cartridge"],
       ["Compatible Surfaces", "Gold, Nickel, Silver"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
@@ -638,7 +638,7 @@
     "specs": [
       ["Part No.", "PL-1017"],
       ["Metal", "18 Karat Gold"],
-      ["Type", "Heavy Duty — higher volume per cartridge"],
+      ["Type", "Heavy Duty, higher volume per cartridge"],
       ["Compatible Surfaces", "Gold, Nickel, Silver"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
@@ -663,11 +663,11 @@
     "specs": [
       ["Part No.", "PL-1018"],
       ["Metal", "Silver"],
-      ["Type", "Heavy Duty — higher volume per cartridge"],
+      ["Type", "Heavy Duty, higher volume per cartridge"],
       ["Compatible Surfaces", "Most metals (not aluminum, not chromium)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Heavy Duty Silver Pen is the workhorse for silverware restoration — large surface areas (trays, serving pieces, tea sets) consume electrolyte at a rate that makes the standard Silver pen (PL-1008) impractical.\n\nAlso used for large-area electrical contact plating in industrial switchgear and busbar applications, where standard-pen capacity would require frequent cartridge swaps.\n\nSilver plates directly onto most substrates without an intermediate layer; only aluminum and chromium require alternative chemistry. Requires Absorbent / Degreaser pen for surface preparation.",
+    "longDescription": "The Heavy Duty Silver Pen is the workhorse for silverware restoration: large surface areas (trays, serving pieces, tea sets) consume electrolyte at a rate that makes the standard Silver pen (PL-1008) impractical.\n\nAlso used for large-area electrical contact plating in industrial switchgear and busbar applications, where standard-pen capacity would require frequent cartridge swaps.\n\nSilver plates directly onto most substrates without an intermediate layer; only aluminum and chromium require alternative chemistry. Requires Absorbent / Degreaser pen for surface preparation.",
     "applications": ["Electronics & PCB", "Industrial MRO"]
   },
   {
@@ -688,7 +688,7 @@
     "specs": [
       ["Part No.", "PL-1019"],
       ["Metal", "Copper"],
-      ["Type", "Heavy Duty — higher volume per cartridge"],
+      ["Type", "Heavy Duty, higher volume per cartridge"],
       ["Compatible Surfaces", "Most metals (not aluminum, not chromium)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
@@ -713,11 +713,11 @@
     "specs": [
       ["Part No.", "PL-1020"],
       ["Metal", "Nickel"],
-      ["Type", "Heavy Duty — higher volume per cartridge"],
+      ["Type", "Heavy Duty, higher volume per cartridge"],
       ["Compatible Surfaces", "Copper (apply copper flash on others)"],
       ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Heavy Duty Nickel Pen is the production-grade equivalent of the standard Nickel pen (PL-1006). Most often used to lay down the thicker nickel underlayer required for production-volume gold or rhodium plating sequences.\n\nAlso used for standalone nickel build-up applications — restoring worn nickel coatings on machinery components, plating contact surfaces, and corrosion-protection touch-up on industrial equipment.\n\nApply over copper directly; use the Copper Heavy Duty Pen (PL-1019) for a flash layer on steel, brass, and other non-copper substrates.",
+    "longDescription": "The Heavy Duty Nickel Pen is the production-grade equivalent of the standard Nickel pen (PL-1006). Most often used to lay down the thicker nickel underlayer required for production-volume gold or rhodium plating sequences.\n\nAlso used for standalone nickel build-up applications, restoring worn nickel coatings on machinery components, plating contact surfaces, and corrosion-protection touch-up on industrial equipment.\n\nApply over copper directly; use the Copper Heavy Duty Pen (PL-1019) for a flash layer on steel, brass, and other non-copper substrates.",
     "applications": ["Industrial MRO", "Manufacturing", "Aerospace & Defense"]
   },
   {
@@ -726,7 +726,7 @@
     "price": 70,
     "url": "https://hunterproducts.com/products.json",
     "taxable": false,
-    "description": "Specialized degreaser for stainless steel surfaces prior to plating. Standard degreaser cannot prep stainless — this is the correct solution.",
+    "description": "Specialized degreaser for stainless steel surfaces prior to plating. Standard degreaser cannot prep stainless. This is the correct solution.",
     "dimensions": { "weight": 45, "width": 3, "height": 3, "length": 18 },
     "slug": "stainless-steel-degreaser-pen",
     "category": "accessories",
@@ -741,7 +741,7 @@
       ["Use On", "Stainless steel only"],
       ["Required Compatibles", "Power Supply, Connector Cables"]
     ],
-    "longDescription": "Stainless steel does not respond to the standard Absorbent / Degreaser pen (PL-1002). Its surface chemistry — passivation layer, chromium content — requires a specialized degreaser, which this pen provides.\n\nUsed before any plating work on stainless steel substrates: medical instruments, food-service equipment, marine hardware, and industrial components built from stainless. After this prep, follow with the appropriate plating pen for the target finish.\n\nRequires the Micro-Metallizer power supply and connector cables. This pen is purely a prep step — it does not deposit any plating layer itself.",
+    "longDescription": "Stainless steel does not respond to the standard Absorbent / Degreaser pen (PL-1002). Its surface chemistry, passivation layer, chromium content, requires a specialized degreaser, which this pen provides.\n\nUsed before any plating work on stainless steel substrates: medical instruments, food-service equipment, marine hardware, and industrial components built from stainless. After this prep, follow with the appropriate plating pen for the target finish.\n\nRequires the Micro-Metallizer power supply and connector cables. This pen is purely a prep step, it does not deposit any plating layer itself.",
     "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
   },
   {
@@ -764,7 +764,7 @@
       ["Function", "Connect Micro-Metallizer pens to power supply"],
       ["Compatibility", "All Micro-Metallizer power supplies"]
     ],
-    "longDescription": "Standard replacement connector cables for the Micro-Metallizer pen plating system. The cables connect any plating pen — standard or heavy duty — to the variable DC power supply (PL-1000).\n\nIncluded with all kits (Deluxe, Contact Repair, Heavy Duty equivalents) and with the standalone Power Supply purchase. This SKU is purely for replacement when an existing cable wears out or becomes damaged.\n\nCompatible with the full Micro-Metallizer power supply range, current and legacy.",
+    "longDescription": "Standard replacement connector cables for the Micro-Metallizer pen plating system. The cables connect any plating pen, standard or heavy duty, to the variable DC power supply (PL-1000).\n\nIncluded with all kits (Deluxe, Contact Repair, Heavy Duty equivalents) and with the standalone Power Supply purchase. This SKU is purely for replacement when an existing cable wears out or becomes damaged.\n\nCompatible with the full Micro-Metallizer power supply range, current and legacy.",
     "applications": ["Industrial MRO"]
   },
   {
@@ -788,7 +788,7 @@
       ["Material", "Tungsten Carbide (WC)"],
       ["Use", "Standard general-purpose Carbitron 300 electrode"]
     ],
-    "longDescription": "The 1/8\" tungsten-carbide electrode is the general-purpose electrode supplied with every new Carbitron 300 diamond-dusting system. It handles the majority of standard tungsten-carbide deposition work — edge hardening, surface coating on medical instruments, tooling, and industrial components.\n\nElectrodes are consumables: they wear down with deposition use and need to be replaced periodically. This SKU is for direct replacement when the original 1/8\" electrode from the kit reaches end of service life.\n\nFor finer-detail work, see the 1/16\" electrode (TS3039); for precision work on small or delicate surfaces, the 1/32\" electrode (TS3040).",
+    "longDescription": "The 1/8\" tungsten-carbide electrode is the general-purpose electrode supplied with every new Carbitron 300 diamond-dusting system. It handles the majority of standard tungsten-carbide deposition work, edge hardening, surface coating on medical instruments, tooling, and industrial components.\n\nElectrodes are consumables: they wear down with deposition use and need to be replaced periodically. This SKU is for direct replacement when the original 1/8\" electrode from the kit reaches end of service life.\n\nFor finer-detail work, see the 1/16\" electrode (TS3039); for precision work on small or delicate surfaces, the 1/32\" electrode (TS3040).",
     "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
   },
   {
@@ -810,9 +810,9 @@
       ["Part No.", "TS3039"],
       ["Size", "1/16\" diameter × 2½\" length"],
       ["Material", "Tungsten Carbide (WC)"],
-      ["Use", "Fine work — smaller deposition area"]
+      ["Use", "Fine work, smaller deposition area"]
     ],
-    "longDescription": "The 1/16\" tungsten-carbide electrode is the fine-detail electrode for the Carbitron 300 system. Used on smaller features where the 1/8\" electrode's coverage area is too coarse — dental instrument edges, small surgical tools, precision tooling.\n\nThe smaller cross-section also concentrates the deposition current, producing a slightly different deposit profile that some applications require.\n\nLike all Carbitron 300 electrodes, this is a consumable item replaced periodically as it wears down with use.",
+    "longDescription": "The 1/16\" tungsten-carbide electrode is the fine-detail electrode for the Carbitron 300 system. Used on smaller features where the 1/8\" electrode's coverage area is too coarse, dental instrument edges, small surgical tools, precision tooling.\n\nThe smaller cross-section also concentrates the deposition current, producing a slightly different deposit profile that some applications require.\n\nLike all Carbitron 300 electrodes, this is a consumable item replaced periodically as it wears down with use.",
     "applications": ["Medical & Dental", "Manufacturing"]
   },
   {
@@ -829,12 +829,12 @@
     "image": "/img/carbitron.jpeg",
     "h1": "Tungsten-Carbide Electrode 1/32\" (Carbitron 300)",
     "metaTitle": "Tungsten-Carbide Electrode 1/32\" | Carbitron 300 | Hunter Products",
-    "metaDescription": "Precision 1/32\" × 2½\" tungsten-carbide electrode for the Carbitron 300 system — for delicate surfaces and the finest detail work. Hunter Products replacement.",
+    "metaDescription": "Precision 1/32\" × 2½\" tungsten-carbide electrode for the Carbitron 300 system, for delicate surfaces and the finest detail work. Hunter Products replacement.",
     "specs": [
       ["Part No.", "TS3040"],
       ["Size", "1/32\" diameter × 2½\" length"],
       ["Material", "Tungsten Carbide (WC)"],
-      ["Use", "Precision — small or delicate surfaces"]
+      ["Use", "Precision, small or delicate surfaces"]
     ],
     "longDescription": "The 1/32\" tungsten-carbide electrode is the precision electrode in the Carbitron 300 lineup. Reserved for delicate surfaces, fine-feature deposition, and applications where the larger electrodes would cover too much area or damage adjacent features.\n\nCommon use cases include precision dental instrument hardening, micro-tooling edge deposition, and selective coating of delicate medical instruments.\n\nReplacement electrode for the Carbitron 300 system. Like the other electrodes in the family, it is a consumable that wears down with use.",
     "applications": ["Medical & Dental", "Manufacturing"]
@@ -959,7 +959,7 @@
       ["Power", "110V / 220V"],
       ["Includes", "Vibrator hand piece with power cable, grounding cable, 1/8\" and 1/16\" electrodes"]
     ],
-    "longDescription": "The Carbitron 300 is the original commercial diamond-dusting platform. Invented by Hunter Products for the medical and dental industries, the system deposits a hard tungsten-carbide layer onto cutting edges and wear surfaces — extending the operational life of surgical instruments, dental tools, and precision cutting equipment.\n\nEvery system ships ready to use. In the box: the Carbitron 300 power supply, the vibrator hand piece with power cable, a grounding cable, and two tungsten-carbide electrodes, 1/8\" for general deposition and 1/16\" for finer work. Electrodes are consumables and are sold individually, along with a 1/32\" electrode for precision detail work.\n\nDeployed across medical instrument manufacturers, dental laboratories, surgical-tool refurbishment shops, precision tooling operations, and industrial cutting applications. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
+    "longDescription": "The Carbitron 300 is the original commercial diamond-dusting platform. Invented by Hunter Products for the medical and dental industries, the system deposits a hard tungsten-carbide layer onto cutting edges and wear surfaces, extending the operational life of surgical instruments, dental tools, and precision cutting equipment.\n\nEvery system ships ready to use. In the box: the Carbitron 300 power supply, the vibrator hand piece with power cable, a grounding cable, and two tungsten-carbide electrodes, 1/8\" for general deposition and 1/16\" for finer work. Electrodes are consumables and are sold individually, along with a 1/32\" electrode for precision detail work.\n\nDeployed across medical instrument manufacturers, dental laboratories, surgical-tool refurbishment shops, precision tooling operations, and industrial cutting applications. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
     "applications": ["Medical & Dental", "Manufacturing", "Industrial MRO"]
   },
   {
@@ -982,7 +982,7 @@
       ["Application", "Cleaning, surface prep, etching"],
       ["Best For", "Small or delicate components"]
     ],
-    "longDescription": "The Micro-Jet 200 is Hunter Products' precision micro-abrasive blasting platform — engineered for cleaning, etching, and surface preparation on parts where conventional blasting equipment is too aggressive.\n\nUsed in electronics manufacturing for PCB-level cleaning and rework, in medical instrument production for fine-feature surface prep, in antique and instrument restoration for selective material removal, and in tooling for matte-finish creation on cutting surfaces.\n\nThe system controls particle delivery to a degree that allows the operator to work on delicate features — fine wires, thin substrates, intricate detail — without the collateral damage standard blasting would cause. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
+    "longDescription": "The Micro-Jet 200 is Hunter Products' precision micro-abrasive blasting platform, engineered for cleaning, etching, and surface preparation on parts where conventional blasting equipment is too aggressive.\n\nUsed in electronics manufacturing for PCB-level cleaning and rework, in medical instrument production for fine-feature surface prep, in antique and instrument restoration for selective material removal, and in tooling for matte-finish creation on cutting surfaces.\n\nThe system controls particle delivery to a degree that allows the operator to work on delicate features, fine wires, thin substrates, intricate detail, without the collateral damage standard blasting would cause. For pricing on volume orders, configuration questions, or service support, contact Hunter Products directly.",
     "applications": ["Electronics & PCB", "Medical & Dental", "Manufacturing"]
   },
   {
