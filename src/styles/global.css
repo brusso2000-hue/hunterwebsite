@@ -94,7 +94,7 @@ h1, h2, h3, h4 {
   font-size: 13px;
   letter-spacing: 0;
 }
-.eyebrow { display: inline-flex; align-items: center; justify-self: start; align-self: start; width: fit-content; padding: 4px 9px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 700; line-height: 1.3; }
+.eyebrow { display: inline-flex; align-items: center; justify-self: start; align-self: start; width: fit-content; padding: 4px 9px; background: var(--brand-deep); color: #fff; font-size: 13px; font-weight: 700; line-height: 1.3; }
 .section--navy .eyebrow, .eyebrow--light { background: #fff; color: var(--ink); }
 .label { color: var(--text-3); }
 .sku { color: var(--text-3); text-transform: none; letter-spacing: 0; }
@@ -184,7 +184,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0;
   color: var(--text-2);
 }
-.spec { border: 2px solid var(--ink); }
+.spec { border: 2px solid var(--brand-deep); }
 
 /* Bulleted spec list (Applications / Substrates / Finishes blocks) */
 .ticks { list-style: none; padding: 0; display: grid; gap: 6px; }
