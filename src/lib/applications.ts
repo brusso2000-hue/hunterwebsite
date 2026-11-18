@@ -80,13 +80,13 @@ export const APPLICATIONS: Application[] = [
     label: 'Medical & Dental',
     code: 'MD',
     title: 'Medical instrument hardening and surgical-tool restoration',
-    lede: 'Tungsten-carbide edge hardening that lets instruments be re-coated instead of replaced.',
+    lede: 'Tungsten carbide that restores grip and wear life, so instruments get repaired instead of replaced.',
     body: [
-      'The Carbitron 300, the diamond-dusting tungsten-carbide coating platform Hunter Products invented, is the standard tool for hardening cutting edges on surgical scalpels, scissors, dental burrs, and precision medical instruments. The deposited tungsten carbide layer extends the operational life of cutting edges far beyond untreated steel and lets older instruments be re-coated rather than replaced.',
+      'Surgical instrument repair companies are the largest users of the Carbitron 300. It fuses a 78 to 80 Rockwell C tungsten carbide layer onto an instrument\'s working surface, restoring grip and wear life so the instrument goes back into service instead of being replaced. The fine 1/32" electrode is made for small, precise work.',
       'Stainless steel instruments require specialized surface preparation before any plating step. The Stainless Steel Degreaser Pen is the correct prep for stainless substrates; the standard Absorbent / Degreaser pen will not work.',
     ],
     workflows: [
-      'Tungsten-carbide edge hardening on scalpels, scissors, curettes, and explorers',
+      'Restoring grip and wear surfaces on surgical instruments during repair',
       'Selective coating of micro-tooling edges using the precision 1/32" electrode',
       'Stainless steel surface prep before any precious-metal plating step',
       'Cleaning and surface preparation on delicate dental and surgical instruments with the Micro-Jet 200',

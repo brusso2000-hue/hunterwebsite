@@ -69,15 +69,15 @@ export const SYSTEM_PAGES: SystemPage[] = [
   {
     slug: 'carbitron-300',
     id: 'carbitron',
-    title: 'Carbitron 300 Tungsten-Carbide Coating System',
-    metaTitle: 'Carbitron 300 | Diamond Dusting & Tungsten Carbide, {from}',
+    title: 'Carbitron 300 Tungsten-Carbide Applicator',
+    metaTitle: 'Carbitron 300 Tungsten Carbide Applicator, {from} | Hunter Products',
     metaDescription:
-      'The original diamond-dusting system for surgical instrument repair and manufacturing. Restores grip on needle holder and forceps jaws. Also extends tool life.',
-    headline: 'Diamond dusting for surgical instruments',
+      'Fuse a 78 to 80 Rockwell C tungsten carbide layer onto worn tools, dies, grippers and surgical instruments. Extend tool life, restore grip, salvage worn parts. {from}, ships same day.',
+    headline: 'Make worn tools and instruments last longer',
     intro: [
-      'The Carbitron 300 is the original diamond-dusting system. Surgical instrument repair companies and instrument makers use it to apply a fine layer of tungsten carbide to working surfaces such as needle holder and forceps jaws, giving them the textured, hard grip that fine needles and tissue need.',
-      'Plain stainless steel jaws cannot be repaired once they wear, so the whole instrument gets replaced. A diamond-dusted surface adds a hard tungsten carbide grip where the instrument does its work. The deposit is fused to the instrument at 78 to 80 Rockwell C, applied with a tungsten-carbide electrode in a vibrating hand tool, a process generally known as electro-spark deposition.',
-      'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. A 1/8" x 2 1/2" electrode covers about 50 square inches at 0.0005" average thickness, and replacement electrodes are $12.50, so one unit at each repair bench runs for very little. The same system also extends the life of cutting tools, punches and dies 5x to 10x in machine shops.',
+      'The Carbitron 300 fuses a hard tungsten carbide layer onto metal right where it wears. Instead of replacing a dull cutter, a slipping collet or a worn instrument, you put carbide back on the working surface and return it to service. Surgical instrument repair companies, tool rooms and stamping shops use it for three jobs: longer wear life, more grip and salvaging worn parts.',
+      'It is not a coating that sits on top. A vibrating hand tool holds a tungsten carbide electrode; each time the electrode touches the work, a small arc carries carbide into and onto the surface, forming a true metallic bond at 78 to 80 Rockwell C. The process is generally known as electro-spark deposition. Thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps.',
+      'Hunter Products rates treated punches, dies and forming tools at 5x to 10x the life of standard tooling. The unit carries the features of systems selling for 5x to 10x its price, and replacement electrodes are $12.50, each covering about 50 square inches at 0.0005". Savings on downtime, tool changes, sharpening and replacement pay for the system quickly, and it runs on a standard outlet at the bench.',
     ],
     photo: 'system-carbitron',
     blocks: [
@@ -103,13 +103,13 @@ export const SYSTEM_PAGES: SystemPage[] = [
         ],
       },
       {
-        title: 'Applications',
+        title: 'What it does',
         items: [
-          'Diamond dusting needle holder and forceps jaws',
-          'Restoring grip on instruments during repair',
-          'Surgical and dental instrument manufacturing',
-          'Cutting tools: end mills, taps, reamers, lathe bits, saws',
-          'Punches, dies, collets, chucks and grippers',
+          'Extends wear life: cutting edges, punches, dies, forming tools',
+          'Restores grip: surgical instrument working surfaces, collets, chucks, grippers',
+          'Salvages worn tools and parts instead of replacing them',
+          'Protects wear surfaces and improves thermal-shock and impact resistance',
+          'Gives cutting edges a self-sharpening carbide face',
         ],
       },
       {
