@@ -173,10 +173,10 @@ export const SYSTEMS: SystemInfo[] = [
     id: 'carbitron',
     name: 'Carbitron 300',
     model: 'TS3037',
-    process: 'Tungsten-carbide coating',
+    process: 'Tungsten-carbide deposition',
     href: '/systems/carbitron-300/',
     summary:
-      'The original diamond-dusting platform. Deposits a hard tungsten-carbide layer on cutting edges and wear surfaces to extend the service life of surgical, dental and industrial tools.',
+      'Fuses hard tungsten carbide onto worn tools, dies, grippers and surgical instruments. Extends wear life, restores grip and salvages worn parts instead of replacing them.',
     flagship: 'TS3037',
   },
   {

@@ -58,10 +58,13 @@ const kitSpec = (p: (typeof kits)[number], key: string) => p.specs.find(([k]) =>
 
 // Hunter's other two systems — shown in their own section so the page stays about brush plating.
 const otherBlurb: Record<string, string> = {
-  carbitron: 'Deposits tungsten carbide onto tools to sharply increase hardness, wear resistance and heat tolerance.',
+  carbitron: 'Fuses tungsten carbide onto worn tools and instruments to extend wear life, restore grip and salvage worn parts.',
   'micro-jet': 'Controlled micro-abrasive blasting for cleaning, etching and surface prep on fine or delicate parts.',
 };
-const otherSystems = SYSTEMS.filter((x) => x.id !== 'micro-metallizer').map((x) => ({
+const carbitron = SYSTEMS.find((x) => x.id === 'carbitron')!;
+const carbitronFrom = Math.min(...productsForSystem('carbitron').filter((p) => typeOf(p) === 'system').map((p) => p.price));
+const carbitronPhoto = photo('system-carbitron');
+const otherSystems = SYSTEMS.filter((x) => x.id === 'micro-jet').map((x) => ({
   ...x,
   blurb: otherBlurb[x.id],
   from: Math.min(...productsForSystem(x.id).filter((p) => typeOf(p) === 'system').map((p) => p.price)),
@@ -269,6 +272,37 @@ const others = APPLICATIONS.filter((a) => !a.focus);
     </div>
   </section>
 
+  <!-- ─── Carbitron 300 feature ────────────────────────── -->
+  <section class="section" id="carbitron">
+    <div class="wrap cb">
+      <div class="cb-copy">
+        <p class="eyebrow">Carbitron 300 &middot; Tungsten carbide</p>
+        <h2 class="h-1">Make worn tools and instruments last longer</h2>
+        <p class="cb-lede">
+          The Carbitron 300 fuses a 78 to 80 Rockwell C tungsten carbide layer onto metal right where it wears.
+          Put carbide back on the working surface and return the part to service instead of buying a new one.
+        </p>
+        <ul class="cb-list">
+          <li><strong>Longer wear life.</strong> Cutting edges, punches, dies and forming tools. Rated 5x to 10x the life of standard tooling.</li>
+          <li><strong>More grip.</strong> Surgical instrument working surfaces, collets, chucks and grippers.</li>
+          <li><strong>Salvage worn parts.</strong> Resize and repair worn tools instead of scrapping them.</li>
+        </ul>
+        <p class="cb-price">
+          <strong>{fmtPrice(carbitronFrom)}</strong> complete, standard outlet. Electrodes $12.50. Used by surgical instrument repair companies, tool rooms and stamping shops.
+        </p>
+        <div class="sys-ctas">
+          <a class="btn btn--primary" href={carbitron.href}>See the Carbitron 300 <span class="arrow">→</span></a>
+          <a class="btn" href="/contact/?topic=technical#quote">Ask about your application</a>
+        </div>
+      </div>
+      {carbitronPhoto.src ? (
+        <div class="cb-media"><Photo photo={carbitronPhoto} aspect="4 / 3" /></div>
+      ) : (
+        <a class="cb-media cb-glyph" href={carbitron.href} aria-label="Carbitron 300 system details"><SystemGlyph system="carbitron" /></a>
+      )}
+    </div>
+  </section>
+
   <!-- ─── Finish chart ─────────────────────────────────── -->
   <section class="section">
     <div class="wrap">
@@ -305,7 +339,7 @@ const others = APPLICATIONS.filter((a) => !a.focus);
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Also from Hunter</p>
-        <h2 class="h-2">Beyond plating: coating and surface prep</h2>
+        <h2 class="h-2">Micro-abrasive surface prep</h2>
       </div>
       <div class="also">
         {otherSystems.map((x) => (
@@ -412,6 +446,18 @@ const others = APPLICATIONS.filter((a) => !a.focus);
   .kit:hover .kit-name { color: var(--brand-dk); text-decoration: underline; text-underline-offset: 3px; }
   .kit-pens { font-size: 14.5px; color: var(--text-2); line-height: 1.45; }
   .kit-price { font-weight: 600; font-size: 17px; color: var(--ink); white-space: nowrap; }
+
+  .cb { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
+  @media (max-width: 860px) { .cb { grid-template-columns: 1fr; } }
+  .cb-copy { display: grid; gap: 18px; }
+  .cb-lede { color: var(--text-2); font-size: 18px; line-height: 1.6; max-width: 56ch; }
+  .cb-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; border-top: 1px solid var(--line); }
+  .cb-list li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; color: var(--text-2); line-height: 1.5; }
+  .cb-list strong { color: var(--ink); }
+  .cb-price { font-size: 15px; color: var(--text-2); }
+  .cb-price strong { color: var(--ink); font-size: 18px; }
+  .cb-glyph { display: grid; place-items: center; background: var(--bg-2); border: 1px solid var(--line); padding: clamp(24px, 4vw, 56px); color: var(--brand-dk); aspect-ratio: 4 / 3; }
+  .cb-glyph :global(svg) { width: 100%; max-width: 420px; height: auto; }
 
   .also { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 860px) { .also { grid-template-columns: 1fr; } }
