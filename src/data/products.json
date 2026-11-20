@@ -66,7 +66,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Gold Plating Pen Kit for Contact Repair",
     "metaTitle": "Gold Plating Pen Kit, {price} | Contact Repair, No Tank",
-    "metaDescription": "Restore worn contacts with gold over nickel. Power supply plus prep, nickel and 24K gold pens, each with self-contained plating solution. {price}. Free returns.",
+    "metaDescription": "Everything to re-plate worn contacts: power supply, cables and degreaser, nickel and 24K gold pens. No tank. {price}. Ships same day, free returns.",
     "specs": [
       ["Part No.", "PL-1000C"],
       ["Contents", "Power supply + cables + 3 pens"],
@@ -393,7 +393,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Nickel Plating Pen",
     "metaTitle": "Nickel Plating Pen, {price} | Underlayer for Gold & Rhodium",
-    "metaDescription": "Plate nickel onto copper: the standard barrier layer under gold and rhodium so the finish lasts. {price}. Ships same day from NJ, free returns.",
+    "metaDescription": "Nickel plating pen: 5 to 6V, about 0.4 µm in 2 minutes, no tank. The barrier layer under gold and rhodium. {price}. Ships same day, free returns.",
     "specs": [
       ["Part No.", "PL-1006"],
       ["Metal", "Nickel"],
@@ -489,7 +489,7 @@
     "image": "/img/plating_pens.jpeg",
     "h1": "Copper Plating Pen",
     "metaTitle": "Copper Plating Pen, {price} | Copper Flash for Steel & Brass",
-    "metaDescription": "Copper flash layer under other platings, or a conductive copper surface on its own. Micro-Metallizer pen. {price}. Ships same day from NJ, free returns.",
+    "metaDescription": "Copper plating pen: flash steel, brass or stainless at 6 to 8V so nickel and gold will bond. No tank. {price}. Ships same day, free returns.",
     "specs": [
       ["Part No.", "PL-1010"],
       ["Metal", "Copper"],
@@ -560,8 +560,8 @@
     "sku": "PL-1013",
     "image": "/img/plating_pens.jpeg",
     "h1": "Zinc Plating Pen",
-    "metaTitle": "Zinc Pen, {price} | Zinc Plating Pen for Steel Touch-Up",
-    "metaDescription": "Plate real zinc onto scratched galvanized steel and bare fasteners to stop rust. Not a paint. {price}. Ships same day from NJ, free returns.",
+    "metaTitle": "Zinc Pen, {price} | Electroplates Real Zinc on Steel, Not Paint",
+    "metaDescription": "Zinc plating pen: electroplates real zinc onto scratched galvanized steel and bare fasteners at 6 to 8V. One pen covers about 300 sq in. {price}, ships same day.",
     "specs": [
       ["Part No.", "PL-1013"],
       ["Metal", "Zinc"],
@@ -584,15 +584,15 @@
     "sku": "PL-1015",
     "image": "/img/plating_pens.jpeg",
     "h1": "Palladium Plating Pen",
-    "metaTitle": "Palladium Plating Pen, {price} | Lower-Cost Rhodium Alternative",
-    "metaDescription": "Tarnish-resistant white metal at under half the price of rhodium. Fully self-contained plating solution, no tank. {price}. Ships same day, free returns.",
+    "metaTitle": "Palladium Plating Pen, {price} | Brush Plate In House, No Tank",
+    "metaDescription": "Palladium plating pen for contacts and spot repair: plates over nickel at 6 to 8V, no tank. Under half the price of rhodium. {price}. Ships same day.",
     "specs": [
       ["Part No.", "PL-1015"],
       ["Metal", "Palladium"],
-      ["Compatible Surfaces", "Most metals"],
-      ["Required Compatibles", "Absorbent Pen, Power Supply, Connector Cables"]
+      ["Compatible Surfaces", "Nickel (apply copper + nickel flash on others)"],
+      ["Required Compatibles", "Absorbent Pen, Nickel Pen, Power Supply, Connector Cables"]
     ],
-    "longDescription": "The Palladium Plating Pen produces a tarnish-resistant white-metal finish often used as a cost-effective alternative to rhodium where the very-bright rhodium reflectivity isn't required.\n\nUsed in electronics for premium contact plating (palladium-nickel sequences are common in connector manufacturing). Palladium's chemistry is more forgiving than rhodium's: it plates onto most metals directly, simplifying the workflow.\n\nRequires Absorbent / Degreaser pen for prep, plus the Micro-Metallizer power supply and connector cables.",
+    "longDescription": "The Palladium Plating Pen produces a tarnish-resistant white-metal finish often used as a cost-effective alternative to rhodium where the very-bright rhodium reflectivity isn't required.\n\nUsed in electronics for premium contact plating (palladium-nickel sequences are common in connector manufacturing). Like rhodium, palladium plates over nickel. On copper, plate nickel first; on steel, brass and other metals the sequence is degrease, copper flash, nickel, then palladium.\n\nRequires the Absorbent / Degreaser pen for prep and the Nickel pen for the underlayer, plus the Micro-Metallizer power supply and connector cables.",
     "applications": ["Electronics & PCB"]
   },
   {

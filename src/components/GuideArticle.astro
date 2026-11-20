@@ -2,8 +2,10 @@
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { guideBySlug, guideUrl, type Guide, type GuideTable } from '../lib/guides';
-import { bySlug, fmtPrice, productUrl, systemOf } from '../lib/catalog';
+import { bySlug, fmtPrice, productUrl, snippetPrice, systemOf, typeOf } from '../lib/catalog';
 import { SITE } from '../lib/site';
+import AddToCart from './AddToCart.astro';
+import ProductCard from './ProductCard.astro';
 
 interface Props { g: Guide }
 const { g } = Astro.props;
@@ -12,6 +14,15 @@ const picks = g.products.map(bySlug);
 const related = g.related.map(guideBySlug);
 const allSteps = g.sections.flatMap((s) => s.steps ?? []);
 const isTooling = picks.some((p) => systemOf(p) === 'carbitron');
+const lead = picks[0];
+// The buy box sits after the how-to steps (or after the first section when a guide has none).
+const stepIdx = g.sections.findIndex((s) => s.steps?.length);
+const buyAfter = stepIdx >= 0 ? stepIdx : 0;
+// Plating guides whose parts list has no kit point first-time buyers at the two starter kits.
+const hasKit = picks.some((p) => typeOf(p) === 'kit');
+const starterKits = !isTooling && !hasKit ? [bySlug('contact-repair-kit'), bySlug('deluxe-plating-kit')] : [];
+// Every plating guide links up to the two pillar pages; the pillars link to each other through `related`.
+const showPillars = !isTooling && !g.path;
 // Pillar pages live at the site root (/brush-plating/), not under /guides/.
 const crumbs: [string, string?][] = g.path
   ? [['Home', '/'], [g.label]]
@@ -83,15 +94,20 @@ const tableId = (t: GuideTable) => t.caption;
       <div class="need">
         <p class="need-head mono">What you need</p>
         {picks.map((p, i) => (
-          <a class:list={['need-item', { first: i === 0 }]} href={productUrl(p)}>
-            <span class="sku">{p.sku}</span>
-            <span class="need-name">{p.name}</span>
-            <span class="need-price">{fmtPrice(p.price)}</span>
-          </a>
+          <div class:list={['need-item', { first: i === 0 }]}>
+            <a class="need-link" href={productUrl(p)}>
+              <span class="sku">{p.sku}</span>
+              <span class="need-name">{p.name}</span>
+              <span class="need-price">{fmtPrice(p.price)}</span>
+            </a>
+            <AddToCart product={p} size="sm" label="Add" />
+          </div>
         ))}
-        <a class="btn btn--primary btn--block need-cta" href={productUrl(picks[0])}>
-          View {picks[0].name} <span class="arrow">→</span>
-        </a>
+        <div class="need-cta">
+          <AddToCart product={lead} block label={`Add ${lead.name} to cart`} />
+          <p class="need-ship">In stock · ships same day</p>
+        </div>
+        <a class="need-ask" href={productUrl(lead)}>{lead.name} details and specs</a>
         <a class="need-ask" href="/contact/?topic=technical#quote">Ask an application engineer</a>
       </div>
     </aside>
@@ -102,7 +118,23 @@ const tableId = (t: GuideTable) => t.caption;
         <p>{g.answer}</p>
       </section>
 
-      {g.sections.map((s) => (
+      <div class="quick-buy">
+        <a class="quick-buy-info" href={productUrl(lead)}>
+          <span class="quick-buy-name">{lead.name}</span>
+          <span class="quick-buy-meta">{fmtPrice(lead.price)} · ships same day</span>
+        </a>
+        <AddToCart product={lead} size="sm" />
+      </div>
+
+      {showPillars && (
+        <p class="pillars">
+          This job is done with <a href="/brush-plating/">brush plating</a>, a form of{' '}
+          <a href="/selective-plating/">selective plating</a> that puts metal only where the pen tip touches.
+        </p>
+      )}
+
+      {g.sections.map((s, si) => (
+        <>
         <section class="sec">
           <h2 class="h-3 marked">{s.heading}</h2>
           {s.paragraphs && <div class="prose">{s.paragraphs.map((t) => <p>{t}</p>)}</div>}
@@ -135,6 +167,36 @@ const tableId = (t: GuideTable) => t.caption;
           )}
           {s.note && <p class="note">{s.note}</p>}
         </section>
+        {si === buyAfter && (
+          <section class="order" aria-label="Order the parts for this job">
+            <div class="order-head">
+              <h2 class="h-4">Order the parts for this job</h2>
+              <p class="order-ship">In stock. Ships same day on orders placed by 2 PM ET on business days.</p>
+            </div>
+            <ul class="order-list">
+              {picks.map((p) => (
+                <li>
+                  <a class="order-info" href={productUrl(p)}>
+                    <span class="order-name">{p.name}</span>
+                    <span class="sku">{p.sku}</span>
+                  </a>
+                  <span class="order-price">{fmtPrice(p.price)}</span>
+                  <AddToCart product={p} size="sm" />
+                </li>
+              ))}
+            </ul>
+            {starterKits.length > 0 && (
+              <p class="order-kit">
+                First setup? The <a href={productUrl(starterKits[0])}>{starterKits[0].name}</a> ({snippetPrice(starterKits[0].price)})
+                includes the power supply, cables and the degreaser, nickel and 24K gold pens. The{' '}
+                <a href={productUrl(starterKits[1])}>{starterKits[1].name}</a> ({snippetPrice(starterKits[1].price)})
+                adds silver, copper and chrome color. Add any other pen to either kit.
+              </p>
+            )}
+            <a class="order-all" href="/store/">See every pen and kit in the store <span class="arrow">→</span></a>
+          </section>
+        )}
+        </>
       ))}
 
       <section class="sec">
@@ -146,6 +208,13 @@ const tableId = (t: GuideTable) => t.caption;
               <p>{f.a}</p>
             </details>
           ))}
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2 class="h-3 marked">Shop the parts in this guide</h2>
+        <div class="shop">
+          {picks.map((p) => <ProductCard product={p} />)}
         </div>
       </section>
 
@@ -164,8 +233,8 @@ const tableId = (t: GuideTable) => t.caption;
           )}
         </div>
         <div class="help-ctas">
-          <a class="btn btn--ghost-light" href="/store/">Browse catalog</a>
-          <a class="btn btn--primary" href="/contact/?topic=technical#quote">Ask an engineer <span class="arrow">→</span></a>
+          <a class="btn btn--ghost-light" href="/contact/?topic=technical#quote">Ask an engineer</a>
+          <a class="btn btn--primary help-shop" href="/store/">Shop the store <span class="arrow">→</span></a>
         </div>
       </section>
 
@@ -182,6 +251,20 @@ const tableId = (t: GuideTable) => t.caption;
       </section>
     </article>
   </div>
+
+  <script is:inline define:vars={{ guideSlug: g.slug }}>
+    // Report add-to-cart clicks made from a guide so guide-to-store traffic can be measured in GA4.
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('.snipcart-add-item') : null;
+      if (!btn || typeof window.gtag !== 'function') return;
+      window.gtag('event', 'add_to_cart', {
+        currency: 'USD',
+        value: Number(btn.getAttribute('data-item-price')) || 0,
+        items: [{ item_id: btn.getAttribute('data-item-id'), item_name: btn.getAttribute('data-item-name') }],
+        guide: guideSlug,
+      });
+    });
+  </script>
 </Base>
 
 <style>
@@ -195,15 +278,54 @@ const tableId = (t: GuideTable) => t.caption;
   .need { display: grid; border: 1px solid var(--line); background: #fff; position: sticky; top: calc(var(--header-h) + 20px); }
   @media (max-width: 960px) { .need { position: static; } }
   .need-head { background: var(--brand-deep); color: #fff; padding: 11px 14px; font-size: 13px; font-weight: 500; }
-  .need-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 12px 14px; border-top: 1px solid var(--line); text-decoration: none; }
+  .need-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 12px 14px; border-top: 1px solid var(--line); }
   .need-item:hover { background: var(--brand-wash); }
   .need-item.first { background: var(--bg-2); }
-  .need-item .sku { grid-column: 1 / -1; font-size: 13px; }
+  .need-link { display: grid; gap: 2px; text-decoration: none; min-width: 0; }
+  .need-link .sku { font-size: 13px; }
   .need-name { color: var(--ink); font-weight: 550; font-size: 14.5px; }
+  .need-link:hover .need-name { text-decoration: underline; text-underline-offset: 3px; }
   .need-price { font-family: var(--sans); color: var(--ink); font-size: 14px; }
-  .need-cta { margin: 14px 14px 8px; width: auto; white-space: normal; text-align: center; line-height: 1.3; min-height: 44px; height: auto; padding-top: 10px; padding-bottom: 10px; }
+  .need-cta { display: grid; gap: 8px; padding: 14px 14px 10px; border-top: 1px solid var(--line); }
+  .need-cta :global(.btn) { white-space: normal; text-align: center; line-height: 1.3; min-height: 44px; height: auto; padding-top: 10px; padding-bottom: 10px; }
+  .need-ship { font-size: 13px; color: var(--ok); font-weight: 550; text-align: center; }
   .need { min-width: 0; }
-  .need-ask { padding: 0 14px 14px; font-size: 13.5px; color: var(--brand-dk); }
+  .need-ask { padding: 0 14px 10px; font-size: 13.5px; color: var(--brand-dk); }
+  .need-ask:last-child { padding-bottom: 14px; }
+
+  /* Phone and tablet: the parts panel drops below the article, so put the headline product under the answer. */
+  .quick-buy { display: none; }
+  @media (max-width: 960px) {
+    .quick-buy { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px; border: 1px solid var(--ink); background: #fff; }
+    .quick-buy-info { display: grid; gap: 2px; text-decoration: none; min-width: 0; }
+    .quick-buy-name { color: var(--ink); font-weight: 650; }
+    .quick-buy-meta { font-size: 13.5px; color: var(--text-2); }
+  }
+
+  .pillars { color: var(--text-2); max-width: 72ch; }
+  .pillars a { color: var(--brand-dk); font-weight: 550; }
+
+  .order { border: 2px solid var(--ink); background: #fff; display: grid; }
+  .order-head { background: var(--ink); color: #fff; padding: 14px 18px; display: grid; gap: 4px; }
+  .order-head h2 { color: #fff; }
+  .order-ship { font-size: 13.5px; color: var(--on-navy-2); }
+  .order-list { list-style: none; padding: 0; margin: 0; display: grid; }
+  .order-list li { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+  .order-info { display: grid; gap: 2px; text-decoration: none; min-width: 0; }
+  .order-name { color: var(--ink); font-weight: 600; }
+  .order-info:hover .order-name { text-decoration: underline; text-underline-offset: 3px; }
+  .order-info .sku { font-size: 13px; }
+  .order-price { font-weight: 550; color: var(--ink); }
+  .order-kit { padding: 14px 18px; background: var(--bg-2); border-bottom: 1px solid var(--line); color: var(--text-2); font-size: 14.5px; max-width: none; }
+  .order-kit a { color: var(--ink); font-weight: 600; }
+  .order-all { padding: 12px 18px; font-weight: 600; color: var(--brand-dk); font-size: 14.5px; }
+  @media (max-width: 520px) {
+    .order-list li { grid-template-columns: 1fr auto; }
+    .order-price { grid-column: 1; grid-row: 2; }
+    .order-list li :global(.btn) { grid-column: 2; grid-row: 1 / span 2; }
+  }
+
+  .shop { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
 
   .answer { border-left: 3px solid var(--gold); background: var(--bg-2); padding: 18px 22px; }
   .answer-tag { font-size: 13px; color: var(--brand-dk); margin-bottom: 6px; }
@@ -233,6 +355,8 @@ const tableId = (t: GuideTable) => t.caption;
   .help { background: var(--navy); color: var(--on-navy-2); padding: clamp(24px, 3vw, 36px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
   .help h2 { color: #fff; margin-bottom: 6px; }
   .help-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .help-shop { background: #fff; border-color: #fff; color: var(--ink); }
+  .help-shop:hover { background: var(--on-navy); border-color: var(--on-navy); color: var(--ink); }
 
   .rel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
   .rel a { display: grid; gap: 6px; padding: 16px; border: 1px solid var(--line); text-decoration: none; background: #fff; }

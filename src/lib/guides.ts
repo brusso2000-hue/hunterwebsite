@@ -226,7 +226,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'deluxe-plating-kit', 'deluxe-plating-kit-heavy-duty', 'micro-metallizer-power-supply'],
-    related: ['brush-plating-vs-tank-plating', 'brush-plating-thickness-chart', 'brush-plating-substrate-guide', 'brush-plating-cost', 'plating-pen-kit-comparison', 'selective-plating'],
+    related: ['brush-plating-vs-tank-plating', 'brush-plating-thickness-chart', 'plating-pen-voltage-chart', 'brush-plating-substrate-guide', 'brush-plating-cost', 'plating-pen-kit-comparison', 'gold-plating-pen-guide', 'silver-plating-pen-guide', 'nickel-plating-pen-guide', 'copper-plating-pen-guide', 'tin-plating-pen-guide', 'zinc-plating-pen-touch-up', 'palladium-plating-pen-guide', 'rhodium-plating-pen-guide', 'selective-plating'],
     updated: '2026-11-16',
   },
 
@@ -319,7 +319,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'deluxe-plating-kit', 'tin-plating-pen', 'gold-24k-plating-pen'],
-    related: ['brush-plating', 'gold-plating-connector-pins', 'pcb-gold-finger-repair', 'restore-pcb-pad-solderability', 'brush-plating-vs-tank-plating', 'brush-plating-substrate-guide'],
+    related: ['brush-plating', 'gold-plating-connector-pins', 'pcb-gold-finger-repair', 'restore-pcb-pad-solderability', 'tin-plating-pen-guide', 'nickel-plating-pen-guide', 'brush-plating-vs-tank-plating', 'brush-plating-substrate-guide'],
     updated: '2026-11-16',
   },
   {
@@ -418,7 +418,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'contact-repair-kit-heavy-duty', 'gold-24k-plating-pen', 'nickel-plating-pen'],
-    related: ['pcb-gold-finger-repair', 'brush-plating-thickness-chart', 'brush-plating-substrate-guide'],
+    related: ['pcb-gold-finger-repair', 'nickel-plating-pen-guide', 'brush-plating-thickness-chart', 'brush-plating-substrate-guide'],
     updated: '2026-09-30',
   },
 
@@ -505,7 +505,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'gold-24k-plating-pen', 'nickel-plating-pen', 'micro-jet-200-system'],
-    related: ['gold-plating-connector-pins', 'restore-pcb-pad-solderability', 'brush-plating-thickness-chart'],
+    related: ['gold-plating-connector-pins', 'restore-pcb-pad-solderability', 'nickel-plating-pen-guide', 'plating-time-thickness-conversion'],
     updated: '2026-09-30',
   },
 
@@ -513,9 +513,9 @@ export const GUIDES: Guide[] = [
     slug: 'restore-pcb-pad-solderability',
     label: 'Restoring PCB pad solderability',
     h1: 'How to restore solderability on oxidized PCB pads',
-    metaTitle: 'Restore Solderability on Oxidized PCB Pads with Tin Plating | Hunter Products',
+    metaTitle: 'PCB Pads Will Not Take Solder? Re-Tin Them in Place',
     metaDescription:
-      'Oxidized PCB pads and component leads that will not take solder can be re-tinned in place with a tin plating pen. Voltages, steps and parts list.',
+      'Restore solderability on oxidized PCB pads and leads: re-tin them in place with a $70 tin plating pen, no underlayer. Steps, voltages and parts list.',
     eyebrow: 'Electronics & PCB',
     lede: 'Old or oxidized tin on pads, leads, terminals and lugs stops wetting with solder. Selectively re-tinning with a plating pen restores normal soldering without reworking the whole board.',
     answer:
@@ -574,7 +574,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['tin-plating-pen', 'absorbent-degreaser-plating-pen', 'micro-metallizer-power-supply', 'contact-repair-kit'],
-    related: ['pcb-gold-finger-repair', 'brush-plating-substrate-guide', 'brush-plating-vs-tank-plating'],
+    related: ['tin-plating-pen-guide', 'pcb-gold-finger-repair', 'brush-plating-substrate-guide', 'brush-plating-vs-tank-plating'],
     updated: '2026-09-30',
   },
 
@@ -699,7 +699,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['deluxe-plating-kit', 'micro-metallizer-power-supply', 'gold-24k-heavy-duty-plating-pen'],
-    related: ['brush-plating-substrate-guide', 'brush-plating-vs-tank-plating', 'plating-pen-kit-comparison'],
+    related: ['plating-pen-voltage-chart', 'plating-time-thickness-conversion', 'brush-plating-substrate-guide', 'plating-pen-kit-comparison'],
     updated: '2026-09-30',
   },
 
@@ -776,7 +776,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['deluxe-plating-kit', 'copper-plating-pen', 'nickel-plating-pen', 'stainless-steel-degreaser-pen'],
-    related: ['brush-plating-thickness-chart', 'gold-plating-connector-pins', 'brush-plating-vs-tank-plating'],
+    related: ['copper-plating-pen-guide', 'nickel-plating-pen-guide', 'brush-plating-thickness-chart', 'gold-plating-connector-pins'],
     updated: '2026-09-30',
   },
 
@@ -784,7 +784,7 @@ export const GUIDES: Guide[] = [
     slug: 'plating-pen-kit-comparison',
     label: 'Plating pen kit comparison',
     h1: 'Plating pen kits compared: which one to buy',
-    metaTitle: 'Plating Pen Kit Comparison: Contact Repair vs Deluxe vs Heavy Duty',
+    metaTitle: 'Plating Pen Kits Compared: $400 to $900, Which to Buy',
     metaDescription:
       'Compare the four Micro-Metallizer electroplating pen kits side by side: pens included, price, savings vs buying separately, and which job each kit fits.',
     eyebrow: 'Buying guide',
@@ -848,7 +848,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'deluxe-plating-kit', 'contact-repair-kit-heavy-duty', 'deluxe-plating-kit-heavy-duty'],
-    related: ['gold-plating-connector-pins', 'pcb-gold-finger-repair', 'brush-plating-thickness-chart'],
+    related: ['gold-plating-connector-pins', 'pcb-gold-finger-repair', 'plating-pen-voltage-chart', 'rhodium-plating-pen-guide'],
     updated: '2026-10-02',
   },
   {
@@ -961,7 +961,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['gold-24k-plating-pen', 'contact-repair-kit', 'gold-24k-heavy-duty-plating-pen', 'gold-18k-plating-pen'],
-    related: ['gold-plating-connector-pins', 'brush-plating-substrate-guide', 'brush-plating-cost'],
+    related: ['gold-plating-connector-pins', 'nickel-plating-pen-guide', 'brush-plating-substrate-guide', 'brush-plating-cost'],
     updated: '2026-10-12',
   },
 
@@ -1052,7 +1052,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['zinc-plating-pen', 'absorbent-degreaser-plating-pen', 'micro-metallizer-power-supply', 'micro-metallizer-connector-cables'],
-    related: ['brush-plating-substrate-guide', 'brush-plating-thickness-chart', 'brush-plating-cost'],
+    related: ['copper-plating-pen-guide', 'brush-plating-substrate-guide', 'plating-time-thickness-conversion', 'brush-plating-cost'],
     updated: '2026-10-12',
   },
 
@@ -1175,7 +1175,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['contact-repair-kit', 'deluxe-plating-kit', 'gold-24k-plating-pen'],
-    related: ['brush-plating-vs-tank-plating', 'plating-pen-kit-comparison', 'brush-plating-thickness-chart'],
+    related: ['brush-plating-vs-tank-plating', 'plating-pen-kit-comparison', 'plating-time-thickness-conversion', 'palladium-plating-pen-guide'],
     updated: '2026-10-12',
   },
 
@@ -1183,9 +1183,9 @@ export const GUIDES: Guide[] = [
     slug: 'silver-plating-pen-guide',
     label: 'Silver plating contacts',
     h1: 'How to silver plate contacts and bus bars with a plating pen',
-    metaTitle: 'Silver Plating Pen Guide: Contacts, Bus Bars, Steps',
+    metaTitle: 'Silver Plating Pen: Plate Contacts & Bus Bars at 5 to 6V',
     metaDescription:
-      'Silver plating pen how-to for contacts, bus bars and switchgear: no underlayer on most metals, 5 to 6V settings, plating times and heavy-duty options.',
+      'Silver plate contacts and bus bars in place: straight onto copper, brass or steel at 5 to 6V, about 0.5 µm in 2 minutes. Pens from $85, ships same day.',
     eyebrow: 'Silver plating',
     lede: 'Silver is the finish of choice where conductivity matters. A silver plating pen restores it on contacts and bus bars at the bench or in place, without a tank.',
     answer:
@@ -1269,7 +1269,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['silver-plating-pen', 'silver-heavy-duty-plating-pen', 'deluxe-plating-kit', 'absorbent-degreaser-plating-pen'],
-    related: ['brush-plating-substrate-guide', 'brush-plating-thickness-chart', 'brush-plating-cost'],
+    related: ['plating-pen-voltage-chart', 'brush-plating-substrate-guide', 'brush-plating-thickness-chart', 'brush-plating-cost'],
     updated: '2026-10-12',
   },
 
@@ -1348,9 +1348,9 @@ export const GUIDES: Guide[] = [
     slug: 'extend-cutting-tool-life-tungsten-carbide',
     label: 'Extending cutting tool life',
     h1: 'How to extend cutting tool life with tungsten carbide deposition',
-    metaTitle: 'Extend Cutting Tool Life With Tungsten Carbide Coating',
+    metaTitle: 'Cutting Tool Coating: Add Tungsten Carbide In House, $495',
     metaDescription:
-      'Deposit tungsten carbide on end mills, taps, reamers, lathe bits and saws: where to apply it, how thick, and how to re-sharpen for 5x to 10x tool life.',
+      'Coat end mills, taps, reamers, lathe bits and saws with tungsten carbide in your own shop: where to apply it, how thick, and how to re-sharpen. 5x to 10x life.',
     eyebrow: 'Tooling',
     lede: 'A cutting edge wears where it works. Depositing tungsten carbide on just that edge, then re-sharpening, gives standard tooling a carbide working surface for a fraction of the cost of new tools.',
     answer:
@@ -1450,7 +1450,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-16', 'tungsten-carbide-electrode-1-32'],
-    related: ['diamond-dusting-surgical-instruments', 'punch-and-die-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
+    related: ['tungsten-carbide-end-mills-milling-cutters', 'tungsten-carbide-taps-reamers', 'punch-and-die-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
     updated: '2026-10-12',
   },
 
@@ -1458,9 +1458,9 @@ export const GUIDES: Guide[] = [
     slug: 'punch-and-die-life-tungsten-carbide',
     label: 'Punch and die life',
     h1: 'Extend punch and die life with tungsten carbide',
-    metaTitle: 'Extend Punch and Die Life With Tungsten Carbide',
+    metaTitle: 'Tungsten Carbide for Punches & Dies: Apply It In House',
     metaDescription:
-      'Deposit tungsten carbide on punches, dies, forming tools and molds where they wear. Where to apply it, how thick, and how to finish. Rated 5x to 10x life.',
+      'Add 78 to 80 Rockwell C tungsten carbide to the punches and dies you already own. Where to apply it, how thick, how to finish. Rated 5x to 10x life. $495.',
     eyebrow: 'Tooling',
     lede: 'Punches, dies and forming tools wear at a few predictable spots. Building tungsten carbide onto those spots, instead of replacing the tool, keeps them in tolerance far longer.',
     answer:
@@ -1538,7 +1538,7 @@ export const GUIDES: Guide[] = [
       },
     ],
     products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-16'],
-    related: ['extend-cutting-tool-life-tungsten-carbide', 'carbide-grip-surfaces-collets-grippers'],
+    related: ['extend-cutting-tool-life-tungsten-carbide', 'tungsten-carbide-end-mills-milling-cutters', 'carbide-grip-surfaces-collets-grippers'],
     updated: '2026-10-12',
   },
 
@@ -1617,6 +1617,887 @@ export const GUIDES: Guide[] = [
     products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-32'],
     related: ['diamond-dusting-surgical-instruments', 'extend-cutting-tool-life-tungsten-carbide', 'punch-and-die-life-tungsten-carbide'],
     updated: '2026-10-12',
+  },
+
+  // ── Metal guides: nickel, copper, tin, palladium, rhodium ────────────
+
+  {
+    slug: 'nickel-plating-pen-guide',
+    label: 'Using a nickel plating pen',
+    h1: 'How to use a nickel plating pen: underlayers, voltage and thickness',
+    metaTitle: 'Nickel Plating Pen: How to Use It, 5 to 6V, No Tank',
+    metaDescription:
+      'Brush plate nickel onto copper at 5 to 6V: about 0.4 µm in 2 minutes. When to copper flash first, standard vs heavy-duty vs black nickel. Pens from $70.',
+    eyebrow: 'Nickel plating',
+    lede: 'Nickel is the layer most plating jobs depend on. It goes under gold, rhodium and palladium so those finishes bond and last, and it works as a finish in its own right.',
+    answer:
+      'Degrease the part at 10 to 12V DC, then stroke the nickel pen over it at 5 to 6V. Nickel plates directly onto copper; steel, brass and other metals get a copper flash first. A standard nickel pen deposits about 0.4 µm in 2 minutes on a 1 in² area and builds to 1.5 to 1.8 µm. The pen is $70.',
+    sections: [
+      {
+        heading: 'What a nickel pen is used for',
+        list: [
+          'The underlayer under gold on connector pins, edge connectors and PCB gold fingers',
+          'The required base under rhodium and palladium',
+          'Restoring worn nickel on machinery components and contact surfaces',
+          'Corrosion-protection touch-up on industrial equipment',
+        ],
+      },
+      {
+        heading: 'What nickel will plate onto',
+        paragraphs: [
+          'The nickel pens plate over copper. Any other metal gets a copper flash with the Copper pen (PL-1010) first, and stainless steel is cleaned with its own degreaser.',
+        ],
+        table: {
+          caption: 'Nickel plating sequence by base metal',
+          head: ['Base metal', 'Sequence'],
+          rows: [
+            ['Copper', 'Degrease, then nickel'],
+            ['Brass, steel or zinc die-cast', 'Degrease, copper flash, then nickel'],
+            ['Stainless steel', 'Stainless degreaser, copper flash, then nickel'],
+            ['Aluminum', 'Not supported by the Micro-Metallizer system'],
+          ],
+        },
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Copper flash, on anything that is not copper',
+            text: 'Plate a thin copper layer with the Copper pen (PL-1010) at 6 to 8V. Wipe clean with a cloth. Skip this step on copper.',
+          },
+          {
+            title: 'Plate nickel at 5 to 6V',
+            text: `Set the supply to 5 to 6V and switch to the Nickel pen (PL-1006). ${HOOKUP}`,
+          },
+          {
+            title: 'Build to thickness',
+            text: 'A standard nickel pen deposits about 0.4 µm in 2 minutes and 0.6 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm. Keep working the area to build more.',
+          },
+          {
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth. If a finish goes on top, switch pens and plate it now.',
+          },
+        ],
+      },
+      {
+        heading: 'Standard, heavy-duty or black nickel',
+        table: {
+          caption: 'Micro-Metallizer nickel pens. Deposit figures are on a 1 in × 1 in copper surface, from the catalog.',
+          head: ['Pen', 'Catalog no.', 'Price', 'Voltage (DC)', '2 minutes', '3 minutes', 'Maximum'],
+          rows: [
+            ['Nickel', 'PL-1006', '$70', '5 to 6V', '0.4 µm', '0.6 µm', '1.5 to 1.8 µm'],
+            ['Nickel Heavy', 'PL-1020', '$120', '5 to 6V', '0.8 µm', '1.2 µm', '3 to 3.6 µm'],
+            ['Black Nickel', 'PL-1007', '$70', '8 to 10V', '0.5 µm', '0.6 µm', '1.5 to 1.8 µm'],
+          ],
+        },
+        paragraphs: [
+          'Use the heavy-duty pen for a thicker underlayer under production gold or rhodium work. Black nickel plates the same way as nickel, at a higher voltage, and leaves a dark, low-reflectivity finish.',
+        ],
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Nickel pen ($70), the Absorbent / Degreaser pen ($65), the power supply ($220) and connector cables ($20) come to $375. Add the Copper pen ($65) if you plate anything other than copper.',
+          'If the nickel is going under gold, the Contact Repair Kit ($400) is the better buy: it has the power supply, cables, degreaser and nickel pens, plus a 24K gold pen.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'What voltage do you use for nickel plating with a pen?',
+        a: '5 to 6V DC for the Nickel and Nickel Heavy pens, with the part on the negative lead and the pen on the positive lead. Black Nickel runs at 8 to 10V. Degreasing beforehand runs at 10 to 12V.',
+      },
+      {
+        q: 'Can you nickel plate steel with a pen?',
+        a: 'Yes, with a copper flash first. Degrease, plate a thin copper layer with the Copper pen, then plate nickel.',
+      },
+      {
+        q: 'Do I need nickel under gold?',
+        a: 'On copper, yes. Gold pens plate over gold, nickel or silver, not bare copper, so nickel goes down first.',
+      },
+      {
+        q: 'How thick is brush-plated nickel?',
+        a: 'A standard nickel pen builds up to 1.5 to 1.8 µm, at about 0.4 µm in 2 minutes on a 1 in² area. The heavy-duty pen builds up to 3 to 3.6 µm.',
+      },
+      {
+        q: 'How much area does one nickel pen cover?',
+        a: 'Each pen holds 10 ml of concentrated solution and plates roughly 300 square inches.',
+      },
+    ],
+    products: ['nickel-plating-pen', 'contact-repair-kit', 'nickel-heavy-duty-plating-pen', 'copper-plating-pen'],
+    related: ['copper-plating-pen-guide', 'gold-plating-pen-guide', 'plating-pen-voltage-chart', 'brush-plating-substrate-guide'],
+    updated: '2026-11-20',
+  },
+
+  {
+    slug: 'copper-plating-pen-guide',
+    label: 'Copper flash with a plating pen',
+    h1: 'Copper plating pen: how to copper flash steel, brass and stainless',
+    metaTitle: 'Copper Plating Pen: Copper Flash Steel & Brass, 6 to 8V',
+    metaDescription:
+      'Use a copper plating pen to flash steel, brass, zinc die-cast and stainless before nickel, chrome color or gold. 6 to 8V, steps and thickness. Pens from $65.',
+    eyebrow: 'Copper plating',
+    lede: 'Copper is the first layer on most parts that are not copper already. Flash it on, and the part will take nickel, chrome color and everything that goes over nickel.',
+    answer:
+      'Degrease the part at 10 to 12V DC, then stroke the copper pen over it at 6 to 8V. Copper plates directly onto any metal except aluminum and chromium, at about 0.3 µm in 2 minutes on a 1 in² area. Use it as a flash layer under nickel, black nickel and chrome color, or on its own to restore a copper surface. The pen is $65.',
+    sections: [
+      {
+        heading: 'What a copper flash is for',
+        paragraphs: [
+          'Nickel, black nickel and chrome color plate over copper, not over steel or brass. A copper flash is a thin copper layer that gives them a base they bond to. Gold, rhodium and palladium sit one step further up: copper flash, then nickel, then the finish.',
+          'The Micro-Metallizer catalog recommends a copper flash on zinc die-castings and steel before any other plating.',
+        ],
+      },
+      {
+        heading: 'When you need copper first',
+        table: {
+          caption: 'Where the copper flash fits, by finish',
+          head: ['Final finish', 'On copper', 'On steel, brass or zinc die-cast'],
+          rows: [
+            ['Nickel or black nickel', 'No flash needed', 'Copper flash, then nickel'],
+            ['Chrome color', 'No flash needed', 'Copper flash, then chrome color'],
+            ['Gold', 'Nickel, then gold', 'Copper flash, nickel, then gold'],
+            ['Rhodium or palladium', 'Nickel, then the finish', 'Copper flash, nickel, then the finish'],
+            ['Silver, tin or zinc', 'No flash needed', 'No flash needed; the catalog recommends one on steel and zinc die-cast'],
+          ],
+        },
+        note: 'Stainless steel is cleaned with the Stainless Steel Degreaser pen (PL-1014) instead of the standard degreaser, then flashed the same way.',
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Plate copper at 6 to 8V',
+            text: `Set the supply to 6 to 8V and switch to the Copper pen (PL-1010). ${HOOKUP} For a flash layer, cover the whole area the next metal will go on.`,
+          },
+          {
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
+          },
+          {
+            title: 'Go straight to the next pen',
+            text: 'Set the voltage for the next metal, for example 5 to 6V for nickel, and plate over the fresh copper.',
+          },
+        ],
+      },
+      {
+        heading: 'Copper on its own',
+        paragraphs: [
+          'The same pen restores copper on bus bars, contact rails and other copper conductive surfaces. For large areas or thicker copper, the Copper Heavy pen carries more solution and plates twice as fast.',
+        ],
+        table: {
+          caption: 'Copper deposit on a 1 in × 1 in copper surface, from the Micro-Metallizer catalog',
+          head: ['Pen', 'Catalog no.', 'Price', '2 minutes', '3 minutes', 'Maximum'],
+          rows: [
+            ['Copper', 'PL-1010', '$65', '0.3 µm', '0.5 µm', '1.5 to 1.8 µm'],
+            ['Copper Heavy', 'PL-1019', '$100', '0.6 µm', '1.0 µm', '3 to 3.6 µm'],
+          ],
+        },
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Copper pen ($65), the Absorbent / Degreaser pen ($65), the power supply ($220) and connector cables ($20) come to $370.',
+          'A flash layer is rarely the whole job. The Deluxe Kit ($540) includes the copper pen along with the degreaser, nickel, chrome color, silver and 24K gold pens, the power supply and cables, which covers the full sequence on steel and brass.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'What is a copper flash?',
+        a: 'A thin copper layer plated first so the next metal has a compatible base. Nickel, black nickel and chrome color need it on anything that is not copper.',
+      },
+      {
+        q: 'What voltage does a copper plating pen use?',
+        a: '6 to 8V DC, with the part on the negative lead and the pen on the positive lead. Degreasing beforehand runs at 10 to 12V.',
+      },
+      {
+        q: 'Can you copper plate steel with a pen?',
+        a: 'Yes. Copper plates directly onto steel and any other metal except aluminum and chromium.',
+      },
+      {
+        q: 'Can you copper plate stainless steel?',
+        a: 'Yes. Clean and activate it with the Stainless Steel Degreaser pen (PL-1014) first, then plate copper.',
+      },
+      {
+        q: 'How thick is a copper flash?',
+        a: 'A standard copper pen deposits about 0.3 µm in 2 minutes on a 1 in² area. A flash only needs to cover the surface evenly before the next metal goes on.',
+      },
+    ],
+    products: ['copper-plating-pen', 'deluxe-plating-kit', 'copper-heavy-duty-plating-pen', 'absorbent-degreaser-plating-pen'],
+    related: ['nickel-plating-pen-guide', 'brush-plating-substrate-guide', 'plating-pen-voltage-chart', 'plating-pen-kit-comparison'],
+    updated: '2026-11-20',
+  },
+
+  {
+    slug: 'tin-plating-pen-guide',
+    label: 'Using a tin plating pen',
+    h1: 'Tin plating pen: re-tin terminals, lugs, leads and pads',
+    metaTitle: 'Tin Plating Pen: Re-Tin Terminals, Leads & Pads, 6 to 8V',
+    metaDescription:
+      'Tin plating pen how-to: plate tin straight onto copper, brass or steel at 6 to 8V with no underlayer. Steps, thickness and parts list. Tin pen $70.',
+    eyebrow: 'Tin plating',
+    lede: 'Tin keeps a surface solderable and slows corrosion on copper, brass and steel. A tin plating pen puts it back on a terminal, lug, lead or pad without a tank.',
+    answer:
+      'Degrease at 10 to 12V DC, then stroke the tin pen over the surface at 6 to 8V. Tin plates directly onto any metal except aluminum and chromium, so copper, brass and steel need no underlayer. Expect about 0.3 µm in 2 minutes on a 1 in² area, up to 1.5 to 1.8 µm. The pen is $70 and covers roughly 300 square inches.',
+    sections: [
+      {
+        heading: 'Good jobs for a tin pen',
+        list: [
+          'Terminals and lugs with old or oxidized tin that no longer wets with solder',
+          'Component leads that need fresh tin before soldering',
+          'PCB pads that have oxidized in storage',
+          'Corrosion protection on copper, brass and steel components',
+        ],
+      },
+      {
+        heading: 'No underlayer needed',
+        paragraphs: [
+          'Tin is one of the four Micro-Metallizer finishes that plate over any metallic surface except aluminum and chromium. On copper, brass or steel you degrease and plate tin directly.',
+        ],
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Plate tin at 6 to 8V',
+            text: `Set the supply to 6 to 8V and switch to the Tin pen (PL-1012). ${HOOKUP}`,
+          },
+          {
+            title: 'Build to thickness',
+            text: 'The tin pen deposits about 0.3 µm in 2 minutes and 0.5 µm in 3 minutes on a 1 in² area, up to a maximum of 1.5 to 1.8 µm.',
+          },
+          {
+            title: 'Wipe clean',
+            text: 'Wipe with a clean, soft cloth. The surface is ready to solder or put back in service.',
+          },
+        ],
+      },
+      {
+        heading: 'Parts list',
+        list: [
+          'Tin plating pen (PL-1012), $70',
+          'Absorbent / Degreaser pen (PL-1002), $65',
+          'Micro-Metallizer Power Supply (PL-1000), $220',
+          'Connector Cables (PL-1001), $20',
+        ],
+        note: 'Total $375. If you already own a variable DC supply up to 12V at 0.1A, the two pens are $135.',
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you tin plate copper with a pen?',
+        a: 'Yes, directly. Tin plates over any metallic surface except aluminum and chromium, so copper needs no underlayer.',
+      },
+      {
+        q: 'What voltage does a tin plating pen use?',
+        a: '6 to 8V DC, with the part on the negative lead and the pen on the positive lead. Degreasing beforehand runs at 10 to 12V.',
+      },
+      {
+        q: 'How thick is tin from a plating pen?',
+        a: 'About 0.3 µm in 2 minutes and 0.5 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
+      },
+      {
+        q: 'Can I re-tin PCB pads with it?',
+        a: 'Yes. Re-plating tin on oxidized pads restores normal soldering. See the guide to restoring PCB pad solderability for the board-level steps.',
+      },
+      {
+        q: 'How much area does one tin pen cover?',
+        a: 'Each pen holds 10 ml of concentrated solution and plates roughly 300 square inches.',
+      },
+    ],
+    products: ['tin-plating-pen', 'absorbent-degreaser-plating-pen', 'micro-metallizer-power-supply', 'micro-metallizer-connector-cables'],
+    related: ['restore-pcb-pad-solderability', 'brush-plating-substrate-guide', 'plating-pen-voltage-chart'],
+    updated: '2026-11-20',
+  },
+
+  {
+    slug: 'palladium-plating-pen-guide',
+    label: 'Using a palladium plating pen',
+    h1: 'Palladium plating pen: how to brush plate palladium over nickel',
+    metaTitle: 'Palladium Plating Pen: Brush Plate Over Nickel, 6 to 8V',
+    metaDescription:
+      'Brush plate palladium in place with a pen: nickel underlayer, 6 to 8V, about 0.5 µm in 2 minutes. A white-metal finish at under half the price of rhodium.',
+    eyebrow: 'Palladium plating',
+    lede: 'Palladium is a tarnish-resistant white metal used on electrical contacts. A palladium plating pen puts it on one contact or one worn spot at the bench, with no tank and no minimum lot.',
+    answer:
+      'Palladium plates over nickel. Degrease at 10 to 12V DC, plate nickel at 5 to 6V (with a copper flash first on steel or brass), then stroke the palladium pen over the nickel at 6 to 8V. It deposits about 0.5 µm in 2 minutes on a 1 in² area, up to 1.5 to 1.8 µm. The pen is $140.',
+    sections: [
+      {
+        heading: 'Where a palladium pen fits',
+        list: [
+          'Contact surfaces that need a tarnish-resistant white-metal finish',
+          'Repair and touch-up of palladium-plated contacts without sending the part out',
+          'Prototype and experimental work on contact surfaces',
+          'Jobs that call for a white finish where the brightness of rhodium is not required',
+        ],
+        note: 'The pen is for selective work on small areas. Whole parts and production lots belong on a plating line.',
+      },
+      {
+        heading: 'Palladium needs nickel under it',
+        paragraphs: [
+          'The Palladium pen plates over nickel. On a nickel surface you degrease and plate. On anything else, the nickel goes down first, and steel, brass and zinc die-cast get a copper flash before the nickel.',
+        ],
+        table: {
+          caption: 'Palladium plating sequence by base metal',
+          head: ['Base metal', 'Sequence'],
+          rows: [
+            ['Nickel', 'Degrease, then palladium'],
+            ['Copper', 'Degrease, nickel, then palladium'],
+            ['Brass, steel or zinc die-cast', 'Degrease, copper flash, nickel, then palladium'],
+            ['Stainless steel', 'Stainless degreaser, copper flash, nickel, then palladium'],
+            ['Aluminum', 'Not supported by the Micro-Metallizer system'],
+          ],
+        },
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Build the nickel base',
+            text: 'On steel or brass, flash copper with the Copper pen (PL-1010) at 6 to 8V. Then plate nickel with the Nickel pen (PL-1006) at 5 to 6V. Wipe clean with a cloth between pens. Skip this step if the surface is already nickel.',
+          },
+          {
+            title: 'Plate palladium at 6 to 8V',
+            text: `Set the supply to 6 to 8V and switch to the Palladium pen (PL-1015). ${HOOKUP}`,
+          },
+          {
+            title: 'Build to thickness',
+            text: 'The palladium pen deposits about 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
+          },
+          {
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
+          },
+        ],
+      },
+      {
+        heading: 'Palladium or rhodium',
+        table: {
+          caption: 'The two white precious-metal pens. Deposit figures are on a 1 in × 1 in copper surface, from the catalog.',
+          head: ['', 'Palladium (PL-1015)', 'Rhodium (PL-1011)'],
+          rows: [
+            ['Price', '$140', '$310'],
+            ['Voltage (DC)', '6 to 8V', '8 to 10V'],
+            ['Plates over', 'Nickel', 'Nickel'],
+            ['Deposit in 2 minutes', '0.5 µm', '0.7 µm'],
+            ['Solution cost per square inch', 'about $0.47', 'about $1.03'],
+            ['Choose it for', 'A tarnish-resistant white finish at lower cost', 'The hardest, brightest finish in the line'],
+          ],
+        },
+        note: 'Cost per square inch is the list price divided by the roughly 300 square inches each pen covers.',
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Palladium pen ($140), Nickel pen ($70), Absorbent / Degreaser pen ($65), power supply ($220) and connector cables ($20) come to $515. Add the Copper pen ($65) for steel or brass.',
+          'The Contact Repair Kit ($400) already has the power supply, cables, degreaser and nickel pens, plus a 24K gold pen. Adding the Palladium pen to the kit comes to $540, which is $25 more than the parts bought separately and gives you gold as well.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you plate palladium with a pen?',
+        a: 'Yes. The Palladium pen (PL-1015) brush plates palladium over nickel at 6 to 8V DC, with no tank.',
+      },
+      {
+        q: 'Does palladium need an underlayer?',
+        a: 'Yes. Palladium plates over nickel. On copper, plate nickel first. On steel, brass or zinc die-cast, flash copper, then nickel, then palladium.',
+      },
+      {
+        q: 'How thick is brush-plated palladium?',
+        a: 'About 0.5 µm in 2 minutes and 0.8 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
+      },
+      {
+        q: 'What does palladium plating with a pen cost?',
+        a: 'The pen is $140 and covers roughly 300 square inches, so about $0.47 of solution per square inch. Precious metal pen prices can change with metal markets.',
+      },
+      {
+        q: 'Do you offer palladium plating as a service?',
+        a: 'No. Hunter Products sells the equipment so you can plate in house. For whole parts or production lots, use a plating shop.',
+      },
+    ],
+    products: ['palladium-plating-pen', 'contact-repair-kit', 'nickel-plating-pen', 'absorbent-degreaser-plating-pen'],
+    related: ['rhodium-plating-pen-guide', 'nickel-plating-pen-guide', 'brush-plating-substrate-guide', 'brush-plating-cost'],
+    updated: '2026-11-20',
+  },
+
+  {
+    slug: 'rhodium-plating-pen-guide',
+    label: 'Using a rhodium plating pen',
+    h1: 'Rhodium plating pen: how to brush plate rhodium over nickel',
+    metaTitle: 'Rhodium Plating Pen: How to Use It, 8 to 10V Over Nickel',
+    metaDescription:
+      'Brush plate rhodium with a pen: nickel underlayer, 8 to 10V, about 0.7 µm in 2 minutes. Sequence by base metal, thickness and what the setup costs.',
+    eyebrow: 'Rhodium plating',
+    lede: 'Rhodium is the hardest, brightest and most tarnish-resistant finish in the Micro-Metallizer line. The pen puts it only where you need it, which matters at the price of rhodium.',
+    answer:
+      'Rhodium plates over nickel. Degrease at 10 to 12V DC, plate nickel at 5 to 6V (with a copper flash first on steel or brass), then stroke the rhodium pen over the nickel at 8 to 10V. It deposits about 0.7 µm in 2 minutes on a 1 in² area, the fastest of the standard pens, up to 1.5 to 1.8 µm. The pen is $310.',
+    sections: [
+      {
+        heading: 'Where a rhodium pen is used',
+        list: [
+          'Premium electrical contacts',
+          'Optical components and instrument work that need a hard, highly reflective surface',
+          'Wear surfaces where a small area needs the hardest finish available',
+        ],
+      },
+      {
+        heading: 'Rhodium needs nickel under it',
+        table: {
+          caption: 'Rhodium plating sequence by base metal',
+          head: ['Base metal', 'Sequence'],
+          rows: [
+            ['Nickel', 'Degrease, then rhodium'],
+            ['Copper', 'Degrease, nickel, then rhodium'],
+            ['Brass, steel or zinc die-cast', 'Degrease, copper flash, nickel, then rhodium'],
+            ['Gold or silver', 'Degrease, copper flash, nickel, then rhodium'],
+            ['Stainless steel', 'Stainless degreaser, copper flash, nickel, then rhodium'],
+            ['Aluminum', 'Not supported by the Micro-Metallizer system'],
+          ],
+        },
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          PREP_STEP,
+          DEGREASE_STEP,
+          {
+            title: 'Build the nickel base',
+            text: 'On anything that is not copper or nickel, flash copper with the Copper pen (PL-1010) at 6 to 8V. Then plate nickel with the Nickel pen (PL-1006) at 5 to 6V. Wipe clean with a cloth between pens. Skip this step if the surface is already nickel.',
+          },
+          {
+            title: 'Plate rhodium at 8 to 10V',
+            text: `Set the supply to 8 to 10V and switch to the Rhodium pen (PL-1011). ${HOOKUP}`,
+          },
+          {
+            title: 'Build to thickness',
+            text: 'The rhodium pen deposits about 0.7 µm in 2 minutes and 1.0 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
+          },
+          {
+            title: 'Wipe clean',
+            text: 'Wipe the part with a clean, soft cloth.',
+          },
+        ],
+      },
+      {
+        heading: 'Making an expensive pen go further',
+        paragraphs: [
+          'Each pen holds 10 ml of concentrated solution and covers roughly 300 square inches, which works out to about $1.03 of rhodium solution per square inch at the $310 list price. Because rhodium only deposits where the tip touches, none of it goes onto surfaces that do not need it.',
+          'If the job needs a tarnish-resistant white finish but not the brightness of rhodium, the Palladium pen is $140 and plates over the same nickel base.',
+        ],
+      },
+      {
+        heading: 'What you need',
+        paragraphs: [
+          'The Rhodium pen ($310), Nickel pen ($70), Absorbent / Degreaser pen ($65), power supply ($220) and connector cables ($20) come to $685. Add the Copper pen ($65) for steel or brass.',
+          'The Deluxe Kit, Heavy Duty ($900) is the one kit that includes a rhodium pen, along with heavy-duty nickel, copper, silver and 24K gold pens, the degreaser, power supply and cables. Bought separately those parts come to $1,190.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you rhodium plate with a pen?',
+        a: 'Yes. The Rhodium pen (PL-1011) brush plates rhodium over nickel at 8 to 10V DC, with no tank.',
+      },
+      {
+        q: 'Does rhodium need a nickel underlayer?',
+        a: 'Yes. Rhodium plates over nickel. Surfaces that are not nickel get a copper flash, then nickel, then rhodium. Copper needs only the nickel.',
+      },
+      {
+        q: 'What voltage does a rhodium plating pen use?',
+        a: '8 to 10V DC, with the part on the negative lead and the pen on the positive lead.',
+      },
+      {
+        q: 'How thick is brush-plated rhodium?',
+        a: 'About 0.7 µm in 2 minutes and 1.0 µm in 3 minutes on a 1 in² area, up to 1.5 to 1.8 µm.',
+      },
+      {
+        q: 'Why does the rhodium pen cost more than the others?',
+        a: 'Rhodium is the most expensive of the plating metals in the line. Precious metal pen prices can change with metal markets.',
+      },
+    ],
+    products: ['rhodium-plating-pen', 'deluxe-plating-kit-heavy-duty', 'nickel-plating-pen', 'contact-repair-kit'],
+    related: ['palladium-plating-pen-guide', 'nickel-plating-pen-guide', 'brush-plating-substrate-guide', 'brush-plating-cost'],
+    updated: '2026-11-20',
+  },
+
+  // ── Reference pages ─────────────────────────────────────────────────
+
+  {
+    slug: 'plating-pen-voltage-chart',
+    label: 'Plating pen voltage chart',
+    h1: 'Plating pen voltage chart: DC settings for every metal',
+    metaTitle: 'Plating Pen Voltage Chart: Gold, Nickel, Silver, Zinc, Tin',
+    metaDescription:
+      'What voltage to use for brush plating: 5 to 6V nickel and silver, 6 to 8V gold, copper, tin and zinc, 8 to 10V rhodium, 10 to 12V to degrease. Full chart.',
+    eyebrow: 'Technical reference',
+    lede: 'Every Micro-Metallizer pen has its own operating voltage. This is the full list, plus the settings in order for the sequences people run most.',
+    answer:
+      'Pen plating runs between 5 and 12V DC. Degrease at 10 to 12V. Plate nickel and silver at 5 to 6V. Plate gold, copper, tin, zinc, palladium and chrome color at 6 to 8V. Plate rhodium and black nickel at 8 to 10V. The part goes on the negative lead and the pen on the positive lead.',
+    sections: [
+      {
+        heading: 'Voltage by pen',
+        table: VOLTAGE_TABLE,
+        note: 'The operating voltage is also printed on each pen.',
+      },
+      {
+        heading: 'Grouped by setting',
+        table: {
+          caption: 'Pens that share a voltage setting',
+          head: ['Setting (DC)', 'Pens'],
+          rows: [
+            ['5 to 6V', 'Nickel, Nickel Heavy, Silver, Silver Heavy'],
+            ['6 to 8V', 'Gold 24K, 18K and 14K, Gold Heavy, Copper, Copper Heavy, Tin, Zinc, Palladium, Chrome Color'],
+            ['8 to 10V', 'Rhodium, Black Nickel'],
+            ['10 to 12V', 'Absorbent / Degreaser, Stainless Steel Degreaser'],
+          ],
+        },
+      },
+      {
+        heading: 'Settings for common sequences',
+        paragraphs: ['Change the voltage each time you change pens, and wipe the part clean with a cloth between pens.'],
+        table: {
+          caption: 'Voltage at each step, in order',
+          head: ['Job', 'Step 1', 'Step 2', 'Step 3', 'Step 4'],
+          rows: [
+            ['Gold on a copper contact', 'Degrease, 10 to 12V', 'Nickel, 5 to 6V', 'Gold, 6 to 8V', ''],
+            ['Gold on steel or brass', 'Degrease, 10 to 12V', 'Copper, 6 to 8V', 'Nickel, 5 to 6V', 'Gold, 6 to 8V'],
+            ['Rhodium on steel or brass', 'Degrease, 10 to 12V', 'Copper, 6 to 8V', 'Nickel, 5 to 6V', 'Rhodium, 8 to 10V'],
+            ['Nickel on steel', 'Degrease, 10 to 12V', 'Copper, 6 to 8V', 'Nickel, 5 to 6V', ''],
+            ['Tin on a copper pad', 'Degrease, 10 to 12V', 'Tin, 6 to 8V', '', ''],
+            ['Zinc touch-up on steel', 'Degrease, 10 to 12V', 'Zinc, 6 to 8V', '', ''],
+            ['Silver on a copper bus bar', 'Degrease, 10 to 12V', 'Silver, 5 to 6V', '', ''],
+          ],
+        },
+      },
+      {
+        heading: 'Polarity and hookup',
+        paragraphs: [HOOKUP],
+      },
+      {
+        heading: 'Power supply requirements',
+        paragraphs: [
+          'The pens run on any variable DC supply up to 12V at 0.1A. The Micro-Metallizer power supply ($220) is a compact variable supply made for the pens, available for 110V/60Hz or 220V/50Hz input, and it is included in every kit.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'What voltage is used for nickel plating with a pen?',
+        a: '5 to 6V DC for the Nickel and Nickel Heavy pens. Black Nickel runs at 8 to 10V.',
+      },
+      {
+        q: 'What voltage is used for gold plating with a pen?',
+        a: '6 to 8V DC for all gold pens: 24K, 18K, 14K and the heavy-duty versions.',
+      },
+      {
+        q: 'What voltage do I use to degrease before plating?',
+        a: '10 to 12V DC with the Absorbent / Degreaser pen, or the Stainless Steel Degreaser pen on stainless.',
+      },
+      {
+        q: 'Which lead goes on the part?',
+        a: 'The negative lead goes on the part. The positive lead goes on the pen.',
+      },
+      {
+        q: 'Can I use my own bench power supply?',
+        a: 'Yes. Any variable DC supply up to 12V at 0.1A will run the pens.',
+      },
+    ],
+    products: ['contact-repair-kit', 'deluxe-plating-kit', 'micro-metallizer-power-supply', 'micro-metallizer-connector-cables'],
+    related: ['brush-plating-thickness-chart', 'plating-time-thickness-conversion', 'brush-plating-substrate-guide', 'plating-pen-kit-comparison'],
+    updated: '2026-11-20',
+  },
+
+  {
+    slug: 'plating-time-thickness-conversion',
+    label: 'Plating time and thickness conversion',
+    h1: 'How long pen plating takes, with a microns to microinches table',
+    metaTitle: 'Plating Time & Thickness Conversion: Microns to Microinches',
+    metaDescription:
+      'How long brush plating takes per metal, and a plating thickness conversion table from microns to microinches and inches for every figure in the catalog.',
+    eyebrow: 'Technical reference',
+    lede: 'Plating time decides thickness. These are the catalog rates for every pen, the time a typical sequence takes, and the same thicknesses converted to microinches for drawings that call them out that way.',
+    answer:
+      'On a 1 in² copper surface, a standard gold, silver or palladium pen deposits about 0.5 µm (20 microinches) in 2 minutes and 0.8 µm (31 microinches) in 3 minutes. Standard pens top out at 1.5 to 1.8 µm (59 to 71 microinches) and heavy-duty pens at 3 to 3.6 µm (118 to 142 microinches). One micron is 39.37 microinches.',
+    sections: [
+      {
+        heading: 'Plating time by metal',
+        table: RATE_TABLE,
+        note: 'Rates are typical figures from the Micro-Metallizer catalog for a 1 in × 1 in copper surface.',
+      },
+      {
+        heading: 'Microns to microinches',
+        paragraphs: ['To convert, multiply microns by 39.37 to get microinches. The table covers every thickness in the catalog.'],
+        table: {
+          caption: 'Plating thickness conversion: 1 µm = 39.37 µin = 0.00003937 in',
+          head: ['Microns (µm)', 'Microinches (µin)', 'Inches', 'Where it shows up'],
+          rows: [
+            ['0.3', '11.8', '0.000012', 'Copper, zinc, tin, chrome color in 2 minutes'],
+            ['0.4', '15.7', '0.000016', 'Nickel in 2 minutes'],
+            ['0.5', '19.7', '0.000020', 'Gold, silver, palladium in 2 minutes'],
+            ['0.6', '23.6', '0.000024', 'Nickel in 3 minutes; Copper Heavy in 2 minutes'],
+            ['0.7', '27.6', '0.000028', 'Rhodium in 2 minutes'],
+            ['0.8', '31.5', '0.000031', 'Gold, silver, palladium in 3 minutes; Gold, Silver and Nickel Heavy in 2 minutes'],
+            ['1.0', '39.4', '0.000039', 'Rhodium in 3 minutes; Copper Heavy in 3 minutes'],
+            ['1.2', '47.2', '0.000047', 'Gold, Silver and Nickel Heavy in 3 minutes'],
+            ['1.5', '59.1', '0.000059', 'Standard pen maximum, low end'],
+            ['1.8', '70.9', '0.000071', 'Standard pen maximum, high end'],
+            ['3.0', '118.1', '0.000118', 'Heavy-duty pen maximum, low end'],
+            ['3.6', '141.7', '0.000142', 'Heavy-duty pen maximum, high end'],
+          ],
+        },
+      },
+      {
+        heading: 'How long a full sequence takes',
+        paragraphs: [
+          'Most jobs are more than one pen. Using the catalog rates on a 1 in² area, the plating time for the common sequences adds up like this. Degreasing and wiping between pens are extra.',
+        ],
+        table: {
+          caption: 'Plating time for common sequences at 2 minutes per metal, 1 in² area',
+          head: ['Job', 'Layers', 'Plating time', 'Deposit'],
+          rows: [
+            ['Gold on a copper contact', 'Nickel, then gold', '4 minutes', '0.4 µm nickel, 0.5 µm gold'],
+            ['Gold on steel or brass', 'Copper, nickel, then gold', '6 minutes', '0.3 µm copper, 0.4 µm nickel, 0.5 µm gold'],
+            ['Rhodium on copper', 'Nickel, then rhodium', '4 minutes', '0.4 µm nickel, 0.7 µm rhodium'],
+            ['Tin on a copper pad', 'Tin', '2 minutes', '0.3 µm tin'],
+            ['Zinc touch-up on steel', 'Zinc', '2 minutes', '0.3 µm zinc'],
+            ['Silver on a copper bus bar', 'Silver', '2 minutes', '0.5 µm silver'],
+          ],
+        },
+      },
+      {
+        heading: 'When the drawing asks for more',
+        paragraphs: [
+          'Standard pens reach 1.5 to 1.8 µm and heavy-duty pens 3 to 3.6 µm. If a specification calls for a deposit thicker than that, the part needs a plating line. For anything at or under those limits, choose the heavy-duty pen when you want the thickness in fewer passes.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'How many microinches is one micron?',
+        a: '39.37 microinches. So 0.5 µm is about 20 microinches and 1.8 µm is about 71 microinches.',
+      },
+      {
+        q: 'How long does it take to gold plate with a pen?',
+        a: 'About 2 minutes for 0.5 µm and 3 minutes for 0.8 µm on a 1 in² area with a standard gold pen. The heavy-duty pen deposits 0.8 µm in 2 minutes.',
+      },
+      {
+        q: 'Which pen plates fastest?',
+        a: 'Among standard pens, rhodium at about 0.7 µm in 2 minutes. The Gold, Silver and Nickel Heavy pens deposit about 0.8 µm in 2 minutes.',
+      },
+      {
+        q: 'What is the thickest deposit a plating pen can build?',
+        a: 'Standard pens build 1.5 to 1.8 µm (59 to 71 microinches). Heavy-duty pens build 3 to 3.6 µm (118 to 142 microinches).',
+      },
+    ],
+    products: ['contact-repair-kit', 'deluxe-plating-kit', 'gold-24k-heavy-duty-plating-pen', 'contact-repair-kit-heavy-duty'],
+    related: ['brush-plating-thickness-chart', 'plating-pen-voltage-chart', 'brush-plating-cost', 'brush-plating-vs-tank-plating'],
+    updated: '2026-11-20',
+  },
+
+  // ── Carbitron application guides ────────────────────────────────────
+
+  {
+    slug: 'tungsten-carbide-end-mills-milling-cutters',
+    label: 'Carbide on end mills and milling cutters',
+    h1: 'Tungsten carbide coating for end mills and milling cutters',
+    metaTitle: 'Tungsten Carbide Coating for End Mills & Milling Cutters',
+    metaDescription:
+      'Add tungsten carbide to end mills, shell mills, hobs and milling cutters in your own shop: where to deposit, how thick, and how to re-sharpen. System $495.',
+    eyebrow: 'Tooling',
+    lede: 'Milling tools wear at the cutting edge long before the rest of the tool is used up. Depositing tungsten carbide on that edge in your own shop gives a standard cutter a much harder working surface.',
+    answer:
+      'With the Carbitron 300, deposit 0.0002" to 0.0006" of tungsten carbide along the cutting edges of an end mill, inside the flute at the bottom and sides, along the full length of the tool, then re-sharpen. Horizontal milling cutters and hobs take 0.0002" to 0.004" on the front face of each tooth. The fused layer is 78 to 80 Rockwell C.',
+    sections: [
+      {
+        heading: 'What it does for a milling tool',
+        list: [
+          'A 78 to 80 Rockwell C tungsten carbide layer fused to the cutting edge',
+          'Self-sharpening cutting edges',
+          'A non-brittle surface with better thermal-shock and impact resistance',
+          'Worn tools resized and salvaged instead of replaced',
+          'Less downtime, fewer tool changes and less sharpening',
+        ],
+        note: 'Hunter Products rates Carbitron-treated tooling at 5x to 10x the life of standard tooling, depending on the tool and the work.',
+      },
+      {
+        heading: 'Where to deposit and how much',
+        table: {
+          caption: 'Recommended deposit by milling tool, from the Carbitron 300 brochure',
+          head: ['Tool', 'Deposit', 'Where', 'Then'],
+          rows: [
+            ['End mills', '0.0002" to 0.0006"', 'Cutting edges inside the flute, at the bottom and sides, along the entire length of the tool', 'Re-sharpen'],
+            ['Counterbores', '0.0002" to 0.0006"', 'Same as end mills', 'Re-sharpen'],
+            ['Shell mills', '0.0002" to 0.0006"', 'Front face of the cutting surface, along the cutting edge', 'Re-sharpen'],
+            ['Horizontal milling cutters', '0.0002" to 0.004"', 'Front face of each tooth, along the cutting edge', 'Re-sharpen by grinding the land'],
+            ['Hobs', '0.0002" to 0.004"', 'Front face of each tooth, along the cutting edge', 'Re-sharpen'],
+          ],
+        },
+        note: 'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps. For recommendations above 0.001", contact us for the build-up procedure.',
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          {
+            title: 'Set the deposit thickness',
+            text: 'Choose a setting on the discharge intensity selector, from 0.0002" to 0.001", based on the table above and how much build-up the tool can tolerate.',
+          },
+          {
+            title: 'Deposit along the cutting edge',
+            text: 'Connect the ground cable to the tool and work the vibrating electrode along the area listed for that tool. On an end mill that is inside the flute, at the bottom and sides, for the full length of the tool.',
+          },
+          {
+            title: 'Re-sharpen',
+            text: 'Grind as listed for the tool so the carbide sits right at the working edge. Horizontal milling cutters are re-sharpened by grinding the land.',
+          },
+          {
+            title: 'Stone the edge',
+            text: 'Lightly stone the deposit with a cubic boron nitride or diamond stone to remove burrs and get the sharpest edge.',
+          },
+        ],
+      },
+      {
+        heading: 'Which electrode',
+        paragraphs: [
+          'The Carbitron 300 ships with 1/8" and 1/16" tungsten-carbide electrodes. Use the 1/8" electrode for general work and the 1/16" for finer work. A 1/32" electrode is sold separately for precision detail.',
+          'A 1/8" x 2 1/2" electrode typically covers about 50 square inches at 0.0005" average thickness. Cutting edges are small, so one $12.50 electrode treats a lot of cutters.',
+        ],
+      },
+      {
+        heading: 'What it costs',
+        paragraphs: [
+          'The Carbitron 300 is $495 complete: discharge power supply, vibrator hand tool, power and ground cables, and two electrodes. Replacement electrodes are $12.50. The unit runs on 110V, 60Hz at 4 amps (230V/50Hz available) with a 50% duty cycle and a 10-minute maximum continuous on-time.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you add tungsten carbide to a high-speed steel end mill?',
+        a: 'Yes. The Carbitron 300 deposits 0.0002" to 0.0006" of tungsten carbide along the cutting edges inside the flute. Re-sharpen after depositing.',
+      },
+      {
+        q: 'How hard is the deposit?',
+        a: '78 to 80 Rockwell C. It forms a fused metallic bond with the tool surface.',
+      },
+      {
+        q: 'Do I have to re-sharpen after depositing?',
+        a: 'Yes. Deposit along the cutting edge, re-sharpen as listed for the tool, then lightly stone with a CBN or diamond stone.',
+      },
+      {
+        q: 'How much longer will the cutter last?',
+        a: 'Hunter Products rates Carbitron-treated tooling at 5x to 10x the life of standard tooling, depending on the tool and the work.',
+      },
+      {
+        q: 'Is this the same as a PVD coating?',
+        a: 'No. The Carbitron 300 is a bench unit that deposits tungsten carbide from an electrode with small electrical arcs, a process generally known as electro-spark deposition. You apply it yourself, to the edges you choose.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-8', 'tungsten-carbide-electrode-1-16', 'tungsten-carbide-electrode-1-32'],
+    related: ['extend-cutting-tool-life-tungsten-carbide', 'tungsten-carbide-taps-reamers', 'punch-and-die-life-tungsten-carbide'],
+    updated: '2026-11-20',
+  },
+
+  {
+    slug: 'tungsten-carbide-taps-reamers',
+    label: 'Carbide on taps and reamers',
+    h1: 'Tungsten carbide coating for taps, reamers and threading tools',
+    metaTitle: 'Tungsten Carbide Coating for Taps, Reamers & Thread Chasers',
+    metaDescription:
+      'Deposit tungsten carbide on taps, thread chasers, reamers and countersinks in house: where it goes, how thick, and when to re-sharpen first. System $495.',
+    eyebrow: 'Tooling',
+    lede: 'On taps and reamers a short length of cutting edge does the work. Adding tungsten carbide to just that edge gives it a much harder surface without replacing the tool.',
+    answer:
+      'With the Carbitron 300, deposit 0.0002" to 0.001" of tungsten carbide inside the flute of a sharp tap, along the cutting edge for 2 to 3 full threads. Reamers take 0.0002" to 0.0008" inside the flute along the cutting edge, then a re-sharpen. Dull taps and thread chasers are re-sharpened before depositing. The fused layer is 78 to 80 Rockwell C.',
+    sections: [
+      {
+        heading: 'Where to deposit and how much',
+        table: {
+          caption: 'Recommended deposit by tool, from the Carbitron 300 brochure',
+          head: ['Tool', 'Deposit', 'Where', 'Sharpening'],
+          rows: [
+            ['Taps', '0.0002" to 0.001"', 'Inside the flute along the cutting edge, for 2 to 3 full threads', 'Re-sharpen dull taps before depositing'],
+            ['Thread chasers', '0.0002" to 0.001"', 'Along the top cutting edge', 'Re-sharpen dull chasers before depositing'],
+            ['Reamers', '0.0002" to 0.0008"', 'Inside the flute along the cutting edge', 'Re-sharpen after depositing'],
+            ['Countersinks', '0.0002" to 0.0006"', 'Along the cutting edge inside the flute, for the entire length of the edge', 'Re-sharpen after depositing'],
+          ],
+        },
+        note: 'Deposit thickness is set on the power supply from 0.0002" to 0.001" in 0.0002" steps.',
+      },
+      {
+        heading: 'Taps and thread chasers: sharpen first',
+        paragraphs: [
+          'Threading tools are the exception to the usual order. On a sharp tap, the carbide goes straight onto the existing edge. If the tap or chaser is dull, re-sharpen it first and then deposit, so the carbide lands on a good edge.',
+          'On a tap, take care not to nick the cutting edge with the electrode.',
+        ],
+      },
+      {
+        heading: 'Step by step',
+        steps: [
+          {
+            title: 'Check the edge',
+            text: 'Re-sharpen a dull tap or thread chaser before you start. Reamers and countersinks are re-sharpened after depositing instead.',
+          },
+          {
+            title: 'Set the deposit thickness',
+            text: 'Choose a setting on the discharge intensity selector, from 0.0002" up to the limit for that tool in the table.',
+          },
+          {
+            title: 'Deposit along the cutting edge',
+            text: 'Connect the ground cable to the tool and work the vibrating electrode along the listed area: 2 to 3 full threads inside the flute on a tap, the full cutting edge on a reamer or countersink.',
+          },
+          {
+            title: 'Re-sharpen reamers and countersinks',
+            text: 'Grind so the carbide sits right at the cutting edge.',
+          },
+          {
+            title: 'Stone',
+            text: 'Lightly stone the deposit with a cubic boron nitride or diamond stone to remove burrs.',
+          },
+        ],
+      },
+      {
+        heading: 'Which electrode',
+        paragraphs: [
+          'The Carbitron 300 ships with a 1/8" electrode for general work and a 1/16" electrode for fine work. The 1/32" electrode, sold separately, is the one for precision applications such as small flutes. Electrodes are $12.50 each.',
+        ],
+      },
+      {
+        heading: 'What it costs',
+        paragraphs: [
+          'The Carbitron 300 is $495 complete: discharge power supply, vibrator hand tool, power and ground cables, and 1/8" and 1/16" electrodes. Hunter Products rates treated tooling at 5x to 10x the life of standard tooling, depending on the tool and the work.',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Can you put tungsten carbide on a tap?',
+        a: 'Yes. Deposit 0.0002" to 0.001" inside the flute along the cutting edge for 2 to 3 full threads, taking care not to nick the edge.',
+      },
+      {
+        q: 'Should I sharpen a tap before or after depositing?',
+        a: 'Before, if it is dull. Sharp taps and thread chasers take the deposit directly. Reamers and countersinks are re-sharpened after.',
+      },
+      {
+        q: 'How much carbide goes on a reamer?',
+        a: '0.0002" to 0.0008" inside the flute along the cutting edge, followed by a re-sharpen.',
+      },
+      {
+        q: 'How hard is the deposit?',
+        a: '78 to 80 Rockwell C, fused to the tool.',
+      },
+    ],
+    products: ['carbitron-300-system', 'tungsten-carbide-electrode-1-16', 'tungsten-carbide-electrode-1-32', 'tungsten-carbide-electrode-1-8'],
+    related: ['extend-cutting-tool-life-tungsten-carbide', 'tungsten-carbide-end-mills-milling-cutters', 'punch-and-die-life-tungsten-carbide'],
+    updated: '2026-11-20',
   },
 
 ];
