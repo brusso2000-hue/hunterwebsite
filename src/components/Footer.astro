@@ -48,6 +48,7 @@ const POPULAR: [string, string][] = [
       </nav>
       <nav class="ftr-col" aria-label="Popular products">
         <h3 class="label">Popular products</h3>
+        <a href="/systems/micro-metallizer/">Electroplating pens</a>
         {POPULAR.map(([slug, label]) => <a href={productUrl(bySlug(slug))}>{label}</a>)}
       </nav>
       <nav class="ftr-col" aria-label="Applications">
