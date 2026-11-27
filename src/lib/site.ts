@@ -6,13 +6,13 @@ export const SITE = {
   phone: '(908) 526-8440',
   phoneHref: 'tel:+19085268440',
   email: 'hunter@hunterproducts.com',
-  street: '36 Madison Avenue',
-  city: 'Flemington',
+  street: '20 Aquarium Drive',
+  city: 'Secaucus',
   region: 'NJ',
-  postal: '08822',
+  postal: '07094',
   hours: 'Mon–Fri · 9:00–5:00 ET',
   defaultDescription:
-    'Brush plating and selective plating systems, tungsten-carbide coating and micro-abrasive blasting. Micro-Metallizer, Carbitron 300, Micro-Jet 200. Sold and supported from Flemington, NJ since 1970.',
+    'Brush plating and selective plating systems, tungsten-carbide coating and micro-abrasive blasting. Micro-Metallizer, Carbitron 300, Micro-Jet 200. Sold and supported from New Jersey since 1970.',
 };
 
 /** Shipping and returns, as stated by Hunter Products (Oct 2026). */

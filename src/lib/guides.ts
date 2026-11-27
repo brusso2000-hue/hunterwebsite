@@ -126,7 +126,7 @@ export const GUIDES: Guide[] = [
     metaDescription:
       'What brush plating is, how it works, which metals it plates, how thick it goes and what it costs. Brush plating kits from $400 that ship same day.',
     eyebrow: 'Brush plating explained',
-    lede: 'Brush plating is electroplating without the tank. The solution rides in an absorbent tip, and metal goes down only where the tip touches the part. Hunter Products has sold brush plating equipment from Flemington, NJ since 1970.',
+    lede: 'Brush plating is electroplating without the tank. The solution rides in an absorbent tip, and metal goes down only where the tip touches the part. Hunter Products has sold brush plating equipment from New Jersey since 1970.',
     answer:
       'Brush plating (also called selective plating, pen plating or tankless plating) is a form of electroplating where the plating solution is held in an absorbent tip on the positive lead of a DC power supply, and the part is connected to the negative lead. Metal deposits only where the tip touches, so you can plate a connector, pad or worn spot in place with no tank, no masking and no bath to dispose of.',
     sections: [

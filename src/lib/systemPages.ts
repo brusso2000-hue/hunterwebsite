@@ -28,7 +28,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
     intro: [
       'The Micro-Metallizer is a portable brush plating system: a variable DC power supply, connector cables and a family of self-contained plating pens. Each pen holds its own solution in an absorbent tip. Touch it to the grounded part and metal deposits exactly where you work.',
       'There is no tank to fill, no bath to maintain and no plating waste to handle. Swap one pen for the next to run a full sequence (degrease, copper flash, nickel underlayer, final finish) on the same supply, at the bench or in the field.',
-      'Every pen is stocked in Flemington, NJ and ships same day. Need gold, nickel or tin on a part this week? Order by 2 PM ET and the plating solution is on a truck that afternoon, not waiting in a plating shop queue.',
+      'Every pen is stocked in Secaucus, NJ and ships same day. Need gold, nickel or tin on a part this week? Order by 2 PM ET and the plating solution is on a truck that afternoon, not waiting in a plating shop queue.',
     ],
     photo: 'system-micro-metallizer',
     blocks: [
