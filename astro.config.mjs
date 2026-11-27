@@ -8,7 +8,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       // /products.json is a Snipcart crawler endpoint, not a page.
-      filter: (page) => !/\.(json|xml)\/?$/.test(page),
+      // /register/ is a noindex page reached from the QR code on the pen insert card.
+      filter: (page) => !/\.(json|xml)\/?$/.test(page) && !/\/register\/$/.test(page),
     }),
   ],
 });

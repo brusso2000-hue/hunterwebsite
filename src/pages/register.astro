@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
+---
+
+<Base
+  title="Register Your Plating Pen | Hunter Products Inc."
+  description="Register your Micro-Metallizer plating pen to get a reminder before it reaches the end of its shelf life and the certificate for your lot."
+  noindex
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <h1 class="h-1">Register your pen</h1>
+      <p class="lede">Plating pens have a 12-month shelf life. Register yours and we will email you before it runs out, and send the certificate for your lot.</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="panel">
+        <form class="rf" action={FORMSPREE_ENDPOINT} method="POST" data-register-form>
+          <div class="rf-status rf-ok" hidden data-ok role="status">
+            <p><strong>You're registered.</strong></p>
+            <p>We will email your lot certificate and a reminder before your pen expires. Need pens sooner? Call {SITE.phone}.</p>
+          </div>
+          <div class="rf-status rf-err" hidden data-err role="alert">
+            <p><strong>Something went wrong.</strong></p>
+            <p>Please email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call {SITE.phone}.</p>
+          </div>
+
+          <div class="field">
+            <label for="rf-first">First name *</label>
+            <input class="input" id="rf-first" name="first_name" required autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="rf-last">Last name *</label>
+            <input class="input" id="rf-last" name="last_name" required autocomplete="family-name" />
+          </div>
+          <div class="field">
+            <label for="rf-email">Work email *</label>
+            <input class="input" id="rf-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="rf-company">Company *</label>
+            <input class="input" id="rf-company" name="company" required autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="rf-pen">Which pen or kit?</label>
+            <input class="input" id="rf-pen" name="pen" placeholder="For example, 24K gold pen" />
+          </div>
+          <div class="field">
+            <label for="rf-lot">Lot number, if shown</label>
+            <input class="input" id="rf-lot" name="lot_number" data-lot />
+          </div>
+          <div class="field rf-full">
+            <label for="rf-use">What are you plating?</label>
+            <textarea class="textarea" id="rf-use" name="application" placeholder="Optional. It helps us send the right information."></textarea>
+          </div>
+          <input type="hidden" name="request_type" value="pen_registration" />
+          <input type="hidden" name="_subject" value="Pen registration" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+          <div class="rf-full">
+            <button class="btn btn--primary" type="submit" data-submit>Register pen <span class="arrow">→</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 34px 0; }
+  .banner-in { display: grid; gap: 14px; }
+  .panel { border: 1px solid var(--line); padding: clamp(20px, 4vw, 44px); max-width: 760px; }
+  .rf { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .rf-full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .rf { grid-template-columns: 1fr; } }
+  .rf-status { grid-column: 1 / -1; padding: 14px 16px; border-left: 3px solid; background: var(--bg-2); display: grid; gap: 4px; }
+  .rf-ok { border-color: var(--ok); }
+  .rf-err { border-color: var(--err); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-register-form]').forEach((form) => {
+    // A QR code or link can carry the lot number: /register/?lot=1234
+    const lot = new URLSearchParams(location.search).get('lot');
+    const lotInput = form.querySelector<HTMLInputElement>('[data-lot]')!;
+    if (lot) lotInput.value = lot.slice(0, 40);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = form.querySelector<HTMLElement>('[data-ok]')!;
+      const err = form.querySelector<HTMLElement>('[data-err]')!;
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+      ok.hidden = err.hidden = true;
+      btn.disabled = true;
+      try {
+        const data = new FormData(form);
+        data.set('form_page', location.pathname);
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        ok.hidden = false;
+        ok.scrollIntoView({ block: 'center' });
+        // Existing customers, not new leads: tracked in Analytics only, not as an Ads conversion.
+        const w = window as any;
+        if (typeof w.gtag === 'function') w.gtag('event', 'pen_registration');
+      } catch {
+        err.hidden = false;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
