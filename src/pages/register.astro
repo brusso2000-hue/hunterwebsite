@@ -12,17 +12,35 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
     <div class="wrap banner-in">
       <h1 class="h-1">Register your pen</h1>
       <p class="lede why">Plating pens have a 12-month shelf life. Register yours and we will <strong>email you before it runs out</strong>, and <strong>send the certificate for your lot</strong>.</p>
+      <div class="life" data-life aria-hidden="true">
+        <div class="life-top">
+          <span class="life-cap">Today</span>
+          <span class="life-cap life-cap--end">12 months</span>
+        </div>
+        <div class="life-track">
+          <div class="life-fill"></div>
+          <div class="life-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="life-pin">
+            <span class="life-dot"></span>
+            <span class="life-tag" data-life-tag>We email you here</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <section class="section section--tight">
     <div class="wrap">
       <div class="panel">
+        <div class="done" hidden data-ok role="status" tabindex="-1">
+          <svg class="done-ic" viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+            <circle class="done-ring" cx="32" cy="32" r="29" stroke="currentColor" stroke-width="3" />
+            <path class="done-tick" d="M19 33.5 28 42.5 46 23" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 class="done-h">You're registered.</h2>
+          <p class="done-p">We will email your lot certificate, and remind you before your pen expires. Need pens sooner? Call <a href={SITE.phoneHref}>{SITE.phone}</a>.</p>
+        </div>
         <form class="rf" action={FORMSPREE_ENDPOINT} method="POST" data-register-form>
-          <div class="rf-status rf-ok" hidden data-ok role="status">
-            <p><strong>You're registered.</strong></p>
-            <p>We will email your lot certificate and a reminder before your pen expires. Need pens sooner? Call {SITE.phone}.</p>
-          </div>
           <div class="rf-status rf-err" hidden data-err role="alert">
             <p><strong>Something went wrong.</strong></p>
             <p>Please email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call {SITE.phone}.</p>
@@ -30,19 +48,19 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
 
           <div class="field">
             <label for="rf-first">First name *</label>
-            <input class="input" id="rf-first" name="first_name" required autocomplete="given-name" />
+            <input class="input" id="rf-first" name="first_name" required autocomplete="given-name" autocapitalize="words" enterkeyhint="next" />
           </div>
           <div class="field">
             <label for="rf-last">Last name *</label>
-            <input class="input" id="rf-last" name="last_name" required autocomplete="family-name" />
+            <input class="input" id="rf-last" name="last_name" required autocomplete="family-name" autocapitalize="words" enterkeyhint="next" />
           </div>
           <div class="field">
             <label for="rf-email">Work email *</label>
-            <input class="input" id="rf-email" name="email" type="email" required autocomplete="email" />
+            <input class="input" id="rf-email" name="email" type="email" inputmode="email" required autocomplete="email" autocapitalize="none" spellcheck="false" enterkeyhint="next" />
           </div>
           <div class="field">
             <label for="rf-company">Company *</label>
-            <input class="input" id="rf-company" name="company" required autocomplete="organization" />
+            <input class="input" id="rf-company" name="company" required autocomplete="organization" autocapitalize="words" enterkeyhint="next" />
           </div>
           <div class="field rf-full">
             <label for="rf-use">What are you plating?</label>
@@ -61,24 +79,83 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
 </Base>
 
 <style>
-  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 34px 0; }
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 34px 0 38px; }
   .banner-in { display: grid; gap: 14px; }
   .why { font-size: clamp(19px, 1.9vw, 24px); line-height: 1.45; color: var(--ink); max-width: 46ch; }
   .why strong { font-weight: 700; }
+
+  /* Shelf-life timeline: fills on load, then the reminder pin drops in. */
+  .life { margin-top: 18px; max-width: 620px; }
+  .life-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .life-cap { font-size: 13px; font-weight: 600; color: var(--text-2); }
+  .life-track { position: relative; height: 14px; background: #fff; border: 1px solid var(--line-2); }
+  .life-fill { position: absolute; inset: 0; background: var(--brand-dk); transform-origin: left center; transform: scaleX(0); animation: life-fill 1.5s cubic-bezier(0.22, 0.8, 0.2, 1) 0.25s forwards; }
+  .life-ticks { position: absolute; inset: 0; display: flex; justify-content: space-evenly; }
+  .life-ticks i { width: 1px; background: rgba(255, 255, 255, 0.55); }
+  .life-pin { position: absolute; left: 83.33%; top: 50%; opacity: 0; animation: life-pin 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) 1.55s forwards; }
+  .life-dot { position: absolute; left: -11px; top: -11px; width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 4px solid var(--ink); box-sizing: border-box; }
+  .life-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--ink); opacity: 0; animation: life-pulse 2.2s ease-out 2.1s infinite; }
+  .life-tag { position: absolute; top: 20px; right: -34px; white-space: nowrap; background: var(--ink); color: #fff; font-size: 13px; font-weight: 600; padding: 6px 10px; transition: background-color 0.3s; }
+  .life-tag::before { content: ''; position: absolute; top: -5px; right: 29px; border: 5px solid transparent; border-top: 0; border-bottom-color: var(--ink); transition: border-color 0.3s; }
+  .life { padding-bottom: 44px; }
+  .life.is-set .life-tag { background: var(--ok); }
+  .life.is-set .life-tag::before { border-bottom-color: var(--ok); }
+  .life.is-set .life-dot { border-color: var(--ok); }
+  .life.is-set .life-dot::after { animation: none; }
+  @keyframes life-fill { to { transform: scaleX(1); } }
+  @keyframes life-pin { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+  @keyframes life-pulse { 0% { opacity: 0.7; transform: scale(1); } 100% { opacity: 0; transform: scale(2.1); } }
+
   .panel { border: 1px solid var(--line); padding: clamp(20px, 4vw, 44px); max-width: 760px; }
   .rf { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .rf-full { grid-column: 1 / -1; }
-  @media (max-width: 560px) { .rf { grid-template-columns: 1fr; } }
   .rf-status { grid-column: 1 / -1; padding: 14px 16px; border-left: 3px solid; background: var(--bg-2); display: grid; gap: 4px; }
-  .rf-ok { border-color: var(--ok); }
   .rf-err { border-color: var(--err); }
+  /* 16px inputs stop iPhones zooming the page when a field is tapped. */
+  .rf :global(.input), .rf :global(.textarea) { font-size: 16px; }
+  .rf .field { animation: rise 0.45s ease-out both; }
+  .rf .field:nth-of-type(2) { animation-delay: 0.05s; }
+  .rf .field:nth-of-type(3) { animation-delay: 0.1s; }
+  .rf .field:nth-of-type(4) { animation-delay: 0.15s; }
+  .rf .field:nth-of-type(5) { animation-delay: 0.2s; }
+  .rf .btn { transition: transform 0.12s ease, background-color 0.18s, border-color 0.18s; }
+  .rf .btn:active { transform: scale(0.97); }
+  .rf .btn[disabled] { opacity: 0.6; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .done { display: grid; justify-items: start; gap: 12px; padding: 8px 0; outline: none; }
+  .done-ic { color: var(--ok); }
+  .done-ring { stroke-dasharray: 183; stroke-dashoffset: 183; transform: rotate(-90deg); transform-origin: 32px 32px; }
+  .done-tick { stroke-dasharray: 42; stroke-dashoffset: 42; }
+  .done.is-in .done-ring { animation: draw 0.55s ease-out forwards; }
+  .done.is-in .done-tick { animation: draw 0.35s ease-out 0.45s forwards; }
+  .done.is-in .done-h, .done.is-in .done-p { animation: rise 0.45s ease-out 0.6s both; }
+  .done-h { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1; color: var(--ink); }
+  .done-p { color: var(--text-2); font-size: 17px; line-height: 1.55; max-width: 44ch; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  @media (max-width: 560px) {
+    .banner { padding: 26px 0 30px; }
+    .rf { grid-template-columns: 1fr; gap: 16px; }
+    .panel { border: 0; padding: 0; }
+    .rf .btn { width: 100%; min-height: 54px; font-size: 17px; }
+    .life-tag { right: -30px; }
+    .life-tag::before { right: 25px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .life-fill { animation: none; transform: none; }
+    .life-pin { animation: none; opacity: 1; }
+    .life-dot::after { animation: none; }
+    .rf .field, .done.is-in .done-h, .done.is-in .done-p { animation: none; }
+    .done.is-in .done-ring, .done.is-in .done-tick { animation: none; stroke-dashoffset: 0; }
+  }
 </style>
 
 <script>
   document.querySelectorAll<HTMLFormElement>('[data-register-form]').forEach((form) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const ok = form.querySelector<HTMLElement>('[data-ok]')!;
+      const ok = document.querySelector<HTMLElement>('[data-ok]')!;
       const err = form.querySelector<HTMLElement>('[data-err]')!;
       const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
       ok.hidden = err.hidden = true;
@@ -89,8 +166,14 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
         const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
         if (!res.ok) throw new Error(String(res.status));
         form.reset();
+        form.hidden = true;
         ok.hidden = false;
-        ok.scrollIntoView({ block: 'center' });
+        requestAnimationFrame(() => ok.classList.add('is-in'));
+        const life = document.querySelector<HTMLElement>('[data-life]');
+        const tag = document.querySelector<HTMLElement>('[data-life-tag]');
+        if (life && tag) { life.classList.add('is-set'); tag.textContent = 'Reminder set'; }
+        ok.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        ok.focus({ preventScroll: true });
         // Existing customers, not new leads: tracked in Analytics only, not as an Ads conversion.
         const w = window as any;
         if (typeof w.gtag === 'function') w.gtag('event', 'pen_registration');
