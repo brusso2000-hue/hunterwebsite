@@ -5,13 +5,13 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
 
 <Base
   title="Register Your Plating Pen | Hunter Products Inc."
-  description="Register your Micro-Metallizer plating pen to get a reminder before it reaches the end of its shelf life and the certificate for your lot."
+  description="Register your Micro-Metallizer plating pen and we will email the Certificate of Conformance with your lot information, plus a reminder before its shelf life runs out."
   noindex
 >
   <div class="banner">
     <div class="wrap banner-in">
-      <h1 class="h-1">Register your pen</h1>
-      <p class="lede why">Plating pens have a 12-month shelf life. Register yours and we will <strong>email you before it runs out</strong>, and <strong>send the certificate for your lot</strong>.</p>
+      <h1 class="h-1">Get your pen's Certificate of Conformance</h1>
+      <p class="lede why">Register your pen and we will <strong>email the CoC with your lot information</strong>. We will also remind you before its 12-month shelf life runs out.</p>
     </div>
   </div>
 
@@ -24,7 +24,7 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
             <path class="done-tick" d="M19 33.5 28 42.5 46 23" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           <h2 class="done-h">You're registered.</h2>
-          <p class="done-p">We will email your lot certificate, and remind you before your pen expires. Need pens sooner? Call <a href={SITE.phoneHref}>{SITE.phone}</a>.</p>
+          <p class="done-p">We will email the Certificate of Conformance with your lot information, and remind you before your pen expires. Need pens sooner? Call <a href={SITE.phoneHref}>{SITE.phone}</a>.</p>
         </div>
         <form class="rf" action={FORMSPREE_ENDPOINT} method="POST" data-register-form>
           <div class="rf-status rf-err" hidden data-err role="alert">
@@ -56,7 +56,7 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
           <input type="hidden" name="_subject" value="Pen registration" />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
           <div class="rf-full">
-            <button class="btn btn--primary" type="submit" data-submit>Register pen <span class="arrow">→</span></button>
+            <button class="btn btn--primary" type="submit" data-submit>Register and send my CoC <span class="arrow">→</span></button>
           </div>
         </form>
       </div>
