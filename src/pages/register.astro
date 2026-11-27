@@ -11,7 +11,23 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
   <div class="banner">
     <div class="wrap banner-in">
       <h1 class="h-1">Register your pen</h1>
-      <p class="lede">Plating pens have a 12-month shelf life. Register yours and we will email you before it runs out, and send the certificate for your lot.</p>
+      <p class="lede">It takes under a minute, and you get two things back.</p>
+      <ul class="why">
+        <li>
+          <svg class="why-ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+          <div>
+            <p class="why-h">A reminder before your pen expires</p>
+            <p class="why-p">Plating pens have a 12-month shelf life. We email you before yours runs out, so a job never stops for a dead pen.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="why-ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+          <div>
+            <p class="why-h">The certificate for your lot</p>
+            <p class="why-p">Sent to your inbox, ready for your quality records.</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -63,6 +79,12 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
 <style>
   .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 34px 0; }
   .banner-in { display: grid; gap: 14px; }
+  .why { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; }
+  @media (max-width: 700px) { .why { grid-template-columns: 1fr; gap: 12px; } }
+  .why li { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--ink); padding: 16px 18px; }
+  .why-ic { flex: 0 0 auto; margin-top: 2px; color: var(--ink); }
+  .why-h { font-size: clamp(18px, 1.6vw, 21px); font-weight: 600; color: var(--ink); line-height: 1.25; }
+  .why-p { margin-top: 4px; color: var(--text-2); font-size: 15px; line-height: 1.5; }
   .panel { border: 1px solid var(--line); padding: clamp(20px, 4vw, 44px); max-width: 760px; }
   .rf { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .rf-full { grid-column: 1 / -1; }
