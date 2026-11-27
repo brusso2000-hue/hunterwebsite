@@ -44,14 +44,6 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
             <label for="rf-company">Company *</label>
             <input class="input" id="rf-company" name="company" required autocomplete="organization" />
           </div>
-          <div class="field">
-            <label for="rf-pen">Which pen or kit?</label>
-            <input class="input" id="rf-pen" name="pen" placeholder="For example, 24K gold pen" />
-          </div>
-          <div class="field">
-            <label for="rf-lot">Lot number, if shown</label>
-            <input class="input" id="rf-lot" name="lot_number" data-lot />
-          </div>
           <div class="field rf-full">
             <label for="rf-use">What are you plating?</label>
             <textarea class="textarea" id="rf-use" name="application" placeholder="Optional. It helps us send the right information."></textarea>
@@ -82,11 +74,6 @@ import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
 
 <script>
   document.querySelectorAll<HTMLFormElement>('[data-register-form]').forEach((form) => {
-    // A QR code or link can carry the lot number: /register/?lot=1234
-    const lot = new URLSearchParams(location.search).get('lot');
-    const lotInput = form.querySelector<HTMLInputElement>('[data-lot]')!;
-    if (lot) lotInput.value = lot.slice(0, 40);
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const ok = form.querySelector<HTMLElement>('[data-ok]')!;
