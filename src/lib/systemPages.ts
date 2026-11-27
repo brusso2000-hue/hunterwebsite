@@ -20,7 +20,7 @@ export const SYSTEM_PAGES: SystemPage[] = [
   {
     slug: 'micro-metallizer',
     id: 'micro-metallizer',
-    title: 'Micro-Metallizer Brush Plating System',
+    title: 'Micro-Metallizer Electroplating Pens & Brush Plating Kits',
     metaTitle: 'Electroplating Pens & Brush Plating Kits from {penFrom}',
     metaDescription:
       'Selective brush plating in a pen: gold, silver, nickel, tin, zinc, rhodium, palladium. Pens from {penFrom}, complete kits from $400. No tank or bath. Ships same day, free returns.',
