@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro';
+import { FORMSPREE_ENDPOINT, SITE } from '../lib/site';
+---
+
+<Base
+  title="Register Your Plating Pen | Hunter Products Inc."
+  description="Register your Micro-Metallizer plating pen and we will email the Certificate of Conformance with your lot information, plus a reminder before its shelf life runs out."
+  noindex
+>
+  <div class="banner">
+    <div class="wrap banner-in">
+      <h1 class="h-1">Get your pen's Certificate of Conformance</h1>
+      <p class="lede why">Register your pen and we will <strong>email the CoC with your lot information</strong>. We will also remind you before its 12-month shelf life runs out.</p>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="panel">
+        <div class="done" hidden data-ok role="status" tabindex="-1">
+          <svg class="done-ic" viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+            <circle class="done-ring" cx="32" cy="32" r="29" stroke="currentColor" stroke-width="3" />
+            <path class="done-tick" d="M19 33.5 28 42.5 46 23" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 class="done-h">You're registered.</h2>
+          <p class="done-p">We will email the Certificate of Conformance with your lot information, and remind you before your pen expires. Need pens sooner? Call <a href={SITE.phoneHref}>{SITE.phone}</a>.</p>
+        </div>
+        <form class="rf" action={FORMSPREE_ENDPOINT} method="POST" data-register-form>
+          <div class="rf-status rf-err" hidden data-err role="alert">
+            <p><strong>Something went wrong.</strong></p>
+            <p>Please email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call {SITE.phone}.</p>
+          </div>
+
+          <div class="field">
+            <label for="rf-first">First name *</label>
+            <input class="input" id="rf-first" name="first_name" required autocomplete="given-name" autocapitalize="words" enterkeyhint="next" />
+          </div>
+          <div class="field">
+            <label for="rf-last">Last name *</label>
+            <input class="input" id="rf-last" name="last_name" required autocomplete="family-name" autocapitalize="words" enterkeyhint="next" />
+          </div>
+          <div class="field">
+            <label for="rf-email">Work email *</label>
+            <input class="input" id="rf-email" name="email" type="email" inputmode="email" required autocomplete="email" autocapitalize="none" spellcheck="false" enterkeyhint="next" />
+          </div>
+          <div class="field">
+            <label for="rf-company">Company *</label>
+            <input class="input" id="rf-company" name="company" required autocomplete="organization" autocapitalize="words" enterkeyhint="next" />
+          </div>
+          <div class="field rf-full">
+            <label for="rf-use">What are you plating?</label>
+            <textarea class="textarea" id="rf-use" name="application" placeholder="Optional. It helps us send the right information."></textarea>
+          </div>
+          <input type="hidden" name="request_type" value="pen_registration" />
+          <input type="hidden" name="_subject" value="Pen registration" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+          <div class="rf-full">
+            <button class="btn btn--primary" type="submit" data-submit>Register and send my CoC <span class="arrow">→</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 34px 0; }
+  .banner-in { display: grid; gap: 14px; }
+  .why { font-size: clamp(19px, 1.9vw, 24px); line-height: 1.45; color: var(--ink); max-width: 46ch; }
+  .why strong { font-weight: 700; }
+
+  .panel { border: 1px solid var(--line); padding: clamp(20px, 4vw, 44px); max-width: 760px; }
+  .rf { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .rf-full { grid-column: 1 / -1; }
+  .rf-status { grid-column: 1 / -1; padding: 14px 16px; border-left: 3px solid; background: var(--bg-2); display: grid; gap: 4px; }
+  .rf-err { border-color: var(--err); }
+  /* 16px inputs stop iPhones zooming the page when a field is tapped. */
+  .rf :global(.input), .rf :global(.textarea) { font-size: 16px; }
+  .rf .field { animation: rise 0.45s ease-out both; }
+  .rf .field:nth-of-type(2) { animation-delay: 0.05s; }
+  .rf .field:nth-of-type(3) { animation-delay: 0.1s; }
+  .rf .field:nth-of-type(4) { animation-delay: 0.15s; }
+  .rf .field:nth-of-type(5) { animation-delay: 0.2s; }
+  .rf .btn { transition: transform 0.12s ease, background-color 0.18s, border-color 0.18s; }
+  .rf .btn:active { transform: scale(0.97); }
+  .rf .btn[disabled] { opacity: 0.6; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .done { display: grid; justify-items: start; gap: 12px; padding: 8px 0; outline: none; }
+  .done-ic { color: var(--ok); }
+  .done-ring { stroke-dasharray: 183; stroke-dashoffset: 183; transform: rotate(-90deg); transform-origin: 32px 32px; }
+  .done-tick { stroke-dasharray: 42; stroke-dashoffset: 42; }
+  .done.is-in .done-ring { animation: draw 0.55s ease-out forwards; }
+  .done.is-in .done-tick { animation: draw 0.35s ease-out 0.45s forwards; }
+  .done.is-in .done-h, .done.is-in .done-p { animation: rise 0.45s ease-out 0.6s both; }
+  .done-h { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4vw, 40px); line-height: 1; color: var(--ink); }
+  .done-p { color: var(--text-2); font-size: 17px; line-height: 1.55; max-width: 44ch; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  @media (max-width: 560px) {
+    .banner { padding: 26px 0 30px; }
+    .rf { grid-template-columns: 1fr; gap: 16px; }
+    .panel { border: 0; padding: 0; }
+    .rf .btn { width: 100%; min-height: 54px; font-size: 17px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rf .field, .done.is-in .done-h, .done.is-in .done-p { animation: none; }
+    .done.is-in .done-ring, .done.is-in .done-tick { animation: none; stroke-dashoffset: 0; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-register-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = document.querySelector<HTMLElement>('[data-ok]')!;
+      const err = form.querySelector<HTMLElement>('[data-err]')!;
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+      ok.hidden = err.hidden = true;
+      btn.disabled = true;
+      try {
+        const data = new FormData(form);
+        data.set('form_page', location.pathname);
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        form.hidden = true;
+        ok.hidden = false;
+        requestAnimationFrame(() => ok.classList.add('is-in'));
+        ok.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        ok.focus({ preventScroll: true });
+        // Existing customers, not new leads: tracked in Analytics only, not as an Ads conversion.
+        const w = window as any;
+        if (typeof w.gtag === 'function') w.gtag('event', 'pen_registration');
+      } catch {
+        err.hidden = false;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
