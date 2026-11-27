@@ -40,6 +40,12 @@
   status = 301
 
 # Snipcart's crawler must always get JSON, never an HTML fallback.
+# Lot certificates of conformance, linked from the pen registration email. Not for search results.
+[[headers]]
+  for = "/coc/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
 [[headers]]
   for = "/products.json"
   [headers.values]
